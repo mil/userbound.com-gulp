@@ -1,0 +1,94 @@
+@mixin boxsize
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+section.bar.front-end
+  // RENAME TO SPLIT
+  .split
+    //border: 1px solid #cfcfcf
+    margin: 0 auto
+    overflow: hidden
+    vertical-align: top
+    display: none
+    opacity: 0
+    margin: 0 auto
+
+    &.active
+      display: table
+
+    .half
+      display: table-cell
+      vertical-align: middle
+      @include boxsize
+      width: 49%
+      &:first-child
+        padding-right: 50px
+        padding-top: 6px
+        padding-bottom: 12px
+        padding-left: 4px
+        @include boxsize
+        text-align: right
+      &:last-child
+
+    .half
+      width: 330px
+      max-width: 100%
+      max-height: 330px
+
+    .screenshot, .meta
+      max-width: 100%
+      height: auto
+
+    .meta
+      vertical-align: middle
+
+
+      ul
+        margin: 10px 0
+        padding: 0
+        li
+          margin: 0
+          $vert_marg: 8px
+          padding-top: $vert_marg
+          padding-bottom: $vert_marg
+
+          text-align: left
+          font-size: 18px
+          line-height: 20px
+          font-family: Open Sans
+          list-style: none
+
+          .bull
+            display: inline-block
+            width: 20px
+            line-height: 20px
+            font-size: 14px
+
+
+
+
+    a.visit
+      display: inline-block
+      margin-top: 10px
+      font-size: 14px
+      font-family: Open Sans
+      &:hover
+        text-decoration: underline
+
+    .screenshot
+      height: 200px
+      border-radius: 2px
+      box-shadow: 3px 6px 10px #cfcfcf
+    .meta
+
+      text-align: left
+      vertical-align: middle
+      border-left: 1px dotted #cfcfcf
+      padding-left: 50px
+      padding-top: 10px
+      padding-bottom: 10px
+      h2
+        margin-bottom: 10px
+        font-size: 30px
+        line-height: 36px

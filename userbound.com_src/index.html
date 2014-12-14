@@ -1,0 +1,13 @@
+---
+page:
+  contents: "index.md"
+  scripts: "markdown" # (optional)
+
+# (optional)
+once_page_is_compiled: 
+  prepends:  _partials/header.yaml
+  postpends: _partials/footer.yaml
+  scripts:
+    - substitute_head
+    - minify_html
+---

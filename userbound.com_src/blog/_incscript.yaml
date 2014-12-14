@@ -1,0 +1,10 @@
+page:
+  contents:
+    - ../_partials/header.html
+    - page:
+      contents: yield
+      scripts: markdownify
+    - ../_partials/footer.html
+  scripts:
+    - substitute_head
+    - minify_html
