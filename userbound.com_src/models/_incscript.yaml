@@ -1,5 +1,0 @@
-page:
-  contents: 
-    - _partials/header.html
-    - _model_mustache_content.html
-    - _partials/footer.html
