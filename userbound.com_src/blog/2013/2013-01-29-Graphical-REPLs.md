@@ -1,9 +1,7 @@
 ---
-page:
-  variables:
-    title: Graphical REPLs?
-    time: 12:30AM
-    date: 2013-01-29
+title: Graphical REPLs?
+time: 12:30AM
+date: 2013-01-29
 ---
 Where are all the Graphical Read Evaluate Print Loop Interfaces? Where is the graphical shell? There was [TermKit](http://github.com/unconed/TermKit) a bit back, but TermKit relied on Node.JS plus Webkit.. which was a fragile solution. Though, conceptually, TermKit was right on target.  But what might the "ideal" graphical REPL look like? 
 

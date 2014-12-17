@@ -1,9 +1,7 @@
 ---
-page:
-  variables:
-    title: A Simpler TODO List 
-    time: '11:35AM'
-    date: 2013-01-15
+title: A Simpler TODO List 
+time: '11:35AM'
+date: 2013-01-15
 ---
 There are likely thousands of TODO list "applications" and "systems" out there, however, I think we've forgotten the most simple and elegent solution:
 

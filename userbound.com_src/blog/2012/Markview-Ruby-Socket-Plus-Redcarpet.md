@@ -1,9 +1,7 @@
 ---
-page: 
-  variables:
-    title: Ruby Socket + Redcarpet = Browser-Based Markdown Preview
-    time: 1:48AM
-    date: 2012-04-29
+title: Ruby Socket + Redcarpet = Browser-Based Markdown Preview
+time: 1:48AM
+date: 2012-04-29
 ---
 So it's finals time and I've been preparing some single page study sheets with [markdown](http://daringfireball.net/projects/markdown/). I use Markdown for generating PDFs for printing ([mkd2pdf](https://github.com/jdodds/mkd2pdf)). 
 In anycase, I had been using my [Markdown Tree](/projects/markdown-tree) project in order to faciliate a sort of "live-preview" of the documents I send to mkd2pdf. Nothing against [Sinatra](http://sinatrarb.com) but I wanted a lighter solution.  Using Markdown-Tree (and Sinatra) purely for its Markdown rendering capability didn't make sense to me. Really I was just working with Redcarpet and Socket. Sinatra wasn't doing a damn thing for me. 

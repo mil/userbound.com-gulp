@@ -1,9 +1,7 @@
 ---
-page:
-  variables:
-    title: Extending Io's Objects
-    date: 2012-08-11
-    time: 11:47PM
+title: Extending Io's Objects
+date: 2012-08-11
+time: 11:47PM
 ---
 Recently, I've been working in a little language called [Io](http://iolanguage.com). Io is a prototype-based programming language that feels a lot like Smalltalk. Io takes the object message passing style very seriously. Resulting, everything in Io is an object. Io's syntax is very succint and incredibly extendable. It's very meta, and thats a good thing.
 

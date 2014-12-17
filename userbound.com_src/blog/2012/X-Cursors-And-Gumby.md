@@ -1,9 +1,7 @@
 ---
-page:
-  variables:
-    title: X Cursors and Gumby
-    time: 3:19AM
-    date: 2012-05-14
+title: X Cursors and Gumby
+time: 3:19AM
+date: 2012-05-14
 ---
 I've been playing around with Xlib lately and I found out that X11 comes with a great set of cursors included by default. I was pretty excited when I found out the X developers decided to throw Gumby into the mix! Look at this cursor here:
 

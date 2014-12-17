@@ -1,9 +1,7 @@
 ---
-page:
-  variables:
-    title: Mplayer's FIFO
-    date: 2012-08-14
-    time: 9:01AM
+title: Mplayer's FIFO
+date: 2012-08-14
+time: 9:01AM
 ---
 I was incredibly excited when I found out that mplayer can be controlled via a FIFO. It wasn't a huge suprise as ofcourse there must be some IPC for mplayer, but still, this is awesome.
 
