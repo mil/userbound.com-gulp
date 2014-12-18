@@ -3,8 +3,10 @@ var _        = require('underscore');
 var rimraf   = require('rimraf');
 var fs       = require('fs');
 var gulp     = require('gulp');
+var replace     = require('gulp-replace');
 var data     = require('gulp-data');
 var uglify   = require('gulp-uglify');
+var wrap = require('gulp-wrap');
 var sass     = require('gulp-ruby-sass');
 var markdown = require('gulp-markdown');
 var fem      = require('gulp-front-matter');
@@ -24,6 +26,7 @@ var prefs = {
   in_folder  : "userbound.com_src/",
   out_folder : "userbound.com/"
 };
+    var image_acculuator = [];
 
 function fs_in(path)  { return prefs.in_folder  + path; }
 function fs_out(path) { return prefs.out_folder + (path || ''); }
@@ -31,9 +34,10 @@ function read_file(path) {
   return fs.readFileSync(path, 'utf8');
 }
 function source_filepath_to_url(source_filepath) {
-  return "/" + (source_filepath.split("/")
-  .slice(1, source_filepath.length).join("/")
-  .replace(/\.md$/, ""));
+  var x = /^\d{4}-\d{2}-\d{2}-(.+)(?=\.md)?/.exec(source_filepath);
+
+  // ... until i can get my regex to cooperate
+  return x[1].split(".md")[0];
 }
 
 
@@ -67,6 +71,9 @@ gulp.task('assets_folder', function() {
 
 });
 
+
+
+
 gulp.task('homepage', function() {
   // Homepage
   gulp
@@ -80,67 +87,100 @@ gulp.task('homepage', function() {
     .pipe(gulp.dest(fs_out()));
 });
 
-gulp.task('models', function() {
+
+_.each(['models', 'blog', 'poems'], function(collection_name) {
+  // Blog pages
+  gulp.task(collection_name, function() { 
+
+    //  Blog listing index page
+    gulp
+      .src(fs_in(collection_name + "/index.html"))
+      .pipe(data(function(page_object) {
+
+        page_object.entries = _.map(
+          fs.readdirSync(fs_in(collection_name + "/entries")), 
+          function(source_filepath) {
+
+            return _.extend(
+              yaml_extractor.loadFront(fs_in(collection_name + "/entries/" + source_filepath)),
+              { url :  source_filepath_to_url(source_filepath) }
+            );
+          }
+        );
+
+        page_object.title = 
+          collection_name.charAt(0).toUpperCase() +
+          collection_name.slice(1);
+        return page_object;
+      }))
+      
+      .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
+      .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+      .pipe(template())
+
+      .pipe(gulp.dest(fs_out(collection_name)));
+
+
+
+    return gulp
+      .src(fs_in(collection_name + "/entries/*.md"))
+
+      // Extract FEM into page.fem
+      .pipe(fem({ property: 'fem', remove : true }))
+      .pipe(markdown())
+
+      // Transform page stream into template file
+      // Put page markdown into buffer 'page.stored_content' temporarily
+      .pipe(data(function(page) { 
+        page.stored_content = page.contents; 
+        return page; 
+      }))
+      .pipe(replace(
+        /[\s\S]*/, 
+        read_file(fs_in(collection_name + "/entry_template.html"))
+      ))
+
+      // Load data return with FEM and page (HTML)-post-content
+      .pipe(data(function(d) {
+
+        // Create array for looping models
+        if (collection_name == "models") {
+          image_acculuator.push({ title: d.fem.title, image: d.fem.image });
+        }
+        d.fem.yield= d.stored_content;
+        return d.fem;
+      }))
+
+
+
+
+
+      // Wrap page template in header & footer
+      .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
+      .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+      .pipe(template())
+
+      .pipe(rename(function(path) {
+        path.dirname += "/" + source_filepath_to_url(path.basename);
+        path.basename = "index";
+      }))
+      .pipe(gulp.dest(fs_out(collection_name)));
+    });
+
+
 
 });
 
-// Blog pages
-gulp.task('blog', function() {
-
-
-  //  Blog listing index page
-  gulp
-    .src(fs_in("blog/index.html"))
-    .pipe(data(function(page_object) {
-      // Maybe I should find a Dir.glob equivilant for node..
-      var articles_paths = _.flatten(_.map(
-        _.map(["2012", "2013", "2014"], function(year) {
-          return fs_in("blog/" + year + "/");
-        }), function(articles_dir_path) {
-          return _.map(fs.readdirSync(articles_dir_path), function(path) {
-            return articles_dir_path + path;
-          });
-        })
-      ); 
-
-      page_object.articles = _.map(articles_paths, function(source_filepath) {
-        return _.extend(
-          yaml_extractor.loadFront(source_filepath),
-          { url :  source_filepath_to_url(source_filepath) }
-        );
-      });
-
-      return page_object;
-    }))
-
-    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
-    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-    
-    .pipe(template())
-    .pipe(gulp.dest(fs_out('blog')));
-
-
-  // Blog listing individual pages
-  gulp
-    .src(fs_in("blog/*/*.md"))
-    .pipe(fem({ property: 'fem', remove : true }))
-    .pipe(markdown())
+// Rename each model image with same title .png, etc...
+gulp.task('model_images', ['models'], function() {
+  _.each(image_acculuator, function(val) {
+    gulp
+    .src(fs_in("models/images/" + val.image))
     .pipe(rename(function(path) {
-      path.dirname += "/" + path.basename;
-      path.basename = "index";
+      path.basename  = val.title;
     }))
-
-    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
-    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-
-    .pipe(data(function(d) {
-      return d.fem;
-    }))
-
-    .pipe(template())
-
-
-    .pipe(gulp.dest(fs_out('blog')));
+    .pipe(gulp.dest(fs_out("models")));
+  });
 });
 
 
@@ -152,6 +192,7 @@ gulp.task('watch', function() {
       ["*", ["homepage"]],
       ["blog/*", ["blog"]],
       ["models/*", ["models"]],
+      ["poems/*", ["poems"]],
       ["_sass/*", ["assets_folder"]],
       ["_sass/*/*", ["assets_folder"]],
       ["_js/*", ["assets_folder"]]
@@ -182,6 +223,8 @@ gulp.task(
     'homepage', 
    'blog', 
    'models',
+   'model_images',
+   'poems',
    'assets_folder', 
     'webserver', 'watch'
 ]);
