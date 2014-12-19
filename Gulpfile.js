@@ -106,7 +106,7 @@ _.each(['models', 'blog', 'poems'], function(collection_name) {
               { url :  source_filepath_to_url(source_filepath) }
             );
           }
-        );
+        ).reverse();
 
         page_object.title = 
           collection_name.charAt(0).toUpperCase() +
