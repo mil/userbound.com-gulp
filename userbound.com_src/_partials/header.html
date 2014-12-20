@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title><%= title %></title>
+  <title><%= fem.title %></title>
   <link rel="stylesheet" href="/assets/all.css">
   <script src="/assets/all.js"></script>
 </head>
@@ -10,13 +10,9 @@
 
   <header>
     <nav>
-      <a class='active' href="/hardware">&#9874; Hardware</a>
-      <a href="/software">&#x238C;</a>
+      <% _.forEach(top_nav_links, function(link) { %>
+      <a href="<%- link.url %>"><%= link.symbol %></a>
+      <% }); %>
 
-      <a href="/blog" title="Blog">&#9776;</a>
-      <a href="/poems" title="Poems">&#9783;</a>
-
-      <a href="/models">&boxbox;</a>
-      <a href="/music" title="Music">&#9835;</a>
-      </nav>
+    </nav>
   </header>

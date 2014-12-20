@@ -1,32 +1,32 @@
 #!/usr/bin/env node
-var _        = require('underscore');
-var rimraf   = require('rimraf');
-var fs       = require('fs');
-var gulp     = require('gulp');
-var replace     = require('gulp-replace');
-var data     = require('gulp-data');
-var uglify   = require('gulp-uglify');
-var wrap = require('gulp-wrap');
-var sass     = require('gulp-ruby-sass');
-var markdown = require('gulp-markdown');
-var fem      = require('gulp-front-matter');
-var mustache = require('gulp-mustache');
-var vartree      = require('gulp-vartree');
-var template = require('gulp-template');
-var ejs = require('gulp-ejs');
-var consolidate = require('gulp-consolidate');
-var insert   = require('gulp-insert');
-var concat   = require('gulp-concat');
-var rename   = require('gulp-rename');
-var minify   = require('gulp-minify');
-var connect = require('gulp-connect');
+var _              = require('underscore');
+var rimraf         = require('rimraf');
+var fs             = require('fs');
+var gulp           = require('gulp');
+var replace        = require('gulp-replace');
+var data           = require('gulp-data');
+var uglify         = require('gulp-uglify');
+var wrap           = require('gulp-wrap');
+var sass           = require('gulp-ruby-sass');
+var markdown       = require('gulp-markdown');
+var fem            = require('gulp-front-matter');
+var mustache       = require('gulp-mustache');
+var vartree        = require('gulp-vartree');
+var template       = require('gulp-template');
+var ejs            = require('gulp-ejs');
+var consolidate    = require('gulp-consolidate');
+var insert         = require('gulp-insert');
+var concat         = require('gulp-concat');
+var rename         = require('gulp-rename');
+var minify         = require('gulp-minify');
+var connect        = require('gulp-connect');
 var yaml_extractor = require('yaml-front-matter');
 
 var prefs = {
   in_folder  : "userbound.com_src/",
   out_folder : "userbound.com/"
 };
-    var image_acculuator = [];
+var image_accumulator = [];
 
 function fs_in(path)  { return prefs.in_folder  + path; }
 function fs_out(path) { return prefs.out_folder + (path || ''); }
@@ -38,6 +38,13 @@ function source_filepath_to_url(source_filepath) {
 
   // ... until i can get my regex to cooperate
   return x[1].split(".md")[0];
+}
+
+function extract_top_nav_links(page_object) {
+  page_object.top_nav_links = yaml_extractor.loadFront(
+    fs_in("_data/top_nav_links.yaml")
+  ).top_nav_links;
+  return page_object;
 }
 
 
@@ -95,6 +102,7 @@ _.each(['models', 'blog', 'poems'], function(collection_name) {
     //  Blog listing index page
     gulp
       .src(fs_in(collection_name + "/index.html"))
+      .pipe(data(extract_top_nav_links))
       .pipe(data(function(page_object) {
 
         page_object.entries = _.map(
@@ -108,7 +116,8 @@ _.each(['models', 'blog', 'poems'], function(collection_name) {
           }
         ).reverse();
 
-        page_object.title = 
+        page_object.fem = {};
+        page_object.fem.title = 
           collection_name.charAt(0).toUpperCase() +
           collection_name.slice(1);
         return page_object;
@@ -124,6 +133,7 @@ _.each(['models', 'blog', 'poems'], function(collection_name) {
 
     return gulp
       .src(fs_in(collection_name + "/entries/*.md"))
+      .pipe(data(extract_top_nav_links))
 
       // Extract FEM into page.fem
       .pipe(fem({ property: 'fem', remove : true }))
@@ -132,7 +142,7 @@ _.each(['models', 'blog', 'poems'], function(collection_name) {
       // Transform page stream into template file
       // Put page markdown into buffer 'page.stored_content' temporarily
       .pipe(data(function(page) { 
-        page.stored_content = page.contents; 
+        page.yield = page.contents; 
         return page; 
       }))
       .pipe(replace(
@@ -145,10 +155,14 @@ _.each(['models', 'blog', 'poems'], function(collection_name) {
 
         // Create array for looping models
         if (collection_name == "models") {
-          image_acculuator.push({ title: d.fem.title, image: d.fem.image });
+          image_accumulator.push({ title: d.fem.title, image: d.fem.image });
         }
-        d.fem.yield= d.stored_content;
-        return d.fem;
+        d.top_nav_links = yaml_extractor.loadFront(
+          fs_in("_data/top_nav_links.yaml")
+        ).top_nav_links;
+
+
+        return d;
       }))
 
 
@@ -173,7 +187,7 @@ _.each(['models', 'blog', 'poems'], function(collection_name) {
 
 // Rename each model image with same title .png, etc...
 gulp.task('model_images', ['models'], function() {
-  _.each(image_acculuator, function(val) {
+  _.each(image_accumulator, function(val) {
     gulp
     .src(fs_in("models/images/" + val.image))
     .pipe(rename(function(path) {
