@@ -9,6 +9,10 @@ top_nav_links:
     title    : Software
     url    : "/software"
   -
+    symbol : "&#9783;"
+    title    : Poems
+    url    : "/poems" 
+  -
     symbol : "&#9976;"
     title    : Blog
     url    : "/blog" 

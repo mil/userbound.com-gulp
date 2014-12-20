@@ -85,12 +85,21 @@ gulp.task('homepage', function() {
   // Homepage
   gulp
     .src(fs_in("index.html"))
+    .pipe(data(extract_top_nav_links))
+    .pipe(data(function(page_object) {
+
+      page_object.fem = "Userbound";
+      return page_object;
+    }))
 
 
     .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-    .pipe(minify())
 
+
+
+    .pipe(template())
+    .pipe(minify())
     .pipe(gulp.dest(fs_out()));
 });
 
