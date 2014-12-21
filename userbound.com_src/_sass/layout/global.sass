@@ -1,3 +1,20 @@
+@mixin keyframes($animation_handle)
+  @-webkit-keyframes #{$animation_handle}
+    @content 
+  @-moz-keyframes #{$animation_handle}
+    @content
+  @keyframes #{$animation_handle}
+    @content
+
+@include keyframes(fadeIn)
+  from 
+    opacity: 0
+  to
+    opacity: 1
+ 
+
+
+
 html
   font-size: 14px
 
@@ -29,3 +46,7 @@ a
     border-right: 1px dotted #cfcfcf
     padding-right: 1rem
     margin-right: 1rem
+
+    -webkit-animation: 'fadeIn' 0.5s
+    animation: 'fadeIn' 0.5s
+
