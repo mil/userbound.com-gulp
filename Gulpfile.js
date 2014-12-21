@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 var _              = require('underscore');
 var rimraf         = require('rimraf');
 var fs             = require('fs');
@@ -23,13 +24,16 @@ var connect        = require('gulp-connect');
 var yaml_extractor = require('yaml-front-matter');
 
 var prefs = {
-  in_folder  : "userbound.com_src/",
-  out_folder : "userbound.com/"
+  in_folder  : "userbound.com_src",
+  out_folder : "userbound.com"
 };
 var image_accumulator = [];
 
-function fs_in(path)  { return prefs.in_folder  + path; }
-function fs_out(path) { return prefs.out_folder + (path || ''); }
+function pp(buffer) {
+  console.log(JSON.stringify(buffer));
+}
+function fs_in(path)  { return prefs.in_folder  + "/" + path; }
+function fs_out(path) { return prefs.out_folder + "/" + (path || ''); }
 function read_file(path) {
   return fs.readFileSync(path, 'utf8');
 }
@@ -44,6 +48,20 @@ function extract_top_nav_links(page_object) {
   page_object.top_nav_links = yaml_extractor.loadFront(
     fs_in("_data/top_nav_links.yaml")
   ).top_nav_links;
+  
+  var path = page_object.base.split("/");
+  page_object.active_section = path[path.indexOf(prefs.in_folder) + 1];
+  page_object.active_section =
+    page_object.active_section != "" ? page_object.active_section : "NONE";
+  page_object.top_nav_links = _.filter(page_object.top_nav_links, function(l) {
+    if (l.title.toLowerCase() == page_object.active_section) {
+      page_object.active_section = l;
+      return false;
+    } else {
+      return true;
+    }
+  });
+
   return page_object;
 }
 
@@ -92,7 +110,6 @@ gulp.task('homepage', function() {
       return page_object;
     }))
 
-
     .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
 
@@ -104,7 +121,7 @@ gulp.task('homepage', function() {
 });
 
 
-_.each(['models', 'blog', 'poems'], function(collection_name) {
+_.each(['models', 'blog', 'poems', 'software'], function(collection_name) {
   // Blog pages
   gulp.task(collection_name, function() { 
 
@@ -211,9 +228,10 @@ gulp.task('model_images', ['models'], function() {
 gulp.task('watch', function() {
   _.each(
     [
-      ["_partials/*", ["homepage", "blog", "models"]],
+      ["_partials/*", ["homepage", "blog", "models", "software"]],
       ["*", ["homepage"]],
       ["blog/*", ["blog"]],
+      ["software/*", ["software"]],
       ["models/*", ["models"]],
       ["poems/*", ["poems"]],
       ["_sass/*", ["assets_folder"]],
@@ -246,6 +264,7 @@ gulp.task(
     'homepage', 
    'blog', 
    'models',
+   'software',
    'model_images',
    'poems',
    'assets_folder', 
