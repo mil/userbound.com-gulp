@@ -9,8 +9,10 @@
 @include keyframes(fadeIn)
   from 
     opacity: 0
+    top: 15px
   to
     opacity: 1
+    top: 0
  
 
 
@@ -43,10 +45,17 @@ a
   color: #888888
 
   &.active
-    border-right: 1px dotted #cfcfcf
-    padding-right: 1rem
     margin-right: 1rem
 
-    -webkit-animation: 'fadeIn' 0.5s
-    animation: 'fadeIn' 0.5s
+    -webkit-animation: fadeIn 0.5s
+    position: relative
+    animation: fadeIn 0.3s
+
+    &:after
+      border-right: 1px dotted #cfcfcf
+      content: " "
+      height: 10px
+      display: inline-block
+      margin-left: 1rem
+
 
