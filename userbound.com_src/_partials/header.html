@@ -10,8 +10,11 @@
 
   <header>
     <nav>
+
+      <a class='active' href="<%- active_section.url %>"><%= active_section.symbol %> <%= active_section.title %></a>
+
       <% _.forEach(top_nav_links, function(link) { %>
-      <a href="<%- link.url %>"><%= link.symbol %></a>
+      <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
       <% }); %>
 
     </nav>
