@@ -1,0 +1,19 @@
+@mixin keyframes($animation_handle)
+  @-webkit-keyframes #{$animation_handle}
+    @content 
+  @-moz-keyframes #{$animation_handle}
+    @content
+  @keyframes #{$animation_handle}
+    @content
+
+@include keyframes(fadeIn)
+  from 
+    opacity: 0
+    top: 15px
+  to
+    opacity: 1
+    top: 0
+
+@mixin animate($animation_type)
+  -webkit-animation: #{$animation_type}
+  animation: #{$animation_type}
