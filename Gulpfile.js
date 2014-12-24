@@ -28,6 +28,16 @@ var prefs = {
   out_folder : "userbound.com"
 };
 var image_accumulator = [];
+var site_sections = [
+  'blog', 
+  'models',
+  'software',
+  'hardware',
+  'poems',
+  'music'
+];
+
+
 
 function pp(buffer) {
   console.log(JSON.stringify(buffer));
@@ -49,10 +59,10 @@ function extract_top_nav_links(page_object) {
     fs_in("_data/top_nav_links.yaml")
   ).top_nav_links;
   
-  var path = page_object.base.split("/");
-  page_object.active_section = path[path.indexOf(prefs.in_folder) + 1];
-  page_object.active_section =
-    page_object.active_section != "" ? page_object.active_section : "NONE";
+  var dir_parts = page_object.base.split("/");
+  var path      = dir_parts.splice(dir_parts.indexOf(prefs.in_folder) + 1);
+
+  page_object.active_section = path[0] != "" ? path[0] : "NONE";
   page_object.top_nav_links = _.filter(page_object.top_nav_links, function(l) {
     if (l.title.toLowerCase() == page_object.active_section) {
       page_object.active_section = l;
@@ -61,6 +71,16 @@ function extract_top_nav_links(page_object) {
       return true;
     }
   });
+
+  // 'entry', 'section', or 'home'
+  page_object.page_type = null;
+  if (path.indexOf("entries") != -1) {
+    page_object.page_type = "entry";
+  } else if (page_object.active_section != "NONE") {
+    page_object.page_type = "section";
+  } else {
+    page_object.page_type = "home";
+  }
 
   return page_object;
 }
@@ -121,7 +141,7 @@ gulp.task('homepage', function() {
 });
 
 
-_.each(['models', 'blog', 'poems', 'software', 'hardware'], function(collection_name) {
+_.each(site_sections, function(collection_name) {
   // Blog pages
   gulp.task(collection_name, function() { 
 
@@ -226,19 +246,30 @@ gulp.task('model_images', ['models'], function() {
 
 
 gulp.task('watch', function() {
-  _.each(
+  _.each(_.union(
     [
-      ["_partials/*", ["homepage", "blog", "models", "software"]],
-      ["*", ["homepage"]],
+      ["_partials/*", _.union(['homepage'], site_sections)],
+      ["*", ["homepage"]]
+    ],
+
+    // Site Sections
+    [
+
       ["blog/*", ["blog"]],
       ["software/*", ["software"]],
       ["hardware/*", ["hardware"]],
       ["models/*", ["models"]],
       ["poems/*", ["poems"]],
+      ["music/*", ["music"]],
+    ],
+
+    // Assets
+    [
       ["_sass/*", ["assets_folder"]],
       ["_sass/*/*", ["assets_folder"]],
       ["_js/*", ["assets_folder"]]
-  ], function(path_tuple) {
+    ]
+  ), function(path_tuple) {
     gulp.watch(
       fs_in(path_tuple[0]),
       _.union(path_tuple[1], ["reload"])
@@ -257,18 +288,9 @@ gulp.task('webserver', function() {
   });
 });
 
-
-
-gulp.task(
-  'default', [ 
-    'clean', 
-    'homepage', 
-   'blog', 
-   'models',
-   'software',
-   'hardware',
-   'model_images',
-   'poems',
-   'assets_folder', 
-    'webserver', 'watch'
-]);
+gulp.task('default', _.union(
+  ['clean', 'homepage'],
+  site_sections,
+  [ 'model_images', 'assets_folder'],
+  [ 'webserver', 'watch']
+));
