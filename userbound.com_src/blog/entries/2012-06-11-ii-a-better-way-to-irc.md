@@ -1,6 +1,7 @@
 ---
 title: ii - A Better Way to IRC
 categories: blog
+date: 2012-06-11
 time: 9:23PM
 ---
 [ii](http://tools.suckless.org/ii) is a better IRC client created by the great folk at [suckless](http://suckless.org). ii is an IRC client that works completely via the filesystem and FIFOs to provide files and folders representing the servers, channels, and chats you are in on IRC. Sound interesting? To me it sure did -- but I found rather sparse documentation on using ii. Thus, the creation of this post. ii doesn't need much explanation as its usage is basic and it is just 500 lines of C, but it can seem intimidating and impractical for personal use at first glance. However, its a joy once you have ii working and realize its simplicity. This guide should get you headed in that path.

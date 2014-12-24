@@ -1,6 +1,7 @@
 ---
 title: Naming Workspaces in i3
 categories: blog
+date: 2012-05-17
 time: 12:37AM
 ---
 I'm not sure how many other WMs have this feature... but naming workspaces is awesome. Using [i3](http://i3wm.org), by way of its [IPC](http://i3wm.org/docs/userguide.html) you can have renamable workspaces. I've found renaming my workspaces to be extremelly helpful in staying on task as I define what I'm going to do in a goal driven manner. See the following small script:

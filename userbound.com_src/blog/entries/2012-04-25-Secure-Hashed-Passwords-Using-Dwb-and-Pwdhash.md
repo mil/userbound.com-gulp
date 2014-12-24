@@ -1,6 +1,7 @@
 ---
 title: Secure Hashed Passwords Using Dwb and Pwdhash 
 categories: blog
+date: 2012-04-25
 time: 8:44PM
 ---
 [Password hashing](http://en.wikipedia.org/wiki/Cryptographic_hash_function) services like [PwdHash](https://pwdhash.com) and [SuperGenPass](http://supergenpass.com) allow you enter your password in the password field of any site and then by way of some Javascript your master password is replaced with its hashed counterpart. My problem with these services is that they are fundamentally insecure due to their implementation. Both PwdHash and SuperGenPass rely on replacement of your master password via Javascript after it has already been entered on the site. 

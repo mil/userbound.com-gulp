@@ -1,6 +1,7 @@
 ---
 title: Restoring Rockbox Root on Clip+
 categories: blog
+date: 2013-01-16
 time: 4:54PM
 ---
 Recently my Sansa Clip+ died on me randomly. I had Rockbox installed for about two years and then one day when I booted it up it just said "File not found". Makes sense, flash can be temperamental.  In anycase, for any of yall in the same position, here's the quick restore procedure to get your Rockbox root fs back and booting:

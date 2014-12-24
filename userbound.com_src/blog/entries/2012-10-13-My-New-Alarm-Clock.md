@@ -1,6 +1,7 @@
 ---
 title: My New Alarm Clock
 categories: blog
+date: 2012-10-13
 time: 10:52AM
 ---
 Sometimes I can't get myself out of bed and to a conscious state before a certain hour. However, if there is something to think about, a challenge to face, or simply just a blaring 22 inch monitor flicking 600 times every minute while blaring music is playing -- I tend to extract myself from bed. Without further ado, I present my new alarm clock:

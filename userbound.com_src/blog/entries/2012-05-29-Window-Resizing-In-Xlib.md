@@ -1,6 +1,7 @@
 ---
 title: Window Resizing in Xlib
 categories: blog
+date: 2012-05-29
 time: 2:02AM
 ---
 In many minimal X window managers, the model for resizing windows follows the form of: hold down a modifier key, press the secondary click, and drag. This functionality can be seen in [i3](http://i3wm.org) and [TinyWM](http://incise.org/tinywm.html) among many other X window managers.  But what happens when you're in resize mode, dragging, and hit the border on the left or top side (i.e. the window is as small as it can get vertically/horizontally)? Well you've hit the border. 

@@ -1,6 +1,7 @@
 ---
 title: Incremental Search in Bash and ZSH
 categories: blog
+date: 2012-06-24
 time: 1:23PM
 ---
 Every once in a while I stumble upon something on my own computer I am amazed by. Easter eggs? No, more like me not fully looking into functionality. In anycase, maybe I'll expose some Bash and Zsh users to this feature as maybe there are some that are clueless like I was.

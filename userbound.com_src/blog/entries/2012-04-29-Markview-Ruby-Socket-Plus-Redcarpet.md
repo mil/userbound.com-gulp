@@ -1,6 +1,7 @@
 ---
 title: Ruby Socket + Redcarpet = Browser-Based Markdown Preview
 categories: blog
+date: 2012-04-29
 time: 1:48AM
 ---
 So it's finals time and I've been preparing some single page study sheets with [markdown](http://daringfireball.net/projects/markdown/). I use Markdown for generating PDFs for printing ([mkd2pdf](https://github.com/jdodds/mkd2pdf)). 
