@@ -216,7 +216,16 @@ gulp.task(collection_name, function() {
 
         // Create array for looping models
         if (collection_name == "models") {
-          image_accumulator.push({ title: d.fem.title, image: d.fem.image });
+          image_accumulator.push({ 
+            title: d.fem.title, 
+            image: d.fem.image 
+          });
+
+          d.scad_source = read_file(
+            fs_in( "models/scads/" + d.fem.title) + ".scad"
+          );
+          console.log("WOO");
+
         }
         
         return d;
@@ -255,6 +264,10 @@ gulp.task('model_images', ['models'], function() {
     }))
     .pipe(gulp.dest(fs_out("models")));
   });
+
+  gulp
+    .src(fs_in("models/scads/*"))
+    .pipe(gulp.dest(fs_out("models")));
 });
 
 
