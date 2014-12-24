@@ -1,4 +1,4 @@
-@mixin boxsize
-  box-sizing: border-box
-  -moz-box-sizing: border-box
-  -webkit-box-sizing: border-box
+@mixin box-sizing($type)
+  box-sizing: #{$type}
+  -moz-box-sizing: #{$type}  
+  -webkit-box-sizing: #{$type}

@@ -11,12 +11,27 @@
   <header>
     <nav>
 
-      <a class='active' href="<%- active_section.url %>"><%= active_section.symbol %> <%= active_section.title %></a>
+      <a class='miles' href="#">Miles</a>
+
 
       <% _.forEach(top_nav_links, function(link) { %>
+      <% if (link.title.toLowerCase() == active_section) { %>
+      <a class='active' href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %><span class='title'><%= link.title %></span></a>
+      <% } else { %>
       <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
+      <% } %>
+
       <% }); %>
 
+
+
+
+
     </nav>
-    <%= page_type %>
+
   </header>
+
+  <% _.isEqual(page_type, "entry", function(a,b) { if (a == b) { %>
+    <a class='up' href="#">&uarr;</a>
+  <% } }); %>
+

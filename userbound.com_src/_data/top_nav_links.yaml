@@ -9,19 +9,11 @@ top_nav_links:
     title    : Software
     url    : "/software"
   -
-    symbol : "&#9783;"
-    title    : Poems
-    url    : "/poems" 
-  -
-    symbol : "&#9976;"
+    symbol : "&equiv;"
     title    : Blog
     url    : "/blog" 
   -
     symbol : "&boxbox;"
     title    : Models
     url    : "/models"
-  -
-    symbol : "&#9835;"
-    title    : Music
-    url    : "/music"
 ---

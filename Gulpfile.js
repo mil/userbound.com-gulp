@@ -32,9 +32,7 @@ var site_sections = [
   'blog', 
   'models',
   'software',
-  'hardware',
-  'poems',
-  'music'
+  'hardware'
 ];
 
 
@@ -62,15 +60,8 @@ function extract_top_nav_links(page_object) {
   var dir_parts = page_object.base.split("/");
   var path      = dir_parts.splice(dir_parts.indexOf(prefs.in_folder) + 1);
 
+
   page_object.active_section = path[0] != "" ? path[0] : "NONE";
-  page_object.top_nav_links = _.filter(page_object.top_nav_links, function(l) {
-    if (l.title.toLowerCase() == page_object.active_section) {
-      page_object.active_section = l;
-      return false;
-    } else {
-      return true;
-    }
-  });
 
   // 'entry', 'section', or 'home'
   page_object.page_type = null;
@@ -81,6 +72,7 @@ function extract_top_nav_links(page_object) {
   } else {
     page_object.page_type = "home";
   }
+
 
   return page_object;
 }
@@ -94,12 +86,13 @@ gulp.task('assets_folder', function() {
   gulp
     .src(
       _.map([
-            'FancyZoomHTML.js',
-            'FancyZoom.js',
-            'sh_main.js',
-            'zepto.js',
+            //'FancyZoomHTML.js',
+            //'FancyZoom.js',
+            //'sh_main.js',
+            'zepto.min.js',
             'zepto.fx.js',
-            'onload.js',
+            //'onload.js',
+            'new_onload.js'
       ], function(js) { return fs_in("_js/" + js); })
       .concat(fs_in("_js/lang/*.js"))
     )
@@ -112,6 +105,11 @@ gulp.task('assets_folder', function() {
     .src(fs_in("_sass/all.sass"))
     .pipe(sass())
     .pipe(gulp.dest(fs_out('assets/')));
+
+  // TTF
+  gulp
+    .src(fs_in("assets/ttf/*"))
+    .pipe(gulp.dest(fs_out('assets/ttf')));
 
 
 });
@@ -221,8 +219,10 @@ _.each(site_sections, function(collection_name) {
       .pipe(template())
 
       .pipe(rename(function(path) {
+
         path.dirname += "/" + source_filepath_to_url(path.basename);
         path.basename = "index";
+        return path;
       }))
       .pipe(gulp.dest(fs_out(collection_name)));
     });
@@ -259,7 +259,6 @@ gulp.task('watch', function() {
       ["software/*", ["software"]],
       ["hardware/*", ["hardware"]],
       ["models/*", ["models"]],
-      ["poems/*", ["poems"]],
       ["music/*", ["music"]],
     ],
 

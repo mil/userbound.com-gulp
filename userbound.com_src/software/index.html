@@ -1,10 +1,13 @@
-<% _.forEach(entries, function(entry) { %>
+<div class='blocks'>
+  <% _.forEach(entries, function(entry) { %>
 
-<a href="<%- entry.url %>">
-<entry>
-  <h2><%- entry.title %></h2>
-  <span class='date'> <%- entry.date %> <%- entry.time %></span>
+  <a class='block' href="<%- entry.url %>">
+  <entry>
+    <h2><%- entry.title %></h2>
+    <span class='date'> <%- entry.date %> <%- entry.time %></span>
+    <%= entry.description %>
   </entry>
-</a>
+  </a>
 
-<% }); %>
+  <% }); %>
+</div>

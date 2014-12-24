@@ -1,35 +1,21 @@
-@mixin keyframes($animation_handle)
-  @-webkit-keyframes #{$animation_handle}
-    @content 
-  @-moz-keyframes #{$animation_handle}
-    @content
-  @keyframes #{$animation_handle}
-    @content
-
-@include keyframes(fadeIn)
-  from 
-    opacity: 0
-    top: 15px
-  to
-    opacity: 1
-    top: 0
-
-@mixin animate($animation_type)
-  -webkit-animation: #{$animation_type}
-  animation: #{$animation_type}
-
-
- 
-
-
-
 html
-  font-size: 14px
+
+  body
+    font-size: 17px
+    font-family: Lora
+    line-height: 2rem
+
+  a 
+    text-decoration: none
+    color: #111111
+
 
 main
   max-width:  600px
   width: 100%
   margin: 0 auto
+  padding: 0 20px
+  @include box-sizing(border-box)
 
   article
     @include animate(fadeIn 0.3s)
@@ -40,30 +26,71 @@ img
 
 header
   border-bottom: $seperator_line
-  padding: 1rem 0
+  padding: 0.4rem 0
   margin: 1rem 0
+  font-size: 0.9rem
+  text-align: right
+
+  a
+    &.miles
+      float: left
+    
+    &.up
+      float: right
+
+    &.active
+      @include animate(fadeIn 1s)
+      position: relative
+      color: black 
+      float: right
+      border-left: 1px dotted #cfcfcf
+      margin-left: 1rem
+
+
+      padding-left: 10px
+      .title
+        padding: 0 10px
+        margin-left: 10px
+
+  span.seperator
+    float: left
+    border-right: 1px dotted #cfcfcf
+    content: " "
+    height: 16px
+    display: inline-block
+    margin-left: 1rem
+
+
 
 footer
   border-top: $seperator_line
   padding: 1rem 0
   margin: 1rem 0
 
+.entry-info
+  margin: 3rem 0
 
-a
-  text-decoration: none
-  color: #888888
+h1,h2,h3
+  font-family: Lora
 
-  &.active
-    margin-right: 1rem
-    @include animate(fadeIn 0.3s)
+h1
+  font-size: 2rem
+  margin: 1rem 0
+h2
+  font-size: 1.5rem
+  margin-bottom: 1.2rem
+  color: #080d3b
 
-    position: relative
+p 
+  margin-bottom: 1rem
 
-    &:after
-      border-right: 1px dotted #cfcfcf
-      content: " "
-      height: 10px
-      display: inline-block
-      margin-left: 1rem
+.up
+  float: right
 
-
+.blocks
+  margin-top: 4rem
+  .block
+    width: 33%
+    margin-bottom: 1rem
+    padding-right: 1%
+    display: inline-block
