@@ -224,8 +224,6 @@ gulp.task(collection_name, function() {
           d.scad_source = read_file(
             fs_in( "models/scads/" + d.fem.title) + ".scad"
           );
-          console.log("WOO");
-
         }
         
         return d;
