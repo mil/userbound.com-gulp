@@ -121,7 +121,7 @@ gulp.task('homepage', function() {
 });
 
 
-_.each(['models', 'blog', 'poems', 'software'], function(collection_name) {
+_.each(['models', 'blog', 'poems', 'software', 'hardware'], function(collection_name) {
   // Blog pages
   gulp.task(collection_name, function() { 
 
@@ -232,6 +232,7 @@ gulp.task('watch', function() {
       ["*", ["homepage"]],
       ["blog/*", ["blog"]],
       ["software/*", ["software"]],
+      ["hardware/*", ["hardware"]],
       ["models/*", ["models"]],
       ["poems/*", ["poems"]],
       ["_sass/*", ["assets_folder"]],
@@ -265,6 +266,7 @@ gulp.task(
    'blog', 
    'models',
    'software',
+   'hardware',
    'model_images',
    'poems',
    'assets_folder', 
