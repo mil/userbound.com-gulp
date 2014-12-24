@@ -201,11 +201,7 @@ _.each(site_sections, function(collection_name) {
         if (collection_name == "models") {
           image_accumulator.push({ title: d.fem.title, image: d.fem.image });
         }
-        d.top_nav_links = yaml_extractor.loadFront(
-          fs_in("_data/top_nav_links.yaml")
-        ).top_nav_links;
-
-
+        
         return d;
       }))
 
