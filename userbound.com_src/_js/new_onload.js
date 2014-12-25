@@ -7,6 +7,7 @@ var UserboundInterface = (function(my) {
 
     });
 
+    sh_highlightDocument();
   };
 
   return my;

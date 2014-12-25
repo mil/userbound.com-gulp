@@ -54,7 +54,7 @@ nav
     display: block
     color: #888
     margin-bottom: 0.5rem
-    @typesize
+    @fontsize
 
     &:hover
       font-size: 1.5rem
@@ -128,10 +128,10 @@ h1,h2,h3
   font-family: Libre Baskerville
 
 h1
-  +typesize(biggest)
+  +fontsize(biggest)
   margin: 1rem 0
 h2
-  +typesize(bigger)
+  +fontsize(bigger)
   color: #080d3b
 p 
   margin-bottom: 1rem
@@ -155,7 +155,7 @@ p
     background: none
     border: none
 
-    +typesize(smaller)
+    +fontsize(smaller)
 
     margin-right: 1rem
 
@@ -180,7 +180,6 @@ p
   code
     position: absolute
     display: block
-    font-family: Ubuntu Mono
     line-height: 0.8em
     font-size: 0.8em
     line-height: 1em
@@ -205,13 +204,20 @@ p
 .pagination-links
   text-align: right
 
-.block, p
+.block, p, pre
   display: block
   margin-bottom: 2rem
+
+code, pre
+  font-family: Ubuntu Mono
+  +fontsize(smaller)
+  border: 1px dashed #cfcfcf
+  padding: 1rem
+  overflow-x: scroll
 
 
 entry
   line-height: 1rem
 span.date
-  +typesize(smaller)
+  +fontsize(smaller)
   color: #888

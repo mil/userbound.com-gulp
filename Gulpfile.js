@@ -98,7 +98,7 @@ gulp
     _.map([
           //'FancyZoomHTML.js',
           //'FancyZoom.js',
-          //'sh_main.js',
+          'sh_main.js',
           'zepto.min.js',
           'zepto.fx.js',
           //'onload.js',
