@@ -1,35 +1,92 @@
+$seperator_line: 1px solid #cfcfcf
+$root_font: Libre Baskerville
+
 html
 
+  
   body
-    font-size: 17px
-    font-family: Quattrocento Sans
+    font-size: 16px
+    font-family: $root_font
     line-height: 2rem
+
+  button
+    font-family: $root_font
 
   a 
     text-decoration: none
     color: #111111
 
+  hr
+    height: 0px
+    border: none
+    display: block
+    //border-top: $seperator_line
+
 
 main
-  max-width:  600px
-  width: 100%
+  max-width:  500px
   margin: 0 auto
-  padding: 0 20px
-  @include box-sizing(border-box)
+  padding: 0 30px
+  margin-top: 5rem
+  +box-sizing(border-box)
 
   article
-    @include animate(fadeIn 0.3s)
+    +animate(fadeIn 0.3s)
 
-$seperator_line: 1px solid #cfcfcf
+  .bar
+    max-width: 500px
+    margin: 0 auto
+
+
 img
   width: 100%
 
+
+nav
+  //border-top: 3px solid #cfc
+  //padding-top: 1rem
+  margin-left: -5rem
+  position: absolute
+  text-align: right
+  a
+    +animate(fadeIn 2s)
+    position: relative
+    display: block
+    color: #888
+    margin-bottom: 0.5rem
+    @typesize
+
+    &:hover
+      font-size: 1.5rem
+      +animate(sizeUp 0.3s)
+
+
+    &.active 
+      +animate(fadeInDoubly 1s)
+
+      color: black
+      font-size: 2rem
+      margin-bottom: 3rem
+      //&:before
+      //  display: block
+      //  content: ">"
+      //  position: absolute
+      //  margin-left: -20px
+
+
 header
-  border-bottom: $seperator_line
+  & + hr
+    margin-bottom: 6rem
+
   padding: 0.4rem 0
   margin: 1rem 0
   font-size: 0.9rem
   text-align: right
+
+  nav
+    position: absolute
+    a
+      display: block
 
   a
     &.miles
@@ -39,7 +96,7 @@ header
       float: right
 
     &.active
-      @include animate(fadeIn 1s)
+      +animate(fadeIn 1s)
       position: relative
       color: black 
       float: right
@@ -63,26 +120,45 @@ header
 
 
 footer
-  border-top: $seperator_line
   padding: 1rem 0
   margin: 1rem 0
 
-.entry-info
-  margin: 3rem 0
 
 h1,h2,h3
-  font-family: Quattrocento Sans
+  font-family: Libre Baskerville
 
 h1
-  font-size: 2rem
+  +typesize(biggest)
   margin: 1rem 0
 h2
-  font-size: 1.5rem
-  margin-bottom: 1.2rem
+  +typesize(bigger)
   color: #080d3b
-
 p 
   margin-bottom: 1rem
+
+
+// Header section at top of each page
+.page-info
+  margin-bottom: 3rem
+  line-height: 1.5rem
+  font-size: 0.889rem
+  color: #888
+
+  h1
+    color: black
+    margin: 0
+    line-height: 2rem
+
+  button
+    padding: 0
+    margin: 0
+    background: none
+    border: none
+
+    +typesize(smaller)
+
+    margin-right: 1rem
+
 
 .up
   float: right
@@ -94,3 +170,48 @@ p
     margin-bottom: 1rem
     padding-right: 1%
     display: inline-block
+
+
+.model
+  overflow: hidden
+  position: relative
+  img
+    width: 100%
+  code
+    position: absolute
+    display: block
+    font-family: Ubuntu Mono
+    line-height: 0.8em
+    font-size: 0.8em
+    line-height: 1em
+    white-space: pre-wrap
+    padding: 0 30px
+    border: 1px dashed #cfcfcf
+    &.show
+      display: block
+
+.sort-by
+  margin-bottom: 2rem
+.interfaces-list
+  .interface
+    h2
+      margin-bottom: 1rem
+
+    display: block
+    font-size: 0.9rem
+    line-height: 1.2rem
+    margin-bottom: 3rem
+
+.pagination-links
+  text-align: right
+
+.block, p
+  display: block
+  margin-bottom: 2rem
+
+
+entry
+  line-height: 1rem
+span.date
+  +typesize(smaller)
+  color: #888

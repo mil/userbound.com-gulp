@@ -5,7 +5,7 @@ top_nav_links:
     title    : Hardware
     url    : "/hardware"
   - 
-    symbol : "&#x238C;"
+    symbol : "&#9873;"
     title    : Software
     url    : "/software"
   -
@@ -16,4 +16,12 @@ top_nav_links:
     symbol : "&boxbox;"
     title    : Models
     url    : "/models"
+
+  -
+    symbol : "?"
+    title    : About
+    url    : "/about"
+
+
+
 ---

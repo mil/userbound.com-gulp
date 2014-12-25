@@ -1,8 +1,9 @@
 var UserboundInterface = (function(my) {
   my.init = function() {
     $(window).on("unload", function() {
-      console.log(window.location);
-      console.log("UNLOAD");
+      console.log("WO");
+      //console.log(window.location);
+      //console.log("UNLOAD");
 
     });
 

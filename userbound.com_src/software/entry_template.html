@@ -1,14 +1,14 @@
-<div class='entry-info'>
-<h1><%= fem.title %></h1>
-<%= fem.description %>
+<div class='page-info'>
+  <h1><%= fem.title %></h1>
+  <%= fem.description %>
 
-<div class='links'>
-<% _.forEach(fem.links, function(url,title) { %>
-<a href="<%= url %>"><%= title %></a>
-<% }); %>
-</a>
+  <div class='links'>
+    <% _.forEach(fem.links, function(url,title) { %>
+    <a href="<%= url %>"><%= title %></a>
+    <% }); %>
+  </div>
 </div>
 
-</div>
-
+<div class='bar'>
 <%= yield %>
+</div>

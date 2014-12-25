@@ -7,31 +7,70 @@
 </head>
 <body>
   <main>
+  <!--
 
-  <header>
-    <nav>
+  <header class='bar'>
 
-      <a class='miles' href="#">Miles</a>
+      <nav>
+
+        <% _.forEach(top_nav_links, function(link) { %>
+        <% if (link.title.toLowerCase() == active_section) { %>
+        <a class='active' href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %><span class='title'><%= link.title %></span></a>
+        <% } else { %>
+        <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
+        <% } %>
+
+        <% }); %>
+
+
+
+
+
+      </nav>
+
+  </header>
+  --!>
 
 
       <% _.forEach(top_nav_links, function(link) { %>
       <% if (link.title.toLowerCase() == active_section) { %>
-      <a class='active' href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %><span class='title'><%= link.title %></span></a>
-      <% } else { %>
-      <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
+      <% act = link %>
       <% } %>
-
       <% }); %>
 
 
 
 
+      <nav>
 
-    </nav>
+        <a href="<%= act.url %>" class='symbol active'><%= act.symbol %></a>
 
-  </header>
+        <% _.forEach(top_nav_links, function(link) { %>
+        <% if (link.title.toLowerCase() != active_section) { %>
+        <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
+        <% } %>
 
+        <% }); %>
+
+
+      </nav>
+
+
+      <!--
+
+      <% if (page_type != "section") { %>
+      <div class='category'>
+      <%= act.symbol %>
+      </div>
+      <% } %>
+      --!>
+
+
+
+
+
+      <!--
   <% _.isEqual(page_type, "entry", function(a,b) { if (a == b) { %>
     <a class='up' href="#">&uarr;</a>
   <% } }); %>
-
+  !-->

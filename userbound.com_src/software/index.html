@@ -1,7 +1,19 @@
-<div class='blocks'>
-  <% _.forEach(entries, function(entry) { %>
+<div class='page-info'>
+  <h1><%= fem.title %></h1>
+  <div class='sort-by'>
+    <button>Linux</button>
+    <button>Javascript</button>
+    <button>Misc</button>
+  </div>
 
-  <a class='block' href="<%- entry.url %>">
+</div>
+
+<div class='bar'>
+
+<div class='interfaces-list'>  
+<% _.forEach(entries, function(entry) { %>
+
+  <a class='interface' href="<%- entry.url %>">
   <entry>
     <h2><%- entry.title %></h2>
     <span class='date'> <%- entry.date %> <%- entry.time %></span>
@@ -9,5 +21,6 @@
   </entry>
   </a>
 
-  <% }); %>
+<% }); %>
+</div>
 </div>
