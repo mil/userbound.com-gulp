@@ -52,10 +52,20 @@ var x = /^\d{4}-\d{2}-\d{2}-(.+)(?=\.md)?/.exec(source_filepath);
 return x[1].split(".md")[0];
 }
 
+function date_to_string(obj) {
+  var months = [
+    "January", "February", "March", "April", "May",
+    "June", "July", "August", "September",
+    "October", "November", "December"
+  ];
+  return months[obj.getMonth()] + " " + obj.getDate() + ", " + obj.getFullYear();
+}
+
 function extract_top_nav_links(page_object) {
 page_object.top_nav_links = yaml_extractor.loadFront(
   fs_in("_data/top_nav_links.yaml")
 ).top_nav_links;
+
 
 var dir_parts = page_object.base.split("/");
 var path      = dir_parts.splice(dir_parts.indexOf(prefs.in_folder) + 1);
@@ -78,13 +88,22 @@ return page_object;
 }
 
 function extract_collection_entries(collection) {
-return _.map(fs.readdirSync(fs_in(collection + "/entries")), 
-  function(source_filepath) { return _.extend(
-      yaml_extractor.loadFront(fs_in(
-        collection + "/entries/" + source_filepath
-      )), { url :  "/" + collection + "/" + source_filepath_to_url(source_filepath) }
-  ); }
-).reverse();
+  var entries = _.map(fs.readdirSync(fs_in(collection + "/entries")), 
+    function(source_filepath) { return _.extend(
+        yaml_extractor.loadFront(fs_in(
+          collection + "/entries/" + source_filepath
+        )), { url :  "/" + collection + "/" + source_filepath_to_url(source_filepath) }
+    ); }
+  ).reverse();
+
+
+  if (collection == "blog") {
+    _.each(entries, function(e) {
+      e.date = date_to_string(e.date);
+    });
+  }
+
+  return entries;
 }
 
 
@@ -202,7 +221,6 @@ gulp.task(collection_name, function() {
       // Load data return with FEM and page (HTML)-post-content
       .pipe(data(function(d) {
 
-
         // For pagination;
         var entry_position = null;
         _.each(collection_entries, function(entry, i) {
@@ -224,6 +242,8 @@ gulp.task(collection_name, function() {
           d.scad_source = read_file(
             fs_in( "models/scads/" + d.fem.title) + ".scad"
           );
+        } else if (collection_name == "blog") {
+          d.fem.date = date_to_string(d.fem.date);
         }
         
         return d;
