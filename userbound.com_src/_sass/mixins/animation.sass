@@ -14,6 +14,23 @@
     opacity: 1
     top: 0
 
+
+@include keyframes(fadeInDoubly)
+  from 
+    opacity: 0
+    top: 50px
+  to
+    opacity: 1
+    top: 0
+
+
+
+@include keyframes(sizeUp)
+  from
+    font-size: 1rem
+  to
+    font-size: 1.5rem
+
 @mixin animate($animation_type)
   -webkit-animation: #{$animation_type}
   animation: #{$animation_type}
