@@ -6,32 +6,8 @@
   <script src="/assets/all.js"></script>
 </head>
 <body>
-  <main>
-  <!--
 
-  <header class='bar'>
-
-      <nav>
-
-        <% _.forEach(top_nav_links, function(link) { %>
-        <% if (link.title.toLowerCase() == active_section) { %>
-        <a class='active' href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %><span class='title'><%= link.title %></span></a>
-        <% } else { %>
-        <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
-        <% } %>
-
-        <% }); %>
-
-
-
-
-
-      </nav>
-
-  </header>
-  --!>
-
-
+  <div class='wrapper'>
       <% _.forEach(top_nav_links, function(link) { %>
       <% if (link.title.toLowerCase() == active_section) { %>
       <% act = link %>
@@ -55,6 +31,35 @@
 
       </nav>
 
+
+
+
+  <main>
+
+
+  <!--
+
+  <header class='bar'>
+
+      <nav>
+
+        <% _.forEach(top_nav_links, function(link) { %>
+        <% if (link.title.toLowerCase() == active_section) { %>
+        <a class='active' href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %><span class='title'><%= link.title %></span></a>
+        <% } else { %>
+        <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
+        <% } %>
+
+        <% }); %>
+
+
+
+
+
+      </nav>
+
+  </header>
+  --!>
 
       <!--
 

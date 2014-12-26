@@ -24,12 +24,31 @@ html
     //border-top: $seperator_line
 
 
-main
-  max-width:  500px
+.wrapper
+  max-width: 600px
+  width: 100%
   margin: 0 auto
-  padding: 0 30px
-  margin-top: 5rem
+
+  padding: 0 1rem
+  padding-top: 5rem
+
+
   +box-sizing(border-box)
+  overflow: hidden
+  display: table
+
+
+  nav, main
+    display: block
+    vertical-align: top
+  nav
+    padding-right: 2rem
+    float: left
+  main
+    overflow: auto
+
+
+
 
   article
     +animate(fadeIn 0.3s)
@@ -44,11 +63,7 @@ img
 
 
 nav
-  //border-top: 3px solid #cfc
-  //padding-top: 1rem
-  margin-left: -5rem
-  position: absolute
-  text-align: right
+
   a
     +animate(fadeIn 2s)
     position: relative
