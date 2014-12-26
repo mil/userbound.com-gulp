@@ -1,6 +1,7 @@
 ---
 title: Markdown Tree
 description: Serve a hierarchy of Markdown files as a live styled site.
+categories: [ misc ]
 links:
     'Source' : http://github.com/something
     'Example Site': http://sdjfoidsfjoi.com

@@ -1,6 +1,7 @@
 <div class='page-info'>
   <h1><%= fem.title %></h1>
-  <div class='sort-by'>
+  <div class='filter-by'>
+    <button class='active'>All</button>
     <button>Linux</button>
     <button>Javascript</button>
     <button>Misc</button>
@@ -13,7 +14,13 @@
 <div class='interfaces-list'>  
 <% _.forEach(entries, function(entry) { %>
 
-  <a class='interface' href="<%- entry.url %>">
+  <a 
+    class='interface' 
+    href="<%- entry.url %>"
+    <% _.forEach(entry.categories, function(category) { %>
+      data-category-<%= category %>
+    <% }); %>
+  >
   <entry>
     <h2><%- entry.title %></h2>
     <span class='date'> <%- entry.date %> <%- entry.time %></span>

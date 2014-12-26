@@ -1,6 +1,7 @@
 ---
 title: Mmvp.js
 description: &micro; MvP library for building front-end user-interfaces.
+categories: [ javascript ]
 links:
     'Source' : http://github.com/something
     'Example Site': http://sdjfoidsfjoi.com
