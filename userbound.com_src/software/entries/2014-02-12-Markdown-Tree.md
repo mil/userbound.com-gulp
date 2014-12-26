@@ -1,6 +1,6 @@
 ---
 title: Markdown Tree
-description: A simple script to generate a dynamic site based on a folder hierarchy of Markdown files. Ideal for genreating small textual sites.
+description: Serve a hierarchy of Markdown files as a live styled site.
 links:
     'Source' : http://github.com/something
     'Example Site': http://sdjfoidsfjoi.com

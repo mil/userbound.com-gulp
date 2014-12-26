@@ -9,10 +9,18 @@
 @include keyframes(fadeIn)
   from 
     opacity: 0
-    top: 15px
+  to
+    opacity: 1
+
+@include keyframes(fadeDown)
+  from 
+    opacity: 0
+    top: -30px
   to
     opacity: 1
     top: 0
+
+
 
 
 @include keyframes(fadeInDoubly)

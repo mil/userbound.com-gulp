@@ -46,6 +46,8 @@ html
     float: left
   main
     overflow: auto
+    position: relative
+    +animate(fadeDown 1s)
 
 
 
@@ -63,6 +65,7 @@ img
 
 
 nav
+  text-align: right
 
   a
     +animate(fadeIn 2s)
@@ -82,7 +85,7 @@ nav
 
       color: black
       font-size: 2rem
-      margin-bottom: 3rem
+      margin-bottom: 2rem
       //&:before
       //  display: block
       //  content: ">"
@@ -174,6 +177,11 @@ p
     +fontsize(smaller)
 
     margin-right: 1rem
+  .links
+    a  
+      +fontsize(smallest)
+      padding-right: 1rem
+      text-decoration: italic
 
 
 .up
