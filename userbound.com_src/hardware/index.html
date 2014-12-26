@@ -3,13 +3,14 @@
 </div>
 
 
-<% _.forEach(entries, function(entry) { %>
+<div class='entry-list hardware'>
+  <% _.forEach(entries, function(entry) { %>
 
-<a href="<%- entry.url %>">
-<entry>
-  <h2><%- entry.title %></h2>
-  <span class='date'> <%- entry.date %> <%- entry.time %></span>
+  <a href="<%- entry.url %>">
+  <entry style='background-image: url("/hardware/<%= entry.poster %>");'>
+    <h2><%- entry.title %></h2>
   </entry>
-</a>
+  </a>
 
-<% }); %>
+  <% }); %>
+</div>

@@ -27,7 +27,7 @@ var prefs = {
 in_folder  : "userbound.com_src",
 out_folder : "userbound.com"
 };
-var image_accumulator = [];
+var model_image_accumulator = [];
 var site_sections = [
 'blog', 
 'models',
@@ -234,7 +234,7 @@ gulp.task(collection_name, function() {
 
         // Create array for looping models
         if (collection_name == "models") {
-          image_accumulator.push({ 
+          model_image_accumulator.push({ 
             title: d.fem.title, 
             image: d.fem.image 
           });
@@ -274,7 +274,7 @@ gulp.task(collection_name, function() {
 
 // Rename each model image with same title .png, etc...
 gulp.task('model_images', ['models'], function() {
-  _.each(image_accumulator, function(val) {
+  _.each(model_image_accumulator, function(val) {
     gulp
     .src(fs_in("models/images/" + val.image))
     .pipe(rename(function(path) {
@@ -286,6 +286,9 @@ gulp.task('model_images', ['models'], function() {
   gulp
     .src(fs_in("models/scads/*"))
     .pipe(gulp.dest(fs_out("models")));
+  gulp
+    .src(fs_in("hardware/images/*/*"))
+    .pipe(gulp.dest(fs_out("hardware")));
 });
 
 
@@ -304,8 +307,17 @@ gulp.task('watch', function() {
       ["software/*", ["software"]],
       ["hardware/*", ["hardware"]],
       ["models/*", ["models"]],
-      ["music/*", ["music"]],
     ],
+    [
+
+      ["blog/*/*", ["blog"]],
+      ["software/*/*", ["software"]],
+      ["hardware/*/*", ["hardware"]],
+      ["models/*/*", ["models"]],
+    ],
+
+
+
 
     // Assets
     [
