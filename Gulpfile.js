@@ -164,14 +164,35 @@ gulp.task('homepage', function() {
     .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
 
-    //.pipe(data(function(page_object)  {
-    //  pp ("T");
-    //  console.log(page_object);
-    //}))
 
     .pipe(template())
     .pipe(gulp.dest(fs_out()));
 });
+
+
+gulp.task('about', function() {
+// Homepage
+  gulp
+    .src(fs_in("about/index.html"))
+    .pipe(data(extract_top_nav_links))
+
+
+    .pipe(data(function(page_object) {
+      page_object.fem = {};
+      page_object.active_section = "about";
+      page_object.fem.title = "About";
+      return page_object;
+    }))
+
+
+    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
+    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+
+
+    .pipe(template())
+    .pipe(gulp.dest(fs_out("about")));
+});
+
 
 
 _.each(site_sections, function(collection_name) {
@@ -307,6 +328,7 @@ gulp.task('watch', function() {
     [
       ["_partials/*", _.union(['homepage'], site_sections)],
       ["*", ["homepage"]]
+      ["about/*", ["about"]]
     ],
 
     // Site Sections
@@ -354,7 +376,7 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('default', _.union(
-  ['clean', 'homepage'],
+  ['clean', 'homepage', 'about'],
   site_sections,
   [ 'images_inplace', 'assets_folder'],
   [ 'webserver', 'watch']
