@@ -167,6 +167,26 @@ p
   .filter-by
     margin-bottom: 2rem
 
+
+    button
+      cursor: pointer
+      padding: 0
+      margin: 0
+      background: none
+      border: none
+      outline: none
+
+      +fontsize(smallest)
+
+      margin-right: 1rem
+      color: #cfcfcf
+
+      &.active
+        color: #888888
+      
+
+
+
     button
 
 
@@ -176,16 +196,6 @@ p
     color: black
     margin: 0
     line-height: 2rem
-
-  button
-    padding: 0
-    margin: 0
-    background: none
-    border: none
-
-    +fontsize(smallest)
-
-    margin-right: 1rem
   .links
     a  
       +fontsize(smallest)
@@ -279,4 +289,12 @@ span.date
     margin: 0 auto
   .caption
     +fontsize(smallest)
-  
+
+
+
+::-moz-selection
+  background: #ffffcc
+::selection
+  background: #ffffcc
+
+
