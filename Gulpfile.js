@@ -273,7 +273,7 @@ gulp.task(collection_name, function() {
 });
 
 // Rename each model image with same title .png, etc...
-gulp.task('model_images', ['models'], function() {
+gulp.task('images_inplace', ['models'], function() {
   _.each(model_image_accumulator, function(val) {
     gulp
     .src(fs_in("models/images/" + val.image))
@@ -289,6 +289,9 @@ gulp.task('model_images', ['models'], function() {
   gulp
     .src(fs_in("hardware/images/*/*"))
     .pipe(gulp.dest(fs_out("hardware")));
+  gulp
+    .src(fs_in("blog/images/*/*"))
+    .pipe(gulp.dest(fs_out("blog")));
 });
 
 
@@ -347,6 +350,6 @@ gulp.task('webserver', function() {
 gulp.task('default', _.union(
   ['clean', 'homepage'],
   site_sections,
-  [ 'model_images', 'assets_folder'],
+  [ 'images_inplace', 'assets_folder'],
   [ 'webserver', 'watch']
 ));
