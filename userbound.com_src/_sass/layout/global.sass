@@ -3,12 +3,11 @@ $root_font: Libre Baskerville
 
 html
   //background: #f9fddf
-
+  font-size: 16px
   
   body
-    font-size: 16px
+    +fontsize(medium)
     font-family: $root_font
-    line-height: 2rem
 
   button
     font-family: $root_font
@@ -29,7 +28,7 @@ html
   width: 100%
   margin: 0 auto
 
-  padding: 0 1rem
+  padding: 0 spacing(biggest)
   padding-top: 5rem
 
 
@@ -42,7 +41,7 @@ html
     display: block
     vertical-align: top
   nav
-    padding-right: 2rem
+    padding-right: spacing(biggest)
     float: left
   main
     overflow: auto
@@ -73,7 +72,6 @@ nav
     display: block
     color: #888
     margin-bottom: 0.5rem
-    @fontsize
 
     &:hover
       font-size: 1.5rem
@@ -81,6 +79,7 @@ nav
 
 
     &.active 
+      +fontsize(biggest)
       +animate(fadeInDoubly 1s)
 
       color: black
@@ -142,6 +141,7 @@ footer
   border-top: 1px solid #cfcfcf
   padding: 1rem 0
   margin: 1rem 0
+  margin-top: 3rem
 
 
 h1,h2,h3
@@ -160,15 +160,11 @@ p
 // Header section at top of each page
 .page-info
   margin-bottom: 3rem
-  line-height: 1.5rem
-  font-size: 0.889rem
+
+  +fontsize(smallest)
   color: #888
 
-
   .filter-by
-    margin-bottom: 2rem
-
-
     button
       cursor: pointer
       padding: 0
@@ -196,7 +192,6 @@ p
   h1
     color: black
     margin: 0
-    line-height: 2rem
   .links
     a  
       +fontsize(smallest)
@@ -224,9 +219,7 @@ p
   code
     position: absolute
     display: block
-    line-height: 0.8em
     font-size: 0.8em
-    line-height: 1em
     white-space: pre-wrap
     padding: 0 30px
     border: 1px dashed #cfcfcf
@@ -236,13 +229,9 @@ p
 
 .interfaces-list
   .interface
-    h2
-      margin-bottom: 1rem
-
+    +fontsize(smallest)
     display: block
-    font-size: 0.9rem
-    line-height: 1.2rem
-    margin-bottom: 3rem
+    margin-bottom: spacing(medium)
 
 .pagination-links
   text-align: right
@@ -260,10 +249,9 @@ code, pre
 
 
 entry
-  line-height: 1rem
-span.date
-  +fontsize(smaller)
-  color: #888
+  span.date
+    +fontsize(smaller)
+    color: #888
 
 
 // Entry list types
