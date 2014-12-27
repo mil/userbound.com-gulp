@@ -27,6 +27,6 @@ This just sets whatever was passed in as the new workspace name.Then rebinds the
 
 And as simple as that the workspace has a name. 
 
-<img src="/images/workspace-naming.png" alt="Workspace Renaming in i3"/>
+<img src="/blog/Naming-Workspaces-in-i3/workspace-naming.png" alt="Workspace Renaming in i3"/>
 
 But why would you want to rename a workspace in the first place? Well say you have a certain task at hand that you want accomplish. Cognitivly if you tend to drift, naming the workspace could be a great way to remind yourself of the task at mind. Hell, you could even make these named workspaces persist from session to session if you are handy with xpra as well.

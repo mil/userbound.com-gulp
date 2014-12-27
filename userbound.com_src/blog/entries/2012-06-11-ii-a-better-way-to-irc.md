@@ -46,7 +46,7 @@ Now in the **irc.freenode.net** folder you should see a folder named **#testchan
 
 So what about viewing the **out** file? cat? No. I don't think you want to be cat'ing the **out** file every few seconds to check for new conversation. This is the exact kind of thing **tail** was built for. Additionally tail can be combined another script in order to add syntax highlighting. Another option is using [multitail](http://www.vanheusden.com/multitail) and [some rules](http://nion.modprobe.de/blog/archives/440-Using-the-ii-irc-client.html). However, I didn't want to install another package, so I just wrote [my own script](http://github.com/mil/configs-and-bins/blob/master/bins/regexColorize) for syntax highlighting with **tail**. Here's what my ii **out** files look like when viewed:
 
-<img src="/images/regex-colorize.png" alt="Colorizing ii output with regex-colorize" />
+<img src="/blog/ii-a-better-way-to-irc/regex-colorize.png" alt="Colorizing ii output with regex-colorize" />
 
 The colors can be changed easily via my script. Feel free to grab and modify [my regexColorize script from my github]( http://github.com/mil/configs-and-bins/blob/master/bins/regexColorize). I use my **regexColorize** to view my out files like this:
 
