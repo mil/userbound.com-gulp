@@ -148,23 +148,29 @@ gulp
 
 gulp.task('homepage', function() {
 // Homepage
-gulp
-  .src(fs_in("index.html"))
-  .pipe(data(extract_top_nav_links))
-  .pipe(data(function(page_object) {
-
-    page_object.fem = "Userbound";
-    return page_object;
-  }))
-
-  .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
-  .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+  gulp
+    .src(fs_in("index.html"))
+    .pipe(data(extract_top_nav_links))
 
 
+    .pipe(data(function(page_object) {
+      page_object.fem = {};
+      page_object.active_section = null;
+      page_object.fem.title = "Userbound";
+      return page_object;
+    }))
 
-  .pipe(template())
-  .pipe(minify())
-  .pipe(gulp.dest(fs_out()));
+
+    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
+    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+
+    //.pipe(data(function(page_object)  {
+    //  pp ("T");
+    //  console.log(page_object);
+    //}))
+
+    .pipe(template())
+    .pipe(gulp.dest(fs_out()));
 });
 
 
