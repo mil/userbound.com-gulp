@@ -6,8 +6,8 @@ time: 3:19AM
 ---
 I've been playing around with Xlib lately and I found out that X11 comes with a great set of cursors included by default. I was pretty excited when I found out the X developers decided to throw Gumby into the mix! Look at this cursor here:
 
-![Gumby X Cursor Light](/images/gumby_light.gif)
-![Gumby X Cursor Dark](/images/gumby_dark.gif) 
+![Gumby X Cursor Light](/blog/X-Cursors-And-Gumby/gumby_light.gif)
+![Gumby X Cursor Dark](/blog/X-Cursors-And-Gumby/gumby_dark.gif) 
 
 Yep Gumby is included in Xlib. Check out cursor number 56 in [Xlib Appendix B: X Font Cursors](http://tronche.com/gui/x/xlib/appendix/b) which defines XC_gumby. Gumby can be used in an Xlib program like this:
 
