@@ -202,15 +202,6 @@ p
 .up
   float: right
 
-.blocks
-  margin-top: 4rem
-  .block
-    width: 33%
-    margin-bottom: 1rem
-    padding-right: 1%
-    display: inline-block
-
-
 .model
   overflow: hidden
   position: relative
@@ -230,8 +221,15 @@ p
 .interfaces-list
   .interface
     +fontsize(smallest)
-    display: block
     margin-bottom: spacing(medium)
+    display: none
+    opacity: 0
+    transition: all 1s ease-in-out
+
+    &.visible
+      display: block
+      opacity: 1
+      
 
 .pagination-links
   text-align: right

@@ -327,7 +327,7 @@ gulp.task('watch', function() {
   _.each(_.union(
     [
       ["_partials/*", _.union(['homepage'], site_sections)],
-      ["*", ["homepage"]]
+      ["*", ["homepage"]],
       ["about/*", ["about"]]
     ],
 
