@@ -15,12 +15,20 @@ html
   a 
     text-decoration: none
     color: #111111
+    &:hover, &:hover h2
+      color: black
+      transition: all .2s ease-in
 
-  hr
-    height: 0px
-    border: none
-    display: block
-    //border-top: $seperator_line
+  ol 
+    list-style-position: inside
+    list-style-type: decimal
+
+
+  // Bottom margin
+  p, ol, ul
+    margin-bottom: spacing(medium)
+
+
 
 
 .wrapper
@@ -153,9 +161,6 @@ h1
 h2
   +fontsize(bigger)
   color: #080d3b
-p 
-  margin-bottom: 1rem
-
 
 // Header section at top of each page
 .page-info

@@ -2,12 +2,12 @@
 top_nav_links:
   - 
     symbol : '&#9874;'
-    title    : Hardware
-    url    : "/hardware"
+    title    : Objects
+    url    : "/objects"
   - 
     symbol : "&#9873;"
-    title    : Software
-    url    : "/software"
+    title    : Interfaces
+    url    : "/interfaces"
   -
     symbol : "&equiv;"
     title    : Blog
