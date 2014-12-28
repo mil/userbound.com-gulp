@@ -1,10 +1,13 @@
 <div class='page-info'>
   <h1><%= fem.title %></h1>
+  <div class='filter-by'>
+    <button class='active'>Model</button>
+    <button>Code</button>
+  </div>
 </div>
 
-<div class='model'>
-  <img src="/models/<%= fem.title %>.png">
-  <code>
-  <%= scad_source %>
-  </code>
-</div>
+
+<img src="/models/<%= fem.title %>.png" class='filter-el visible' data-category-model>
+<pre class='sh_c filter-el' data-category-code>
+<%= scad_source %>
+</pre>
