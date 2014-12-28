@@ -25,8 +25,31 @@ html
 
 
   // Bottom margin
-  p, ol, ul
+  p, ol, ul, .block, p, pre, hr
     margin-bottom: spacing(medium)
+
+    display: blocka
+
+  h1
+    +fontsize(biggest)
+    margin: 1rem 0
+  h2
+    +fontsize(bigger)
+    color: #080d3b
+
+  img
+    width: 100%
+
+  hr
+    border: none
+    height: 0
+    //border-top: $seperator_line
+    margin: spacing(medium, 3) 0
+    //&.hidden
+    //  border-top: none
+
+
+
 
 
 
@@ -47,7 +70,6 @@ html
 
   nav, main
     display: block
-    vertical-align: top
   nav
     padding-right: spacing(biggest)
     float: left
@@ -65,10 +87,6 @@ html
   .bar
     max-width: 500px
     margin: 0 auto
-
-
-img
-  width: 100%
 
 
 nav
@@ -100,67 +118,13 @@ nav
       //  margin-left: -20px
 
 
-header
-  & + hr
-    margin-bottom: 6rem
-
-  padding: 0.4rem 0
-  margin: 1rem 0
-  font-size: 0.9rem
-  text-align: right
-
-  nav
-    position: absolute
-    a
-      display: block
-
-  a
-    &.miles
-      float: left
-    
-    &.up
-      float: right
-
-    &.active
-      +animate(fadeIn 1s)
-      position: relative
-      color: black 
-      float: right
-      border-left: 1px dotted #cfcfcf
-      margin-left: 1rem
-
-
-      padding-left: 10px
-      .title
-        padding: 0 10px
-        margin-left: 10px
-
-  span.seperator
-    float: left
-    border-right: 1px dotted #cfcfcf
-    content: " "
-    height: 16px
-    display: inline-block
-    margin-left: 1rem
-
-
-
 footer
-  border-top: 1px solid #cfcfcf
-  padding: 1rem 0
-  margin: 1rem 0
-  margin-top: 3rem
+  border-top: $seperator_line
+  padding: spacing(medium) 0
+  margin: spacing(medium, 3) 0
 
 
-h1,h2,h3
-  font-family: Libre Baskerville
 
-h1
-  +fontsize(biggest)
-  margin: 1rem 0
-h2
-  +fontsize(bigger)
-  color: #080d3b
 
 // Header section at top of each page
 .page-info
@@ -169,29 +133,26 @@ h2
   +fontsize(smallest)
   color: #888
 
+  button
+    cursor: pointer
+    padding: 0
+    margin: 0
+    background: none
+    border: none
+    outline: none
+
+    +fontsize(smallest)
+
+    margin-right: 1rem
+    color: #cfcfcf
+
+    &.active
+      color: #888888
+
+
+
   .filter-by
-    button
-      cursor: pointer
-      padding: 0
-      margin: 0
-      background: none
-      border: none
-      outline: none
-
-      +fontsize(smallest)
-
-      margin-right: 1rem
-      color: #cfcfcf
-
-      &.active
-        color: #888888
-      
-
-
-
-    button
-
-
+   
 
 
   h1
@@ -203,13 +164,12 @@ h2
       padding-right: 1rem
       text-decoration: italic
 
-
-.up
-  float: right
-
 .model
   overflow: hidden
   position: relative
+  .source
+    display: block
+    text-align: right
   img
     width: 100%
   code
@@ -223,25 +183,25 @@ h2
       display: block
 
 
+.filter-el
+  display: none
+  opacity: 0
+  transition: all 1s ease-in-out
+
+  &.visible
+    display: block
+    opacity: 1
+
+
+
 .interfaces-list
   .interface
     +fontsize(smallest)
     margin-bottom: spacing(medium)
-    display: none
-    opacity: 0
-    transition: all 1s ease-in-out
-
-    &.visible
-      display: block
-      opacity: 1
       
 
 .pagination-links
   text-align: right
-
-.block, p, pre
-  display: block
-  margin-bottom: 2rem
 
 code, pre
   font-family: Ubuntu Mono
@@ -288,5 +248,3 @@ entry
   background: #ffffcc
 ::selection
   background: #ffffcc
-
-

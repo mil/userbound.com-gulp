@@ -9,7 +9,7 @@ var UserboundInterface = (function(my) {
       $(".filter-by button").removeClass("active");
       $(e.target).addClass("active");
 
-      $(".interfaces-list a").each(function(i, el) {
+      $(".filter-el").each(function(i, el) {
         if (($(el).attr("data-category-" + filter_by) != null) || filter_by == "all") {
           $(el).css("display", "block");
           $(el).animate({
