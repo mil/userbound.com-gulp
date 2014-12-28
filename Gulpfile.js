@@ -31,8 +31,8 @@ var model_image_accumulator = [];
 var site_sections = [
 'blog', 
 'models',
-'software',
-'hardware'
+'interfaces',
+'objects'
 ];
 
 
@@ -314,11 +314,19 @@ gulp.task('images_inplace', ['models'], function() {
     .src(fs_in("models/scads/*"))
     .pipe(gulp.dest(fs_out("models")));
   gulp
-    .src(fs_in("hardware/images/*/*"))
-    .pipe(gulp.dest(fs_out("hardware")));
+    .src(fs_in("objects/images/*/*"))
+    .pipe(gulp.dest(fs_out("objects")));
   gulp
     .src(fs_in("blog/images/*/*"))
     .pipe(gulp.dest(fs_out("blog")));
+  gulp
+    .src(fs_in("interfaces/images/*/*"))
+    .pipe(gulp.dest(fs_out("interfaces")));
+  gulp
+    .src(fs_in("interfaces/demos/**/*"))
+    .pipe(gulp.dest(fs_out("interfaces")));
+
+
 });
 
 
@@ -335,15 +343,15 @@ gulp.task('watch', function() {
     [
 
       ["blog/*", ["blog"]],
-      ["software/*", ["software"]],
-      ["hardware/*", ["hardware"]],
+      ["interfaces/*", ["interfaces"]],
+      ["objects/*", ["objects"]],
       ["models/*", ["models"]],
     ],
     [
 
       ["blog/*/*", ["blog"]],
-      ["software/*/*", ["software"]],
-      ["hardware/*/*", ["hardware"]],
+      ["interfaces/*/*", ["interfaces"]],
+      ["objects/*/*", ["objects"]],
       ["models/*/*", ["models"]],
     ],
 
