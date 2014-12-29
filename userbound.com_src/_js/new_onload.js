@@ -10,22 +10,31 @@ var UserboundInterface = (function(my) {
       $(e.target).addClass("active");
 
       $(".filter-el").each(function(i, el) {
-        if (($(el).attr("data-category-" + filter_by) != null) || filter_by == "all") {
-          $(el).css("display", "block");
-          $(el).animate({
+        var out_els = [];
+        var in_els = [];
+
+        if (
+          ($(el).attr("data-category-" + filter_by) != null) || 
+          (filter_by == "all")
+        ) { in_els.push(el); } else { out_els.push(el); }
+
+
+        $(out_els).animate({
+          opacity: 0
+        }, function() {
+
+          $(out_els).css("display", "none").removeClass("visible");
+
+          $(in_els).css("display", "block").animate({
             opacity : 1
           }, function() {
-            $(el).addClass("visible");
+            $(in_els).addClass("visible");
           });
 
-        } else {
-          $(el).animate({
-            opacity : 0
-          }, function() {
-            $(el).css("display", "none");
-            $(el).removeClass("visible");
-          });
-        }
+
+        });
+
+
 
       });
     });
