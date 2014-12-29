@@ -287,7 +287,6 @@ gulp.task(collection_name, function() {
 
 // Rename each model image with same title .png, etc...
 gulp.task('assets_pipeline', ['models'], function() {
-  console.log("SWFOIJ");
   _.each(model_image_accumulator, function(val) {
     gulp
     .src(fs_in("models/images/" + val.image))
@@ -303,7 +302,7 @@ gulp.task('assets_pipeline', ['models'], function() {
       ["blog/images/*/*",  "blog"]
       ["interfaces/images/*/*", "interfaces"],
       ["interfaces/demos/**/*", "interfaces"] 
-  ], function(source_dest_tuple) {
+  ], function(i, source_dest_tuple) {
     gulp
       .src(fs_in(source_dest_tuple[0]))
       .pipe(gulp.dest(fs_out(source_dest_tuple[1])));
