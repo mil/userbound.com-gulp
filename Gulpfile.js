@@ -62,29 +62,32 @@ function date_to_string(obj) {
 }
 
 function extract_top_nav_links(page_object) {
-page_object.top_nav_links = yaml_extractor.loadFront(
-  fs_in("_data/top_nav_links.yaml")
-).top_nav_links;
+  page_object.vars = page_object.vars || {};
 
 
-var dir_parts = page_object.base.split("/");
-var path      = dir_parts.splice(dir_parts.indexOf(prefs.in_folder) + 1);
+  page_object.vars.top_nav_links = yaml_extractor.loadFront(
+    fs_in("_data/top_nav_links.yaml")
+  ).top_nav_links;
 
 
-page_object.active_section = path[0] != "" ? path[0] : "NONE";
-
-// 'entry', 'section', or 'home'
-page_object.page_type = null;
-if (path.indexOf("entries") != -1) {
-  page_object.page_type = "entry";
-} else if (page_object.active_section != "NONE") {
-  page_object.page_type = "section";
-} else {
-  page_object.page_type = "home";
-}
+  var dir_parts = page_object.base.split("/");
+  var path      = dir_parts.splice(dir_parts.indexOf(prefs.in_folder) + 1);
 
 
-return page_object;
+  page_object.vars.active_section = path[0] != "" ? path[0] : "NONE";
+
+  // 'entry', 'section', or 'home'
+  page_object.vars.page_type = null;
+  if (path.indexOf("entries") != -1) {
+    page_object.vars.page_type = "entry";
+  } else if (page_object.vars.active_section != "NONE") {
+    page_object.vars.page_type = "section";
+  } else {
+    page_object.vars.page_type = "home";
+  }
+
+
+  //return page_object;
 }
 
 function extract_collection_entries(collection) {
@@ -165,7 +168,7 @@ gulp.task('homepage', function() {
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
 
 
-    .pipe(template())
+    .pipe(template({}))
     .pipe(gulp.dest(fs_out()));
 });
 
@@ -176,11 +179,10 @@ gulp.task('about', function() {
     .src(fs_in("about/index.html"))
     .pipe(data(extract_top_nav_links))
 
-
     .pipe(data(function(page_object) {
-      page_object.fem = {};
+      page_object.vars = {};
       page_object.active_section = "about";
-      page_object.fem.title = "About";
+      page_object.vars.title = "About";
       return page_object;
     }))
 
@@ -189,7 +191,7 @@ gulp.task('about', function() {
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
 
 
-    .pipe(template())
+    .pipe(template({}))
     .pipe(gulp.dest(fs_out("about")));
 });
 
@@ -202,92 +204,76 @@ gulp.task(collection_name, function() {
   var collection_entries = extract_collection_entries(collection_name);
 
 
+  function install_pagination_links(page_object) {   
+    var entry_position = null;
+    _.each(collection_entries, function(entry, i) {
+      if (entry.title == page_object.vars.title) { entry_position = i; }
+    });
+    
+    page_object.vars.next_entry = entry_position < collection_entries.length ?
+      collection_entries[entry_position + 1] : null;
+    page_object.vars.previous_entry = entry_position > 0 ?
+      collection_entries[entry_position - 1] : null; 
+  }
 
-  //  Blog listing index page
+
+  //  Collection listing page
   gulp
     .src(fs_in(collection_name + "/index.html"))
     .pipe(data(extract_top_nav_links))
     .pipe(data(function(page_object) {
-
-      page_object.entries = collection_entries;
-
-        page_object.fem = {};
-        page_object.fem.title = 
+        page_object.vars.title = 
           collection_name.charAt(0).toUpperCase() +
           collection_name.slice(1);
-        return page_object;
-      }))
-      
-      .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
-      .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-      .pipe(template())
-
-      .pipe(gulp.dest(fs_out(collection_name)));
+        page_object.vars.entries = collection_entries;
+        return page_object.vars;
+    }))      
+    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
+    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+    .pipe(template())
+    .pipe(gulp.dest(fs_out(collection_name)));
 
 
 
     return gulp
       .src(fs_in(collection_name + "/entries/*.md"))
+      .pipe(fem({ property: 'vars', remove : true }))
       .pipe(data(extract_top_nav_links))
-
-      // Extract FEM into page.fem
-      .pipe(fem({ property: 'fem', remove : true }))
       .pipe(markdown())
+      // Content is stored in 'yield' template vars property
+      .pipe(data(function(p) { p.vars.yield = p.contents; }))
+      // Replace content with template itself
+      .pipe(replace(/[\s\S]*/, read_file(fs_in(collection_name + "/entry_template.html"))))
+      // Install pagination links
+      .pipe(data(install_pagination_links))
 
-      // Transform page stream into template file
-      // Put page markdown into buffer 'page.stored_content' temporarily
-      .pipe(data(function(page) { 
-        page.yield = page.contents; 
-        return page; 
-      }))
-      .pipe(replace(
-        /[\s\S]*/, 
-        read_file(fs_in(collection_name + "/entry_template.html"))
-      ))
-
-      // Load data return with FEM and page (HTML)-post-content
-      .pipe(data(function(d) {
-
-        // For pagination;
-        var entry_position = null;
-        _.each(collection_entries, function(entry, i) {
-          if (entry.title == d.fem.title) { entry_position = i; }
-        });
-        
-        d.next_entry = entry_position < collection_entries.length ?
-          collection_entries[entry_position + 1] : null;
-        d.previous_entry = entry_position > 0 ?
-          collection_entries[entry_position - 1] : null; 
-
-        // Create array for looping models
+      // Preparing special cases --
+      .pipe(data(function(page_object) {
         if (collection_name == "models") {
           model_image_accumulator.push({ 
-            title: d.fem.title, 
-            image: d.fem.image 
+            title: page_object.vars.title, 
+            image: page_object.vars.image 
           });
 
-          d.scad_source = read_file(
-            fs_in( "models/scads/" + d.fem.title) + ".scad"
+          page_object.scad_source = read_file(
+            fs_in( "models/scads/" + page_object.vars.title) + ".scad"
           );
-        } else if (collection_name == "blog") {
-          d.fem.date = date_to_string(d.fem.date);
-        }
+        } 
         
-        return d;
+        if (collection_name == "blog") {
+          page_object.vars.date = date_to_string(page_object.vars.date);
+        }
+
+        return page_object.vars;
       }))
 
-
-
-
-
-      // Wrap page template in header & footer
+      //// Wrap page template in header & footer
       .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/entry_paginator.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-      .pipe(template())
+      .pipe(template({}))
 
       .pipe(rename(function(path) {
-
         path.dirname += "/" + source_filepath_to_url(path.basename);
         path.basename = "index";
         return path;
@@ -325,8 +311,6 @@ gulp.task('images_inplace', ['models'], function() {
   gulp
     .src(fs_in("interfaces/demos/**/*"))
     .pipe(gulp.dest(fs_out("interfaces")));
-
-
 });
 
 

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title><%= fem.title %></title>
+  <title><%= title %></title>
   <link rel="stylesheet" href="/assets/all.css">
   <script src="/assets/all.js"></script>
 </head>
@@ -19,7 +19,6 @@
 
 
       <nav>
-
         <% if (act) { %>
         <a href="<%= act.url %>" class='symbol active'><%= act.symbol %></a>
         <% } %>
@@ -38,10 +37,3 @@
 
 
   <main>
-
-
-      <!--
-  <% _.isEqual(page_type, "entry", function(a,b) { if (a == b) { %>
-    <a class='up' href="#">&uarr;</a>
-  <% } }); %>
-  !-->
