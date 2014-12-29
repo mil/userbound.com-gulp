@@ -255,7 +255,7 @@ gulp.task(collection_name, function() {
             image: page_object.vars.image 
           });
 
-          page_object.scad_source = read_file(
+          page_object.vars.scad_source = read_file(
             fs_in( "models/scads/" + page_object.vars.title) + ".scad"
           );
         } 
@@ -286,7 +286,8 @@ gulp.task(collection_name, function() {
 });
 
 // Rename each model image with same title .png, etc...
-gulp.task('images_inplace', ['models'], function() {
+gulp.task('assets_pipeline', ['models'], function() {
+  console.log("SWFOIJ");
   _.each(model_image_accumulator, function(val) {
     gulp
     .src(fs_in("models/images/" + val.image))
@@ -296,21 +297,18 @@ gulp.task('images_inplace', ['models'], function() {
     .pipe(gulp.dest(fs_out("models")));
   });
 
-  gulp
-    .src(fs_in("models/scads/*"))
-    .pipe(gulp.dest(fs_out("models")));
-  gulp
-    .src(fs_in("objects/images/*/*"))
-    .pipe(gulp.dest(fs_out("objects")));
-  gulp
-    .src(fs_in("blog/images/*/*"))
-    .pipe(gulp.dest(fs_out("blog")));
-  gulp
-    .src(fs_in("interfaces/images/*/*"))
-    .pipe(gulp.dest(fs_out("interfaces")));
-  gulp
-    .src(fs_in("interfaces/demos/**/*"))
-    .pipe(gulp.dest(fs_out("interfaces")));
+  _.each([
+      ["models/scads/*", "models"],
+      ["objects/images/*/*",  "objects"],
+      ["blog/images/*/*",  "blog"]
+      ["interfaces/images/*/*", "interfaces"],
+      ["interfaces/demos/**/*", "interfaces"] 
+  ], function(source_dest_tuple) {
+    gulp
+      .src(fs_in(source_dest_tuple[0]))
+      .pipe(gulp.dest(fs_out(source_dest_tuple[1])));
+  });
+
 });
 
 
@@ -359,6 +357,7 @@ gulp.task('watch', function() {
 gulp.task("reload", function() {
   gulp.src("*").pipe(connect.reload());
 });
+
 gulp.task('webserver', function() {
   connect.server({
     root: "userbound.com",
@@ -370,6 +369,6 @@ gulp.task('webserver', function() {
 gulp.task('default', _.union(
   ['clean', 'homepage', 'about'],
   site_sections,
-  [ 'images_inplace', 'assets_folder'],
+  [ 'assets_pipeline', 'assets_folder'],
   [ 'webserver', 'watch']
 ));
