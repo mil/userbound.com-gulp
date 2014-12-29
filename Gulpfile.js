@@ -23,35 +23,23 @@ var minify         = require('gulp-minify');
 var connect        = require('gulp-connect');
 var yaml_extractor = require('yaml-front-matter');
 
-var prefs = {
-in_folder  : "userbound.com_src",
-out_folder : "userbound.com"
-};
 var model_image_accumulator = [];
-var site_sections = [
-'blog', 
-'models',
-'interfaces',
-'objects'
-];
+var site_sections = [ 'blog', 'models', 'interfaces', 'objects' ];
+var prefs = { in_folder  : "userbound.com_src", out_folder : "userbound.com" };
 
 
-
-function pp(buffer) {
-console.log(JSON.stringify(buffer));
-}
+//
+//
+// Helper Functions
+function pp(buffer) { console.log(JSON.stringify(buffer)); }
 function fs_in(path)  { return prefs.in_folder  + "/" + path; }
 function fs_out(path) { return prefs.out_folder + "/" + (path || ''); }
-function read_file(path) {
-return fs.readFileSync(path, 'utf8');
-}
+function read_file(path) { return fs.readFileSync(path, 'utf8'); }
 function source_filepath_to_url(source_filepath) {
-var x = /^\d{4}-\d{2}-\d{2}-(.+)(?=\.md)?/.exec(source_filepath);
-
-// ... until i can get my regex to cooperate
-return x[1].split(".md")[0];
+  var x = /^\d{4}-\d{2}-\d{2}-(.+)(?=\.md)?/.exec(source_filepath);
+  // ... until i can get my regex to cooperate
+  return x[1].split(".md")[0];
 }
-
 function date_to_string(obj) {
   var months = [
     "January", "February", "March", "April", "May",
@@ -61,6 +49,43 @@ function date_to_string(obj) {
   return months[obj.getMonth()] + " " + obj.getDate() + ", " + obj.getFullYear();
 }
 
+
+
+
+
+
+
+
+//
+//
+// For Collection Entries
+function extract_collection_entries(collection) {
+  var entries = _.map(fs.readdirSync(fs_in(collection + "/entries")), 
+    function(source_filepath) { return _.extend(
+        yaml_extractor.loadFront(fs_in(
+          collection + "/entries/" + source_filepath
+        )), { url :  "/" + collection + "/" + source_filepath_to_url(source_filepath) }
+    ); }
+  ).reverse();
+
+
+  if (collection == "blog") {
+    _.each(entries, function(e) {
+      e.date = date_to_string(e.date);
+    });
+  }
+
+  return entries;
+}
+
+
+
+
+
+
+//
+//
+// Gulp Data Functions
 function extract_top_nav_links(page_object) {
   page_object.vars = page_object.vars || {};
 
@@ -85,66 +110,68 @@ function extract_top_nav_links(page_object) {
   } else {
     page_object.vars.page_type = "home";
   }
-
-
-  //return page_object;
-}
-
-function extract_collection_entries(collection) {
-  var entries = _.map(fs.readdirSync(fs_in(collection + "/entries")), 
-    function(source_filepath) { return _.extend(
-        yaml_extractor.loadFront(fs_in(
-          collection + "/entries/" + source_filepath
-        )), { url :  "/" + collection + "/" + source_filepath_to_url(source_filepath) }
-    ); }
-  ).reverse();
-
-
-  if (collection == "blog") {
-    _.each(entries, function(e) {
-      e.date = date_to_string(e.date);
-    });
-  }
-
-  return entries;
 }
 
 
-gulp.task('clean', function() {
-rimraf.sync(fs_out());
-});
-
+//
+//
+// Tasks
+gulp.task('clean', function() { rimraf.sync(fs_out()); });
 gulp.task('assets_folder', function() {
-gulp
-  .src(
-    _.map([
-          //'FancyZoomHTML.js',
-          //'FancyZoom.js',
-          'sh_main.js',
-          'zepto.min.js',
-          'zepto.fx.js',
-          //'onload.js',
-          'new_onload.js'
-    ], function(js) { return fs_in("_js/" + js); })
-    .concat(fs_in("_js/lang/*.js"))
-  )
+  gulp
+    .src(
+      _.map([
+            //'FancyZoomHTML.js',
+            //'FancyZoom.js',
+            'sh_main.js',
+            'zepto.min.js',
+            'zepto.fx.js',
+            //'onload.js',
+            'new_onload.js'
+      ], function(js) { return fs_in("_js/" + js); })
+      .concat(fs_in("_js/lang/*.js"))
+    )
 
-  .pipe(concat('all.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest(fs_out('assets/'))); 
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(fs_out('assets/'))); 
 
-gulp
-  .src(fs_in("_sass/all.sass"))
-  .pipe(sass())
-  .pipe(gulp.dest(fs_out('assets/')));
+  gulp
+    .src(fs_in("_sass/all.sass"))
+    .pipe(sass())
+    .pipe(gulp.dest(fs_out('assets/')));
 
-// TTF
-gulp
-  .src(fs_in("assets/ttf/*"))
-  .pipe(gulp.dest(fs_out('assets/ttf')));
-
+  // TTF
+  gulp
+    .src(fs_in("assets/ttf/*"))
+    .pipe(gulp.dest(fs_out('assets/ttf')));
 
 });
+gulp.task('assets_pipeline', ['models'], function() {
+  _.each(model_image_accumulator, function(val) {
+    gulp
+    .src(fs_in("models/images/" + val.image))
+    .pipe(rename(function(path) {
+      path.basename  = val.title;
+    }))
+    .pipe(gulp.dest(fs_out("models")));
+  });
+
+  _.each([
+      ["models/scads/*", "models"],
+      ["objects/images/*/*",  "objects"],
+      ["blog/images/*/*",  "blog"]
+      ["interfaces/images/*/*", "interfaces"],
+      ["interfaces/demos/**/*", "interfaces"] 
+  ], function(i, source_dest_tuple) {
+    gulp
+      .src(fs_in(source_dest_tuple[0]))
+      .pipe(gulp.dest(fs_out(source_dest_tuple[1])));
+  });
+});
+
+
+
 
 
 
@@ -172,25 +199,21 @@ gulp.task('homepage', function() {
     .pipe(gulp.dest(fs_out()));
 });
 
-
-gulp.task('about', function() {
 // Homepage
+gulp.task('about', function() {
   gulp
     .src(fs_in("about/index.html"))
     .pipe(data(extract_top_nav_links))
 
     .pipe(data(function(page_object) {
       page_object.vars = {};
-      page_object.active_section = "about";
+      page_object.vars.active_section = "about";
       page_object.vars.title = "About";
-      return page_object;
+      return page_object.vars;
     }))
-
 
     .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-
-
     .pipe(template({}))
     .pipe(gulp.dest(fs_out("about")));
 });
@@ -259,6 +282,7 @@ gulp.task(collection_name, function() {
             fs_in( "models/scads/" + page_object.vars.title) + ".scad"
           );
         } 
+
         
         if (collection_name == "blog") {
           page_object.vars.date = date_to_string(page_object.vars.date);
@@ -271,7 +295,7 @@ gulp.task(collection_name, function() {
       .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/entry_paginator.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-      .pipe(template({}))
+      .pipe(template())
 
       .pipe(rename(function(path) {
         path.dirname += "/" + source_filepath_to_url(path.basename);
@@ -285,30 +309,6 @@ gulp.task(collection_name, function() {
 
 });
 
-// Rename each model image with same title .png, etc...
-gulp.task('assets_pipeline', ['models'], function() {
-  _.each(model_image_accumulator, function(val) {
-    gulp
-    .src(fs_in("models/images/" + val.image))
-    .pipe(rename(function(path) {
-      path.basename  = val.title;
-    }))
-    .pipe(gulp.dest(fs_out("models")));
-  });
-
-  _.each([
-      ["models/scads/*", "models"],
-      ["objects/images/*/*",  "objects"],
-      ["blog/images/*/*",  "blog"]
-      ["interfaces/images/*/*", "interfaces"],
-      ["interfaces/demos/**/*", "interfaces"] 
-  ], function(i, source_dest_tuple) {
-    gulp
-      .src(fs_in(source_dest_tuple[0]))
-      .pipe(gulp.dest(fs_out(source_dest_tuple[1])));
-  });
-
-});
 
 
 
@@ -335,8 +335,6 @@ gulp.task('watch', function() {
       ["objects/*/*", ["objects"]],
       ["models/*/*", ["models"]],
     ],
-
-
 
 
     // Assets
