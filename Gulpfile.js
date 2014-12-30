@@ -298,10 +298,6 @@ gulp.task(collection_name, function() {
       .pipe(insert.append(read_file(fs_in("_partials/entry_paginator.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
       .pipe(swig())
-      .pipe(data(function(p) {
-        //console.log(p.contents.toString());
-      }))
-
       .pipe(rename(function(path) {
         path.dirname += "/" + source_filepath_to_url(path.basename);
         path.basename = "index";
