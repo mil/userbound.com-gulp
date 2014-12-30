@@ -39,7 +39,9 @@ html
     color: #080d3b
 
   img
-    width: 100%
+    max-width: 100%
+    &.fill-width
+      width: 100%
 
   hr
     border: none
@@ -48,6 +50,25 @@ html
     margin: spacing(medium, 3) 0
     //&.hidden
     //  border-top: none
+
+
+
+  // Code style
+  code, pre
+    font-family: Ubuntu Mono
+    +fontsize(smaller)
+    border: 1px dashed #cfcfcf
+
+  pre 
+    display: block
+    padding: 1rem
+    overflow-x: auto
+
+  code 
+    display: inline-block
+    padding: 0.2rem
+
+
 
 
 
@@ -63,18 +84,44 @@ html
   padding: 0 spacing(biggest)
   padding-top: 5rem
 
-
   +box-sizing(border-box)
   overflow: hidden
-  display: table
-
 
   nav, main
     display: block
+
   nav
     padding-right: spacing(biggest)
     float: left
     width: 30px
+    text-align: right
+
+    a
+      //+animate(fadeIn 2s)
+      position: relative
+      display: block
+      color: #888
+      margin-bottom: 0.5rem
+
+      &:hover
+        font-size: 1.5rem
+        +animate(sizeUp 0.3s)
+
+
+      &.active 
+        +fontsize(biggest)
+        +animate(fadeInDoubly 1s)
+
+        color: black
+        font-size: 2rem
+        margin-bottom: 2rem
+        //&:before
+        //  display: block
+        //  content: ">"
+        //  position: absolute
+        //  margin-left: -20px
+
+
   main
 
     transition: all 0.5s ease-in-out
@@ -84,61 +131,23 @@ html
 
 
 
-
-  article
-    +animate(fadeIn 0.3s)
-
-  .bar
-    max-width: 500px
-    margin: 0 auto
-
-
-nav
-  text-align: right
-
-  a
-    //+animate(fadeIn 2s)
-    position: relative
-    display: block
-    color: #888
-    margin-bottom: 0.5rem
-
-    &:hover
-      font-size: 1.5rem
-      +animate(sizeUp 0.3s)
-
-
-    &.active 
-      +fontsize(biggest)
-      +animate(fadeInDoubly 1s)
-
-      color: black
-      font-size: 2rem
-      margin-bottom: 2rem
-      //&:before
-      //  display: block
-      //  content: ">"
-      //  position: absolute
-      //  margin-left: -20px
-
-
-footer
-  &:before
-    box-shadow: 4px 7px 24px -12px #e8e8e8
-    border-bottom: $seperator_line
-    display: block
-    height: 40px
-    width: 100%
-    content: " "
-    margin-bottom: spacing(medium)
+    footer
+      &:before
+        box-shadow: 4px 7px 24px -12px #e8e8e8
+        border-bottom: $seperator_line
+        display: block
+        height: 40px
+        width: 100%
+        content: " "
+        margin-bottom: spacing(medium)
 
 
 
 
 // Header section at top of each page
-.page-info
-  margin-bottom: 3rem
+.wrapper main header
 
+  margin-bottom: 3rem
   +fontsize(smallest)
   color: #888
 
@@ -158,12 +167,7 @@ footer
     &.active
       color: #888888
 
-
-
-  .filter-by
    
-
-
   h1
     color: black
     margin: 0
@@ -173,6 +177,8 @@ footer
       padding-right: 1rem
 
       text-decoration: italic
+
+
 
 .model
   overflow: hidden
@@ -212,12 +218,8 @@ footer
 .pagination-links
   text-align: right
 
-code, pre
-  font-family: Ubuntu Mono
-  +fontsize(smaller)
-  border: 1px dashed #cfcfcf
-  padding: 1rem
-  overflow-x: auto
+
+
 
 
 entry
