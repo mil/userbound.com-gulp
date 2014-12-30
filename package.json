@@ -6,6 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies" : {
+    "fs": "0.0.2",
+    "gulp": "3.8.10",
+    "gulp-concat": "2.4.3",
+    "gulp-connect": "2.2.0",
+    "gulp-front-matter": "1.1.1",
+    "gulp-data": "1.1.1",
+    "gulp-insert": "0.4.0",
+    "gulp-markdown": "1.0.0",
+    "gulp-minify": "0.0.5",
+    "gulp-rename": "1.2.0",
+    "gulp-replace": "0.5.0",
+    "gulp-ruby-sass": "0.7.1",
+    "gulp-swig": "0.7.4",
+    "gulp-uglify": "1.0.2",
+    "rimraf": "2.2.8",
+    "underscore": "1.7.0",
+    "yaml-front-matter": "3.2.3"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mil/userbound.com-gulp"
@@ -17,3 +36,4 @@
   },
   "homepage": "https://github.com/mil/userbound.com-gulp"
 }
+
