@@ -1,16 +1,15 @@
 <div class='page-info'>
-    <h1><%= title %></h1>
+  <h1>{{ title }}</h1>
 </div>
 
-<% _.forEach(entries, function(entry) { %>
+{% for entry in entries %}
 
-<a class='block' href="<%- entry.url %>">
+<a class='block' href="{{ entry.url }}">
 <entry>
-  <h2><%- entry.title %></h2>
+  <h2>{{ entry.title }}</h2>
   <span class='date'>
-    <%- entry.date %>
+    {{ entry.date }}
   </span>
   </entry>
 </a>
-
-<% }); %>
+{% endfor %}

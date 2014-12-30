@@ -1,36 +1,21 @@
 <!doctype html>
 <html>
 <head>
-  <title><%= title %></title>
+  <title>{{ title }}</title>
   <link rel="stylesheet" href="/assets/all.css">
   <script src="/assets/all.js"></script>
 </head>
 <body>
 
   <div class='wrapper'>
-      <% act = null %>
-      <% _.forEach(top_nav_links, function(link) { %>
-      <% if (link.title.toLowerCase() == active_section) { %>
-      <% act = link %>
-      <% } %>
-      <% }); %>
-
-
-
-
       <nav>
-        <% if (act) { %>
-        <a href="<%= act.url %>" class='symbol active'><%= act.symbol %></a>
-        <% } %>
+        {% if active_section %}
+        <a href="{{ active_section.url }}" class='symbol active'> {{ active_section.symbol|raw }} </a>
+        {% endif %}
 
-        <% _.forEach(top_nav_links, function(link) { %>
-        <% if (link.title.toLowerCase() != active_section) { %>
-        <a href="<%- link.url %>" title="<%- link.title %>"><%= link.symbol %></a>
-        <% } %>
-
-        <% }); %>
-
-
+        {% for link in top_nav_links %}
+        <a href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
+        {% endfor %}
       </nav>
 
 

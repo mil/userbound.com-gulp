@@ -6,16 +6,11 @@ var fs             = require('fs');
 var gulp           = require('gulp');
 var replace        = require('gulp-replace');
 var data           = require('gulp-data');
+var swig           = require('gulp-swig');
 var uglify         = require('gulp-uglify');
-var wrap           = require('gulp-wrap');
 var sass           = require('gulp-ruby-sass');
 var markdown       = require('gulp-markdown');
 var fem            = require('gulp-front-matter');
-var mustache       = require('gulp-mustache');
-var vartree        = require('gulp-vartree');
-var template       = require('gulp-template');
-var ejs            = require('gulp-ejs');
-var consolidate    = require('gulp-consolidate');
 var insert         = require('gulp-insert');
 var concat         = require('gulp-concat');
 var rename         = require('gulp-rename');
@@ -99,7 +94,14 @@ function extract_top_nav_links(page_object) {
   var path      = dir_parts.splice(dir_parts.indexOf(prefs.in_folder) + 1);
 
 
-  page_object.vars.active_section = path[0] != "" ? path[0] : "NONE";
+  page_object.vars.active_title = path[0] != "" ? path[0] : "NONE";
+  _.each( page_object.vars.top_nav_links, function(l,i) {
+    if (l && l.title.toLowerCase() == page_object.vars.active_title) {
+      page_object.vars.active_section = l;
+      page_object.vars.top_nav_links.splice(i, 1);
+    }
+  });
+
 
   // 'entry', 'section', or 'home'
   page_object.vars.page_type = null;
@@ -185,7 +187,7 @@ gulp.task('homepage', function() {
 
     .pipe(data(function(page_object) {
       page_object.fem = {};
-      page_object.active_section = null;
+      page_objeactive_section = null;
       page_object.fem.title = "Userbound";
       return page_object;
     }))
@@ -195,7 +197,7 @@ gulp.task('homepage', function() {
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
 
 
-    .pipe(template({}))
+    .pipe(swig())
     .pipe(gulp.dest(fs_out()));
 });
 
@@ -214,7 +216,7 @@ gulp.task('about', function() {
 
     .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-    .pipe(template({}))
+    .pipe(swig())
     .pipe(gulp.dest(fs_out("about")));
 });
 
@@ -253,18 +255,18 @@ gulp.task(collection_name, function() {
     }))      
     .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
     .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-    .pipe(template())
+    .pipe(swig())
     .pipe(gulp.dest(fs_out(collection_name)));
 
 
 
     return gulp
-      .src(fs_in(collection_name + "/entries/*.md"))
+      .src([fs_in(collection_name + "/entries/*.md")])
       .pipe(fem({ property: 'vars', remove : true }))
       .pipe(data(extract_top_nav_links))
       .pipe(markdown())
       // Content is stored in 'yield' template vars property
-      .pipe(data(function(p) { p.vars.yield = p.contents; }))
+      .pipe(data(function(p) { p.vars.yield = p.contents.toString(); }))
       // Replace content with template itself
       .pipe(replace(/[\s\S]*/, read_file(fs_in(collection_name + "/entry_template.html"))))
       // Install pagination links
@@ -295,14 +297,20 @@ gulp.task(collection_name, function() {
       .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/entry_paginator.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-      .pipe(template())
+      .pipe(swig())
+      .pipe(data(function(p) {
+        //console.log(p.contents.toString());
+      }))
 
       .pipe(rename(function(path) {
         path.dirname += "/" + source_filepath_to_url(path.basename);
         path.basename = "index";
         return path;
       }))
-      .pipe(gulp.dest(fs_out(collection_name)));
+
+      .pipe(gulp.dest(function(p) {
+        return fs_out(collection_name);
+      }));
     });
 
 

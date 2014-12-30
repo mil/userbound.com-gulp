@@ -1,11 +1,11 @@
 <div class='page-info'>
-<h1><%= title %></h1>
+<h1>{{ title }}</h1>
 </div>
 
 
 <div class='poster'>
-  <img src='/hardware/<%= poster %>'>
-  <p class='caption'><%= poster_caption %></p>
+  <img src='/hardware/{{ poster }}'>
+  <p class='caption'>{{ poster_caption }}</p>
 </div>
 
-<%= yield %>
+{{ yield|raw }}
