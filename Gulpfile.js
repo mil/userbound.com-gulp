@@ -162,14 +162,15 @@ gulp.task('assets_pipeline', ['models'], function() {
   _.each([
       ["models/scads/*", "models"],
       ["objects/images/*/*",  "objects"],
-      ["blog/images/*/*",  "blog"]
+      ["blog/images/*/*",  "blog"],
       ["interfaces/images/*/*", "interfaces"],
       ["interfaces/demos/**/*", "interfaces"] 
-  ], function(i, source_dest_tuple) {
+  ], function(source_dest_tuple,i) {
     gulp
       .src(fs_in(source_dest_tuple[0]))
       .pipe(gulp.dest(fs_out(source_dest_tuple[1])));
   });
+
 });
 
 
@@ -208,8 +209,6 @@ gulp.task('about', function() {
     .pipe(data(extract_top_nav_links))
 
     .pipe(data(function(page_object) {
-      page_object.vars = {};
-      page_object.vars.active_section = "about";
       page_object.vars.title = "About";
       return page_object.vars;
     }))
