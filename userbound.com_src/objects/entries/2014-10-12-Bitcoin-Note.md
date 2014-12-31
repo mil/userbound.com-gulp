@@ -1,6 +1,6 @@
 ---
 title: Bitcoin Note
-poster: Bitcoin-Note/1.jpg
-poster_caption: My Minitouch with cream undampened alps, springs cut, and Apple keycaps
+poster: Bitcoin-Note/poster.jpg
+description: A bitcoin paper currency design.
 ---
 somehting

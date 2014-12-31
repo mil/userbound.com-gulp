@@ -1,6 +1,6 @@
 ---
 title: Blank Thinkpad
 poster: Blank-Thinkpad/1.jpg
-poster_caption: test
+description: My thinkpad keyboard with sanded and polished blank keys.
 ---
 dfaoij
