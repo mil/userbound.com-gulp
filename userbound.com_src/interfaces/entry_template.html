@@ -1,6 +1,6 @@
 <header>
   <h1>{{ title }}</h1>
-  {{ description }}
+  {{ description|raw }}
 
   <div class='links'>
     {% for title,url in links %}
