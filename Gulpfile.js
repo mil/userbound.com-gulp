@@ -143,11 +143,6 @@ gulp.task('assets_folder', function() {
     .pipe(sass())
     .pipe(gulp.dest(fs_out('assets/')));
 
-  // TTF
-  gulp
-    .src(fs_in("assets/ttf/*"))
-    .pipe(gulp.dest(fs_out('assets/ttf')));
-
 });
 gulp.task('assets_pipeline', ['models'], function() {
   _.each(model_image_accumulator, function(val) {
@@ -159,7 +154,10 @@ gulp.task('assets_pipeline', ['models'], function() {
     .pipe(gulp.dest(fs_out("models")));
   });
 
+
   _.each([
+      ["assets/images/*", "assets/images"],
+      ["assets/ttf/*", "assets/ttf"],
       ["models/scads/*", "models"],
       ["objects/images/*/*",  "objects"],
       ["blog/images/*/*",  "blog"],
@@ -294,7 +292,6 @@ gulp.task(collection_name, function() {
 
       //// Wrap page template in header & footer
       .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
-      .pipe(insert.append(read_file(fs_in("_partials/entry_paginator.html"))))
       .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
       .pipe(swig())
       .pipe(rename(function(path) {
