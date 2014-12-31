@@ -26,7 +26,7 @@ html
 
 
   // Bottom margin
-  p, ol, ul, .block, p, pre, hr
+  p, ol, ul, .block, p, pre, hr, .poster
     margin-bottom: spacing(medium)
 
     display: block
@@ -66,6 +66,11 @@ html
   code 
     display: inline-block
     padding: 0.2rem
+
+  a
+    color: #002e7d
+    &:hover
+      text-decoration: underline
 
 
 
@@ -286,12 +291,10 @@ entry
     
 
 
-.poster
+.caption
+  +fontsize(smallest)
   text-align: center
-  img
-    margin: 0 auto
-  .caption
-    +fontsize(smallest)
+
 
 
 
