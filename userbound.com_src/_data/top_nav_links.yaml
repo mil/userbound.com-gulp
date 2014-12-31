@@ -16,12 +16,8 @@ top_nav_links:
     symbol : "&boxbox;"
     title    : Models
     url    : "/models"
-
   -
     symbol : "?"
     title    : About
     url    : "/about"
-
-
-
 ---

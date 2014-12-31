@@ -1,4 +1,4 @@
-$seperator_line: 1px solid #cfcfcf
+$seperator_line: 1px dotted #cfcfcf
 $root_font: Libre Baskerville
 
 html
@@ -52,7 +52,6 @@ html
     //  border-top: none
 
 
-
   // Code style
   code, pre
     font-family: Ubuntu Mono
@@ -71,13 +70,8 @@ html
 
 
 
-
-
-
-
-
 .wrapper
-  max-width: 600px
+  max-width: 550px
   width: 100%
   margin: 0 auto
 
@@ -91,7 +85,9 @@ html
     display: block
 
   nav
+    position: absolute
     padding-right: spacing(biggest)
+    margin-left: -5rem
     float: left
     width: 30px
     text-align: right
@@ -120,8 +116,7 @@ html
         //  content: ">"
         //  position: absolute
         //  margin-left: -20px
-
-
+  
   main
 
     transition: all 0.5s ease-in-out
@@ -132,14 +127,61 @@ html
 
 
     footer
-      &:before
-        box-shadow: 4px 7px 24px -12px #e8e8e8
-        border-bottom: $seperator_line
-        display: block
-        height: 40px
-        width: 100%
-        content: " "
-        margin-bottom: spacing(medium)
+      border-top: $seperator_line
+      padding-top: +spacing(biggest, 0.5)
+      margin: +spacing(biggest, 2) 0
+
+      .pagination-links
+        float: right
+        text-align: right
+
+
+
+
+
+
+
+@media all and (max-width: 690px)
+  .wrapper
+    padding-top: 2rem
+
+    main
+      margin-top: 4rem
+
+  .wrapper nav
+    background: #ededed
+    border-bottom: 1px dotted #cfcfcf
+
+    display: block
+    float: none
+    position: absolute
+    margin: 0
+    padding: 0
+    width: auto
+
+    margin-bottom: 3rem
+    left: 0
+    right: 0
+    top: 0
+    height: 50px
+    width: 100%
+    text-align: right
+
+
+    a
+      padding-left: 1rem
+      display: inline-block
+      margin-top: 13px
+
+      &.active
+        margin-left: 20px
+        float: left
+        font-size: 1rem
+        margin-top: 4px
+
+      &:last-child
+        margin-right: 40px
+
 
 
 
@@ -147,9 +189,11 @@ html
 // Header section at top of each page
 .wrapper main header
 
-  margin-bottom: 3rem
+  margin-bottom: 2rem
   +fontsize(smallest)
   color: #888
+  border-bottom: $seperator_line
+  padding-bottom: 2rem
 
   button
     cursor: pointer
@@ -215,10 +259,6 @@ html
   margin-bottom: spacing(medium)
     
 
-.pagination-links
-  text-align: right
-
-
 
 
 
@@ -235,11 +275,11 @@ entry
     entry
       margin-bottom: 2rem
       display: block
-      height: 170px
       background-size: 100%
 
       h2
-        padding-top: 130px
+        padding-top: 120px
+        padding-bottom: 20px
         padding-left: 20px
         color: white
         text-shadow: 5px 1px 8px black
