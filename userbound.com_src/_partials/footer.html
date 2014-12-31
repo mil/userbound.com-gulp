@@ -1,13 +1,27 @@
-<footer>
-  <a class='copyright' href="http://creativecommons.org/licenses/by/3.0/" target="_blank" title="CC Attribution 3.0 Unported">&copy;</a>
-	<span class="validate">
-    <a target="_blank" title='HTML5 DTD' href="http://validator.w3.org/check?uri=http://userbound.com/{{ page.url }}">&#10003;</a>
-  </span>
+    <footer>
+      
 
-</footer>
+      <div class='pagination-links'>
+        {% if next_entry %}
+        <a href="{{ next_entry.url }}" title='{{ next_entry.title }}'>&#8617;</a>
+        {% endif %}
+
+        {% if previous_entry %}
+        <a href="{{ previous_entry.url }}" title='{{ previous_entry.title }}'>&#8618;</a>
+        {% endif %}
+      </div>
+      
+      <a class='copyright' href="http://creativecommons.org/licenses/by/3.0/" target="_blank" title="CC Attribution 3.0 Unported">&copy;</a>
+      <span class="validate">
+        <a target="_blank" title='HTML5 DTD' href="http://validator.w3.org/check?uri=http://userbound.com/{{ page.url }}">&#10003;</a>
+      </span>
+
+
+
+
+    </footer>
 
   </main>
-
-
 </body>
 </html>
+
