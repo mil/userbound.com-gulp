@@ -1,8 +1,8 @@
-[submodule "userbound.com_src/interfaces/demos/Mil-Edit/1"]
-	path = userbound.com_src/interfaces/demos/Mil-Edit/1
+[submodule "src/interfaces/demos/Mil-Edit/1"]
+	path = src/interfaces/demos/Mil-Edit/1
   url = http://github.com/mil/mil-edit
 
-[submodule "userbound.com_src/interfaces/demos/Mil-Edit/2"]
-	path = userbound.com_src/interfaces/demos/Mil-Edit/2
+[submodule "src/interfaces/demos/Mil-Edit/2"]
+	path = src/interfaces/demos/Mil-Edit/2
   url = http://github.com/mil/mil-edit-2
 

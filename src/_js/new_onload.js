@@ -19,19 +19,13 @@ var UserboundInterface = (function(my) {
         ) { in_els.push(el); } else { out_els.push(el); }
 
 
-
-        var p = $(in_els[0]).parent();
-        $(".page-info").after(in_els);
-        $(in_els).css('position', 'absolute');
-          $(out_els).css('position', 'static');
-
         $(out_els).animate({
           opacity: 0
         }, function() {
+          $("header").after(in_els);
+          
 
 
-          $(in_els).css('position', 'static');
-          $(out_els).css('position', 'absolute');
 
           $(in_els).css("display", "block").animate({
             opacity : 1

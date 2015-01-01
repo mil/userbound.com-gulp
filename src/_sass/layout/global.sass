@@ -68,7 +68,12 @@ html
 
   code 
     display: inline-block
-    padding: 0.2rem
+    padding: 0 0.2rem
+    margin: 0 0.2rem
+    border: 1px solid #cfcfcf
+    border-radius: 3px 
+
+
 
   a
     color: #002e7d
@@ -99,6 +104,7 @@ html
     float: left
     width: 30px
     text-align: right
+    //+animate(fadeIn 1s)
 
     a
       //+animate(fadeIn 2s)
@@ -114,7 +120,6 @@ html
 
       &.active 
         +fontsize(biggest)
-        +animate(fadeInDoubly 1s)
 
         color: black
         font-size: 2rem
@@ -126,6 +131,7 @@ html
         //  margin-left: -20px
   
   main
+    transition: all 1s ease-in-out
 
     transition: all 0.5s ease-in-out
     overflow: hidden
@@ -256,6 +262,7 @@ html
   transition: all 1s ease-in-out
 
   &.visible
+    transition: all 1s ease-in-out
     display: block
     opacity: 1
 
@@ -308,15 +315,6 @@ entry
     margin-top: spacing(smallest)
     margin-bottom: 3rem
     +fontsize(smallest)
-
-
-
-
-.home
-  position: absolute
-  left: 50%
-  top: 50%
-  transform: translateX(-50%) translateY(-50%)
 
 ::-moz-selection
   background: #ffffcc

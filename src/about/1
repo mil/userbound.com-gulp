@@ -1,0 +1,63 @@
+<header>
+<h1>About</h1>
+<div class='filter-by'>
+<button class='active'>General</button>
+<button>Tech</button>
+<button>Music</button>
+<button>Quotes</button>
+</div>
+</header>
+
+<div class='filter-el visible' data-category-general>
+
+<p>Hi I'm Miles. I like philosophy, open-source, linux, music and some other things. Userbound.com is my site for displaying my personal projects and creations.</p>
+
+<p>I'm currently located in Austin, Texas, employed as a front-end developer for IBM Design.  I take consultancy front-end shop, prototyping, and open-source work. My resume and a link to my professional work samples are available upon request.</p>
+
+</div>
+
+<div class='filter-el' data-category-tech>
+
+Software for Daily Use:
+Operating System: arch linux, syslinux, 
+Dekstop Enviroment: i3, sselp, dmenu, lunch, surf, ranger, pianobar, youtube-viewer, 
+
+</div>
+
+<div class='filter-el' data-category-music>
+
+<h2>Favorite Albums</h2>
+<ul>
+  <li>Paul's Boutique - Beastie Boys</li>
+  <li>Carpal Tunnel Syndrome - Kid Koala</li>
+  <li>J Dilla - Donuts</li>
+  <li>Nuno Canavarro - Plux Quba</li>
+  <li>Dj Shadow - Endtroducing</li>
+  <li>Miles Davis - Kind of Blue</li>
+  <li>Make the Road by Walking - Menahan Street Band</li>
+  <li>One Word Extinguisher - Prefuse 73</li>
+  <li>This is a long ride for someone with nothing to think about - Modest Mouse</li> 
+  <li>Mastered the Art - Dj Greyboy</li> 
+</ul>
+
+<h2>My Instruments</h2>
+<ul>
+  <li>Samplers: MPC 1000, SP303 (x2), SP505, SU10</li>
+  <li>Compressors: FMR RNC, RNLA</li>
+  <li>Effects: PX4B, Crybaby Wah</li>
+  <li>Basses: Ltd ESP 5-String, Ibanez Gio 4-String</li>
+</ul>
+
+<h2>Audio Sampler</h2>
+I've been working on a mixtape of 30-second shorts for a few months, here are two unmastered tracks:
+1
+2
+
+</div>
+
+<div class='filter-el' data-category-quotes>
+  <blockquote>
+    There are no facts, only interpretations.
+    - Friedrich Nietzsche
+  </blockquote>
+</div>
