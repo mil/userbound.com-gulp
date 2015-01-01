@@ -104,7 +104,11 @@ html
     float: left
     width: 30px
     text-align: right
-    //+animate(fadeIn 1s)
+    +animate(fadeIn 1s)
+
+    &.fade-out
+      +animate(fadeOut 1s)
+      
 
     a
       //+animate(fadeIn 2s)
@@ -138,6 +142,10 @@ html
     position: relative
     +animate(fadeDown 1s)
 
+    &.fade-up
+      +animate(fadeUp 1s)
+
+
 
 
     footer
@@ -160,7 +168,7 @@ html
     padding-top: 2rem
 
     main
-      margin-top: 4rem
+      margin-top: 6rem
 
   .wrapper nav
     background: #ededed

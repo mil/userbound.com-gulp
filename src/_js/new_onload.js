@@ -1,7 +1,42 @@
+function smoothScroll(el, to, duration) {
+    if (duration < 0) {
+        return;
+    }
+    var difference = to - $(window).scrollTop();
+    var perTick = difference / duration * 10;
+    this.scrollToTimerCache = setTimeout(function() {
+        if (!isNaN(parseInt(perTick, 10))) {
+            window.scrollTo(0, $(window).scrollTop() + perTick);
+            smoothScroll(el, to, duration - 10);
+        }
+    }.bind(this), 10);
+}
+
+
 var UserboundInterface = (function(my) {
   my.init = function() {
     //$(window).on("unload", function() {
     //});
+    //
+    $("a").on("click", function(e) {
+        e.preventDefault();
+var new_href = $($(e.target).is("a") ? 
+          $(e.target) : $(e.target).closest("a")
+         ).attr("href");
+
+
+      smoothScroll($(window), 0, 100);
+
+      setTimeout(function() {
+        
+        $("nav").addClass('fade-out');
+        $("main").addClass('fade-up');
+
+        setTimeout(function() {
+          window.location = new_href;
+        }, 1000);
+      }, 100);
+    });
     
 
     $(".filter-by button").on("click", function(e) {
@@ -51,3 +86,4 @@ var UserboundInterface = (function(my) {
 
 // Page load
 $(function($) { UserboundInterface.init(); });
+
