@@ -292,10 +292,22 @@ entry
         text-shadow: 5px 1px 8px black
     
 
-
-.caption
-  +fontsize(smallest)
+.captioned-image
   text-align: center
+
+  img, .caption
+    width: 80%
+    display: block
+    margin: 0 auto
+
+  img 
+    margin-bottom: 0
+    margin-top: spacing(medium,2)
+  
+  .caption
+    margin-top: spacing(smallest)
+    margin-bottom: 3rem
+    +fontsize(smallest)
 
 
 
