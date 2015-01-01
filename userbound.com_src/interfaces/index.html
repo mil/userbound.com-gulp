@@ -18,13 +18,13 @@
     class='interface filter-el visible' 
     href="{{ entry.url }}"
     {% for category in entry.categories %}
-      data-category-{{ catogory }}
+      data-category-{{ category }}
     {% endfor %}
   >
   <entry>
     <h2>{{ entry.title }}</h2>
     <span class='date'>{{ entry.date }}{{ entry.time }}</span>
-    {{ entry.description }}
+    {{ entry.description|raw }}
   </entry>
   </a>
   {% endfor %}
