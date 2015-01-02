@@ -2,14 +2,16 @@
   <h1>{{ title }}</h1>
 </header>
 
-{% for entry in entries %}
+<section class='content'>
+  {% for entry in entries %}
 
-<a class='block' href="{{ entry.url }}">
-<entry>
-  <h2>{{ entry.title }}</h2>
-  <span class='date'>
-    {{ entry.date }}
-  </span>
-  </entry>
-</a>
-{% endfor %}
+  <a class='block' href="{{ entry.url }}">
+  <entry>
+    <h2>{{ entry.title }}</h2>
+    <span class='date'>
+      {{ entry.date }}
+    </span>
+    </entry>
+  </a>
+  {% endfor %}
+</section>

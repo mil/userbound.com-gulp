@@ -3,14 +3,16 @@
 </header>
 
 
-<div class='entry-list hardware'>
-  {% for entry in entries %}
+<section class='content'>
+  <div class='entry-list hardware'>
+    {% for entry in entries %}
 
-  <a href="{{ entry.url }}">
-    <entry style='background-image: url("/objects/{{ entry.poster|raw }}");'>
-    <h2>{{ entry.title }}</h2>
-  </entry>
-  </a>
+    <a href="{{ entry.url }}">
+      <entry style='background-image: url("/objects/{{ entry.poster|raw }}");'>
+      <h2>{{ entry.title }}</h2>
+    </entry>
+    </a>
 
-  {% endfor %}
-</div>
+    {% endfor %}
+  </div>
+</section>

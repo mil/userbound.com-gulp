@@ -2,13 +2,15 @@
 <h1>{{title }}</h1>
 </header>
 
-{% for entry in entries %}
+<section class='content'>
+  {% for entry in entries %}
 
-<a href="{{ entry.url }}">
-<entry>
-  <img src="{{ entry.url }}.png">
-  </entry>
-</a>
-  <hr>
+  <a href="{{ entry.url }}">
+  <entry>
+    <img src="{{ entry.url }}.png">
+    </entry>
+  </a>
+    <hr>
 
-{% endfor %}
+  {% endfor %}
+</section>

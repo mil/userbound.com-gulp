@@ -3,9 +3,12 @@
 {{ description }}
 </header>
 
-<div class='poster'>
-  <img src='/objects/{{ poster }}'>
-</div>
+
+<section class='content'>
+  <div class='poster'>
+    <img src='/objects/{{ poster }}'>
+  </div>
 
 
-{{ yield|raw }}
+  {{ yield|raw }}
+</section>
