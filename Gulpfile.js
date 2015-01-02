@@ -1,22 +1,24 @@
 #!/usr/bin/env node
-
 var _              = require('underscore');
-var rimraf         = require('rimraf');
 var fs             = require('fs');
 var gulp           = require('gulp');
+var rimraf         = require('rimraf');
+var yaml_extractor = require('yaml-front-matter');
+
 var replace        = require('gulp-replace');
+var concat         = require('gulp-concat');
+var connect        = require('gulp-connect');
 var data           = require('gulp-data');
-var swig           = require('gulp-swig');
-var uglify         = require('gulp-uglify');
-var sass           = require('gulp-ruby-sass');
-var markdown       = require('gulp-markdown');
+var dom            = require('gulp-dom');
 var fem            = require('gulp-front-matter');
 var insert         = require('gulp-insert');
-var concat         = require('gulp-concat');
-var rename         = require('gulp-rename');
+var markdown       = require('gulp-markdown');
 var minify         = require('gulp-minify');
-var connect        = require('gulp-connect');
-var yaml_extractor = require('yaml-front-matter');
+var rename         = require('gulp-rename');
+var sass           = require('gulp-ruby-sass');
+var swig           = require('gulp-swig');
+var uglify         = require('gulp-uglify');
+
 
 var model_image_accumulator = [];
 var site_sections = [ 'blog', 'models', 'interfaces', 'objects' ];
@@ -309,17 +311,45 @@ gulp.task(collection_name, function() {
 
 });
 
-gulp.task('site_subsections', ['about'], function() {
-  console.log("WOOO");
 
+// Activate subsections as they would be activated through 
+// javascript -- this way there are subsections stubs (e.g. about/music/) 
+// correlated to js fade in/out router yet site can still be used JS-free
+gulp.task('site_subsections', ['about', 'interfaces'], function() {
+  var pages_subsections = [
+    {
+      section_name : 'about',
+      sub_sections : ['general', 'tech', 'music', 'quotes']
+    },
+    {
+      section_name : 'interfaces',
+      sub_sections : ['linux', 'javascript', 'misc']
+    }
+  ];
 
-  _.each(['general', 'tech', 'music', 'quotes'], function(section) {
-    gulp
-      .src(fs_out("/about/index.html"))
-      .pipe(gulp.dest(fs_out("/about/" + section)));
+  function activate_subsection(section) {
+    this.querySelector('.filter-by .active').setAttribute('class', '');
+    _.each(this.querySelectorAll('.filter-by button'), function(button) {
+      if (section == button.textContent.toLowerCase()) {
+        button.setAttribute('class', 'active');
+      }
+    });
+    this.querySelector('.filter-el').setAttribute('class', 'filter-el');
+    this.querySelector('.filter-el[data-category-' + section + ']')
+    .setAttribute('class', 'filter-el visible');
+    return this;
+  }
+
+  _.each(pages_subsections, function(obj) {
+    _.each(obj.sub_sections, function(subsection) {
+      gulp
+        .src(fs_out("/" + obj.section_name + "/index.html"))
+        .pipe(dom(function() { 
+          return activate_subsection.call(this, subsection); 
+        }))
+        .pipe(gulp.dest(fs_out("/" + obj.section_name + "/" + subsection)));
+    });
   });
-
-
 
 });
 

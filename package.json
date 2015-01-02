@@ -13,6 +13,7 @@
     "gulp-connect": "2.2.0",
     "gulp-front-matter": "1.1.1",
     "gulp-data": "1.1.1",
+    "gulp-dom": "latest",
     "gulp-insert": "0.4.0",
     "gulp-markdown": "1.0.0",
     "gulp-minify": "0.0.5",
