@@ -202,7 +202,7 @@ gulp.task('homepage', function() {
 
 // Homepage
 gulp.task('about', function() {
-  gulp
+  return gulp
     .src(fs_in("about/index.html"))
     .pipe(data(extract_top_nav_links))
 
@@ -309,6 +309,20 @@ gulp.task(collection_name, function() {
 
 });
 
+gulp.task('site_subsections', ['about'], function() {
+  console.log("WOOO");
+
+
+  _.each(['general', 'tech', 'music', 'quotes'], function(section) {
+    gulp
+      .src(fs_out("/about/index.html"))
+      .pipe(gulp.dest(fs_out("/about/" + section)));
+  });
+
+
+
+});
+
 
 
 
@@ -366,6 +380,6 @@ gulp.task('webserver', function() {
 gulp.task('default', _.union(
   ['clean', 'homepage', 'about'],
   site_sections,
-  [ 'assets_pipeline', 'assets_folder'],
+  [ 'assets_pipeline', 'assets_folder', 'site_subsections'],
   [ 'webserver', 'watch']
 ));
