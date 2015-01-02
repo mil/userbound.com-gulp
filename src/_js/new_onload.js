@@ -40,6 +40,7 @@ var new_href = $($(e.target).is("a") ?
     
 
     $(".filter-by button").on("click", function(e) {
+      e.preventDefault();
       var filter_by = e.target.innerHTML.toLowerCase();
       $(".filter-by button").removeClass("active");
       $(e.target).addClass("active");
@@ -48,6 +49,7 @@ var new_href = $($(e.target).is("a") ?
         var out_els = [];
         var in_els = [];
 
+        window.history.pushState(null, null, "/tessft");
         if (
           ($(el).attr("data-category-" + filter_by) != null) || 
           (filter_by == "all")
@@ -59,8 +61,6 @@ var new_href = $($(e.target).is("a") ?
         }, function() {
           $("header").after(in_els);
           
-
-
 
           $(in_els).css("display", "block").animate({
             opacity : 1
