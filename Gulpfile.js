@@ -47,6 +47,15 @@ function date_to_string(obj) {
 }
 
 
+function external_href_blank_as_target_blank() {
+  // well marked is no longer maintained, so semi-dirty, but alright
+  _.each(this.querySelectorAll('a'), function(link) {
+    if (link.getAttribute('href').match(/^http:\/\//) !== null) {
+      link.setAttribute('target', '_blank');
+    }
+  });
+  return this;
+}
 
 
 
@@ -301,7 +310,8 @@ gulp.task(collection_name, function() {
         path.basename = "index";
         return path;
       }))
-
+      
+      .pipe(dom(external_href_blank_as_target_blank))
       .pipe(gulp.dest(function(p) {
         return fs_out(collection_name);
       }));
