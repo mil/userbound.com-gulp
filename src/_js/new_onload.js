@@ -57,11 +57,11 @@ function activate_subsection(subsection) {
     ) { in_els.push(el); } else { out_els.push(el); }
   });
 
+  $("header").after(in_els);
   $(out_els).animate({ opacity: 0 }, function() {
-    $("header").after(in_els);
-    $(in_els).animate({ opacity : 1 }, function() {
+    $(in_els).css("display", "block").animate({ opacity : 1 }, function() {
       $(in_els).addClass("visible");
-      $(out_els).removeClass("visible");
+      $(out_els).removeClass("visible").css("display", "none");
     });
   });
 }
@@ -71,11 +71,11 @@ function activate_subsection(subsection) {
 
 var UserboundInterface = (function(my) {
   my.init = function() {
-    //$(window).on("unload", function() {
-    //});
+    //$(window).on("unload", function() {});
     $(window).bind("popstate", pop_state);
 
     $("a").on("click", function(e) {
+      if ($(e.target).attr("target") === "_blank") { return; }
         e.preventDefault();
         var new_href = $($(e.target).is("a") ? 
           $(e.target) : $(e.target).closest("a")
