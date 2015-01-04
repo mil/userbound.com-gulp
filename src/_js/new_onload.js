@@ -16,6 +16,7 @@ var undo_stack = [];
 var redo_stack = [];
 
 function update_head_rotation() {
+  return;
   var total   = $("body").offset().height / 2;
   var scroll  = $(window).scrollTop();
   var percent = scroll / total;
