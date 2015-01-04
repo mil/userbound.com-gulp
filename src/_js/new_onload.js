@@ -15,6 +15,24 @@ function smoothScroll(el, to, duration) {
 var undo_stack = [];
 var redo_stack = [];
 
+function update_head_rotation() {
+  var total   = $("body").offset().height / 2;
+  var scroll  = $(window).scrollTop();
+  var percent = scroll / total;
+
+  var head_min_rotation = 0;
+  var head_max_rotation = 20;
+  var range = Math.abs(head_max_rotation - head_min_rotation);
+  var head_position = Math.max(Math.min(
+      head_max_rotation - parseInt(percent * range),
+      head_max_rotation
+  ), head_min_rotation);
+
+  $(".guy .head").css(
+    'transform', 'rotate(' + head_position + 'deg)'
+  );
+}
+
 
 function trigger_state(state) {
   window.history.pushState(null, null, state.href);
@@ -73,6 +91,8 @@ var UserboundInterface = (function(my) {
   my.init = function() {
     //$(window).on("unload", function() {});
     $(window).bind("popstate", pop_state);
+    $(window).bind("scroll", update_head_rotation);
+    update_head_rotation();
 
     $("a").on("click", function(e) {
       if ($(e.target).attr("target") === "_blank") { return; }

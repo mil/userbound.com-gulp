@@ -9,6 +9,11 @@
 
   <div class='wrapper'>
       <nav>
+        <a class='guy' href="#">
+          <span class='head'></span>
+          <span class='body'></span>
+        </a>
+
         {% if active_section %}
         <a href="{{ active_section.url }}" class='symbol active'> {{ active_section.symbol|raw }} </a>
         {% endif %}
