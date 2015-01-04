@@ -130,16 +130,42 @@ html
 
 
       &.active 
-        +fontsize(biggest)
+        //+fontsize(biggest)
 
         color: black
-        font-size: 2rem
-        margin-bottom: 2rem
+        //font-size: 2rem
         //&:before
         //  display: block
         //  content: ">"
         //  position: absolute
         //  margin-left: -20px
+
+      &.guy
+        width: 23px
+        width: 18px
+        float: right
+
+        margin-bottom: 2rem
+
+        span.head
+          display: block
+          content: " "
+          background-image: url('/assets/images/guy_head.png')
+          background-size: 100% 100%
+          background-position: center center
+          width: 18px
+          height: 21px
+          float: right
+        span.body
+          display: block
+          content: " "
+          background-image: url('/assets/images/guy_body.png')
+          background-size: 100% 100%
+          background-position: center center
+          width: 18px
+          height: 21px
+          float: right
+  
   
   main
     transition: all 1s ease-in-out
