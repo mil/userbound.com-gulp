@@ -133,7 +133,7 @@ html
       &.active 
         //+fontsize(biggest)
 
-        border-left: 1px solid #cfcfcf
+        //border-left: 1px solid #cfcfcf
         color: black
         //font-size: 2rem
         //&:before
@@ -141,6 +141,10 @@ html
         //  content: ">"
         //  position: absolute
         //  margin-left: -20px
+
+        span.indicator
+          color: purple
+          
 
       &.guy
         width: 23px
@@ -167,6 +171,20 @@ html
           width: 18px
           height: 21px
           float: right
+        span.feet
+          transform: rotate(-31deg)
+
+          
+          display: block
+          content: " "
+          background-image: url('/assets/images/guy_feet.png')
+          background-size: 100% 100%
+          background-position: center center
+          width: 18px
+          height: 21px
+          float: right
+
+
   
   
   main
@@ -193,9 +211,12 @@ html
         text-align: right
 
 
-
-
-
+.home 
+  a
+    display: block
+    text-align: center
+    +fontsize(biggest)
+    margin-bottom: +spacing(biggest)
 
 
 @media all and (max-width: 690px)

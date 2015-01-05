@@ -9,18 +9,23 @@
 
   <div class='wrapper'>
       <nav>
-        <a class='guy' href="#">
+        <a class='guy' href="/">
           <span class='head'></span>
           <span class='body'></span>
+          {% if title == "Unoshowfcornow" %}
+          <span class='feet'></span>
+          {% endif %}
         </a>
 
-        {% if active_section %}
-        <a href="{{ active_section.url }}" class='symbol active'> {{ active_section.symbol|raw }} </a>
+        {% if title != "Userbound" %}
+          {% for link in top_nav_links %}
+            {% if link.active_section %}
+            <a class='active' href="{{ link.url }}" title="{{ link.title }}"><span class='indicator'>&rsaquo;</span> {{ link.symbol|raw }}</a>
+            {% else %}
+              <a href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
+            {% endif %}
+          {% endfor %}
         {% endif %}
-
-        {% for link in top_nav_links %}
-        <a href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
-        {% endfor %}
       </nav>
 
 

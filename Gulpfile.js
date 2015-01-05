@@ -108,8 +108,9 @@ function extract_top_nav_links(page_object) {
   page_object.vars.active_title = path[0] != "" ? path[0] : "NONE";
   _.each( page_object.vars.top_nav_links, function(l,i) {
     if (l && l.title.toLowerCase() == page_object.vars.active_title) {
-      page_object.vars.active_section = l;
-      page_object.vars.top_nav_links.splice(i, 1);
+      l.active_section = true;
+      //page_object.vars.active_section = l;
+      //page_object.vars.top_nav_links.splice(i, 1);
     }
   });
 
@@ -193,13 +194,9 @@ gulp.task('homepage', function() {
   gulp
     .src(fs_in("index.html"))
     .pipe(data(extract_top_nav_links))
-
-
     .pipe(data(function(page_object) {
-      page_object.fem = {};
-      page_objeactive_section = null;
-      page_object.fem.title = "Userbound";
-      return page_object;
+      page_object.vars.title = "Userbound";
+      return page_object.vars;
     }))
 
 
