@@ -1,0 +1,79 @@
+.wrapper nav
+  position: absolute
+  padding-right: spacing(biggest)
+  margin-left: -5rem
+  float: left
+  width: 30px
+  text-align: right
+  +animate(fadeIn 1s)
+
+  &.fade-out
+    +animate(fadeOut 1s)
+    
+
+  a
+    //+animate(fadeIn 2s)
+    position: relative
+    display: block
+    clear: both
+    color: #888
+    margin-bottom: 0.5rem
+
+    &:hover
+      font-size: 1.5rem
+      +animate(sizeUp 0.3s)
+
+
+    &.active 
+      //+fontsize(biggest)
+
+      //border-left: 1px solid #cfcfcf
+      color: black
+      //font-size: 2rem
+      //&:before
+      //  display: block
+      //  content: ">"
+      //  position: absolute
+      //  margin-left: -20px
+
+      border-left: 3px solid #d3ffc2
+
+
+
+.wrapper nav a.guy
+  width: 23px
+  width: 18px
+  float: right
+
+  margin-bottom: 2rem
+
+  span.head
+    display: block
+    content: " "
+    background-image: url('/assets/images/guy_head.png')
+    background-size: 100% 100%
+    background-position: center center
+    width: 18px
+    height: 21px
+    float: right
+  span.body
+    display: block
+    content: " "
+    background-image: url('/assets/images/guy_body.png')
+    background-size: 100% 100%
+    background-position: center center
+    width: 18px
+    height: 21px
+    float: right
+  span.feet
+    transform: rotate(-31deg)
+
+    
+    display: block
+    content: " "
+    background-image: url('/assets/images/guy_feet.png')
+    background-size: 100% 100%
+    background-position: center center
+    width: 18px
+    height: 21px
+    float: right

@@ -21,6 +21,16 @@ html
       color: black
       transition: all .2s ease-in
 
+    &.block.link
+      &:hover
+        text-decoration: none
+        h2
+          display: inline-block
+          background: #e8e8e8
+        span.date
+          display: block
+      
+
   ol 
     list-style-position: inside
     list-style-type: decimal
@@ -76,11 +86,7 @@ html
   blockquote
     .author
       +fontsize(smallest)
-      
     
-
-
-
   section.content
     a
       color: #002e7d
@@ -103,89 +109,7 @@ html
 
   nav, main
     display: block
-
-  nav
-    position: absolute
-    padding-right: spacing(biggest)
-    margin-left: -5rem
-    float: left
-    width: 30px
-    text-align: right
-    +animate(fadeIn 1s)
-
-    &.fade-out
-      +animate(fadeOut 1s)
-      
-
-    a
-      //+animate(fadeIn 2s)
-      position: relative
-      display: block
-      clear: both
-      color: #888
-      margin-bottom: 0.5rem
-
-      &:hover
-        font-size: 1.5rem
-        +animate(sizeUp 0.3s)
-
-
-      &.active 
-        //+fontsize(biggest)
-
-        //border-left: 1px solid #cfcfcf
-        color: black
-        //font-size: 2rem
-        //&:before
-        //  display: block
-        //  content: ">"
-        //  position: absolute
-        //  margin-left: -20px
-
-        span.indicator
-          color: purple
-          
-
-      &.guy
-        width: 23px
-        width: 18px
-        float: right
-
-        margin-bottom: 2rem
-
-        span.head
-          display: block
-          content: " "
-          background-image: url('/assets/images/guy_head.png')
-          background-size: 100% 100%
-          background-position: center center
-          width: 18px
-          height: 21px
-          float: right
-        span.body
-          display: block
-          content: " "
-          background-image: url('/assets/images/guy_body.png')
-          background-size: 100% 100%
-          background-position: center center
-          width: 18px
-          height: 21px
-          float: right
-        span.feet
-          transform: rotate(-31deg)
-
-          
-          display: block
-          content: " "
-          background-image: url('/assets/images/guy_feet.png')
-          background-size: 100% 100%
-          background-position: center center
-          width: 18px
-          height: 21px
-          float: right
-
-
-  
+           
   
   main
     transition: all 1s ease-in-out
@@ -199,8 +123,6 @@ html
       +animate(fadeUp 1s)
 
 
-
-
     footer
       border-top: $seperator_line
       padding-top: +spacing(biggest, 0.5)
@@ -209,96 +131,6 @@ html
       .pagination-links
         float: right
         text-align: right
-
-
-.home 
-  a
-    display: block
-    text-align: center
-    +fontsize(biggest)
-    margin-bottom: +spacing(biggest)
-
-
-@media all and (max-width: 690px)
-  .wrapper
-    padding-top: 2rem
-
-    main
-      margin-top: 6rem
-
-  .wrapper nav
-    background: #ededed
-    border-bottom: 1px dotted #cfcfcf
-
-    display: block
-    float: none
-    position: absolute
-    margin: 0
-    padding: 0
-    width: auto
-
-    margin-bottom: 3rem
-    left: 0
-    right: 0
-    top: 0
-    height: 50px
-    width: 100%
-    text-align: right
-
-
-    a
-      padding-left: 1rem
-      display: inline-block
-      margin-top: 13px
-
-      &.active
-        margin-left: 20px
-        float: left
-        font-size: 1rem
-        margin-top: 4px
-
-      &:last-child
-        margin-right: 40px
-
-
-
-
-
-// Header section at top of each page
-.wrapper main header
-
-  margin-bottom: 2rem
-  +fontsize(smallest)
-  color: #888
-  border-bottom: $seperator_line
-  padding-bottom: 2rem
-
-  button
-    cursor: pointer
-    padding: 0
-    margin: 0
-    background: none
-    border: none
-    outline: none
-
-    +fontsize(smallest)
-
-    margin-right: 1rem
-    color: #cfcfcf
-
-    &.active
-      color: #888888
-
-   
-  h1
-    margin: 0
-  .links
-    a  
-      +fontsize(smallest)
-      padding-right: 1rem
-
-      text-decoration: italic
-
 
 
 .model
@@ -334,8 +166,7 @@ html
 
 .interface
   +fontsize(smallest)
-  margin-bottom: spacing(medium)
-    
+  margin-bottom: spacing(medium)    
 
 
 
@@ -379,6 +210,14 @@ entry
     margin-top: spacing(smallest)
     margin-bottom: 3rem
     +fontsize(smallest)
+
+.model-preview
+  height: 120px
+  overflow: hidden
+  display: block
+  border-bottom: 1px dashed #cfcfcf
+  img
+    margin-top: -20px
 
 ::-moz-selection
   background: #ffffcc
