@@ -86,53 +86,49 @@ function activate_subsection(subsection) {
 }
 
 
+function link_click(e) {
+  if ($(e.target).attr("target") === "_blank") { return; }
+    e.preventDefault();
+    var new_href = $($(e.target).is("a") ? 
+      $(e.target) : $(e.target).closest("a")
+     ).attr("href");
+
+
+  smoothScroll($(window), 0, 100);
+
+  setTimeout(function() {
+    
+    $("nav").addClass('fade-out');
+    $("main").addClass('fade-up');
+
+    setTimeout(function() { window.location = new_href; }, 1000);
+  }, 100);
+}
+function filter_click(e) {
+  var subsection = e.target.innerHTML.toLowerCase()
+
+  e.preventDefault();
+  push_state({
+    href: "/" + $("h1").text().toLowerCase() + "/" + subsection,
+    cb: function() { activate_subsection(subsection); },
+  });  
+}
 
 
 var UserboundInterface = (function(my) {
   my.init = function() {
     //$(window).on("unload", function() {});
-    $(window).bind("popstate", pop_state);
-    $(window).bind("scroll", update_head_rotation);
+    $(window).on("popstate", pop_state);
+    $(window).on("scroll", update_head_rotation);
+    $("a").on("click", link_click);
+    $(".filter-by button").on("click", filter_click);
+
     update_head_rotation();
-
-    $("a").on("click", function(e) {
-      if ($(e.target).attr("target") === "_blank") { return; }
-        e.preventDefault();
-        var new_href = $($(e.target).is("a") ? 
-          $(e.target) : $(e.target).closest("a")
-         ).attr("href");
-
-
-      smoothScroll($(window), 0, 100);
-
-      setTimeout(function() {
-        
-        $("nav").addClass('fade-out');
-        $("main").addClass('fade-up');
-
-        setTimeout(function() {
-          window.location = new_href;
-        }, 1000);
-      }, 100);
-    });
-    
- 
-    $(".filter-by button").on("click", function(e) {
-      var subsection = e.target.innerHTML.toLowerCase()
-
-      e.preventDefault();
-      push_state({
-        href: "/" + $("h1").text().toLowerCase() + "/" + subsection,
-        cb: function() { activate_subsection(subsection); },
-      });  
-    });
-
     sh_highlightDocument();
   };
 
   return my;
 })(UserboundInterface || {});
-
 
 // Page load
 $(function($) { UserboundInterface.init(); });

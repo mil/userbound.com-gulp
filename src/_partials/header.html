@@ -20,7 +20,7 @@
         {% if title != "Userbound" %}
           {% for link in top_nav_links %}
             {% if link.active_section %}
-            <a class='active' href="{{ link.url }}" title="{{ link.title }}"><span class='indicator'>&rsaquo;</span> {{ link.symbol|raw }}</a>
+            <a class='active' href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
             {% else %}
               <a href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
             {% endif %}
