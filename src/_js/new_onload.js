@@ -69,19 +69,21 @@ function activate_subsection(subsection) {
   });
 
   var out_els = [], in_els = [];
-  $(".filter-el").each(function(i, el) { 
-    if (
-      ($(el).attr("data-category-" + subsection) != null) || 
-          (subsection == "all")
-    ) { in_els.push(el); } else { out_els.push(el); }
-  });
+  var x = $(".filter-el.visible");
 
-  $("header").after(in_els);
-  $(out_els).animate({ opacity: 0 }, function() {
-    $(in_els).css("display", "block").animate({ opacity : 1 }, function() {
-      $(in_els).addClass("visible");
-      $(out_els).removeClass("visible").css("display", "none");
-    });
+  $(".filter-el.visible").animate({
+    opacity: 0
+  }, function() {
+
+
+    var i = $(".filter-el[data-category-" + subsection + "]");
+
+    x.removeClass("visible");
+    i.css("opacity", 0).addClass("visible");
+
+    i.animate({
+      opacity: 1
+    }, function() {});
   });
 }
 
