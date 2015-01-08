@@ -18,7 +18,7 @@
         </a>
 
         {% if title != "Userbound" %}
-          {% for link in top_nav_links %}
+          {% for link in nav_links %}
             {% if link.active_section %}
             <a class='active' href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
             {% else %}

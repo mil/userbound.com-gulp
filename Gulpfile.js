@@ -92,13 +92,13 @@ function extract_collection_entries(collection) {
 //
 //
 // Gulp Data Functions
-function extract_top_nav_links(page_object) {
+function extract_nav_links(page_object) {
   page_object.vars = page_object.vars || {};
 
 
-  page_object.vars.top_nav_links = yaml_extractor.loadFront(
-    fs_in("_data/top_nav_links.yaml")
-  ).top_nav_links;
+  page_object.vars.nav_links = yaml_extractor.loadFront(
+    fs_in("_data/nav_links.yaml")
+  ).nav_links;
 
 
   var dir_parts = page_object.base.split("/");
@@ -106,7 +106,7 @@ function extract_top_nav_links(page_object) {
 
 
   page_object.vars.active_title = path[0] != "" ? path[0] : "NONE";
-  _.each( page_object.vars.top_nav_links, function(l,i) {
+  _.each( page_object.vars.nav_links, function(l,i) {
     if (l && l.title.toLowerCase() == page_object.vars.active_title) {
       l.active_section = true;
       //page_object.vars.active_section = l;
@@ -193,7 +193,7 @@ gulp.task('homepage', function() {
 // Homepage
   gulp
     .src(fs_in("index.html"))
-    .pipe(data(extract_top_nav_links))
+    .pipe(data(extract_nav_links))
     .pipe(data(function(page_object) {
       page_object.vars.title = "Userbound";
       return page_object.vars;
@@ -212,7 +212,7 @@ gulp.task('homepage', function() {
 gulp.task('about', function() {
   return gulp
     .src(fs_in("about/index.html"))
-    .pipe(data(extract_top_nav_links))
+    .pipe(data(extract_nav_links))
 
     .pipe(data(function(page_object) {
       page_object.vars.title = "About";
@@ -250,7 +250,7 @@ gulp.task(collection_name, function() {
   //  Collection listing page
   gulp
     .src(fs_in(collection_name + "/index.html"))
-    .pipe(data(extract_top_nav_links))
+    .pipe(data(extract_nav_links))
     .pipe(data(function(page_object) {
         page_object.vars.title = 
           collection_name.charAt(0).toUpperCase() +
@@ -269,7 +269,6 @@ gulp.task(collection_name, function() {
 
           _.each(page_object.vars.categories, function(entries,key) {
             page_object.vars.categories[key] = entries.sort(function(a,b) {
-              console.log(a.sort_index,b.sort_index);
               return (a.sort_index) - (b.sort_index);
             });
 
@@ -289,7 +288,7 @@ gulp.task(collection_name, function() {
     return gulp
       .src([fs_in(collection_name + "/entries/*.md")])
       .pipe(fem({ property: 'vars', remove : true }))
-      .pipe(data(extract_top_nav_links))
+      .pipe(data(extract_nav_links))
       .pipe(markdown())
       // Content is stored in 'yield' template vars property
       .pipe(data(function(p) { p.vars.yield = p.contents.toString(); }))
