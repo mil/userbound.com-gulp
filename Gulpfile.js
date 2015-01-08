@@ -383,29 +383,28 @@ gulp.task('site_subsections', ['about', 'interfaces'], function() {
 
 
 gulp.task('watch', function() {
-  _.each([
+  _.each(_.union(
+    [
+                   
       ["_partials/*", _.union(['homepage'], site_sections)],
       ["*", ["homepage"]],
       ["about/*", ["about"]],
 
-    // Site Sections
 
-      ["blog/*", ["blog"]],
-      ["interfaces/*", ["interfaces"]],
-      ["objects/*", ["objects"]],
-      ["models/*", ["models"]],
-
-      ["blog/*/*", ["blog"]],
-      ["interfaces/*/*", ["interfaces"]],
-      ["objects/*/*", ["objects"]],
-      ["models/*/*", ["models"]],
-
-
-    // Assets
       ["_sass/*", ["assets_folder"]],
       ["_sass/*/*", ["assets_folder"]],
       ["_js/*", ["assets_folder"]]
-  ], function(path_tuple) {
+    ],
+
+    _.map(site_sections, function(section) {
+      return [section + "/*", [section]];
+    }),
+    _.map(site_sections, function(section) {
+      return [section + "/*/*", [section]];
+    })
+
+    // Assets
+    ), function(path_tuple) {
     gulp.watch(
       fs_in(path_tuple[0]),
       _.union(path_tuple[1], ["reload"])
