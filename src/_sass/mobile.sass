@@ -1,41 +1,38 @@
-@media all and (max-width: 690px)
-  .wrapper
+@media screen and (max-width: 690px)
+  body .wrapper
     padding-top: 2rem
 
     main
-      margin-top: 6rem
+      margin-top: 0
 
-  .wrapper nav
-    background: #ededed
+  body .wrapper nav
     border-bottom: 1px dotted #cfcfcf
 
     display: block
     float: none
-    position: absolute
+    position: static
+
     margin: 0
     padding: 0
     width: auto
-
     margin-bottom: 3rem
-    left: 0
-    right: 0
-    top: 0
     height: 50px
     width: 100%
     text-align: right
 
 
     a
-      padding-left: 1rem
+      padding-top: 13px
+      padding-left: 0.5rem
+      padding-right: 0.5rem
+      padding-bottom: 10px
       display: inline-block
-      margin-top: 13px
+      text-align: center
 
-      &.active
-        margin-left: 20px
+      &.guy
+        padding-top: 11px
         float: left
-        font-size: 1rem
-        margin-top: 4px
-
-      &:last-child
-        margin-right: 40px
-
+      
+      &.active
+        border-left: none
+        border-bottom: 3px solid #d3ffc2
