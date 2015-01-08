@@ -1,36 +1,35 @@
 <header>
   <h1>{{ title }}</h1>
   <div class='filter-by'>
-    <button class='active'>All</button>
+    <button class='active'>Web</button>
     <button>Linux</button>
-    <button>Javascript</button>
-    <button>Misc</button>
   </div>
 
 </header>
 
-<section class='content'>
+<section class='content'><div class='interfaces-list'>  
 
-  <div class='bar'>
+    {% for category, entries in categories %}
 
-  <div class='interfaces-list'>  
-    {% for entry in entries %}
 
-    <a 
-      class='link block interface filter-el visible' 
-      href="{{ entry.url }}"
-      {% for category in entry.categories %}
-        data-category-{{ category }}
-      {% endfor %}
-    >
-    <entry>
-      <h2>{{ entry.title }}</h2>
-      <span class='date'>{{ entry.date }}{{ entry.time }}</span>
-      {{ entry.description|raw }}
-    </entry>
-    </a>
+
+    {% if category == "web" %}
+    <div class='filter-el visible' data-category-{{ category }}>
+    {% else %}
+    <div class='filter-el' data-category-{{ category }}>
+    {% endif %}
+
+      {% for entry in entries %}
+
+      <a class='block link interface' href="{{ entry.url }}"><entry>
+        <h2>{{ entry.title }}</h2>
+        <span class='date'>{{ entry.date }}{{ entry.time }}</span>
+        {{ entry.description|raw }}
+      </entry></a>
+
+    {% endfor %}</div>
+
+
     {% endfor %}
 
-  </div>
-  </div>
-</section>
+</div></section>

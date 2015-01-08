@@ -1,7 +1,7 @@
 ---
 title: Keyboard Tiler
 description: A program that takes an argument of 2 keys on your keyboard and maps your window to the screen using the keyboard grid as referent.
-categories: [ linux ]
+category: linux
 ---
 
 ## A More Paradigmatic Tiler

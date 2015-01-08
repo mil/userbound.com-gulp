@@ -256,6 +256,19 @@ gulp.task(collection_name, function() {
           collection_name.charAt(0).toUpperCase() +
           collection_name.slice(1);
         page_object.vars.entries = collection_entries;
+
+        if (collection_name == "interfaces") {
+          page_object.vars.categories = {};
+
+          _.each( page_object.vars.entries, function(entry) {
+            if (!page_object.vars.categories[entry.category]) {
+              page_object.vars.categories[entry.category] = [];
+            }
+            page_object.vars.categories[entry.category].push(entry);
+          });
+
+        }
+
         return page_object.vars;
     }))      
     .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
@@ -289,7 +302,6 @@ gulp.task(collection_name, function() {
             fs_in( "models/scads/" + page_object.vars.title) + ".scad"
           );
         } 
-
         
         if (collection_name == "blog") {
           page_object.vars.date = date_to_string(page_object.vars.date);
@@ -330,7 +342,7 @@ gulp.task('site_subsections', ['about', 'interfaces'], function() {
     },
     {
       section_name : 'interfaces',
-      sub_sections : ['linux', 'javascript', 'misc']
+      sub_sections : ['linux', 'web']
     }
   ];
 
@@ -342,6 +354,7 @@ gulp.task('site_subsections', ['about', 'interfaces'], function() {
       }
     });
     this.querySelector('.filter-el').setAttribute('class', 'filter-el');
+    console.log('.filter-el[data-category-' + section + ']');
     this.querySelector('.filter-el[data-category-' + section + ']')
     .setAttribute('class', 'filter-el visible');
     return this;
