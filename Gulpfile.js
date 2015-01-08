@@ -354,7 +354,6 @@ gulp.task('site_subsections', ['about', 'interfaces'], function() {
       }
     });
     this.querySelector('.filter-el').setAttribute('class', 'filter-el');
-    console.log('.filter-el[data-category-' + section + ']');
     this.querySelector('.filter-el[data-category-' + section + ']')
     .setAttribute('class', 'filter-el visible');
     return this;
