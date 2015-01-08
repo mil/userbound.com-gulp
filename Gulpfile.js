@@ -413,7 +413,8 @@ gulp.task('watch', function() {
   });
 
 });
-gulp.task("reload", function() {
+gulp.task("reload", _.union(
+  site_sections, ['assets_pipeline', 'assets_folder']), function() {
   gulp.src("*").pipe(connect.reload());
 });
 
