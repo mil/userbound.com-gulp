@@ -267,6 +267,14 @@ gulp.task(collection_name, function() {
             page_object.vars.categories[entry.category].push(entry);
           });
 
+          _.each(page_object.vars.categories, function(entries,key) {
+            page_object.vars.categories[key] = entries.sort(function(a,b) {
+              console.log(a.sort_index,b.sort_index);
+              return (a.sort_index) - (b.sort_index);
+            });
+
+          });
+
         }
 
         return page_object.vars;
