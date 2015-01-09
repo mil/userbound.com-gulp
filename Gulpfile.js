@@ -19,15 +19,14 @@ var sass           = require('gulp-ruby-sass');
 var swig           = require('gulp-swig');
 var uglify         = require('gulp-uglify');
 
-
 var model_image_accumulator = [];
-var site_sections = [ 'blog', 'models', 'interfaces', 'objects' ];
-var prefs = { in_folder  : "src", out_folder : "userbound.com" };
+var site_sections           = [ 'blog', 'models', 'interfaces', 'objects' ];
+var prefs                   = { in_folder  : "src", out_folder : "userbound.com" };
+var section_tasks           = _.union(
+  _.map(site_sections, function(section) { return section + "_listing"; }),
+  _.map(site_sections, function(section) { return section + "_entries"; })
+);
 
-
-//
-//
-// Helper Functions
 function pp(buffer) { console.log(JSON.stringify(buffer)); }
 function fs_in(path)  { return prefs.in_folder  + "/" + path; }
 function fs_out(path) { return prefs.out_folder + "/" + (path || ''); }
@@ -47,7 +46,11 @@ function date_to_string(obj) {
 }
 
 
-function external_href_blank_as_target_blank() {
+
+
+
+var DomMutators = {};
+DomMutators.external_href_blank_as_target_blank = function() {
   // well marked is no longer maintained, so semi-dirty, but alright
   _.each(this.querySelectorAll('a'), function(link) {
     if (link.getAttribute('href').match(/^http:\/\//) !== null) {
@@ -56,9 +59,18 @@ function external_href_blank_as_target_blank() {
   });
   return this;
 }
-
-
-
+DomMutators.activate_subsection = function(section) {
+  this.querySelector('.filter-by .active').setAttribute('class', '');
+  _.each(this.querySelectorAll('.filter-by button'), function(button) {
+    if (section == button.textContent.toLowerCase()) {
+      button.setAttribute('class', 'active');
+    }
+  });
+  this.querySelector('.filter-el').setAttribute('class', 'filter-el');
+  this.querySelector('.filter-el[data-category-' + section + ']')
+  .setAttribute('class', 'filter-el visible');
+  return this;
+}
 
 
 
@@ -131,6 +143,29 @@ function extract_nav_links(page_object) {
 //
 // Tasks
 gulp.task('clean', function() { rimraf.sync(fs_out()); });
+
+
+
+
+// Homepage
+gulp.task('about', function() {
+  return gulp
+    .src(fs_in("about/index.html"))
+    .pipe(data(extract_nav_links))
+
+    .pipe(data(function(page_object) {
+      page_object.vars.title = "About";
+      return page_object.vars;
+    }))
+
+    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
+    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+    .pipe(swig())
+    .pipe(gulp.dest(fs_out("about")));
+});
+var gulp = require('gulp');
+var util = require('util');
+
 gulp.task('assets_folder', function() {
   gulp
     .src(
@@ -156,7 +191,7 @@ gulp.task('assets_folder', function() {
     .pipe(gulp.dest(fs_out('assets/')));
 
 });
-gulp.task('assets_pipeline', ['models'], function() {
+gulp.task('assets_pipeline', ['models_entries'], function() {
   _.each(model_image_accumulator, function(val) {
     gulp
     .src(fs_in("models/images/" + val.image))
@@ -182,13 +217,6 @@ gulp.task('assets_pipeline', ['models'], function() {
   });
 
 });
-
-
-
-
-
-
-
 gulp.task('homepage', function() {
 // Homepage
   gulp
@@ -207,84 +235,82 @@ gulp.task('homepage', function() {
     .pipe(swig())
     .pipe(gulp.dest(fs_out()));
 });
-
-// Homepage
-gulp.task('about', function() {
-  return gulp
-    .src(fs_in("about/index.html"))
-    .pipe(data(extract_nav_links))
-
-    .pipe(data(function(page_object) {
-      page_object.vars.title = "About";
-      return page_object.vars;
-    }))
-
-    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
-    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-    .pipe(swig())
-    .pipe(gulp.dest(fs_out("about")));
+gulp.task('watch', function() {
+  _.each(_.union(
+    [
+      ["_partials/*", _.union(['homepage'], site_sections)],
+      ["*", ["homepage"]],
+      ["about/*", ["about"]],
+      ["_sass/*", ["assets_folder"]],
+      ["_sass/*/*", ["assets_folder"]],
+      ["_js/*", ["assets_folder"]]
+    ],
+    _.map(section_tasks, function(section) {
+      return [section.split("_")[0] + "/*", [section]];
+    }),
+    _.map(section_tasks, function(section) {
+      return [section.split("_")[0] + "/*/*", [section]];
+    })
+  ), function(path_tuple) {
+    gulp.watch(
+      fs_in(path_tuple[0]),
+      _.union(path_tuple[1], ["reload"])
+    );
+  });
 });
-
-
-
+gulp.task("reload", _.union(
+  section_tasks, ['assets_pipeline', 'assets_folder']), function() {
+  gulp.src("*").pipe(connect.reload());
+});
+gulp.task('webserver', function() {
+  connect.server({
+    root: "userbound.com",
+    port: 4000,
+    livereload: true
+  });
+});
 _.each(site_sections, function(collection_name) {
-// Blog pages
-gulp.task(collection_name, function() { 
-
   var collection_entries = extract_collection_entries(collection_name);
-
-
-  function install_pagination_links(page_object) {   
-    var entry_position = null;
-    _.each(collection_entries, function(entry, i) {
-      if (entry.title == page_object.vars.title) { entry_position = i; }
-    });
     
-    page_object.vars.next_entry = entry_position < collection_entries.length ?
-      collection_entries[entry_position + 1] : null;
-    page_object.vars.previous_entry = entry_position > 0 ?
-      collection_entries[entry_position - 1] : null; 
-  }
+  // Collection listing
+  gulp.task(collection_name + "_listing", function() { 
+    return gulp
+      .src(fs_in(collection_name + "/index.html"))
+      .pipe(data(extract_nav_links))
+      .pipe(data(function(page_object) {
+          page_object.vars.title = 
+            collection_name.charAt(0).toUpperCase() +
+            collection_name.slice(1);
+          page_object.vars.entries = collection_entries;
 
+          if (collection_name == "interfaces") {
+            page_object.vars.categories = {};
 
-  //  Collection listing page
-  gulp
-    .src(fs_in(collection_name + "/index.html"))
-    .pipe(data(extract_nav_links))
-    .pipe(data(function(page_object) {
-        page_object.vars.title = 
-          collection_name.charAt(0).toUpperCase() +
-          collection_name.slice(1);
-        page_object.vars.entries = collection_entries;
-
-        if (collection_name == "interfaces") {
-          page_object.vars.categories = {};
-
-          _.each( page_object.vars.entries, function(entry) {
-            if (!page_object.vars.categories[entry.category]) {
-              page_object.vars.categories[entry.category] = [];
-            }
-            page_object.vars.categories[entry.category].push(entry);
-          });
-
-          _.each(page_object.vars.categories, function(entries,key) {
-            page_object.vars.categories[key] = entries.sort(function(a,b) {
-              return (a.sort_index) - (b.sort_index);
+            _.each( page_object.vars.entries, function(entry) {
+              if (!page_object.vars.categories[entry.category]) {
+                page_object.vars.categories[entry.category] = [];
+              }
+              page_object.vars.categories[entry.category].push(entry);
             });
 
-          });
+            _.each(page_object.vars.categories, function(entries,key) {
+              page_object.vars.categories[key] = entries.sort(function(a,b) {
+                return a.sort_index - b.sort_index;
+              });
+            });
 
-        }
+          }
 
-        return page_object.vars;
-    }))      
-    .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
-    .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
-    .pipe(swig())
-    .pipe(gulp.dest(fs_out(collection_name)));
+          return page_object.vars;
+      }))      
+      .pipe(insert.prepend(read_file(fs_in("_partials/header.html"))))
+      .pipe(insert.append(read_file(fs_in("_partials/footer.html"))))
+      .pipe(swig())
+      .pipe(gulp.dest(fs_out(collection_name)));
+  });
 
-
-
+  // Collection entries
+  gulp.task(collection_name + "_entries", function() { 
     return gulp
       .src([fs_in(collection_name + "/entries/*.md")])
       .pipe(fem({ property: 'vars', remove : true }))
@@ -295,25 +321,29 @@ gulp.task(collection_name, function() {
       // Replace content with template itself
       .pipe(replace(/[\s\S]*/, read_file(fs_in(collection_name + "/entry_template.html"))))
       // Install pagination links
-      .pipe(data(install_pagination_links))
+      .pipe(data(function install_pagination_links(page_object) {   
+        var entry_position = null;
+        _.each(collection_entries, function(entry, i) {
+          if (entry.title == page_object.vars.title) { entry_position = i; }
+        });
+        
+        page_object.vars.next_entry = entry_position < collection_entries.length ?
+          collection_entries[entry_position + 1] : null;
+        page_object.vars.previous_entry = entry_position > 0 ?
+          collection_entries[entry_position - 1] : null; 
+      }))
 
       // Preparing special cases --
       .pipe(data(function(page_object) {
         if (collection_name == "models") {
-          model_image_accumulator.push({ 
-            title: page_object.vars.title, 
-            image: page_object.vars.image 
-          });
-
+          model_image_accumulator.push({ title: page_object.vars.title, image: page_object.vars.image });
           page_object.vars.scad_source = read_file(
             fs_in( "models/scads/" + page_object.vars.title) + ".scad"
           );
         } 
-        
         if (collection_name == "blog") {
           page_object.vars.date = date_to_string(page_object.vars.date);
         }
-
         return page_object.vars;
       }))
 
@@ -326,108 +356,38 @@ gulp.task(collection_name, function() {
         path.basename = "index";
         return path;
       }))
-      
-      .pipe(dom(external_href_blank_as_target_blank))
+      .pipe(dom(DomMutators.external_href_blank_as_target_blank))
       .pipe(gulp.dest(function(p) {
         return fs_out(collection_name);
       }));
     });
-
-
-
 });
-
-
 // Activate subsections as they would be activated through 
 // javascript -- this way there are subsections stubs (e.g. about/music/) 
 // correlated to js fade in/out router yet site can still be used JS-free
-gulp.task('site_subsections', ['about', 'interfaces'], function() {
+gulp.task('site_subsection_stubs', ['about', 'interfaces_entries'], function() {
   var pages_subsections = [
-    {
-      section_name : 'about',
-      sub_sections : ['general', 'tech', 'music', 'quotes']
-    },
-    {
-      section_name : 'interfaces',
-      sub_sections : ['linux', 'web']
-    }
+    { section_name : 'about', sub_sections : ['general', 'tech', 'music', 'quotes'] },
+    { section_name : 'interfaces', sub_sections : ['linux', 'web'] }
   ];
-
-  function activate_subsection(section) {
-    this.querySelector('.filter-by .active').setAttribute('class', '');
-    _.each(this.querySelectorAll('.filter-by button'), function(button) {
-      if (section == button.textContent.toLowerCase()) {
-        button.setAttribute('class', 'active');
-      }
-    });
-    this.querySelector('.filter-el').setAttribute('class', 'filter-el');
-    this.querySelector('.filter-el[data-category-' + section + ']')
-    .setAttribute('class', 'filter-el visible');
-    return this;
-  }
 
   _.each(pages_subsections, function(obj) {
     _.each(obj.sub_sections, function(subsection) {
       gulp
         .src(fs_out("/" + obj.section_name + "/index.html"))
-        .pipe(dom(function() { 
-          return activate_subsection.call(this, subsection); 
-        }))
+        .pipe(dom(function() { return DomMutators.activate_subsection.call(this, subsection); }))
         .pipe(gulp.dest(fs_out("/" + obj.section_name + "/" + subsection)));
     });
   });
-
 });
 
 
 
-
-gulp.task('watch', function() {
-  _.each(_.union(
-    [
-                   
-      ["_partials/*", _.union(['homepage'], site_sections)],
-      ["*", ["homepage"]],
-      ["about/*", ["about"]],
-
-
-      ["_sass/*", ["assets_folder"]],
-      ["_sass/*/*", ["assets_folder"]],
-      ["_js/*", ["assets_folder"]]
-    ],
-
-    _.map(site_sections, function(section) {
-      return [section + "/*", [section]];
-    }),
-    _.map(site_sections, function(section) {
-      return [section + "/*/*", [section]];
-    })
-
-    // Assets
-    ), function(path_tuple) {
-    gulp.watch(
-      fs_in(path_tuple[0]),
-      _.union(path_tuple[1], ["reload"])
-    );
-  });
-
-});
-gulp.task("reload", _.union(
-  site_sections, ['assets_pipeline', 'assets_folder']), function() {
-  gulp.src("*").pipe(connect.reload());
-});
-
-gulp.task('webserver', function() {
-  connect.server({
-    root: "userbound.com",
-    port: 4000,
-    livereload: true
-  });
-});
 
 gulp.task('default', _.union(
   ['clean', 'homepage', 'about'],
-  site_sections,
-  [ 'assets_pipeline', 'assets_folder', 'site_subsections'],
+  section_tasks,
+  [ 'assets_pipeline', 'assets_folder', 'site_subsection_stubs'],
   [ 'webserver', 'watch']
 ));
+
