@@ -163,8 +163,6 @@ gulp.task('about', function() {
     .pipe(swig())
     .pipe(gulp.dest(fs_out("about")));
 });
-var gulp = require('gulp');
-var util = require('util');
 
 gulp.task('assets_folder', function() {
   gulp
