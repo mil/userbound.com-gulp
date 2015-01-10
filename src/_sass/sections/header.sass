@@ -28,8 +28,12 @@ $seperator_line: 1px dotted #cfcfcf
   h1
     margin: 0
   .links
+    .link
+      display: inline-block
+      padding-right: 1rem
     a  
       +fontsize(smallest)
-      padding-right: 1rem
+      &.sub
+        font-size: 0.4rem
 
       text-decoration: italic
