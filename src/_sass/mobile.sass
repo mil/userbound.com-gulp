@@ -1,16 +1,19 @@
 @media screen and (max-width: 690px)
   body .wrapper
-    padding-top: 2rem
+    padding-top: 0
 
     main
-      margin-top: 0
+      margin-top: 7rem
 
   body .wrapper nav
-    border-bottom: 1px dotted #cfcfcf
-
+    z-index: 10000
     display: block
     float: none
-    position: static
+    position: absolute
+    left: 0
+    right: 0
+    background: #e8e8e8
+    border-bottom: 1px solid #cfcfcf
 
     margin: 0
     padding: 0
@@ -19,6 +22,13 @@
     height: 50px
     width: 100%
     text-align: right
+
+    .inner
+      margin: 0 auto
+      max-width: 550px
+      padding-left: 2.403rem
+      padding-right: 2.403rem
+      box-sizing: border-box
 
 
     a
@@ -35,4 +45,4 @@
       
       &.active
         border-left: none
-        border-bottom: 3px solid #d3ffc2
+        border-top: 3px solid #d3ffc2
