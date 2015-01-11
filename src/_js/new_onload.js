@@ -34,6 +34,50 @@ function update_head_rotation() {
   );
 }
 
+function home_animation() {
+  if (!$(".home").length) { return; }
+
+  function cb() {
+
+    
+    var n = $(".guy").parent().index();
+    while (n == $(".guy").parent().index()) {
+      n = $(".home a")[parseInt(Math.random()*4)]; 
+    }
+
+    console.log("NEW CONT", n);
+
+
+
+    $(".guy").animate({
+      'margin-top' : "50px",
+      'opacity' : 0
+    }, {
+      duration: 2000,
+      complete: function() {
+        console.log("COMP");
+
+        $(n).prepend($(".guy"));
+        $(".guy").animate({
+          'margin-top' : "-60px",
+          'opacity' : 1
+        }, 2000, function() {
+          setTimeout(cb, 5000);
+        });
+      }
+    });
+
+  }
+
+  $(".guy").css("position", "absolute");
+  $(".guy").css("margin-top", "100px");
+  $(".guy").css("display", "inline-block");
+  $(".guy").css("width", "18px");
+  //setInterval(cb, 2000);
+  cb();
+ 
+}
+
 
 function trigger_state(state) {
   window.history.pushState(null, null, state.href);
@@ -126,6 +170,7 @@ var UserboundInterface = (function(my) {
     $(".filter-by button").on("click", filter_click);
 
     update_head_rotation();
+    home_animation();
     sh_highlightDocument();
   };
 
