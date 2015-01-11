@@ -168,6 +168,9 @@ var UserboundInterface = (function(my) {
     $(window).on("scroll", update_head_rotation);
     $("a").on("click", link_click);
     $(".filter-by button").on("click", filter_click);
+    $("img[data-category-model]").on("click", function() {
+      $($(".filter-by button")[1]).click();
+    });
 
     update_head_rotation();
     home_animation();
