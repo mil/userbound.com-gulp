@@ -7,27 +7,22 @@ links:
     'Source' : http://github.com/something
     'Example Site': http://sdjfoidsfjoi.com
 ---
-## Organization and Displaying Markdown Files
-I hopped around between so many different note taking solutions as a college freshman I knew every service and application available, however none satisfied my need. Essentially what I was looking for was **a drop-dead simple way for taking textual notes**. I soon came to realize that what I needed out of a notes system was **2 interactions**:
+## Overview
+As a freshman in college, I tried just about every notes SAAS and package I could find. Meanwhile, I was teaching myself to use `vim`, and eventually convinced myself, it'd be better to just take my notes as plain-text markdown in `vim`. Taking notes in `vim` was great, but I needed a way to display my notes. I decided to write a simple little ruby script to solve my problem.
 
-The first interaction would be **taking the notes themselves**. Around the time I built Markdown Tree I had become quite accustomed to VIM's modal editing and I felt that I was a lot faster in VIM than any other interface. Thus, I needed a markup language to work with inside of VIM with. I chose Markdown as it was the most straightforward and simplistic solution I could find.
-
-The second interaction would be **displaying the notes**. I wanted a way to display the notes on multiple devices of different sizes. A web interface was the most logical solution. I knew that I could work the CSS so that my notes would look good on any device. From there it was just a matter of figuring out how to get my Markdown notes in hierarchy structure to render as HTML.
-
-<hr class="dotted" />
 
 ## Default Template
 The default template has a navigation bar at top, the content, and a footer on each page. The navigation bar looks like this:
 
-![Markdown Tree Navigation](/images/markdown-tree-nav.png)
+![Markdown Tree Navigation](/interfaces/Markdown-Tree/markdown-tree-nav.png)
 
 I also wanted to stay with a simplistic style for my content elements. Hierarchical structure within lists was important for me. Thus: 
 
-![Markdown Tree Navigation](/images/markdown-tree-list.png)
+![Markdown Tree Navigation](/interaces/Markdown-Tree/markdown-tree-list.png)
 
 As for the footer, it would be purely functional. Tell me when the page was generated and let me validate if need be.
 
-![Markdown Tree Navigation](/images/markdown-tree-footer.png)
+![Markdown Tree Navigation](/interfaces/Markdown-Tree/markdown-tree-footer.png)
 
 <hr class="dotted" />
 
