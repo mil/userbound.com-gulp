@@ -185,11 +185,13 @@ img[data-category-model]
 
 
 entry
-  span.date
+  span.date, span.subline
     display: block
-    +fontsize(smaller)
     color: #888
-
+    &.date
+      +fontsize(smaller)
+    &.subline
+      +fontsize(smallest)
 
 // Entry list types
 .entry-list

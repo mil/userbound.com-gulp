@@ -4,8 +4,8 @@ description: A program that takes an argument of 2 keys on your keyboard and map
 category: linux
 ---
 
-## A More Paradigmatic Tiler
-Look down at your keyboard and consider the grid of keys from **1** down to **Z** over to **/**, and up to **0**. That's a 4x10 grid. Imagine mapping the visual space of your screen to the keyboard. You would have 40 tiles to arrange windows. This is a script does just that. It takes any two keys on your keyboard and positions your window using the keyboard as a your interface and visual referent. 
+## Overview
+On a keyboard, the keys from **1** down to **Z** over to **/**, and up to **0** is a 4x10 grid. Imagine mapping the visual space of your screen to that grid from your keyboard. You would have 40 tiles to arrange windows. This script does just that. It takes any two keys on your keyboard and positions your window using the keyboard as a your interface and visual referent. 
 
 
 <div class='block'><table id="keyboard">

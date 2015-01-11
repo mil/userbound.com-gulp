@@ -1,13 +1,13 @@
 ---
 nav_links:
   - 
-    symbol : '&#9874;'
-    title    : things
-    url    : "/things"
-  - 
     symbol : "&#9873;"
     title    : interfaces
     url    : "/interfaces"
+  - 
+    symbol : '&#9874;'
+    title    : things
+    url    : "/things"
   -
     symbol : "&equiv;"
     title    : blog
