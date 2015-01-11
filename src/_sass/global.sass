@@ -181,17 +181,26 @@ entry
 .entry-list
 
   &.hardware
+    a
+      max-height: 170px
+      overflow: hidden
+    a:hover
+      text-decoration: none
+
     entry
-      margin-bottom: 2rem
+      clear: both
       display: block
       background-size: 100%
 
       h2
-        padding-top: 120px
+        margin-top: 120px
         padding-bottom: 20px
-        padding-left: 20px
+        margin-left: 20px
         color: white
         text-shadow: 5px 1px 8px black
+        position: absolute
+      img
+        display: block
     
 
 .captioned-image

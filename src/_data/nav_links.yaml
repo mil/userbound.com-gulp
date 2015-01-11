@@ -2,22 +2,22 @@
 nav_links:
   - 
     symbol : '&#9874;'
-    title    : Objects
-    url    : "/objects"
+    title    : things
+    url    : "/things"
   - 
     symbol : "&#9873;"
-    title    : Interfaces
+    title    : interfaces
     url    : "/interfaces"
   -
     symbol : "&equiv;"
-    title    : Blog
+    title    : blog
     url    : "/blog" 
   -
     symbol : "&boxbox;"
-    title    : Models
+    title    : models
     url    : "/models"
   -
     symbol : "?"
-    title    : About
+    title    : about
     url    : "/about"
 ---
