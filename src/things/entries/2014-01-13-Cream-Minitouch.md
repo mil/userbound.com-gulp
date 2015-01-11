@@ -2,6 +2,7 @@
 title: Cream Minitouch
 poster: Cream-Minitouch/poster.png
 description: My favorite circa 1997 ALPs keyboard outfitted with modded keycaps, switches, and springs.
+sort_index: 0
 ---
 The SIIG MiniTouch is a 75% mechnical keyboard produced circa 1991. At the time of manufacture, the MiniTouch was outfitted with either [clicky white](http://deskthority.net/wiki/Alps_SKCM_White) or [montery blue ](http://deskthority.net/wiki/SMK_Alps_mount) alp switches.  Admiring the form factor and mechanical nature of the Minitouch, I decided to pick one up for $30-some bills on eBay.  My problem with the Minitouch was that it was an order of magnitude louder than any keyboard I'd ever owned.
 

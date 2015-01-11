@@ -2,6 +2,7 @@
 title: Bitcoin Note
 poster: Bitcoin-Note/poster.jpg
 description: A bitcoin paper currency design.
+sort_index: 3
 ---
 During the my junior year at Virginia Tech I stayed in Blacksburg over the summer and took industrial design summer program to complete my Industrial Design minor. In the class, for one project we were required to create a paper currency.
 
