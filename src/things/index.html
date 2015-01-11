@@ -1,0 +1,19 @@
+<header>
+<h1>{{ title }}</h1>
+</header>
+
+
+<section class='content'>
+  <div class='entry-list hardware'>
+    {% for entry in entries %}
+
+    <a class='block' href="{{ entry.url }}">
+      <entry>
+        <h2>{{ entry.title }}</h2>
+        <img src="/things/{{ entry.poster|raw }}">
+      </entry>
+    </a>
+
+    {% endfor %}
+  </div>
+</section>
