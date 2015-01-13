@@ -39,10 +39,14 @@ html
 
 
   // Bottom margin
-  p, ol, ul, .block, p, pre, hr, .poster, blockquote
+  p, ol, ul, .block, p, pre, hr, .poster, blockquote, table
     margin-bottom: spacing(medium)
 
     display: block
+
+  ol
+    li
+      +fontsize(smaller)
 
   h1,h2,h3,h4,h5
     color: #423f37
@@ -74,6 +78,41 @@ html
     //margin: spacing(medium, 3) 0
     //&.hidden
     //  border-top: none
+
+   
+  table
+    width: 100%
+
+
+    +fontsize(smallest)
+    tr
+      margin: 10px
+      background: #e8e8e8
+      border: 1px solid #ccc
+      td,th
+        border: 1px solid #ccc
+        padding: 8px
+        margin: 5px
+        
+        &:last-child
+          width: 100%
+
+    thead
+
+      th
+        font-weight: bold
+        background: #e8e8e8
+
+
+    tbody
+      td
+        background: #fff
+        &:nth-child(2)
+          width: 100px
+
+
+
+
 
 
   // Code style
