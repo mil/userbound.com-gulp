@@ -4,8 +4,9 @@ description: Serve a hierarchy of Markdown files as a live styled site.
 category: web
 sort_index: 2
 links:
-    'Source' : http://github.com/something
-    'Example Site': http://sdjfoidsfjoi.com
+    'Source' : http://github.com/mil/markdown-tree
+    'Example Site': http://markdown-tree.bladdo.net
+    'My Notes': http://notes.bladdo.net
 ---
 ## Overview
 As a freshman in college, I tried just about every notes SAAS and package I could find. Meanwhile, I was teaching myself to use `vim`, and eventually convinced myself, it'd be better to just take my notes as plain-text markdown in `vim`. Taking notes in `vim` was great, but I needed a way to display my notes. I decided to write a simple little ruby script to solve my problem.
