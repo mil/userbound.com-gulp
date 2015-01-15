@@ -5,5 +5,6 @@ category: linux
 links:
     'Source' : http://github.com/something
     'Example Site': http://sdjfoidsfjoi.com
+sort_index: 1
 ---
 ## Organization and Displaying Markdown Files
