@@ -173,7 +173,7 @@ var UserboundInterface = (function(my) {
     });
 
     update_head_rotation();
-    home_animation();
+    //home_animation();
     sh_highlightDocument();
   };
 
