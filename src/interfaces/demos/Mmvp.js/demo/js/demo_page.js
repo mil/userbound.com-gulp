@@ -52,30 +52,23 @@ function activate_code_window(mmvp_or_todo) {
   }
 }
 $(function() {
-  $("input[type='text']").focus();
-  $(document).on("click", function() { $("input[type='text']").focus(); });
-  (function code_window_callbacks() { 
-    $("a#todo-src").on("click", function() { activate_code_window('todo'); return false; });
-    $("a#mmvp-src").on("click", function() { activate_code_window('mmvp'); return false; });
-  })();
-  (function syntax_highlighter() { SyntaxHighlighter.all(); })();
-  (function tab_switcher_callbacks() {
-    $("section#demo h3").on("click", function(ev) {
-      if (!$(ev.target).hasClass('active')) {
+  //$("input[type='text']").focus();
+  //$(document).on("click", function() { $("input[type='text']").focus(); });
+  $("section#demo h3").on("click", function(ev) {
+    if (!$(ev.target).hasClass('active')) {
 
 
-        $("section#demo h3.active").removeClass('active');
-        $("section#demo section#switcher section.active").removeClass('active');
+      $("section#demo h3.active").removeClass('active');
+      $("section#demo section#switcher section.active").removeClass('active');
 
-        var new_tab = $(ev.target).attr('class');
-        if (new_tab == 'model') {
-          $("section.model").html("<pre class='brush: js; toolbar: false;'>" + pp_model() + "</pre>");
-          SyntaxHighlighter.highlight();
-        }
-
-        $("section#demo h3." + new_tab).addClass('active');
-        $("section#demo section#switcher section." + new_tab).addClass('active');
+      var new_tab = $(ev.target).attr('class');
+      if (new_tab == 'model') {
+        $("section.model").html("<pre class='sh_javascript'>" + pp_model() + "</pre>");
+        sh_highlightDocument();
       }
-    });
-  })();
+
+      $("section#demo h3." + new_tab).addClass('active');
+      $("section#demo section#switcher section." + new_tab).addClass('active');
+    }
+  });
 });
