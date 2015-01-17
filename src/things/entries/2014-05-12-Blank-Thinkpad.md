@@ -28,5 +28,5 @@ When looking at the keyboard with fully blanked keys, you can tell it's non-stoc
 
 <div class='captioned-image'>
     <img src="/things/Blank-Thinkpad/final-product.jpg">
-    <span class='caption'>The finished laptop keyboard in all its glory.</span>
+    <span class='caption'>The finished laptop keyboard in all its glory. I've moved the keycaps from my retired X40 to the X200s I currently use.</span>
 </div>
