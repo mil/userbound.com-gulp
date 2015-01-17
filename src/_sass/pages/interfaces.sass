@@ -1,23 +1,31 @@
 #keyboard
+  table-layout: fixed
   border: 1px dotted #e8e8e8
-  background: #eee
+  background: #eeeborder-collapse
   width: 100%
+  box-sizing: border-box
 
   tr
     margin: 10px
     background: #e8e8e8
 
     td
+      overflow: hidden
       background: #fff
-      padding: 8px
+      padding: 8px 0
       text-align: center
       border: 1px dashed #ccc
       margin: 5px
+      width: 400px
+      max-width: 100%
+
 
       &.act
         font-weight: bold
       &.hit
         background: #eee
+
+      &:last-child
 
 .code-table
   width: 100%
