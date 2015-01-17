@@ -4,7 +4,7 @@ poster: Blank-Thinkpad/cover.jpg
 description: My thinkpad keyboard with sanded and polished blank keys.
 sort_index: 3
 ---
-One weekend while hacking away on my Thinkpad X40, I began to grow irritated by the lettering on my keys. I decided that I wanted blank keys on my Thinkpad ala a [Das keyboard]() or something of the sort. I search online a little bit for places to buy blank keys, then I just decided to bite the bullet and began experimenting with blanking the keys myself.
+One weekend while hacking away on my Thinkpad X40, I began to grow irritated by the lettering on my keys. I decided that I wanted blank keys on my Thinkpad ala a [Das keyboard](http://en.wikipedia.org/wiki/Das_Keyboard) or something of the sort. I search online a little bit for places to buy blank keys, then I just decided to bite the bullet and began experimenting with blanking the keys myself.
 
 The process I found to work to produce good consistent blank keys is made up of two steps. First, each key is removed from the keyboard and sanded with dull-grit sandpaper. Then a small amount of mineral oil is dabbed atop each key and spread to hide the sanding roughness.
 
