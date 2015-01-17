@@ -1,4 +1,3 @@
-var code_window = null;
 function pp_model() {
   function spaces(number) {
     var sp = "";
@@ -29,35 +28,9 @@ function pp_model() {
 
   return recurse_obj(todo_model, 0);
 }
-function spawn_code_window() {
-  var content = $("#code").html();
-  code_window = open('', 'Mmvp.js Source', 'height=720,width=720');
-  $("body", code_window.document).html("");
-  code_window.document.write(content);
-  $("body", code_window.document).attr("id", "code-window");
-  $("h3", code_window.document).on("click", function(ev) {
-    if ($(ev.target).text() == "Todo.js") {
-      activate_code_window("todo");
-    } else {
-      activate_code_window("mmvp");
-    }
-  });
-}
-function activate_code_window(mmvp_or_todo) {
-  spawn_code_window();
-  if (mmvp_or_todo === 'todo') {
-    $("body", code_window.document).addClass("todo").removeClass("mmvp");
-  } else if (mmvp_or_todo === 'mmvp') {
-    $("body", code_window.document).addClass("mmvp").removeClass("todo");
-  }
-}
 $(function() {
-  //$("input[type='text']").focus();
-  //$(document).on("click", function() { $("input[type='text']").focus(); });
   $("section#demo h3").on("click", function(ev) {
     if (!$(ev.target).hasClass('active')) {
-
-
       $("section#demo h3.active").removeClass('active');
       $("section#demo section#switcher section.active").removeClass('active');
 

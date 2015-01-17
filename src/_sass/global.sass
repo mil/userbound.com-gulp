@@ -16,10 +16,13 @@ html
 
   a 
     text-decoration: none
+    border-bottom: 1px dotted #111111
     color: #111111
     &:hover, &:hover h2
       color: black
       transition: all .2s ease-in
+      text-decoration: none !important
+      border-bottom: 1px solid #111111
 
     &.block.link
       &:hover
@@ -36,6 +39,11 @@ html
   ol 
     list-style-position: inside
     list-style-type: decimal
+
+  ul
+    list-style-position: inside
+    list-style-type: disc
+    margin-left: spacing(medium)
 
 
   // Bottom margin
