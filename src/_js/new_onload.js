@@ -45,7 +45,6 @@ function home_animation() {
       n = $(".home a")[parseInt(Math.random()*4)]; 
     }
 
-    console.log("NEW CONT", n);
 
 
 
@@ -55,7 +54,6 @@ function home_animation() {
     }, {
       duration: 2000,
       complete: function() {
-        console.log("COMP");
 
         $(n).prepend($(".guy"));
         $(".guy").animate({
@@ -85,7 +83,6 @@ function trigger_state(state) {
 }
 function push_state(state) {
   var old_section = current_active_section();
-  console.log(old_section);
   undo_stack.push({
     href: window.location.pathname,
     cb:   function() { 
@@ -153,9 +150,14 @@ function link_click(e) {
 function filter_click(e) {
   var subsection = e.target.innerHTML.toLowerCase()
 
+  // Models follows a different schema since its only subpage with stubs
+  var new_href = (window.location.href.match("/models")) ?
+    "/models/" + $("h1").text() + "/" + subsection :
+    "/" + $("h1").text().toLowerCase() + "/" + subsection; 
+
   e.preventDefault();
   push_state({
-    href: "/" + $("h1").text().toLowerCase() + "/" + subsection,
+    href: new_href,
     cb: function() { activate_subsection(subsection); },
   });  
 }

@@ -4,10 +4,10 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
   pattern: '*',
   rename: {
-    "underscore" : "_",
-    "yaml-front-matter": "yaml_extractor",
-    "gulp-front-matter" : "fem",
-    "gulp-ruby-sass" : "sass"
+    'underscore' : '_',
+    'yaml-front-matter': 'yaml_extractor',
+    'gulp-front-matter' : 'fem',
+    'gulp-ruby-sass' : 'sass'
   }
 });
 
@@ -16,7 +16,7 @@ var globals = require('./lib/globals')($);
 var util    = require('./lib/util')($, globals);
 
 // Require Tasks 
-$._.each($.fs.readdirSync("./lib/tasks"), function(module) { 
+$._.each($.fs.readdirSync('./lib/tasks'), function(module) { 
   require('./lib/tasks/' + module)(gulp, util, $, globals); 
 });
 
@@ -24,6 +24,6 @@ $._.each($.fs.readdirSync("./lib/tasks"), function(module) {
 gulp.task('default', $._.union(
   ['clean', 'homepage', 'about'],
   globals.section_tasks,
-  [ 'assets_pipeline', 'assets_folder', 'subsection_stubs'],
+  [ 'assets_pipeline', 'assets_folder', 'subsection_stubs', 'models_stubs'],
   [ 'webserver', 'watch']
 ));
