@@ -50,6 +50,13 @@ html
     margin-bottom: spacing(medium)
 
     display: block
+  h2
+    margin-bottom: spacing(medium, 0.5)
+    display: block
+
+  entry h2
+    margin-bottom: 0 
+    
 
   ol
     li
@@ -68,6 +75,11 @@ html
   h2
     +fontsize(bigger)
     color: #080d3b
+    margin-top: spacing(medium,4)
+
+  .bar h2:first-child, entry h2
+    margin-top: 0
+    
 
   b, strong
     font-weight: bold
@@ -107,10 +119,9 @@ html
         margin: 5px
         
         &:last-child
-          width: 100%
+          max-width: 100%
 
     thead
-
       th
         font-weight: bold
         background: #e8e8e8
@@ -120,8 +131,10 @@ html
       td
         width: auto
         background: #fff
-        &:nth-child(2)
-          width: 100px
+
+    td,th
+      &:nth-child(2)
+        width: 140px
 
 
 
