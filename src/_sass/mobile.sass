@@ -30,22 +30,34 @@
       box-sizing: border-box
 
 
+    .links
+      float: right
+      margin-right: 35px
+
+      .equal-span
+        display: table
+        table-layout:fixed
+        width: 100%
+        margin-left: 45px
+        a
+          display: table-cell
+   
+
+
     a
       padding-top: 13px
-      padding-left: 0.5rem
-      padding-right: 0.5rem
       padding-bottom: 13px
       display: inline-block
       text-align: center
-      border-bottom: 1px solid #e8e8e8
 
       &.guy
         border: none
         padding-top: 12px
         float: left
         padding-left: 0
+        margin-right: -45px
       
       &.active
         border-left: none
-        padding-bottom: 11px
+        padding-bottom: 10px
         border-bottom: 4px solid #d3ffc2
