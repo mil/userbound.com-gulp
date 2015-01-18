@@ -81,7 +81,7 @@ var UserboundInterface = (function(my) {
       $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
 
       // Initialize routing with Grapnel
-      ['about', 'interfaces', 'models/:section'].forEach(function(section) {
+      ['about', 'interfaces', 'models/:section'].forEach(function(section) { try {
         router.get('/' + section, function(request) {
           activate_subsection(
             $($(".filter-by button")[0]).text().toLowerCase()
@@ -91,7 +91,7 @@ var UserboundInterface = (function(my) {
           var subsection = request.params.subsection;
           activate_subsection(subsection);   
         });
-      });
+      } catch(e) { /* not a page with subsection routing */ } });
 
       // Enable syntax highlighting with sh_ classes on <pre>'s
       sh_highlightDocument();
