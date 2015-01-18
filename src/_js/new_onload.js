@@ -30,7 +30,6 @@ var UserboundInterface = (function(my) {
     return $(".filter-by button.active").text().toLowerCase();
   }
 
-
   function link_click(e) {
     if ($(e.target).attr("target") === "_blank") { return; }
 
@@ -67,12 +66,10 @@ var UserboundInterface = (function(my) {
     var subsection = e.target.innerHTML.toLowerCase();
 
     // Models follows a different schema since its only subpage with stubs
-    var new_href = (window.location.href.match("/models")) ?
+    router.navigate(window.location.href.match("/models") ?
       "/models/" + $("h1").text() + "/" + subsection :
-        "/" + $("h1").text().toLowerCase() + "/" + subsection; 
-
-    e.preventDefault();
-    router.navigate(new_href);
+      "/" + $("h1").text().toLowerCase() + "/" + subsection
+    );
   }
   
 
@@ -81,7 +78,7 @@ var UserboundInterface = (function(my) {
       // Setup click callbacks for links and subsection clicking
       $("a").on("click", link_click);
       $(".filter-by button").on("click", subsection_button_click);
-      $("img[data-category-model]").on("click", $($(".filter-by button")[1]).click);
+      $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
 
       // Initialize routing with Grapnel
       ['about', 'interfaces', 'models/:section'].forEach(function(section) {
