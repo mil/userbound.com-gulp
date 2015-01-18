@@ -9,7 +9,6 @@
 
   &.fade-out
     +animate(fadeOut 1s)
-    
 
   a
     //+animate(fadeIn 2s)
@@ -20,24 +19,22 @@
     color: #888
     margin-bottom: 0.5rem
 
+    span.symbol
+      display: inline-block
+      width: 30px
+    span.title
+      display: none
+     
+    &.active 
+      color: black
+      border-left: 3px solid #d3ffc2
+
+html:not(#home) .wrapper > nav
+  a
     &:hover:not(.active)
       font-size: 1.5rem
       +animate(sizeUp 0.3s)
 
-
-    &.active 
-      //+fontsize(biggest)
-
-      //border-left: 1px solid #cfcfcf
-      color: black
-      //font-size: 2rem
-      //&:before
-      //  display: block
-      //  content: ">"
-      //  position: absolute
-      //  margin-left: -20px
-
-      border-left: 3px solid #d3ffc2
 
 
 

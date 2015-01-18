@@ -24,7 +24,7 @@
             {% if link.active_section %}
             <a class='active' href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
             {% else %}
-              <a href="{{ link.url }}" title="{{ link.title }}">{{ link.symbol|raw }}</a>
+              <a href="{{ link.url }}" title="{{ link.title }}"><span class='symbol'>{{ link.symbol|raw }}</span><span class='title'>{{link.title|capitalize}}</span></a>
             {% endif %}
           {% endfor %}
         {% endif %}
