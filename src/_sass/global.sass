@@ -46,7 +46,7 @@ html
 
 
   // Bottom margin
-  p, ol, ul, .block, p, pre, hr, .poster, blockquote, table
+  p, ol, ul, .block, p, pre, hr, .poster, blockquote, table, .captioned-image
     margin-bottom: spacing(medium)
 
     display: block
@@ -63,8 +63,8 @@ html
       +fontsize(smaller)
 
     &.footnotes
-      padding: 0 30px
-      border-left: 1px solid #cfcfcf
+      list-style-position: outside
+      padding: 0 20px
       +fontsize(smallest)
 
   h1,h2,h3,h4,h5
