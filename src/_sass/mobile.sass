@@ -1,9 +1,12 @@
-@media screen and (max-width: 690px)
+@media screen and (max-height: 500px)
   html#home
     height: 100%
     body
       display: table
+      max-width: 550px
+      width: 100%
       height: 100%
+      margin: 0 auto
       .wrapper
         padding-top: 0
         display: table-cell
@@ -14,6 +17,8 @@
     main
       margin-top: 7rem
 
+@media screen and (max-width: 690px)
+  
   html:not(#home) body .wrapper nav
     z-index: 10000
     display: block
