@@ -6,3 +6,6 @@
 	path = src/interfaces/demos/Mil-Edit/2
 	url = git://github.com/mil/mil-edit-2.git
 
+[submodule "src/interfaces/demos/Asciiw.com/site"]
+	path = src/interfaces/demos/Asciiw.com/site
+	url = git://github.com/mil/asciiw.com.git
