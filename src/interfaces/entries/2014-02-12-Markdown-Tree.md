@@ -8,12 +8,14 @@ links:
     'Example Site': http://markdown-tree.bladdo.net
     'My Notes': http://notes.bladdo.net
 ---
-## Overview
+## Abstract
 Markdown Tree is a small ruby script that serves a heirarchy of markdown files as a live styled site. 
 
 As a freshman in college, I tried just about every notes SAAS and package I could find. Meanwhile, I was teaching myself to use `vim`, and eventually convinced myself, it'd be better to just take my notes as plain-text markdown in `vim`. Taking notes in `vim` was great, but I needed a way to display my notes. I decided to write a simple little ruby script to solve my problem.
 
-## Markdownify a Folder
+## Architecture
+Sinatra was an quite ideal solution. Sinatra is a ruby library that gives you a simple method of creating web applications. Also Red Carpet, included with Sinatra, gave me a way to render Markdown! All I needed was the logic of the application and it was done. All said and done the whole thing (the ruby/logic) came out only 70 lines!
+
 <div id="markdown-tree">
     <div id="path">
         <a href="#">Top Level</a>
@@ -26,10 +28,3 @@ As a freshman in college, I tried just about every notes SAAS and package I coul
         </ul>
     </div>
 </div>
-
-## Technical Setup
-I used Sinatra to set up the 
-
-Sinatra was an quite ideal solution. Sinatra is a ruby library that gives you a simple method of creating web applications. Also Red Carpet, included with Sinatra, gave me a way to render Markdown! All I needed was the logic of the application and it was done. All said and done the whole thing (the ruby/logic) came out only 70 lines!
-
-Feel free to [grab the source on GitHub](https://github.com/mil/markdown-tree) for yourself.

@@ -30,6 +30,26 @@ var UserboundInterface = (function(my) {
     return $(".filter-by button.active").text().toLowerCase();
   }
 
+  function asciiw_demo() {
+    if ($("pre.ascii-frames").length == 0 || typeof slides == "undefined") {
+      return;
+    }
+    var condition = 'raining';
+    window.slide_count = 0;
+    setInterval(function() {
+      var frame = slides[condition]['frames'][window.slide_count].join("\n");
+
+      window.slide_count = 
+        (window.slide_count == slides[condition]['frames'].length - 1) ?
+        0 : window.slide_count + 1;
+
+      $("pre.ascii-frames").html(frame);
+
+    }, slides[condition]['interval']);
+    $("pre.ascii-frames")
+
+  }
+
   function link_click(e) {
     if ($(e.target).attr("target") === "_blank") { return; }
 
@@ -95,6 +115,9 @@ var UserboundInterface = (function(my) {
 
       // Enable syntax highlighting with sh_ classes on <pre>'s
       sh_highlightDocument();
+
+      // Asciiw-demo
+      asciiw_demo();
     }
   };
 })(UserboundInterface || {});
