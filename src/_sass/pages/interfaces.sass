@@ -1,3 +1,37 @@
+.interface
+  +fontsize(smallest)
+  margin-bottom: spacing(medium)    
+
+
+
+.status
+  cursor: help
+  $circle_size: 10px
+  width: $circle_size
+  height: $circle_size
+  border-radius: 50%
+  display: inline-block
+  content: ""
+    
+  &.production
+    background: #9CFF97
+  &.experimental
+    background: #FFC98D
+
+body .bar .interface-hero
+  padding: 5%
+  width: 100%
+  box-sizing: border-box
+  margin: 0 auto
+  margin-top: spacing(medium, 1)
+  margin-bottom: spacing(medium, 1)
+
+  & + p
+    &::first-letter
+      +fontsize(biggest)
+
+
+// Individual Pages
 .ascii-frames
   text-align: center
 

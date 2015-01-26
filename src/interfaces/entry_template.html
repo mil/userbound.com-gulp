@@ -1,7 +1,13 @@
 <header>
-  <h1>{{ title }}</h1>
-  {{ description|raw }}
-
+  <h1>
+    {{ title }}
+    {% if status == 'production' %}
+    <span class='status production'></span>
+    {% else %}
+    <span class='status experimental'></span>
+    {% endif %}
+  </h1>
+  <span class='description'>{{ description|raw }}</span>
   <div class='links'>
     {% for title,url in links %}
       <div class="link">

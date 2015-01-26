@@ -1,6 +1,11 @@
 $seperator_line: 1px dotted #cfcfcf
 $root_font: Libre Baskerville
 
+::-moz-selection
+  background: #ffffcc
+::selection
+  background: #ffffcc
+
 html
   //background: #f9fddf
   font-size: 16px
@@ -48,13 +53,13 @@ html
     margin: 0 spacing(medium,2)
 
 
-  .filter-el
-    margin-bottom: spacing(medium)
   // Bottom margin
   p, ol, ul, .block, p, pre, hr, .poster, blockquote, table, .captioned-image
     margin-bottom: spacing(medium)
-
     display: block
+  .filter-el
+    margin-bottom: spacing(medium)
+
   h2
     margin-bottom: spacing(medium, 0.5)
     display: block
@@ -62,7 +67,6 @@ html
   entry h2
     margin-bottom: 0 
     
-
   ol
     li
       +fontsize(smaller)
@@ -107,18 +111,10 @@ html
     margin-top: spacing(medium,4)
     text-align: left
     border-top: $seperator_line
-
-
-
-    //margin: spacing(medium, 3) 0
-    //&.hidden
-    //  border-top: none
-
    
+
   table
     width: 100%
-
-
     +fontsize(smallest)
     tr
       margin: 10px
@@ -146,11 +142,6 @@ html
     td,th
       &:nth-child(2)
         width: 140px
-
-
-
-
-
 
   // Code style
   code, pre
@@ -201,11 +192,8 @@ html
 
   nav, main
     display: block
-           
-  
+            
   main
-    transition: all 1s ease-in-out
-
     transition: all 0.5s ease-in-out
     overflow: hidden
     position: relative
@@ -225,31 +213,6 @@ html
         text-align: right
 
 
-img[data-category-model]
-  cursor: pointer
-
-.model
-  overflow: hidden
-  position: relative
-  .source
-    display: block
-    text-align: right
-  img
-    width: 100%
-  code
-    position: absolute
-    display: block
-    font-size: 0.8em
-    white-space: pre-wrap
-    padding: 0 30px
-    border: 1px dashed #cfcfcf
-    &.show
-      display: block
-
-
-.filter-el h2
-  &:first-child
-    margin-top: 0
 
 
 .filter-el
@@ -257,17 +220,15 @@ img[data-category-model]
   display: none
   transition: all 1s ease-in-out
 
+  h2
+    &:first-child
+      margin-top: 0
+
+
   &.visible
     transition: all 1s ease-in-out
     display: block
     opacity: 1
-
-
-
-.interface
-  +fontsize(smallest)
-  margin-bottom: spacing(medium)    
-
 
 
 
@@ -282,7 +243,6 @@ entry
 
 // Entry list types
 .entry-list
-
   &.hardware
     a
       max-height: 170px
@@ -306,63 +266,3 @@ entry
         position: absolute
       img
         display: block
-    
-
-.captioned-image
-  text-align: center
-
-  img, .caption
-    width: 80%
-    display: block
-    margin: 0 auto
-
-  img 
-    margin-bottom: 0
-    margin-top: spacing(medium,2)
-  
-  .caption
-    margin-top: spacing(smallest)
-    margin-bottom: 3rem
-    +fontsize(smallest)
-
-section.models.content
-  .model-preview
-    height: 120px
-    overflow: hidden
-    display: block
-    border-bottom: 1px dashed #cfcfcf
-
-    &:last-child
-      border-bottom: none
-    img
-      margin-top: -20px
-
-
-.window-chrome
-  margin-top: 3rem
-  img 
-    border: 1px solid #cfcfcf
-    display: block
-    border-radius: 3px
-    border-top-left-radius: 0
-    border-top-right-radius: 0
-    border-top: none
-    margin-top: 0
-
-  &::before
-    border-top-left-radius: 4px
-    border-top-right-radius: 4px
-    display: block
-    height: 20px
-    width: 80%
-    margin: 0 auto
-    content: " "
-    background: #ffffff
-    border: 1px solid #cfcfcf
-    border-bottom: 1px dotted#cfcfcf
-
-
-::-moz-selection
-  background: #ffffcc
-::selection
-  background: #ffffcc

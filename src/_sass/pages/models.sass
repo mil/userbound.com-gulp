@@ -1,0 +1,34 @@
+section.models.content
+  .model-preview
+    height: 120px
+    overflow: hidden
+    display: block
+    border-bottom: 1px dashed #cfcfcf
+
+    &:last-child
+      border-bottom: none
+    img
+      margin-top: -20px
+
+
+img[data-category-model]
+  cursor: pointer
+
+
+.model
+  overflow: hidden
+  position: relative
+  .source
+    display: block
+    text-align: right
+  img
+    width: 100%
+  code
+    position: absolute
+    display: block
+    font-size: 0.8em
+    white-space: pre-wrap
+    padding: 0 30px
+    border: 1px dashed #cfcfcf
+    &.show
+      display: block
