@@ -13,7 +13,7 @@ var $ = require('gulp-load-plugins')({
 
 // Require Globals (vars) and Utils (fns)
 var globals = require('./lib/globals')($);
-var util    = require('./lib/util')($, globals);
+var util = require('./lib/util')($, globals);
 
 // Require Tasks 
 $._.each($.fs.readdirSync('./lib/tasks'), function(module) { 
