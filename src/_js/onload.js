@@ -50,6 +50,9 @@ var UserboundInterface = (function(my) {
 
   }
 
+  function link_hover(e)   { $(".guy .head").addClass("hovering"); }
+  function link_unhover(e) { $(".guy .head").removeClass("hovering"); }
+
   function link_click(e) {
     if ($(e.target).attr("target") === "_blank") { return; }
     if ($(e.target).text().match(/^mailto\:/)) { return; }
@@ -98,6 +101,8 @@ var UserboundInterface = (function(my) {
     init: function() {
       // Setup click callbacks for links and subsection clicking
       $("a").on("click", link_click);
+      $("a").on("mouseover", link_hover);
+      $("a").on("mouseout", link_unhover);
       $(".filter-by button").on("click", subsection_button_click);
       $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
 
