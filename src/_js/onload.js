@@ -1,113 +1,127 @@
-/* For Front-End Section */
-function get_pager_position() {
-  if (window.location.hash == "") { return 0; }
-  var position = parseInt(window.location.href.split("#")[1]);
-  if (isNaN(position)) { return 0; }
+var UserboundInterface = (function(my) {
+  var router = new Grapnel({ pushState: true });
 
-  var pager_end = $(".front-end").children().length - 1;
-  if (position >= pager_end) { 
-    return pager_end; 
-  } else if (position <= 0) {
-    return 0;
-  }
+  function activate_subsection(subsection) {
+    if (current_active_section() == subsection) { return; }
 
-  return position;
-}
+    var active_subsection_el  = $(".filter-el.visible");
+    var active_subsection_btn = $(".filter-by button");
+    var out_els = [], in_els = [];
 
-function fade_in_element(new_element) {
-  var current_active = $(".split.active");
-  if ($(new_element).length == 0) { return;  }
 
-  if (current_active.length == 0) {
-      $(new_element).addClass('active');
-      $(new_element).animate({'opacity' : '1'}, 500, function() {
-      });
-  } else {
-    $(current_active).animate({'opacity' : '0'}, 500, function() {
-      $(new_element).addClass('active');
-      $(current_active).removeClass('active');
+    active_subsection_btn.removeClass("active");
+    $(".filter-by button").each(function(i, el) {
+      if ($(el).text().toLowerCase() == subsection) {
+        $(el).addClass("active");
+      }
+    });
 
-      $(new_element).animate({'opacity' : '1'}, 500, function() {
-      });
+
+    active_subsection_el.animate({ opacity: 0 }, function() {
+      var new_subsection_el = 
+        $(".filter-el[data-category-" + subsection + "]");
+      active_subsection_el.removeClass("visible");
+      new_subsection_el.css("opacity", 0).addClass("visible");
+      new_subsection_el.animate({ opacity: 1 }, function() {});
     });
   }
 
-  $("section.bar.front-end .split").each(function(i, el) {
-    if (el == new_element || el == new_element[0]) { 
-      window.location.hash = i; 
+  function current_active_section() {
+    return $(".filter-by button.active").text().toLowerCase();
+  }
+
+  function asciiw_demo() {
+    if ($("pre.ascii-frames").length == 0 || typeof slides == "undefined") {
+      return;
     }
-  });
+    var condition = 'raining';
+    window.slide_count = 0;
+    setInterval(function() {
+      var frame = slides[condition]['frames'][window.slide_count].join("\n");
 
+      window.slide_count = 
+        (window.slide_count == slides[condition]['frames'].length - 1) ?
+        0 : window.slide_count + 1;
 
-  $(".pager button.next.hidden").removeClass("hidden");
-  if ($(new_element).next().length == 0) {
-    $(".pager button.next").addClass("hidden");
+      $("pre.ascii-frames").html(frame);
+
+    }, slides[condition]['interval']);
+    $("pre.ascii-frames")
+
   }
 
-  $(".pager button.previous.hidden").removeClass("hidden");
-  if ($(new_element).prev().length == 0) {
-    $(".pager button.previous").addClass("hidden");
+  function link_click(e) {
+    if ($(e.target).attr("target") === "_blank") { return; }
+    if ($(e.target).match(/^mailto\:/)) { return; }
+
+    var scroll_speed_ms  = 100; 
+    var css_animation_ms = 1000;
+    var target_link      = $(e.target).is("a") ? $(e.target) : $(e.target).closest("a");
+    var load_new_page_fn = function() { 
+      window.location = $(target_link).attr('href'); 
+    };
+
+    e.preventDefault();
+    smooth_scroll($(window), 0, scroll_speed_ms);
+    setTimeout(function() {
+      $("nav").addClass('fade-out');
+      $("main").addClass('fade-up');
+      setTimeout(load_new_page_fn, css_animation_ms);
+    }, scroll_speed_ms);
   }
+ 
+  function smooth_scroll(el, to, duration) {
+    // adapted from: http://austinpray.com/blog/zepto-js-smooth-vertical-scrolling/ 
+    if (duration < 0) { return; }
+    var difference = to - $(window).scrollTop();
+    var perTick = difference / duration * 10;
+    this.scrollToTimerCache = setTimeout(function() {
+      if (!isNaN(parseInt(perTick, 10))) {
+        window.scrollTo(0, $(window).scrollTop() + perTick);
+        smooth_scroll(el, to, duration - 10);
+      }
+    }.bind(this), 10);
+  }  
 
+  function subsection_button_click(e) {
+    var subsection = e.target.innerHTML.toLowerCase();
 
-
-  $(".fade-in").animate({'opacity': '1'}, 800);
-
-}
-
-function front_end_pager() {
-  fade_in_element(
-    $("section.bar.front-end").children()[get_pager_position()]
-  );
-    
-  // Page Next
-  $(".pager .next").on("click", function() {
-    if ($(".pager .next").hasClass("hidden")) { return; }
-    var current = $(".split.active");
-    var next_item = $(current).next();
-    fade_in_element(next_item);
-
-  });
-
-
-  // Page Previous
-  $(".pager .previous").on("click", function() {
-    if ($(".pager .previous").hasClass("hidden")) { return; }
-    var current = $(".split.active");
-    var next_item = $(current).prev();
-    fade_in_element(next_item);
-  });
-}
-
-/* For Interfaces Section */
-function interfaces_sub_nav() {
-  $("nav.subnav a").on("click", function(e) {
-    var target_section = ".shortlist#" + $(e.target).text().replace(" ", "-");
-   if ($(".shortlist.active").is(target_section)) { return; }
-
-    $(".subnav a.active").removeClass("active");
-    $(e.target).addClass("active");
-
-
-    $(".shortlist.active").animate({'opacity' : '0'}, 500, function() {
-      $(".shortlist.active").removeClass('active');
-      $(target_section).addClass('active');
-
-      $(target_section).animate({'opacity' : '1'}, 500, function() {
-      });
-    });
-  });
-}
-
-
-
-$(function($) {
-  if ($(".front-end").length > 0) {
-    front_end_pager();
-  } else {
-    $(".fade-in").animate({'opacity': '1'}, 800);
+    // Models follows a different schema since its only subpage with stubs
+    router.navigate(window.location.href.match("/models") ?
+      "/models/" + $("h1").text() + "/" + subsection :
+      "/" + $("h1").text().toLowerCase() + "/" + subsection
+    );
   }
-  if ($("nav.subnav").length > 0 ) {
-    interfaces_sub_nav();
-  }
-});
+  
+
+  return { 
+    init: function() {
+      // Setup click callbacks for links and subsection clicking
+      $("a").on("click", link_click);
+      $(".filter-by button").on("click", subsection_button_click);
+      $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
+
+      // Initialize routing with Grapnel
+      ['about', 'interfaces', 'models/:section'].forEach(function(section) { try {
+        router.get('/' + section, function(request) {
+          activate_subsection(
+            $($(".filter-by button")[0]).text().toLowerCase()
+          );   
+        });
+        router.get('/' + section + '/:subsection', function(request) {
+          var subsection = request.params.subsection;
+          activate_subsection(subsection);   
+        });
+      } catch(e) { /* not a page with subsection routing */ } });
+
+      // Enable syntax highlighting with sh_ classes on <pre>'s
+      sh_highlightDocument();
+
+      // Asciiw-demo
+      asciiw_demo();
+    }
+  };
+})(UserboundInterface || {});
+
+// Page load
+$(UserboundInterface.init);
