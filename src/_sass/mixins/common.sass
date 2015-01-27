@@ -2,3 +2,12 @@
   box-sizing: #{$type}
   -moz-box-sizing: #{$type}  
   -webkit-box-sizing: #{$type}
+
+
+@mixin square($size)
+  width: $size
+  height: $size
+
+@mixin circle($size)
+  +square($size)
+  border-radius: ($size/2)

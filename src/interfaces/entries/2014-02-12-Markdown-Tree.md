@@ -12,12 +12,9 @@ links:
 
 
 <div class='interface-hero'>
-<div class='window-chrome'><img src="/interfaces/Asciiw/screenshot.png"></div>
+<div class='window-chrome'><img src="/interfaces/Markdown-Tree/screenshot.png"></div>
 <span class='caption'></span>
 </div>
-
-Serve a hierarchy of Markdown files as a live styled site.
-
 
 Markdown Tree is a small ruby script that serves a heirarchy of markdown files as a live styled site. 
 

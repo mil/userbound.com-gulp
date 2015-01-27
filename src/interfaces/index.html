@@ -20,7 +20,12 @@
       {% for entry in entries %}
 
       <a class='block link interface' href="{{ entry.url }}"><entry>
-        <h2>{{ entry.title }}</h2>
+        <h2>{{ entry.title }}
+    {% if entry.status == 'production' %}
+    <span class='status production'></span>
+    {% else %}
+    <span class='status experimental'></span>
+    {% endif %}</h2>
         <span class='subline'>{{ entry.description|raw }}</span>
       </entry></a>
 

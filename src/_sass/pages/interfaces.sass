@@ -3,6 +3,71 @@
   margin-bottom: spacing(medium)    
 
 
+ 
+.status
+  cursor: help
+  border-radius: 50%
+  display: inline-block
+  content: ""
+    
+  &.production
+    background: #9CFF97
+  &.experimental
+    background: #FFC98D
+
+h1 .status
+  +circle(6px)
+
+// Interface individual pages styling
+h2 .status
+  +circle(3px)
+
+body .bar .interface-hero
+  width: 100%
+  box-sizing: border-box
+  margin: 0 auto
+  margin-top: spacing(medium, 2)
+  margin-bottom: spacing(medium, 2)
+
+  & + p
+    &::first-letter
+      +fontsize(biggest)
+
+p.big-first
+  &::first-letter
+    +fontsize(biggest)
+
+
+.code-table
+  width: 100%
+
+
+  +fontsize(smallest)
+  tr
+    margin: 10px
+    background: #e8e8e8
+    &:first-child
+      td
+        font-weight: bold
+        background: #e8e8e8
+
+    td
+      &:nth-child(2)
+        width: 100px
+
+
+
+      background: #fff
+      padding: 8px
+      border: 1px solid #ccc
+      margin: 5px
+// Individual Pages
+
+
+
+//
+//
+// > Interfaces/Mmvp.js
 body section#demo
   border: 1px dotted #cfcfcf
   border-radius: 3px
@@ -21,39 +86,21 @@ body section#demo
 
   pre
     border: none
+// < Interfaces/Mmvp.js
 
 
-
-.status
-  cursor: help
-  $circle_size: 10px
-  width: $circle_size
-  height: $circle_size
-  border-radius: 50%
-  display: inline-block
-  content: ""
-    
-  &.production
-    background: #9CFF97
-  &.experimental
-    background: #FFC98D
-
-body .bar .interface-hero
-  width: 100%
-  box-sizing: border-box
-  margin: 0 auto
-  margin-top: spacing(medium, 2)
-  margin-bottom: spacing(medium, 2)
-
-  & + p
-    &::first-letter
-      +fontsize(biggest)
-
-
-// Individual Pages
+//
+//
+// > Interfaces/Asciiw
+body section#demo
 .ascii-frames
   text-align: center
+// < Interfaces/Asciiw
 
+
+//
+//
+// > Interfaces/Markdown Tree
 #markdown-tree
   a
     border-bottom: none
@@ -109,14 +156,24 @@ body .bar .interface-hero
 
         a
           color: black
+// < Interfaces/Markdown Tree
     
     
 
+//
+//
+// > Interfaces/Mil Edit
 #editor
   box-sizing: border-box
   ul li
     list-style-type: none
+// < Interfaces/Mil Edit
 
+
+
+//
+//
+// > Interfaces/Keyboard Tiler
 #keyboard
   table-layout: fixed
   border: 1px dotted #e8e8e8
@@ -145,31 +202,4 @@ body .bar .interface-hero
         background: #eee
 
       &:last-child
-
-.code-table
-  width: 100%
-
-
-  +fontsize(smallest)
-  tr
-    margin: 10px
-    background: #e8e8e8
-    &:first-child
-      td
-        font-weight: bold
-        background: #e8e8e8
-
-    td
-      &:nth-child(2)
-        width: 100px
-
-
-
-      background: #fff
-      padding: 8px
-      border: 1px solid #ccc
-      margin: 5px
-
-
-
-
+// < Interfaces/Keyboard Tiler
