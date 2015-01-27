@@ -3,6 +3,26 @@
   margin-bottom: spacing(medium)    
 
 
+body section#demo
+  border: 1px dotted #cfcfcf
+  border-radius: 3px
+
+  nav
+    padding: 14px 0
+
+    h3
+      padding: 0 10px
+
+      &.active
+        &::before
+          top: 26px
+        &::after
+          bottom: -14px
+
+  pre
+    border: none
+
+
 
 .status
   cursor: help
@@ -19,12 +39,11 @@
     background: #FFC98D
 
 body .bar .interface-hero
-  padding: 5%
   width: 100%
   box-sizing: border-box
   margin: 0 auto
-  margin-top: spacing(medium, 1)
-  margin-bottom: spacing(medium, 1)
+  margin-top: spacing(medium, 2)
+  margin-bottom: spacing(medium, 2)
 
   & + p
     &::first-letter
