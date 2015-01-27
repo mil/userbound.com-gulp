@@ -4,10 +4,10 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
   pattern: '*',
   rename: {
-    'underscore' : '_',
+    'underscore': '_',
     'yaml-front-matter': 'yaml_extractor',
-    'gulp-front-matter' : 'fem',
-    'gulp-ruby-sass' : 'sass'
+    'gulp-front-matter': 'fem',
+    'gulp-ruby-sass': 'sass'
   }
 });
 
