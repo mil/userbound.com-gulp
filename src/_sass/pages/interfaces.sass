@@ -6,7 +6,6 @@
  
 .status
   cursor: help
-  border-radius: 50%
   display: inline-block
   content: ""
     
@@ -16,11 +15,11 @@
     background: #FFC98D
 
 h1 .status
-  +circle(6px)
+  +square(6px)
 
 // Interface individual pages styling
 h2 .status
-  +circle(3px)
+  +square(3px)
 
 body .bar .interface-hero
   width: 100%
@@ -28,14 +27,12 @@ body .bar .interface-hero
   margin: 0 auto
   margin-top: spacing(medium, 2)
   margin-bottom: spacing(medium, 2)
+  padding-right: 2px
 
-  & + p
-    &::first-letter
+html
+  section.content .bar p
+    &:first-child::first-letter
       +fontsize(biggest)
-
-p.big-first
-  &::first-letter
-    +fontsize(biggest)
 
 
 .code-table

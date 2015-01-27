@@ -9,14 +9,7 @@ links:
     'Example Site': http://markdown-tree.bladdo.net
     'My Notes': http://notes.bladdo.net
 ---
-
-
-<div class='interface-hero'>
-<div class='window-chrome'><img src="/interfaces/Markdown-Tree/screenshot.png"></div>
-<span class='caption'></span>
-</div>
-
-Markdown Tree is a small ruby script that serves a heirarchy of markdown files as a live styled site. 
+<p class='big-first'>Markdown Tree is a small ruby script that serves a heirarchy of markdown files as a live styled site.</p>
 
 As a freshman in college, I tried just about every notes SAAS and package I could find. Meanwhile, I was teaching myself to use `vim`, and eventually convinced myself, it'd be better to just take my notes as plain-text markdown in `vim`. Taking notes in `vim` was great, but I needed a way to display my notes. I decided to write a simple little ruby script to solve my problem.
 
