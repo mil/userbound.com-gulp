@@ -52,6 +52,7 @@ var UserboundInterface = (function(my) {
 
   function link_click(e) {
     if ($(e.target).attr("target") === "_blank") { return; }
+    if ($(e.target).match(/^mailto\:/)) { return; }
 
     var scroll_speed_ms  = 100; 
     var css_animation_ms = 1000;
