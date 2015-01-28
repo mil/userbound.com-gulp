@@ -40,8 +40,14 @@ html
         span.date
           //display: block
       
-  sub
+  sub, sup
     +fontsize(smallest)
+
+  sup
+    vertical-align: top
+    color: black
+    padding: 0 2px
+
 
   ol 
     list-style-position: inside
@@ -72,6 +78,18 @@ html
       +fontsize(smaller)
 
     &.footnotes
+      &:before
+        display: block
+        max-width: 100px
+        width: 100%
+        height: 0
+        border-top: 1px dotted #cfcfcf
+        content: ""
+        margin: spacing(medium, 3) 0
+        margin-bottom: spacing(medium, 1) 
+        margin-left: -20px
+
+
       list-style-position: outside
       padding: 0 20px
       +fontsize(smallest)
