@@ -8,12 +8,14 @@
       height: 100%
       margin: 0 auto
       .wrapper
+        overflow
         padding-top: 0
         display: table-cell
         vertical-align: middle
 
 @media screen and (max-width: 690px)
   html:not(#home) body .wrapper
+    overflow: hidden
     padding-top: 0
 
     main
