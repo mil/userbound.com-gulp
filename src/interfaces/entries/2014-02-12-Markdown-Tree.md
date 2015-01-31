@@ -9,18 +9,17 @@ links:
     'Example Site': http://markdown-tree.bladdo.net
     'My Notes': http://notes.bladdo.net
 ---
-Markdown Tree is a small ruby script that serves a heirarchy of markdown files as a live styled site. This is good if you maintain a folder with a bunch of markdown files to view in-browser.
 
-I developed this as a college freshman. After trying just about every notes software I could find, I got sick, bit the bullet and decided to take my notes in plain-text `markdown` using `vim`.  Giving myself a simple `yaml` configuration file, it let you specify, the folder with your markdown files and a Liquid template<sup>1</sup>.
+Markdown Tree is a small ruby script that serves a heirarchy of markdown files as a live styled site. This is good for browsing a folder of markdown files you maintain in the browser.
 
-<pre class='sh_ruby'>
-site-title: Markdown Tree Example Site 
-template-folder: template
-hierarchy-folder: content 
-markdown-extension: md
-</pre>
+<div class='captioned-image'>
+<img src="/interfaces/Markdown-Tree/rep.png">
+<span class='caption'>A representation of what markdown tree does for you. Converts a (nested) folder of markdown files into a live styled site.</span>
+</div>
 
-Given a [folder of markdown files](), you get a minimal live styled site with a header navigation allows you to traverse the folders and files looking like:
+As a college freshman, after trying just about every notes software I could find, I bit the bullet and decided to take my notes in plain-text `markdown` using `vim`. 
+
+I decided I needed a to review my notes in a prettier format than the within the terminal where I took the notes. So I made [Markdown Tree]().  Feeding it a [folder of markdown files](), yields a minimal live styled site with a navigation header allowing you to traverse the tree:
 
 <div id="markdown-tree" class='interface-demo'>
     <div id="path">

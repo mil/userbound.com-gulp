@@ -9,7 +9,7 @@
 
     <a class='block listing-entry' href="{{ entry.url }}">
       <h2>{{ entry.title }}</h2>
-      <img src="/things/{{ entry.poster|raw }}">
+      <img src="/things/{{ entry.poster|raw }}" alt="{{ entry.title }}">
     </a>
 
     {% endfor %}
