@@ -26,9 +26,16 @@
         {% if title != "homepage-ignores-for-now" %}
           {% for link in nav_links %}
             {% if link.active_section %}
-            <a class='active' href="{{ link.url }}" title="{{ link.title }}"><span class='symbol'>{{ link.symbol|raw }}</span></a>
+            <a class='active' href="{{ link.url }}" title="{{ link.title }}"><span class='symbol'>
+
+              <svg class="icon-{{ link.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use></svg>
+            </span></a>
             {% else %}
-              <a href="{{ link.url }}" title="{{ link.title }}"><span class='symbol'>{{ link.symbol|raw }}</span><span class='title'>{{link.title|capitalize}}</span></a>
+              <a href="{{ link.url }}" title="{{ link.title }}">
+                <span class='symbol'>
+        <svg class="icon-{{ link.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use></svg>
+</span>
+<span class='title'>{{link.title|capitalize}}</span></a>
             {% endif %}
           {% endfor %}
         {% endif %}

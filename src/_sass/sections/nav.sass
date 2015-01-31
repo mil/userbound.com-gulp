@@ -18,17 +18,27 @@
     display: block
     clear: both
     color: #888
-    margin-bottom: 0.5rem
+    margin-bottom: 10px
 
     span.symbol
       display: inline-block
       width: 30px
+      height: 20px
+      line-height: 20px
+
+      [class^="icon-"], [class*=" icon-"] 
+        $size: 16px
+        height: $size
+        width: $size
+        display: inline-block
+        fill: currentColor
+
     span.title
       display: none
      
     &.active 
       color: black
-      border-left: 3px solid #d3ffc2
+      border-left: 1px solid #d3ffc2
 
 html:not(#home) .wrapper > nav
   a

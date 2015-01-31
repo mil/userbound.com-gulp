@@ -1,23 +1,23 @@
 ---
 nav_links:
   - 
-    symbol : "&#9873;"
+    symbol : "database"
     title    : interfaces
     url    : "/interfaces"
   - 
-    symbol : '&#9874;'
+    symbol : 'crop'
     title    : things
     url    : "/things"
   -
-    symbol : "&equiv;"
+    symbol : "three-bars"
     title    : blog
     url    : "/blog" 
   -
-    symbol : "&boxbox;"
+    symbol : "paintcan"
     title    : models
     url    : "/models"
   -
-    symbol : "?"
+    symbol : "person"
     title    : about
     url    : "/about"
 ---
