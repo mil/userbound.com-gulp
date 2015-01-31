@@ -60,11 +60,16 @@ html
 
 
   // Bottom margin
-  p, ol, ul, .block, p, pre, hr, .poster, blockquote, table, .captioned-image
+  p, ol, ul, .block, p, hr, .poster, blockquote
     margin-bottom: spacing(medium)
     display: block
   .filter-el
     margin-bottom: spacing(medium)
+
+
+  // Double bottom margain
+  table, pre, .captioned-image, .interface-demo
+    margin: spacing(medium, 2) 0
 
   h2
     margin-bottom: spacing(medium, 0.5)
