@@ -6,9 +6,7 @@
   {% for entry in entries %}
 
   <a class='model-preview' href="{{ entry.url }}">
-  <entry>
-    <img src="{{ entry.url }}.png">
-    </entry>
+    <img src="{{ entry.url }}.png" alt="{{ entry.title }}">
   </a>
 
   {% endfor %}

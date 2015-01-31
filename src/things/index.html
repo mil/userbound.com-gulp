@@ -7,11 +7,9 @@
   <div class='entry-list hardware'>
     {% for entry in entries %}
 
-    <a class='block' href="{{ entry.url }}">
-      <entry>
-        <h2>{{ entry.title }}</h2>
-        <img src="/things/{{ entry.poster|raw }}">
-      </entry>
+    <a class='block listing-entry' href="{{ entry.url }}">
+      <h2>{{ entry.title }}</h2>
+      <img src="/things/{{ entry.poster|raw }}">
     </a>
 
     {% endfor %}

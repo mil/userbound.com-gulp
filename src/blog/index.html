@@ -4,14 +4,11 @@
 
 <section class='content'>
   {% for entry in entries %}
-
-  <a class='block link' href="{{ entry.url }}">
-  <entry>
+  <a class='block listing-entry link' href="{{ entry.url }}">
     <h2>{{ entry.title }}</h2>
     <span class='date'>
       {{ entry.date }}
     </span>
-    </entry>
   </a>
   {% endfor %}
 </section>

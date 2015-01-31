@@ -19,7 +19,7 @@
 
       {% for entry in entries %}
 
-      <a class='block link interface' href="{{ entry.url }}"><entry>
+      <a class='block link listing-entry interface' href="{{ entry.url }}">
         <h2>{{ entry.title }}
     {% if entry.status == 'production' %}
     <span class='status production'></span>
@@ -27,7 +27,7 @@
     <span class='status experimental'></span>
     {% endif %}</h2>
         <span class='subline'>{{ entry.description|raw }}</span>
-      </entry></a>
+    </a>
 
     {% endfor %}</div>
 
