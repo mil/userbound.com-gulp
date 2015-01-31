@@ -6,7 +6,7 @@ status: 'production'
 links:
     Source: https://github.com/mil/keyboard-tiler
     Python Port: https://github.com/ShadowKyogre/keyboard-tiler
-sort_index: 2
+sort_index: 101
 ---
 
 
