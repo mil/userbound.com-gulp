@@ -13,11 +13,12 @@ var $ = require('gulp-load-plugins')({
 
 // Require Globals (vars) and Utils (fns)
 var globals = require('./lib/globals')($);
-var util = require('./lib/util')($, globals);
+var util    = require('./lib/util')($, globals);
+var mutators = require('./lib/mutators')($, globals);
 
 // Require Tasks 
 $._.each($.fs.readdirSync('./lib/tasks'), function(module) { 
-  require('./lib/tasks/' + module)(gulp, util, $, globals); 
+  require('./lib/tasks/' + module)(gulp, $, util, mutators, globals); 
 });
 
 // Default Task definition
@@ -25,5 +26,6 @@ gulp.task('default', $._.union(
   ['clean', 'homepage', 'about'],
   globals.section_tasks,
   [ 'assets_pipeline', 'assets_folder', 'subsection_stubs', 'models_stubs'],
+  [ 'validation_link_installer' ],
   [ 'webserver', 'watch']
 ));
