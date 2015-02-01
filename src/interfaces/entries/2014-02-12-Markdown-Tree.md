@@ -10,7 +10,7 @@ links:
     'My Notes': http://notes.bladdo.net
 ---
 
-Markdown Tree is a small ruby script that serves a heirarchy of markdown files as a live styled site. This is good for browsing a folder of markdown files you maintain in the browser.
+Markdown Tree is a small ruby script that serves a hierarchy of markdown files as a live styled site. This is good for browsing a folder of markdown files you maintain in the browser.
 
 <div class='captioned-image'>
 <img src="/interfaces/Markdown-Tree/rep.png">
@@ -19,7 +19,7 @@ Markdown Tree is a small ruby script that serves a heirarchy of markdown files a
 
 As a college freshman, after trying just about every notes software I could find, I bit the bullet and decided to take my notes in plain-text `markdown` using `vim`. 
 
-I decided I needed a to review my notes in a prettier format than the within the terminal where I took the notes. So I made [Markdown Tree]().  Feeding it a [folder of markdown files](), yields a minimal live styled site with a navigation header allowing you to traverse the tree:
+I decided I needed a to review my notes in a prettier format than within the terminal where I took notes. So I made [Markdown Tree](https://github.com/mil/markdown-tree).  Feeding it a [folder of markdown files](https://github.com/mil/markdown-tree/tree/master/content), yields a [minimal live styled site](http://markdown-tree.bladdo.net) with a navigation header allowing you to traverse the tree:
 
 <div id="markdown-tree" class='interface-demo'>
     <div id="path">
@@ -34,9 +34,8 @@ I decided I needed a to review my notes in a prettier format than the within the
     </div>
 </div>
 
-Markdown Tree is implemented as a [simple under 100 line ruby script](). It's a little bit ameturish, but completly functional. The evolution of Markdown Tree eventually inspired my [mil edit]() and further developments<sup>1</sup>.
+Markdown Tree is implemented as a [simple under 100 line ruby script](https://github.com/mil/markdown-tree/blob/master/markdown-tree.rb). It's a little bit amateurish, but completely functional. The evolution of Markdown Tree eventually inspired my [mil edit](/interfaces/Mil-Edit) and further developments<sup>1</sup>.
 
 <ol class='footnotes'>
-    <li>The default template looks [pretty](). Here's [another]() template someone developed.</li>
     <li>Ask me to show you my failed start-up inspired by [markdown tree](), built around [mil edit]() and [Mmvp.js]()</li>
 </ol>
