@@ -21,6 +21,8 @@ once_page_is_compiled:
     - minify_html
 </pre>
 
-Then I realized making another site-generator was insane. I just wanted something 'web-agnostic'. I researched and found the collective that made the JavaScript oriented makefile helper of sort. _Gulp_.  It's got a tiny API and its built on a thin layer of node streaminess. 
+Then I realized making another site-generator was insane. 
+
+I just wanted something 'web-agnostic'. I researched and found the collective that made the JavaScript oriented makefile helper of sort. _Gulp_.  It's got a tiny API and its built on a thin layer of node streaminess. 
 
 Cool - _thanks Gulp_.
