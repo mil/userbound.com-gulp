@@ -85,14 +85,18 @@ html
     &.footnotes
       &:before
         display: block
-        max-width: 100px
-        width: 100%
         height: 0
         border-top: 1px dotted #cfcfcf
         content: ""
         margin: spacing(medium, 3) 0
-        margin-bottom: spacing(medium, 1) 
+
+        +hr
+        margin-top: 6rem
         margin-left: -20px
+        margin-bottom: 3rem
+
+      li
+
 
 
       list-style-position: outside
@@ -119,6 +123,13 @@ html
     font-style: italic
 
   img
+    //image-rendering: optimizeSpeed              
+    //image-rendering: -moz-crisp-edges           
+    //image-rendering: -o-crisp-edges
+    //image-rendering: -webkit-optimize-contrast
+    //image-rendering: optimize-contrast
+    //-ms-interpolation-mode: nearest-neighbor
+
     max-width: 100%
     &.fill-width
       width: 100%
@@ -127,15 +138,8 @@ html
     display: block
     border: none
     height: 0
+    +hr
 
-
-    width: 30%
-
-    margin: spacing(medium,2) auto
-
-    text-align: left
-    border-top: $seperator_line
-   
 
   table
     width: 100%
