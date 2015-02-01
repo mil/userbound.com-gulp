@@ -5,8 +5,22 @@ date: 2014-12-25
 time: 4:00PM
 ---
 
-Over time my site has morphed far from being a simple blog. Jekyll provides some powerful features, especially [collections](), howvever I've outgrown the semantics all together. As such, I've converted this site from Jekyll to Gulp.
+In my ideal world, a static site compiler would just be a script or a very simple set of rules transforming some assets into others.  
 
-In my ideal world, a static site compiler should just be a script or a very simple set of rules transforming some assets into others. I intermittedly [built the roots of my own semantic]() and then read up on this things called [Gulp]().
+So I built myself a filesystem scripting layer for running sequential scripting rules over a set of files and combining them in various ways (e.g. with yaml-headers looking like:
 
-The reason I like Gulp is because it's really god damn simple. It's usable at it's bare minimum just using `gulp.src()` and `gulp.dest()`
+<pre class='sh_yaml'>
+page:
+  scripts: "markdown"
+
+once_page_is_compiled: 
+  prepends:  _partials/header.html
+  postpends: _partials/footer.html
+  scripts:
+    - substitute_head
+    - minify_html
+</pre>
+
+Then I realized making another site-generator was insane. I just wanted something 'web-agnostic'. I researched and found the collective that made the JavaScript oriented makefile helper of sort. _Gulp_.  It's got a tiny API and its built on a thin layer of node streaminess. 
+
+Cool - _thanks Gulp_.

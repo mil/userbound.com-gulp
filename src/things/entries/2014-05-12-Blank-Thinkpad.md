@@ -4,7 +4,7 @@ poster: Blank-Thinkpad/cover.jpg
 description: My thinkpad keyboard with sanded and polished blank keys.
 sort_index: 3
 ---
-One weekend while hacking away on my Thinkpad X40, I began to grow irritated by the lettering on my keys. I decided that I wanted blank keys on my Thinkpad ala a [Das keyboard](http://en.wikipedia.org/wiki/Das_Keyboard) or something of the sort. I search online a little bit for places to buy blank keys, then I just decided to bite the bullet and began experimenting with blanking the keys myself.
+One weekend while hacking away on my Thinkpad X40, I began to grow irritated by the lettering on my keys. I decided that I wanted blank keys on my Thinkpad ala a [Das keyboard](http://en.wikipedia.org/wiki/Das_Keyboard) or something of the sort. I search online briefly for places to buy blank keys, then decided to just start experimenting with blanking the keys myself.
 
 The process I found to work to produce good consistent blank keys is made up of two steps. First, each key is removed from the keyboard and sanded with dull-grit sandpaper. Then a small amount of mineral oil is dabbed atop each key and spread to hide the sanding roughness.
 
@@ -15,7 +15,7 @@ The process I found to work to produce good consistent blank keys is made up of 
 
 <div class='captioned-image'>
     <img src="/things/Blank-Thinkpad/dabbed-mineral-oil.jpg">
-    <span class='caption'>Only a small amount of mineral oil is needed for each key. I suggest [Wegman]()'s brand for best results..</span>
+    <span class='caption'>Only a small amount of mineral oil is needed for each key. I suggest [Wegman](http://www.wegmans.com/)'s brand for best results..</span>
 </div>
 
 <div class='captioned-image'>
@@ -23,7 +23,7 @@ The process I found to work to produce good consistent blank keys is made up of 
     <span class='caption'>A stock key on the left and a sanded and oiled key on the right.</span>
 </div>
 
-When looking at the keyboard with fully blanked keys, you can tell it's non-stock, but it actually looks suprisingly professional. I found that it was best to eliminated the hard edges on each key, making each key more smooth than concave. This plays better with the polishing as well.
+When looking at the keyboard with fully blanked keys, you can tell it's non-stock, but it actually looks surprisingly professional. I found that it was best to smooth the hard edges on each key, making each key more smooth than concave. This plays better with the polishing as well.
 
 
 <div class='captioned-image'>

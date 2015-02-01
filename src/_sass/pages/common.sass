@@ -18,6 +18,39 @@
 
 .window-chrome
   margin-top: 3rem
+  position: relative
+
+  .btns
+    display: block
+    right: 0
+    top: 0
+    height: 29px
+    margin-top: -29px
+   
+
+
+
+    .btn
+      +circle(9px)
+      top: 3px
+      position: absolute
+      border: 1px solid #cfcfcf
+
+      &.a
+        right: 5px
+        background: red
+      &.b
+        right: 25px
+        background: green
+      &.c
+        right: 45px
+        background: blue
+
+
+
+
+
+
   img 
     border: 1px solid #cfcfcf
     display: block
@@ -35,6 +68,12 @@
     width: 100%
     margin: 0 auto
     content: " "
-    background: #ffffff
     border: 1px solid #cfcfcf
     border-bottom: 1px dotted#cfcfcf
+
+    &:after
+      display: block
+      background: black
+      width: 30px
+      height: 30px
+      content: ""
