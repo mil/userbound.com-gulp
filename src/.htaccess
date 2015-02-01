@@ -1,0 +1,22 @@
+
+Options -Indexes +FollowSymLinks
+AddType text/plain .scad
+
+
+RewriteEngine on
+RewriteBase /
+
+
+# 404
+ErrorDocument 404 /
+
+# No traliing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+
+Redirect /projects /interfaces
+Redirect /ui /interfaces
+Redirect /interfaces/userbound /
+
