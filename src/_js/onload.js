@@ -65,14 +65,39 @@ var UserboundInterface = (function(my) {
     };
 
     e.preventDefault();
-    smooth_scroll($(window), 0, scroll_speed_ms);
-    setTimeout(function() {
+
+
+    function fade_up_out() {
       $("nav").addClass('fade-out');
       $("main").addClass('fade-up');
       setTimeout(load_new_page_fn, css_animation_ms);
-    }, scroll_speed_ms);
-  }
+    };
+
+    if (window.scrollY > 276) {
+      flicker_out_in({ complete: fade_up_out});
+    } else {
+      fade_up_out();
+    }
+
+  } 
  
+  function flicker_out_in(params) {
+    $("body").animate({
+      opacity: 0,
+      'margin-top': '-10px'
+    }, {
+      duration: 300,
+      complete: function() {
+      document.body.scrollTop = 0;
+      $("body").css('margin-top', '0');
+
+      $("body").animate({ opacity: 1 }, {
+        duration: 100,
+        complete: params.complete
+      });
+      }
+    });
+  }
   function smooth_scroll(el, to, duration) {
     // adapted from: http://austinpray.com/blog/zepto-js-smooth-vertical-scrolling/ 
     if (duration < 0) { return; }
