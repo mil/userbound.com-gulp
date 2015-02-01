@@ -18,23 +18,39 @@
     display: block
     clear: both
     color: #888
-    margin-bottom: 0.5rem
+    line-height: 0
+    margin-bottom: 10px
 
     span.symbol
       display: inline-block
       width: 30px
+      height: 20px
+      line-height: 20px
+
+      [class^="icon-"], [class*=" icon-"] 
+        $size: 16px
+        height: $size
+        width: $size
+        display: inline-block
+        fill: currentColor
+
     span.title
       display: none
      
     &.active 
       color: black
-      border-left: 3px solid #d3ffc2
+      border-left: 2px solid #d3ffc2
+
+      &.entry span.symbol
+        border-left: 1px solid #e8e8e8
 
 html:not(#home) .wrapper > nav
   a
     &:hover:not(.active)
-      font-size: 1.5rem
-      +animate(sizeUp 0.3s)
+      [class^="icon-"], [class*=" icon-"] 
+        width: 20px
+        height: 20px
+        +animate(sizeUp 0.3s)
 
 
 
