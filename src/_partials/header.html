@@ -26,8 +26,7 @@
         {% if title != "homepage-ignores-for-now" %}
           {% for link in nav_links %}
             {% if link.active_section %}
-            <a class='active' href="{{ link.url }}" title="{{ link.title }}"><span class='symbol'>
-
+            <a class='active {{ page_type}}' href="{{ link.url }}" title="{{ link.title }}"><span class='symbol'>
               <svg class="icon-{{ link.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use></svg>
             </span></a>
             {% else %}

@@ -61,10 +61,13 @@
 
 
     a
-      padding-top: 13px
-      padding-bottom: 13px
+      height: 40px
+      line-height: 40px
+      padding-top: 9px
       display: inline-block
       text-align: center
+      &:hover
+        +animate(none)
 
       &.guy
         border: none
@@ -75,5 +78,7 @@
       
       &.active
         border-left: none
-        padding-bottom: 10px
-        border-bottom: 4px solid #d3ffc2
+        &.entry span.symbol
+          border-left: none
+        
+        border-bottom: 2px solid #d3ffc2
