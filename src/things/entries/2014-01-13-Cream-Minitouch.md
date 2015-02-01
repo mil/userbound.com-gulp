@@ -9,26 +9,26 @@ The SIIG MiniTouch is a 75% mechnical keyboard produced circa 1991. At the time 
 So, I modded some [cream alps switches](http://deskthority.net/wiki/Alps_SKCM_Cream_Damped) from an old AE II keyboard to be very light and less audible. Each switch had its interal curled springs end cut and dampeners removed for cleaner feel.
 
 <div class='captioned-image'>
-![](/things/Cream-Minitouch/switches-dissembled-2.jpg)
+![Alps switches dissambled](/things/Cream-Minitouch/switches-dissembled-2.jpg)
 <div class='caption'>A stock dissembled Cream Alps switch on the left, and my un-dampened low-resistance cream switch on the right</div>
 </div>
 
 After preparing my modded each switch, I de-soldered all the switches from my Minitouch and soldered in my new modded cream switches.  Re-assmbled and swapped on the AEII PBT keycaps. 
 
 <div class='captioned-image'>
-![](/things/Cream-Minitouch/side-by-side.jpg)
+![Stock Minitouch and modded Minitouch](/things/Cream-Minitouch/side-by-side.jpg)
 <div class='caption'>The stock Minitouch on the left, my modded Minitouch on the right.</div>
 </div>
 
 
 <div class='captioned-image'>
-![](/things/Cream-Minitouch/jumped-circutboard.jpg)
+![Jumped circuts](/things/Cream-Minitouch/jumped-circutboard.jpg)
 <div class='caption'>Unfortunately due to my lack of pro-soldering skills, I had to jump a few of the switches.</div>
 
 </div>
 
 
 <div class='captioned-image'>
-![](/things/Cream-Minitouch/1.png)
+![Modded Minitouch](/things/Cream-Minitouch/1.png)
 <div class='caption'>Not all the keycaps from the Apple Extended II keyboard fit! So I use the original Enter, Shift, Spacebar, and tab key. Also The Apple F-keys fit on sideways!</div>
 </div>

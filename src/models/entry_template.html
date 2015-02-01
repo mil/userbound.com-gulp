@@ -1,4 +1,5 @@
 <header>
+  <a class='up' href="/models">&uarr;</a>
   <h1>{{ title }}</h1>
   <div class='filter-by'>
     <button class='active'>Model</button>
@@ -7,6 +8,6 @@
 </header>
 
 <section class='content'>
-  <img src="/models/{{ title }}.png" class='filter-el visible' data-category-model>
+  <img src="/models/{{ title }}.png" alt="{{ title }}" class='filter-el visible' data-category-model>
   <pre class='sh_javascript filter-el' data-category-code>{{ scad_source|raw }}</pre>
 </section>

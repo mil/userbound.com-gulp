@@ -13,7 +13,7 @@ links:
 Markdown Tree is a small ruby script that serves a hierarchy of markdown files as a live styled site. This is good for browsing a folder of markdown files you maintain in the browser.
 
 <div class='captioned-image'>
-<img src="/interfaces/Markdown-Tree/rep.png">
+<img src="/interfaces/Markdown-Tree/rep.png" alt="Representation of Markdown Tree">
 <span class='caption'>A representation of what markdown tree does for you. Converts a (nested) folder of markdown files into a live styled site.</span>
 </div>
 

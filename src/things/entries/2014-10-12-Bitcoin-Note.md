@@ -11,13 +11,12 @@ The design includes place for public key and value and is mainly just for prop v
 
 
 <div class='captioned-image'>
-![](/things/Bitcoin-Note/front.png)
+![Front of Bitcoin Note](/things/Bitcoin-Note/front.png)
 <div class='caption'>Front of the Bitcoin Note</div>
 </div>
 
 
 <div class='captioned-image'>
-![](/things/Bitcoin-Note/back.png)
+![Back of Bitcoin Note](/things/Bitcoin-Note/back.png)
 <div class='caption'>Back of the Bitcoin Note</div>
 </div>
-
