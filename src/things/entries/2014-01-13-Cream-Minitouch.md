@@ -1,6 +1,6 @@
 ---
 title: Cream Minitouch
-poster: Cream-Minitouch/poster.png
+poster: Cream-Minitouch/poster.jpg
 description: My favorite circa 1997 ALPs keyboard outfitted with modded keycaps, switches, and springs.
 sort_index: 1
 ---
@@ -29,6 +29,6 @@ After preparing my modded each switch, I de-soldered all the switches from my Mi
 
 
 <div class='captioned-image'>
-![Modded Minitouch](/things/Cream-Minitouch/1.png)
+![Modded Minitouch](/things/Cream-Minitouch/1.jpg)
 <div class='caption'>Not all the keycaps from the Apple Extended II keyboard fit! So I use the original Enter, Shift, Spacebar, and tab key. Also The Apple F-keys fit on sideways!</div>
 </div>
