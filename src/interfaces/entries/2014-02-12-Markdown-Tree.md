@@ -12,7 +12,7 @@ links:
 
 Markdown Tree is a small ruby script that serves a hierarchy of markdown files as a live styled site. This is good for browsing a folder of markdown files you maintain in the browser.
 
-I created Markdown Tree nfter as a college freshman, after I started taking my notes in plain markdown. At the time, I decided I needed a way to review my notes in a prettier format than within the terminal where I took down the notes. 
+I created Markdown Tree as a college freshman shortly after I started taking my notes in [plain text markdown](http://github.com/mil/School). At the time, I decided I needed a way to review my notes in a prettier format than within the terminal where I took down the notes. 
 
 
 <div class='captioned-image'>
@@ -23,7 +23,7 @@ I created Markdown Tree nfter as a college freshman, after I started taking my n
 
 And [Markdown Tree](https://github.com/mil/markdown-tree) was born.  Feeding it a [folder of markdown files](https://github.com/mil/markdown-tree/tree/master/content), yields a [minimal live styled site](http://markdown-tree.bladdo.net) with a navigation header allowing you to traverse the tree. 
 
-Here's what the navigation header looks like:
+Here's what the default theme navigation header looks like:
 
 <div id="markdown-tree" class='interface-demo'>
     <div id="path">

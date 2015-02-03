@@ -57,6 +57,7 @@ var UserboundInterface = (function(my) {
     var target_link = $(e.target).is("a") ? e.target : $(e.target).closest("a");
     if ($(target_link).attr("target") === "_blank") { return; }
     if ($(target_link).attr("href").match(/^mailto\:/)) { return; }
+    if ($(target_link).attr("href") === "#") { return; }
 
     var scroll_speed_ms  = 100; 
     var css_animation_ms = 1000;
