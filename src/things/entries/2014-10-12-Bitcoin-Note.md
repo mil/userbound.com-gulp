@@ -5,9 +5,9 @@ description: A bitcoin paper currency design.
 sort_index: 5
 ---
 
-I thought it would be awesome if you could hand someone a physical Bitcoin note. So I designed the Bitcoin Note.
+I thought it would be awesome if you could hand someone a physical Bitcoin note. So I designed the Bitcoin Note.  The design includes place for public key and value and is mainly just for prop value.  
 
-The design includes place for public key and value and is mainly just for prop value.  Unfortunatly, I've lost the original file I designed the note in. It was a nice big Gimp file. Below is the design of the front and back.
+Below is the design of the front and back:
 
 
 <div class='captioned-image'>
