@@ -24,4 +24,10 @@ html#home body .wrapper
       &:before
 
       &:hover
-        color: black
+        .symbol
+          color: black
+          +animate(toBlack 1s, 0s)
+        .title
+          color: black
+          +animate(toBlack 2s, 1s)
+
