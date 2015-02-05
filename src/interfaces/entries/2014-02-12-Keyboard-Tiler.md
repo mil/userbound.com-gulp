@@ -10,7 +10,7 @@ sort_index: 101
 ---
 
 
-Keyboard tiler is a simple script which given 2 keys on your keyboard, maps a window to the screen using the keyboard grid as referent.  
+Keyboard Tiler is a simple script which given 2 keys on your keyboard, maps a window to the screen using the keyboard grid as referent.  
 
 On a keyboard, the keys from **1** down to **Z** over to **/**, and up to **0** is a 4x10 grid. Given the 40 from your keyboard, keyboard tiler maps the visual space of your screen to the grid of your keyboard.
 

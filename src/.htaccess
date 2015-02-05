@@ -1,4 +1,3 @@
-
 Options -Indexes +FollowSymLinks
 AddType text/plain .scad
 
@@ -6,6 +5,8 @@ AddType text/plain .scad
 RewriteEngine on
 RewriteBase /
 
+# Max cache for a day, while in dev..
+Header set Cache-Control "max-age=86400, public, must-revalidate"
 
 # 404
 ErrorDocument 404 /
@@ -19,4 +20,3 @@ RewriteRule ^ %1 [L,R=301]
 Redirect /projects /interfaces
 Redirect /ui /interfaces
 Redirect /interfaces/userbound /
-
