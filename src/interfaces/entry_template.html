@@ -40,7 +40,7 @@
   {% if footnotes %}
     <ol class='footnotes'>
       {% for footnote in footnotes %}
-        <li>{{ footnote|raw }}</li>
+        <li name='footnote-{{loop.index}}'>{{ footnote|raw }}</li>
       {% endfor %}
     </ol>   
   {% endif %}
