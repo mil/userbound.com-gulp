@@ -13,7 +13,6 @@
     "gulp-data": "1.1.1",
     "gulp-dom": "latest",
     "gulp-insert": "0.4.0",
-    "gulp-imagemin": "git://github.com/mil/gulp-imagemin.git#opts-extensions",
     "gulp-load-plugins": "latest",
     "gulp-markdown": "1.0.0",
     "gulp-minify": "0.0.5",
