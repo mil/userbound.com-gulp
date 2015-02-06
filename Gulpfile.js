@@ -26,6 +26,5 @@ gulp.task('default', $._.union(
   ['clean', 'homepage', 'about'],
   globals.section_tasks,
   [ 'assets_pipeline', 'assets_folder', 'subsection_stubs', 'models_stubs'],
-  [ 'validation_link_installer' ],
   [ 'webserver', 'watch']
 ));
