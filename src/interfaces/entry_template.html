@@ -37,4 +37,11 @@
 
 <section class='content'>
   <div class='bar'>{{ yield|raw }} </div>
+  {% if footnotes %}
+    <ol class='footnotes'>
+      {% for footnote in footnotes %}
+        <li>{{ footnote|raw }}</li>
+      {% endfor %}
+    </ol>   
+  {% endif %}
 </section>

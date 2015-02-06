@@ -8,6 +8,8 @@ links:
     'Source' : http://github.com/mil/markdown-tree
     'Example Site': http://markdown-tree.bladdo.net
     'My Notes': http://notes.bladdo.net
+footnotes:
+    - 'Ask me to show you my failed start-up inspired by <a href="/interfaces/Markdown-Tree">markdown tree</a>, built around <a href="/interfaces/Mil-Edit">mil edit</a> and <a href="/interfaces/Mmvp.js">Mmvp.js</a>'
 ---
 
 Markdown Tree is a small ruby script that serves a hierarchy of markdown files as a live styled site. This is good for browsing a folder of markdown files you maintain in the browser.
@@ -38,7 +40,3 @@ Here's what the default theme navigation header looks like:
 </div>
 
 Markdown Tree is implemented as a [simple under 100 line ruby script](https://github.com/mil/markdown-tree/blob/master/markdown-tree.rb). It's a little bit amateurish, but completely functional. The evolution of Markdown Tree eventually inspired my [mil edit](/interfaces/Mil-Edit) and further developments<sup>1</sup>.
-
-<ol class='footnotes'>
-    <li>Ask me to show you my failed start-up inspired by [markdown tree](), built around [mil edit]() and [Mmvp.js]()</li>
-</ol>
