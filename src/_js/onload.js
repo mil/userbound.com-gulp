@@ -90,6 +90,8 @@ var UserboundInterface = (function(my) {
       duration: 300,
       complete: function() {
       document.body.scrollTop = 0;
+      window.scroll(0,0);
+
       $("body").css('margin-top', '0');
 
       $("body").animate({ opacity: 1 }, {
