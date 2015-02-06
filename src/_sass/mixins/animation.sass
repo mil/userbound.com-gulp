@@ -1,8 +1,4 @@
 @mixin keyframes($animation_handle)
-  @-webkit-keyframes #{$animation_handle}
-    @content 
-  @-moz-keyframes #{$animation_handle}
-    @content
   @keyframes #{$animation_handle}
     @content
 
@@ -62,8 +58,5 @@
     color: black
 
 @mixin animate($animation_type, $delay: 0s)
-  -webkit-animation-delay: $delay
   animation-delay: $delay
-
   animation: #{$animation_type}
-  -webkit-animation: #{$animation_type}
