@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "Gulpfile.js",
   "dependencies" : {
+    "colors": "latest",
     "fs": "0.0.2",
     "globby": "latest",
     "gulp": "3.8.10",
