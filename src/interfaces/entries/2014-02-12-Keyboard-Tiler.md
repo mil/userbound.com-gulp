@@ -1,6 +1,6 @@
 ---
 title: Keyboard Tiler
-description: A simple window tiling script for floating window managers.
+description: Simple window tiling script for floating window managers.
 category: linux
 status: 'production'
 links:

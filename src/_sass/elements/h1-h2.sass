@@ -1,0 +1,16 @@
+h1,h2
+  color: #423f37
+h1
+  +fontsize(biggest)
+
+  margin: 1rem 0
+  display: inline-block
+  &:before, &:after
+    clear: both
+    content: ""
+    height: 0
+    display: block
+h2
+  +fontsize(bigger)
+  color: #080d3b
+  margin-top: spacing(medium,4)
