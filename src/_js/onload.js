@@ -1,5 +1,6 @@
 var UserboundInterface = (function(my) {
   var router = new Grapnel({ pushState: true });
+  var toggling_consulting = false;
 
   function activate_subsection(subsection) {
     if (current_active_section() == subsection) { return; }
@@ -85,19 +86,20 @@ var UserboundInterface = (function(my) {
       "/" + $("h1").text().toLowerCase() + "/" + subsection
     );
   }
-  
 
-  return { 
-    init: function() {
-      // Setup click callbacks for links and subsection clicking
-      $("a").on("click", link_click);
-      $("a").on("mouseover", link_hover);
-      $("a").on("mouseout", link_unhover);
-      $(".filter-by button").on("click", subsection_button_click);
-      $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
+  function install_dom_event_bindings() {
+    // Setup click callbacks for links and subsection clicking
+    $("a").on("click", link_click);
+    $("a").on("mouseover", link_hover);
+    $("a").on("mouseout", link_unhover);
+    $(".filter-by button").on("click", subsection_button_click);
+    $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
+  }
 
-      // Initialize routing with Grapnel
-      ['about', 'interfaces', 'models/:section'].forEach(function(section) { try {
+  // Initialize routing with Grapnel
+  function install_routing() {
+    ['clients', 'about', 'interfaces', 'models/:section'].forEach(function(section) { 
+      try {
         router.get('/' + section, function(request) {
           activate_subsection(
             $($(".filter-by button")[0]).text().toLowerCase()
@@ -107,16 +109,58 @@ var UserboundInterface = (function(my) {
           var subsection = request.params.subsection;
           activate_subsection(subsection);   
         });
-      } catch(e) { /* not a page with subsection routing */ } });
+      } catch(e) { /* not a page with subsection routing */ } 
+    });
 
-      // Enable syntax highlighting with sh_ classes on <pre>'s
+    // Only show clients section if consulting mode enabled
+    [
+      { url: "/consulting", consulting_mode_enabled: true },
+      { url: "/noncommercial", consulting_mode_enabled: false  }
+    ].forEach(function(state) {
+      router.get(state.url, function(request) {
+        toggling_consulting = true;
+        simpleStorage.set('consulting-mode', state.consulting_mode_enabled);
+        load_href('/');
+      });
+    });
+
+  }
+
+
+  function install_clients_navlink() {
+    // only installs if in consulting mode
+
+    var clients_link = $("<a href='/clients' title='Clients'></a>")
+      .append([
+        "<span class='symbol'>",
+        "<svg class='icon-screen'>",
+        "<use xlink:href='/assets/images/icons.svg#icon-screen'></use>",
+        "</svg>",
+        "</span>\n",
+        "<span class='title'>Clients</span>"
+      ].join(""));
+     
+    $(clients_link).insertBefore($("nav a")[1]);
+  }
+
+  
+  
+
+  return { 
+    init: function() {
       sh_highlightDocument();
-
-      // Asciiw-demo
       asciiw_demo();
+      install_routing();
+      install_dom_event_bindings();
 
-      $("nav").addClass("fade-in");
-      $("main").addClass("fade-down");
+      if (simpleStorage.get('consulting-mode')) { 
+        install_clients_navlink();
+      }
+
+      if (!toggling_consulting) {
+        $("nav").addClass("fade-in");
+        $("main").addClass("fade-down");
+      }
     }
   };
 })(UserboundInterface || {});
