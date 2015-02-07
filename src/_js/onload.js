@@ -124,13 +124,17 @@ var UserboundInterface = (function(my) {
       });
     });
 
+
   }
 
 
   function install_clients_navlink() {
     // only installs if in consulting mode
 
+    // makes it active, if on /clients*
+    var classes = window.location.pathname.match(/^\/clients/) ? "active" : "";
     var clients_link = $("<a href='/clients' title='Clients'></a>")
+      .addClass(classes)
       .append([
         "<span class='symbol'>",
         "<svg class='icon-screen'>",
@@ -151,13 +155,13 @@ var UserboundInterface = (function(my) {
       sh_highlightDocument();
       asciiw_demo();
       install_routing();
-      install_dom_event_bindings();
 
       if (simpleStorage.get('consulting-mode')) { 
         install_clients_navlink();
       }
 
       if (!toggling_consulting) {
+        install_dom_event_bindings();
         $("nav").addClass("fade-in");
         $("main").addClass("fade-down");
       }
