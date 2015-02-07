@@ -1,4 +1,5 @@
 $link_color: #002e7d
+$transition: all 1s ease-in
 
 body a 
   color: $link_color
@@ -6,16 +7,20 @@ body a
 
 section.content a
   border-bottom: 1px dotted $link_color
-  transition: all 2s ease-in
+  transition: $transition
+
+  h2 
+    color: $link_color
+    transition: all 0.333s ease-out
 
   &:hover
-    transition: all 2s ease-in
+    transition: $transition
     border-bottom: 1px solid $link_color
     text-decoration: none
 
   &:hover, &:hover h2
     color: black
-    transition: all 2s ease-in
+    transition: $transition 
 
   &.block.link
     border: none
