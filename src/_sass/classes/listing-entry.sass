@@ -1,8 +1,60 @@
-body .listing-entry
+@mixin right_arrow
+  display: block
+  float: right
+  content: "\2192"
+  width: 10px
+  height: 10px
+  margin-top: 18px
+
+  opacity: 0
+  transition: $transition_out
+  margin-right: 10px
+
+@mixin bottom_indicator
+  opacity: 0
+  display: inline-block
+  width: 100px
+  height: 1px
+  background: #e8e8e8
+  border-radius: 50px
+  content: ""
+
+body section.content a.listing-entry
+  display: block
+
+  &:before // Arrow on right for hover
+    +right_arrow
+  &:after
+    //+bottom_indicator
+
+  & *:last-child
+    border-bottom: 1px solid transparent
+
+  border: none
+
   span.date, span.subline
-    display: block
+    display: inline-block
+    padding-bottom: 10px
     color: #888
     &.date
       +fontsize(smaller)
     &.subline
       +fontsize(smallest)
+
+body section.content a.listing-entry:hover
+  border: none
+  transition: $transition_in
+
+  &:before, &:after
+    opacity: 1
+    transition: $transition_in
+  &:before
+    margin-right: 0
+  &:after
+    background: #e8e8e8
+
+  & *:last-child
+    transition: $transition_in
+    border-bottom: 1px dotted #cfcfcf
+
+

@@ -50,6 +50,18 @@ var UserboundInterface = (function(my) {
 
   }
 
+  function load_href(href) { window.location = href; };
+  function fade_up_out(new_href) {
+
+    var transition_duration_ms = 1000;
+    $("nav").addClass('fade-out');
+    $("main").addClass('fade-up');
+
+    setTimeout(function() {
+      if (new_href) { load_href(new_href); }
+    }, transition_duration_ms);
+  };
+
   function link_hover(e)   { $(".guy .head").addClass("hovering"); }
   function link_unhover(e) { $(".guy .head").removeClass("hovering"); }
 
@@ -59,61 +71,11 @@ var UserboundInterface = (function(my) {
     if ($(target_link).attr("href").match(/^mailto\:/)) { return; }
     if ($(target_link).attr("href") === "#") { return; }
 
-    var scroll_speed_ms  = 100; 
-    var css_animation_ms = 1000;
-    var load_new_page_fn = function() { 
-      window.location = $(target_link).attr('href'); 
-    };
-
     e.preventDefault();
-
-
-    function fade_up_out() {
-      $("nav").addClass('fade-out');
-      $("main").addClass('fade-up');
-      setTimeout(load_new_page_fn, css_animation_ms);
-    };
-
-    if (window.scrollY > 276) {
-      flicker_out_in({ complete: fade_up_out});
-    } else {
-      fade_up_out();
-    }
-
+    var href = $(target_link).attr('href');
+    fade_up_out(href);
   } 
  
-  function flicker_out_in(params) {
-    $("body").animate({
-      opacity: 0,
-      'margin-top': '-10px'
-    }, {
-      duration: 300,
-      complete: function() {
-      document.body.scrollTop = 0;
-      window.scroll(0,0);
-
-      $("body").css('margin-top', '0');
-
-      $("body").animate({ opacity: 1 }, {
-        duration: 100,
-        complete: params.complete
-      });
-      }
-    });
-  }
-  function smooth_scroll(el, to, duration) {
-    // adapted from: http://austinpray.com/blog/zepto-js-smooth-vertical-scrolling/ 
-    if (duration < 0) { return; }
-    var difference = to - $(window).scrollTop();
-    var perTick = difference / duration * 10;
-    this.scrollToTimerCache = setTimeout(function() {
-      if (!isNaN(parseInt(perTick, 10))) {
-        window.scrollTo(0, $(window).scrollTop() + perTick);
-        smooth_scroll(el, to, duration - 10);
-      }
-    }.bind(this), 10);
-  }  
-
   function subsection_button_click(e) {
     var subsection = e.target.innerHTML.toLowerCase();
 
@@ -152,6 +114,9 @@ var UserboundInterface = (function(my) {
 
       // Asciiw-demo
       asciiw_demo();
+
+      $("nav").addClass("fade-in");
+      $("main").addClass("fade-down");
     }
   };
 })(UserboundInterface || {});

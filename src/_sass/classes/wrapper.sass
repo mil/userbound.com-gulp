@@ -14,7 +14,11 @@
   main
     transition: all 0.5s ease-in-out
     position: relative
-    +animate(fadeDown 1s)
+    opacity: 0
+
+    &.fade-down
+      opacity: 1
+      +animate(fadeDown 1s)
 
     &.fade-up
       opacity: 0

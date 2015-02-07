@@ -7,9 +7,8 @@
 
 </header>
 
-<section class='content'><div class='interfaces-list'>  
-
-    {% for category, entries in categories %}
+<section class='content'><div class='interfaces-list'>
+  {% for category, entries in categories %}
 
     {% if category == "web" %}
     <div class='filter-el visible' data-category-{{ category }}>
@@ -17,21 +16,21 @@
     <div class='filter-el' data-category-{{ category }}>
     {% endif %}
 
-      {% for entry in entries %}
-
+    {% for entry in entries %}
       <a class='block link listing-entry interface' href="{{ entry.url }}">
-        <h2>{{ entry.title }}
-    {% if entry.status == 'production' %}
-    <span class='status production'></span>
-    {% else %}
-    <span class='status experimental'></span>
-    {% endif %}</h2>
+        <h2>
+          {{ entry.title }}
+          {% if entry.status == 'production' %}
+            <span class='status production'></span>
+          {% else %}
+            <span class='status experimental'></span>
+          {% endif %}
+        </h2>
         <span class='subline'>{{ entry.description|raw }}</span>
-    </a>
-
-    {% endfor %}</div>
-
-
+      </a>
     {% endfor %}
 
+
+    </div>
+  {% endfor %}
 </div></section>
