@@ -1,0 +1,31 @@
+.wrapper
+  max-width: 550px
+  width: 100%
+  margin: 0 auto
+
+  padding: 0 spacing(biggest)
+  padding-top: 5rem
+
+  +box-sizing(border-box)
+
+  nav, main
+    display: block
+            
+  main
+    transition: all 0.5s ease-in-out
+    position: relative
+    +animate(fadeDown 1s)
+
+    &.fade-up
+      opacity: 0
+      +animate(fadeUp 1s)
+
+
+    footer
+      border-top: $seperator_line
+      padding-top: +spacing(biggest, 0.5)
+      margin: +spacing(biggest, 2) 0
+
+      .pagination-links
+        float: right
+        text-align: right

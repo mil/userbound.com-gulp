@@ -1,0 +1,26 @@
+body 
+
+  ul
+    list-style: inside disc
+    margin: 0 spacing(medium,2)
+
+  ol
+    list-style: inside decimal
+
+    li
+      +fontsize(smaller)
+
+    &.footnotes
+      list-style-position: outside
+      padding: 0 20px
+      +fontsize(smallest)
+
+      &:before
+        height: 0
+        display: block
+        border-top: 1px dotted #cfcfcf
+        margin: 6rem auto 3rem -20px
+        content: ""
+        +hr
+      li
+        margin-bottom: spacing(medium)
