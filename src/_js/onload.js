@@ -12,7 +12,7 @@ var UserboundInterface = (function(my) {
 
     active_subsection_btn.removeClass("active");
     $(".filter-by button").each(function(i, el) {
-      if ($(el).text().toLowerCase() == subsection) {
+      if ($(el).text().toLowerCase().replace(" ", "-") == subsection) {
         $(el).addClass("active");
       }
     });
@@ -20,7 +20,7 @@ var UserboundInterface = (function(my) {
 
     active_subsection_el.animate({ opacity: 0 }, function() {
       var new_subsection_el = 
-        $(".filter-el[data-category-" + subsection + "]");
+        $(".filter-el[data-category-" + subsection.replace(" ", "-") + "]");
       active_subsection_el.removeClass("visible");
       new_subsection_el.css("opacity", 0).addClass("visible");
       new_subsection_el.animate({ opacity: 1 }, function() {});
@@ -28,7 +28,7 @@ var UserboundInterface = (function(my) {
   }
 
   function current_active_section() {
-    return $(".filter-by button.active").text().toLowerCase();
+    return $(".filter-by button.active").text().toLowerCase().replace(" ", "-");
   }
 
   function asciiw_demo() {
@@ -82,8 +82,8 @@ var UserboundInterface = (function(my) {
 
     // Models follows a different schema since its only subpage with stubs
     router.navigate(window.location.href.match("/models") ?
-      "/models/" + $("h1").text() + "/" + subsection :
-      "/" + $("h1").text().toLowerCase() + "/" + subsection
+      "/models/" + $("h1").text() + "/" + subsection.replace(" ", "-") :
+      "/" + $("h1").text().toLowerCase() + "/" + subsection.replace(" ", "-")
     );
   }
 
@@ -102,7 +102,7 @@ var UserboundInterface = (function(my) {
       try {
         router.get('/' + section, function(request) {
           activate_subsection(
-            $($(".filter-by button")[0]).text().toLowerCase()
+            $($(".filter-by button")[0]).text().toLowerCase().replace(" ", "-")
           );   
         });
         router.get('/' + section + '/:subsection', function(request) {
@@ -119,9 +119,18 @@ var UserboundInterface = (function(my) {
     ].forEach(function(state) {
       router.get(state.url, function(request) {
         toggling_consulting = true;
+        simpleStorage.flush();
         simpleStorage.set('consulting-mode', state.consulting_mode_enabled);
         load_href('/');
       });
+    });
+
+    // Only allow showing clients if on 
+    router.get("/clients/:subsection?", function(request) {
+      console.log(simpleStorage.get('consulting-mode'));
+      if (!simpleStorage.get('consulting-mode')) {
+        load_href('/');
+      }
     });
 
 
