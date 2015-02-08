@@ -13,7 +13,7 @@
 @mixin bottom_indicator
   opacity: 0
   display: inline-block
-  width: 100px
+  width: 50px 
   height: 1px
   background: #e8e8e8
   border-radius: 50px
@@ -25,7 +25,7 @@ body section.content a.listing-entry
   &:before // Arrow on right for hover
     +right_arrow
   &:after
-    //+bottom_indicator
+    +bottom_indicator
 
   & *:last-child
     border-bottom: 1px solid transparent
@@ -33,7 +33,7 @@ body section.content a.listing-entry
   border: none
 
   span.date, span.subline
-    display: inline-block
+    display: block
     padding-bottom: 10px
     color: #888
     &.date
@@ -42,7 +42,6 @@ body section.content a.listing-entry
       +fontsize(smallest)
 
 body section.content a.listing-entry:hover
-  border: none
   transition: $transition_in
 
   &:before, &:after
@@ -55,6 +54,3 @@ body section.content a.listing-entry:hover
 
   & *:last-child
     transition: $transition_in
-    border-bottom: 1px dotted #cfcfcf
-
-
