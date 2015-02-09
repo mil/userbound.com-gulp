@@ -11,26 +11,28 @@
   {% for category, entries in categories %}
 
     {% if category == "web" %}
-    <div class='filter-el visible' data-category-{{ category }}>
+    <ul class='links-listing filter-el visible' data-category-{{ category }}>
     {% else %}
-    <div class='filter-el' data-category-{{ category }}>
+    <ul class='links-listing filter-el' data-category-{{ category }}>
     {% endif %}
 
     {% for entry in entries %}
-      <a class='block link listing-entry interface' href="{{ entry.url }}">
-        <h2>
-          {{ entry.title }}
-          {% if entry.status == 'production' %}
-            <span class='status production'></span>
-          {% else %}
-            <span class='status experimental'></span>
-          {% endif %}
-        </h2>
-        <span class='subline'>{{ entry.description|raw }}</span>
-      </a>
+      <li>
+        <a href="{{ entry.url }}">
+          <h2>
+            {{ entry.title }}
+            {% if entry.status == 'production' %}
+              <span class='status production'></span>
+            {% else %}
+              <span class='status experimental'></span>
+            {% endif %}
+          </h2>
+          <span class='subline'>{{ entry.description|raw }}</span>
+        </a>
+      </li>
     {% endfor %}
 
+    </ul>
 
-    </div>
   {% endfor %}
 </div></section>

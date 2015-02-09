@@ -1,6 +1,6 @@
 ---
 title: Markdown Tree
-description: Serve a hierarchy of Markdown files as a live styled site.
+description: Markdown Site Generator
 category: web
 status: 'production'
 sort_index: 2

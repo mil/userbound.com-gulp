@@ -4,7 +4,7 @@ body a
 
 section.content 
   a
-    border-bottom: 1px dotted $link_color
+    border-bottom: 1px dotted $grey
     transition: $transition_in
 
     h2 
@@ -12,6 +12,7 @@ section.content
       transition: $transition_out
 
     &:hover
+      color: $link_hover
       transition: $transition_in
-      border-bottom: 1px solid $link_color
+      border-bottom: 1px dashed $link_hover
       text-decoration: none

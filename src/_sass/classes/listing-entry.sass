@@ -1,31 +1,6 @@
-@mixin right_arrow
-  display: block
-  float: right
-  content: "\2192"
-  width: 10px
-  height: 10px
-  margin-top: 18px
-
-  opacity: 0
-  transition: $transition_out
-  margin-right: 10px
-
-@mixin bottom_indicator
-  opacity: 0
-  display: inline-block
-  width: 50px 
-  height: 1px
-  background: #e8e8e8
-  border-radius: 50px
-  content: ""
-
 body section.content a.listing-entry
   display: block
 
-  &:before // Arrow on right for hover
-    +right_arrow
-  &:after
-    +bottom_indicator
 
   & *:last-child
     border-bottom: 1px solid transparent

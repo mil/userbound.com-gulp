@@ -1,0 +1,77 @@
+@mixin right_arrow
+  display: block
+  float: right
+  content: "\2192"
+  width: 10px
+  height: 10px
+  margin-top: 18px
+  color: $grey
+
+  opacity: 0.2
+  transition: $transition_out
+  margin-right: 20px
+
+@mixin bottom_indicator
+  display: inline-block
+  width: 20px
+  height: 0
+  border-bottom: 1px dashed #e8e8e8
+  border-radius: 50px
+  opacity: 0
+  content: ""
+
+
+
+
+section.content .links-listing
+  list-style: none
+  
+  &, h2, a, a:hover
+    margin: 0
+    border: none
+  li
+    padding-bottom: spacing(bigger, 1.5)
+
+    &:last-child
+      padding-bottom: spacing(bigger, 0.5)
+      a .subline
+        border-bottom: none
+
+
+    a
+      display: block
+      line-height: 0
+
+      &:before, &:after
+        transition: $transition_in
+
+      &:before // Arrow on right for hover
+        +right_arrow
+
+
+
+      &:hover:before, &:focus:before
+        
+      &:hover, &:focus
+        h2
+          color: $link_color
+        .subline
+          color: $grey_saturated
+          transition: $transition_in
+          
+        &:before
+          opacity: 1
+          transition: $transition_in
+          color: $grey_saturated
+        &:after
+          opacity: 0
+          transition: $transition_in
+
+
+  .subline
+    padding-bottom: spacing(bigger, 0.75)
+    border-bottom: 1px dotted #e8e8e8
+    color: $grey
+    transition: $transition_in
+    +fontsize(smallest)
+     
