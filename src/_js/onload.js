@@ -1,5 +1,6 @@
 var UserboundInterface = (function(my) {
   var router = new Grapnel({ pushState: true });
+  var toggling_consulting = false;
 
   function activate_subsection(subsection) {
     if (current_active_section() == subsection) { return; }
@@ -11,7 +12,7 @@ var UserboundInterface = (function(my) {
 
     active_subsection_btn.removeClass("active");
     $(".filter-by button").each(function(i, el) {
-      if ($(el).text().toLowerCase() == subsection) {
+      if ($(el).text().toLowerCase().replace(" ", "-") == subsection) {
         $(el).addClass("active");
       }
     });
@@ -19,7 +20,7 @@ var UserboundInterface = (function(my) {
 
     active_subsection_el.animate({ opacity: 0 }, function() {
       var new_subsection_el = 
-        $(".filter-el[data-category-" + subsection + "]");
+        $(".filter-el[data-category-" + subsection.replace(" ", "-") + "]");
       active_subsection_el.removeClass("visible");
       new_subsection_el.css("opacity", 0).addClass("visible");
       new_subsection_el.animate({ opacity: 1 }, function() {});
@@ -27,7 +28,7 @@ var UserboundInterface = (function(my) {
   }
 
   function current_active_section() {
-    return $(".filter-by button.active").text().toLowerCase();
+    return $(".filter-by button.active").text().toLowerCase().replace(" ", "-");
   }
 
   function asciiw_demo() {
@@ -50,6 +51,18 @@ var UserboundInterface = (function(my) {
 
   }
 
+  function load_href(href) { window.location = href; };
+  function fade_up_out(new_href) {
+
+    var transition_duration_ms = 1000;
+    $("nav").addClass('fade-out');
+    $("main").addClass('fade-up');
+
+    setTimeout(function() {
+      if (new_href) { load_href(new_href); }
+    }, transition_duration_ms);
+  };
+
   function link_hover(e)   { $(".guy .head").addClass("hovering"); }
   function link_unhover(e) { $(".guy .head").removeClass("hovering"); }
 
@@ -59,99 +72,108 @@ var UserboundInterface = (function(my) {
     if ($(target_link).attr("href").match(/^mailto\:/)) { return; }
     if ($(target_link).attr("href") === "#") { return; }
 
-    var scroll_speed_ms  = 100; 
-    var css_animation_ms = 1000;
-    var load_new_page_fn = function() { 
-      window.location = $(target_link).attr('href'); 
-    };
-
     e.preventDefault();
-
-
-    function fade_up_out() {
-      $("nav").addClass('fade-out');
-      $("main").addClass('fade-up');
-      setTimeout(load_new_page_fn, css_animation_ms);
-    };
-
-    if (window.scrollY > 276) {
-      flicker_out_in({ complete: fade_up_out});
-    } else {
-      fade_up_out();
-    }
-
+    var href = $(target_link).attr('href');
+    fade_up_out(href);
   } 
  
-  function flicker_out_in(params) {
-    $("body").animate({
-      opacity: 0,
-      'margin-top': '-10px'
-    }, {
-      duration: 300,
-      complete: function() {
-      document.body.scrollTop = 0;
-      window.scroll(0,0);
-
-      $("body").css('margin-top', '0');
-
-      $("body").animate({ opacity: 1 }, {
-        duration: 100,
-        complete: params.complete
-      });
-      }
-    });
-  }
-  function smooth_scroll(el, to, duration) {
-    // adapted from: http://austinpray.com/blog/zepto-js-smooth-vertical-scrolling/ 
-    if (duration < 0) { return; }
-    var difference = to - $(window).scrollTop();
-    var perTick = difference / duration * 10;
-    this.scrollToTimerCache = setTimeout(function() {
-      if (!isNaN(parseInt(perTick, 10))) {
-        window.scrollTo(0, $(window).scrollTop() + perTick);
-        smooth_scroll(el, to, duration - 10);
-      }
-    }.bind(this), 10);
-  }  
-
   function subsection_button_click(e) {
     var subsection = e.target.innerHTML.toLowerCase();
 
     // Models follows a different schema since its only subpage with stubs
     router.navigate(window.location.href.match("/models") ?
-      "/models/" + $("h1").text() + "/" + subsection :
-      "/" + $("h1").text().toLowerCase() + "/" + subsection
+      "/models/" + $("h1").text() + "/" + subsection.replace(" ", "-") :
+      "/" + $("h1").text().toLowerCase() + "/" + subsection.replace(" ", "-")
     );
   }
-  
 
-  return { 
-    init: function() {
-      // Setup click callbacks for links and subsection clicking
-      $("a").on("click", link_click);
-      $("a").on("mouseover", link_hover);
-      $("a").on("mouseout", link_unhover);
-      $(".filter-by button").on("click", subsection_button_click);
-      $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
+  function install_dom_event_bindings() {
+    // Setup click callbacks for links and subsection clicking
+    $("a").on("click", link_click);
+    $("a").on("mouseover", link_hover);
+    $("a").on("mouseout", link_unhover);
+    $(".filter-by button").on("click", subsection_button_click);
+    $("img[data-category-model]").on("click", function() {$($(".filter-by button")[1]).click()});
+  }
 
-      // Initialize routing with Grapnel
-      ['about', 'interfaces', 'models/:section'].forEach(function(section) { try {
+  // Initialize routing with Grapnel
+  function install_routing() {
+    ['clients', 'about', 'interfaces', 'models/:section'].forEach(function(section) { 
+      try {
         router.get('/' + section, function(request) {
           activate_subsection(
-            $($(".filter-by button")[0]).text().toLowerCase()
+            $($(".filter-by button")[0]).text().toLowerCase().replace(" ", "-")
           );   
         });
         router.get('/' + section + '/:subsection', function(request) {
           var subsection = request.params.subsection;
           activate_subsection(subsection);   
         });
-      } catch(e) { /* not a page with subsection routing */ } });
+      } catch(e) { /* not a page with subsection routing */ } 
+    });
 
-      // Enable syntax highlighting with sh_ classes on <pre>'s
+    // Only show clients section if consulting mode enabled
+    [
+      { url: "/consulting", consulting_mode_enabled: true },
+      { url: "/noncommercial", consulting_mode_enabled: false  }
+    ].forEach(function(state) {
+      router.get(state.url, function(request) {
+        toggling_consulting = true;
+        simpleStorage.flush();
+        simpleStorage.set('consulting-mode', state.consulting_mode_enabled);
+        load_href('/');
+      });
+    });
+
+    // Only allow showing clients if on 
+    router.get("/clients/:subsection?", function(request) {
+      console.log(simpleStorage.get('consulting-mode'));
+      if (!simpleStorage.get('consulting-mode')) {
+        load_href('/');
+      }
+    });
+
+
+  }
+
+
+  function install_clients_navlink() {
+    // only installs if in consulting mode
+
+    // makes it active, if on /clients*
+    var classes = window.location.pathname.match(/^\/clients/) ? "active" : "";
+    var clients_link = $("<a href='/clients' title='Clients'></a>")
+      .addClass(classes)
+      .append([
+        "<span class='symbol'>",
+        "<svg class='icon-screen'>",
+        "<use xlink:href='/assets/images/icons.svg#icon-screen'></use>",
+        "</svg>",
+        "</span>\n",
+        "<span class='title'>Clients</span>"
+      ].join(""));
+     
+    $(clients_link).insertBefore($("nav a")[1]);
+  }
+
+  
+  
+
+  return { 
+    init: function() {
       sh_highlightDocument();
-
-      // Asciiw-demo
       asciiw_demo();
+      install_routing();
+
+      if (simpleStorage.get('consulting-mode')) { 
+        install_clients_navlink();
+      }
+
+      if (!toggling_consulting) {
+        install_dom_event_bindings();
+        $("nav").addClass("fade-in");
+        $("main").addClass("fade-down");
+      }
     }
   };
 })(UserboundInterface || {});

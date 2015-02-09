@@ -5,8 +5,12 @@
   float: left
   width: 30px
   text-align: right
-  +animate(fadeIn 1s)
+  opacity: 0
 
+
+  &.fade-in
+    opacity: 1
+    +animate(fadeIn 1s)
   &.fade-out
     opacity: 0
     +animate(fadeOut 1s)

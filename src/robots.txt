@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /clients
+Disallow: /consulting
+Disallow: /noncommercial

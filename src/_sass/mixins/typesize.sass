@@ -5,4 +5,4 @@ $size_map: ( biggest: 1.602, bigger: 1.266, medium: 1, smaller: 0.889, smallest:
 
 @mixin fontsize($size)
   font-size: #{map-get($size_map, $size)}rem
-  line-height: spacing($size, 1)
+  line-height: #{map-get($size_map, $size) * $line_height_multiplier}rem

@@ -3,12 +3,14 @@
 </header>
 
 <section class='content'>
-  {% for entry in entries %}
-  <a class='block listing-entry link' href="{{ entry.url }}">
-    <h2>{{ entry.title }}</h2>
-    <span class='date'>
-      {{ entry.date }}
-    </span>
-  </a>
-  {% endfor %}
+  <ul class='links-listing'>
+    {% for entry in entries %}
+      <li>
+        <a href="{{ entry.url }}">
+          <h2>{{ entry.title }}</h2>
+          <span class='subline'>{{ entry.date }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 </section>
