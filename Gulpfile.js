@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 // Require Modules
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
