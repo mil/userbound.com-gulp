@@ -18,6 +18,8 @@
 
     margin-right: 1rem
     color: #cfcfcf
+    &:hover
+      color: $link_hover
 
     &.active
       color: #888888
@@ -33,7 +35,9 @@
       padding-right: 1rem
     a  
       +fontsize(smallest)
-      &.sub
-        font-size: 0.4rem
 
-      text-decoration: italic
+      &.sub //smaller style for mil-edit page
+        font-size: 0.4rem
+      &:hover
+        color: $link_hover
+

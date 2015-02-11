@@ -1,10 +1,11 @@
 .window-chrome
   margin-top: 3rem
   position: relative
-  $top_bar_height: 30px
-  background: url('/assets/images/crossword.png')
+  $top_bar_height: 28px
+  background: #fbfbfb
 
   .btns
+
     display: block
     right: 0
     top: 0
@@ -13,20 +14,20 @@
    
 
     .btn
-      +circle(11px)
+      +circle(10px)
       top: 9px
       position: absolute
-      border: 1px solid #cfcfcf
+      border: 1px solid #cdcdcd
 
       &.a
         right: 10px
-        background: red
+        background: #99d177 
       &.b
         right: 30px
-        background: green
+        background: #f8c669
       &.c
         right: 50px
-        background: blue
+        background: #fa5a55
 
 
   img 
@@ -48,7 +49,7 @@
     margin: 0 auto
     content: " "
     border: 1px solid #cfcfcf
-    border-bottom: 1px dotted#cfcfcf
+    border-bottom: 1px dashed #cfcfcf
 
     &:after
       display: block
