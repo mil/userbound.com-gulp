@@ -1,3 +1,4 @@
+'use strict';
 var UserboundInterface = (function(my) {
   var router = new Grapnel({ pushState: true });
   var toggling_consulting = false;
