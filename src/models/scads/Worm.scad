@@ -1,6 +1,5 @@
 /*
-  sorry i lost the source for the actual
-  model, this is where the start came from.
+  this'll get you started ;)
 */
 for (y = [10 : 6 : 20]) {
   for (x = [0 : 2 : 20]) {
