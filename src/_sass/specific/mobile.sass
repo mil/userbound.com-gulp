@@ -82,3 +82,19 @@
           border-left: none
         
         border-bottom: 2px solid #d3ffc2
+
+
+// smaller side spacing
+@media screen and (max-width: 340px)
+  body .wrapper
+    padding: 0 spacing(medium)
+
+  html:not(#home) body .wrapper > nav  .links
+    margin-right: 18px
+
+    a
+      width: 24px
+
+ 
+  html:not(#home) body .wrapper > nav a.guy
+    margin-left: -17px
