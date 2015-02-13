@@ -140,11 +140,13 @@ var UserboundInterface = (function(my) {
 
   function install_clients_navlink() {
     // only installs if in consulting mode
+    var clients_section_active = window.location.pathname.match(/^\/clients/);
+    var is_homepage = $("html head title").text().match(/^Userbound/);
 
     // makes it active, if on /clients*
-    var classes = window.location.pathname.match(/^\/clients/) ? "active" : "";
     var clients_link = $("<a href='/clients' title='Clients'></a>")
-      .addClass(classes)
+      .addClass(clients_section_active ? "active" : "")
+      .attr("title", is_homepage ? "" : "Clients")
       .append([
         "<span class='symbol'>",
         "<svg class='icon-screen'>",

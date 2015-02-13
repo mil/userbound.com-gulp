@@ -57,13 +57,22 @@
 
 @include keyframes(toBlack)
   from
-    color: currentColor
+    color: #888888
   to
-    color: black
+    color: $link_hover
+
+@include keyframes(toBlue)
+  from
+    color: #888888
+  to
+    color: $link_hover
+
+
+
 
 @mixin animate($animation_type, $delay: 0s)
   -webkit-animation-delay: $delay
-  animation-delay: $delay
-
-  animation: #{$animation_type}
   -webkit-animation: #{$animation_type}
+
+  animation-delay: $delay
+  animation: #{$animation_type}

@@ -5,24 +5,36 @@ date: 2014-12-25
 time: 4:00PM
 ---
 
-In my ideal world, a static site compiler would just be a script or a very simple set of rules transforming some assets into others.  
+[Gulp](http://gulpjs.com), is a tiny library of utility functions (`src`, `dest`, `task`, and `watch`) that plug and play nicely with node streams.  As such, if your a stream fan, or simply have ever used Unix pipes, Gulp will make you feel right at home while helping you to architect sitebuilds.
 
-So I built myself a filesystem scripting layer for running sequential scripting rules over a set of files and combining them in various ways (e.g. with yaml-headers looking like:
+As far as `Gulpfile`'s go, structure your tasks, or task-generating logic however you wish.  What I found to work for me on the sitebuild for [userbound.com](http://userbound.com) was to break my logic into small `exports`-style modules and let [my Gulpfile](https://github.com/mil/userbound.com-gulp/blob/master/Gulpfile.js) play the role of master `require`-er:
 
-<pre class='sh_yaml'>
-page:
-  scripts: "markdown"
+<pre class='sh_javascript'>
+#!/usr/bin/env node
+'use strict';
+// Require Modules
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')({
+  pattern: '*',
+  rename: {
+    'underscore': '_',
+    'yaml-front-matter': 'yaml_extractor',
+    'gulp-front-matter': 'fem',
+    'gulp-ruby-sass': 'sass'
+  }
+});
 
-once_page_is_compiled: 
-  prepends:  _partials/header.html
-  postpends: _partials/footer.html
-  scripts:
-    - substitute_head
-    - minify_html
+// Require Globals (vars) and Utils (fns)
+var globals = require('./lib/globals')($);
+var util    = require('./lib/util')($, globals);
+var mutators = require('./lib/mutators')($, globals);
+
+// Require Tasks 
+$._.each($.fs.readdirSync('./lib/tasks'), function(module) { 
+  require('./lib/tasks/' + module)(gulp, $, util, mutators, globals); 
+});
 </pre>
 
-Then I realized making another site-generator was insane. 
+This way, I keep my tasks nice, small, and discrete.  [Jekyll](http://jekyllrb.com) for sitebuilds always felt like a hack; but [Gulp](http://gulpjs.com) for sitebuilds feels great.
 
-I just wanted something 'web-agnostic'. I researched and found the collective that made the JavaScript oriented makefile helper of sort. _Gulp_.  It's got a tiny API and its built on a thin layer of node streaminess. 
-
-Cool - _thanks Gulp_.
+_Thanks Gulp_.

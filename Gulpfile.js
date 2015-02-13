@@ -21,11 +21,3 @@ var mutators = require('./lib/mutators')($, globals);
 $._.each($.fs.readdirSync('./lib/tasks'), function(module) { 
   require('./lib/tasks/' + module)(gulp, $, util, mutators, globals); 
 });
-
-// Default Task definition
-gulp.task('default', $._.union(
-  ['clean', 'homepage', 'about', 'clients'],
-  globals.section_tasks,
-  [ 'assets_pipeline', 'assets_folder', 'subsection_stubs', 'models_stubs', 'consulting_stubs'],
-  [ 'webserver', 'watch']
-));
