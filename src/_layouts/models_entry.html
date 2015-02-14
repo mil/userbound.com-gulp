@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>{% include "_partials/head.html" %}</head>
+  <body>
+    <div class='wrapper'>
+      {% include "_partials/nav.html" %}
+      <main>
+      {% include "_partials/entry_header.html" %}
+
+
+      <section class='content'>
+        <img src="/models/{{ title }}.png" alt="{{ title }}" class='filter-el visible' data-category-model>
+        <pre class='sh_javascript filter-el' data-category-code>{{ scad_source|raw }}</pre>
+      </section>
+
+
+      {% include "_partials/footer.html" %}
+      </main>
+    </div>
+  </body>
+</html>
