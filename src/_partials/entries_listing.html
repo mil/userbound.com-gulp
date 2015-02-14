@@ -1,0 +1,33 @@
+{% for category, entries in categories %}
+  {% if loop.first %}
+  <ul class='links-listing filter-el visible' data-category-{{ category }}>
+  {% else %}
+  <ul class='links-listing filter-el' data-category-{{ category }}>
+  {% endif %}
+
+
+    {% for entry in entries %}
+      <li>
+        <a href="{{ entry.url }}">
+          <h2>
+            {{ entry.title }}
+
+            {% if entry.status %}
+              {% if entry.status == 'production' %}
+                <span class='status production'></span>
+              {% else %}
+                <span class='status experimental'></span>
+              {% endif %}
+            {% endif %}
+          </h2>
+          <span class='subline'>
+            {% if entry.date %}{{ entry.date }}{% endif %}
+            {% if entry.description %}{{ entry.description|raw }}{% endif %}
+          </span>
+        </a>
+      </li>
+    {% endfor %}
+
+
+  </ul>
+{% endfor %}

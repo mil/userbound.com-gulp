@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>{% include "_partials/head.html" %}</head>
+  <body>
+    <div class='wrapper'>
+      {% include "_partials/nav.html" %}
+      <main>
+
+        <header>
+          <h1>{{ title }}</h1>
+          <div class='filter-by'>
+            <button class='active'>Web</button>
+            <button>Linux</button>
+          </div>
+        </header>
+
+        <section class='content'>
+          <div class='interfaces-list'>
+            {% include "_partials/entries_listing.html" %}
+          </div>
+        </section>
+
+        {% include "_partials/footer.html" %}
+      </main>
+    </div>
+  </body>
+</html>

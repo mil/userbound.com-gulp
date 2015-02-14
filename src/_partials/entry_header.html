@@ -1,0 +1,53 @@
+<header>
+  <a class='up' href="/{{collection_name}}">&uarr;</a>
+  <h1>
+    {{ title }}
+    {% if status.length %}
+      {% if status == 'production' %}
+      <span class='status production'></span>
+      {% else %}
+      <span class='status experimental'></span>
+      {% endif %}
+    {% endif %}
+  </h1>
+  {% if description.length %}
+    <span class='description'>{{ description|raw }}</span>
+  {% endif %}
+  {% if links.length %}
+    <div class='links'>
+      {% for title,url in links %}
+      <div class="link">
+
+        {% if url == "[object Object]" %}
+
+        {% for sublink, suburl in url %}
+
+        {% if sublink == "1" %}
+        <a href="{{ suburl }}">{{ title }}</a>
+        <a class='sub' href="{{ suburl }}">{{ sublink }}</a>
+        {% else %}
+        <a class='sub' href="{{ suburl }}">{{ sublink }}</a>
+        {% endif %}
+
+        {% endfor %}
+
+        {% else %}
+        <a href="{{ url }}">{{ title }}</a>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if filter_btns.length %}
+    <div class='filter-by'>
+      {% for btn in filter_btns %}
+        {% if loop.first %}
+          <button class='active'>{{ btn|raw }}</button>
+        {% else %}
+          <button>{{ btn|raw }}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</header>
