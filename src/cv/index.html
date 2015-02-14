@@ -1,0 +1,48 @@
+---
+objective: 'Self-driven front-end design and development consultant with experience across the stack'
+
+employment:
+  - 'company': 'IBM Design'
+    'title': 'Front-End Developer'
+    'time': '2014-Present'
+    'description': 'Work in interdisciplinary teams to craft both prototype and production web- based interfaces.'
+  - 'company': 'Single Throw'
+    'title': 'Designer and Developer'
+    'time': '2014-Present'
+    'description': 'Work in interdisciplinary teams to craft both prototype and production web- based interfaces.'
+
+skills:
+  - 'category': 'Front-End'
+    'languages': [ ]
+    'libraries' : [ ]
+  - 'category' : 'Backend'
+
+education:
+  - 'title': Hackerschool
+    'time': '2012'
+    'description': 'Participated in Batch [2]. Built '
+  - 'title': Virginia Polytechnic State University
+    'time': '2012'
+    'description': 'Bachelors of Science in Pscychology. Bachelors of Arts in Philosophy. Minor in Industiral Design'
+---
+<header>
+<h1>About</h1>
+<div class='filter-by'>
+<button class='active'>General</button>
+<button>Tech</button>
+<button>Music</button>
+<button>Quotes</button>
+</div>
+</header>
+
+<section class='content'>
+  <img src="/assets/images/headshot.jpg" alt="Miles Alan Sandlar">
+
+  {% for employer in employment %}
+    {{ employer.company }}
+    {{ employer.title }}
+    {{ employer.time }}
+    {{ employer.description }}
+    
+  {% endfor %}
+</section>
