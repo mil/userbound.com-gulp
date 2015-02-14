@@ -8,7 +8,8 @@ var $ = require('gulp-load-plugins')({
     'underscore': '_',
     'yaml-front-matter': 'yaml_extractor',
     'gulp-front-matter': 'fem',
-    'gulp-ruby-sass': 'sass'
+    'gulp-ruby-sass': 'sass',
+    'swig': 'swig_vendor'
   }
 });
 
