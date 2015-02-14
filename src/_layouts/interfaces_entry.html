@@ -9,7 +9,7 @@
         {% include "_partials/entry_header.html" %}
 
         <section class='content'>
-          <div class='bar'>{{ yield|raw }} </div>
+          {{ yield|raw }}
           {% if footnotes %}
             <ol class='footnotes'>
               {% for footnote in footnotes %}
@@ -18,8 +18,6 @@
             </ol>   
           {% endif %}
         </section>
-
-
 
         {% include "_partials/footer.html" %}
       </main>

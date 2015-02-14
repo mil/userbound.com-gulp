@@ -7,10 +7,7 @@
       <main>
         {% include "_partials/entry_header.html" %}
 
-
-        <section class='content'>
-          <div class='bar'>{{ yield|raw }}</div>
-        </section>
+        <section class='content'>{{ yield|raw }}</section>
 
         {% include "_partials/footer.html" %}
 
