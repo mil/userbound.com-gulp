@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>{% include "_partials/head.html" %}</head>
+  <body>
+    <div class='wrapper'>
+      {% include "_partials/nav.html" %}
+      <main>
+        <header><h1>{{title }}</h1></header>
+
+        <section class='models content'>
+          {% for entry in entries %}
+          <a class='model-preview' href="{{ entry.url }}">
+            <img src="{{ entry.url }}.png" alt="{{ entry.title }}">
+          </a>
+          {% endfor %}
+        </section>
+
+
+        {% include "_partials/footer.html" %}
+      </main>
+    </div>
+  </body>
+</html>

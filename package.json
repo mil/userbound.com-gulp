@@ -12,7 +12,6 @@
     "gulp-front-matter": "1.1.1",
     "gulp-data": "1.1.1",
     "gulp-dom": "0.3.1",
-    "gulp-insert": "0.4.0",
     "gulp-load-plugins": "0.8.0",
     "gulp-markdown": "1.0.0",
     "gulp-minify": "0.0.5",

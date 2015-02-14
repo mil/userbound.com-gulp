@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>{% include "_partials/head.html" %}</head>
+  <body>
+    <div class='wrapper'>
+      {% include "_partials/nav.html" %}
+      <main>
+
+        {{ yield|raw }}
+
+        {% include "_partials/footer.html" %}
+      </main>
+    </div>
+  </body>
+</html>

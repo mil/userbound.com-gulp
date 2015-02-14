@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>{% include "_partials/head.html" %}</head>
+  <body>
+    <div class='wrapper'>
+      {% include "_partials/nav.html" %}
+      <main>
+      <header>
+        <h1>{{ title }}</h1>
+      </header>
+
+
+      <section class='content'>
+        <div class='entry-list hardware'>
+          {% for entry in entries %}
+
+          <a class='block listing-entry' href="{{ entry.url }}">
+            <h2>{{ entry.title }}</h2>
+            <img src="/things/{{ entry.poster|raw }}" alt="{{ entry.title }}">
+          </a>
+
+          {% endfor %}
+        </div>
+      </section>
+
+      {% include "_partials/footer.html" %}
+      </main>
+    </div>
+  </body>
+</html>

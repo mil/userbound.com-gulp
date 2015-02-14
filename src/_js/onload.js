@@ -83,7 +83,7 @@ var UserboundInterface = (function(my) {
 
     // Models follows a different schema since its only subpage with stubs
     router.navigate(window.location.href.match("/models") ?
-      "/models/" + $("h1").text() + "/" + subsection.replace(" ", "-") :
+      "/models/" + $("h1").text().replace(/^\s+|\s+$/g,'') + "/" + subsection.replace(" ", "-") :
       "/" + $("h1").text().toLowerCase() + "/" + subsection.replace(" ", "-")
     );
   }
