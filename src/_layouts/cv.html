@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>{% include "_partials/head.html" %}</head>
+  <body>
+    <div class='wrapper'>
+      <div class='cv'>
+
+        <header>
+          <img src="/assets/images/headshot.jpg" alt="Miles Alan Sandlar">
+          <div class='overview'>
+            <div class='inner'>
+              <h1>Miles Alan</h1>
+              <h2>Front-End Developer</h2>
+            </div>
+          </div>
+        </header>
+
+
+        {% for employer in employment %}
+          <div>
+            <div class='date'>{{ employer.time }}</div>
+
+            <h3>{{ employer.company }}</h3>
+            <p>{{ employer.description }}</p>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </body>
+</html>
