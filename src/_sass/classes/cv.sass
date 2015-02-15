@@ -1,19 +1,36 @@
 .cv
+  // reset from main site styles
+  h1, h2, h3, header
+    margin: 0
+    padding: 0
+
   header
+    box-sizing: border-box
+    $spacing: 2rem
+    margin-bottom:  $spacing
+    padding-bottom: $spacing
+
+
+    h1
+    h2
+      +fontsize(smaller)
     vertical-align: top
     border-bottom: $seperator_line
     img
+      display: none
       border: 5px solid black
     .overview
-      display: inline-block
-
-      
-      .inner
-        di
-        +vertical-align
 
   .date
     +fontsize(smallest)
     margin-left: -105px
     width: 120px
     position: absolute
+
+  h3
+    color: $link_color
+
+  p
+    +fontsize(smaller)
+
+    
