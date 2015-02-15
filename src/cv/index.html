@@ -10,6 +10,19 @@ employment:
     'title': 'Designer and Developer'
     'time': '2014-Present'
     'description': 'Work in interdisciplinary teams to craft both prototype and production web- based interfaces.'
+  - 'company': 'Atomic Axis'
+    'title': 'Designer and Developer'
+    'time': '2014-Present'
+    'description': 'Work in interdisciplinary teams to craft both prototype and production web- based interfaces.'
+
+  - 'company': 'Kurani Interactive'
+    'title': 'Designer and Developer'
+    'time': '2014-Present'
+    'description': 'Work in interdisciplinary teams to craft both prototype and production web- based interfaces.'
+
+
+
+
 
 skills:
   - 'category': 'Front-End'
@@ -25,24 +38,4 @@ education:
     'time': '2012'
     'description': 'Bachelors of Science in Pscychology. Bachelors of Arts in Philosophy. Minor in Industiral Design'
 ---
-<header>
-<h1>About</h1>
-<div class='filter-by'>
-<button class='active'>General</button>
-<button>Tech</button>
-<button>Music</button>
-<button>Quotes</button>
-</div>
-</header>
 
-<section class='content'>
-  <img src="/assets/images/headshot.jpg" alt="Miles Alan Sandlar">
-
-  {% for employer in employment %}
-    {{ employer.company }}
-    {{ employer.title }}
-    {{ employer.time }}
-    {{ employer.description }}
-    
-  {% endfor %}
-</section>
