@@ -2,29 +2,92 @@
 <html>
   <head>{% include "_partials/head.html" %}</head>
   <body>
-    <div class='wrapper'>
+    <div class='header-bar'>
+      <span class='icons'>
+        {% for icon in icons %}
+          <a href="{{icon.url}}"><svg class="icon-{{ icon.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ icon.symbol||raw }}"></use></svg></a>
+        {% endfor %}
+      </span>
+    </div>
+
+
+    <div class='cv-wrapper'>
+
+
+      <div class='sidebar'>
+        <div class='overview'>
+          <img src="/assets/images/headshot.jpg" alt="Miles Alan Sandlar">
+          <div class='inner'>
+            <h1>
+              Miles Alan
+
+            </h1>
+            <h2>Front-End Development Consultant</h2>
+          </div>
+        </div>
+
+
+
+        <h3>Specializations</h3>
+        <ul class='listing'>
+        {% for skill in specializations %}
+          <li>{{skill}}</li>
+        {% endfor %}
+        </ul>
+
+        <h3>Languages</h3>
+        <ul class='listing'>
+          {% for skill in languages %}
+            <li>{{skill}}</li>
+          {% endfor %}
+        </ul>
+
+        <h3>Libraries</h3>
+        <ul class='listing'>
+        {% for skill in libraries %}
+          <li>{{skill}}</li>
+        {% endfor %}
+        </ul>
+
+      </div>
+
+
+
+
       <div class='cv'>
 
-        <header>
-          <img src="/assets/images/headshot.jpg" alt="Miles Alan Sandlar">
-          <div class='overview'>
-            <div class='inner'>
-              <h1>Miles Alan</h1>
-              <h2>Front-End Development Consultant</h2>
-              <p>Available for remote consultancy work, web application development, and entreprenerial opportunities.</p>
-            </div>
-          </div>
-        </header>
 
 
+
+        <h2>Experience</h2>
+        <div>
         {% for employer in employment %}
           <div>
-            <div class='date'>{{ employer.time }}</div>
 
-            <h3>{{ employer.company }}</h3>
-            <p>{{ employer.description }}</p>
+            <h3>{{ employer.company }}<span class='date'>{{ employer.time }}</span></h3>
+            <p>{{ employer.description|raw }}</p>
           </div>
         {% endfor %}
+        </div>
+
+
+
+
+
+
+        <h2>Education</h2>
+        <div>
+        {% for educator in education %}
+          <div>
+
+            <h3>{{ educator.company }}<span class='date'>{{ educator.time }}</span></h3>
+            <p>{{ educator.description|raw }}</p>
+          </div>
+        {% endfor %}
+        </div>
+
+
+
 
       </div>
     </div>

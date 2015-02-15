@@ -1,36 +1,117 @@
-.cv
-  // reset from main site styles
+
+.header-bar 
+  margin: 0 auto
+  max-width: 770px 
+  width: 100%
+  .icons
+    float: right
+    text-align: right
+    a
+      svg
+        $size: 14px
+        width: $size
+        height: $size
+
+
+.cv-wrapper
+  overflow: hidden
+  clear: both
+
+  padding-top: 3rem
+  max-width: 770px 
+  width: 100%
+  margin: 0 auto
+
+  .sidebar, .cv
+    float: left
+
   h1, h2, h3, header
     margin: 0
     padding: 0
+ 
 
-  header
-    box-sizing: border-box
-    $spacing: 2rem
-    margin-bottom:  $spacing
-    padding-bottom: $spacing
 
+
+.cv-wrapper .sidebar
+  width: 210px
+
+  padding-right: 30px
+
+  box-sizing: border-box
+  $spacing: 2rem
+  margin-bottom:  $spacing
+  padding-bottom: $spacing
+  p
+    margin: 0
+   
+  img
+    border-radius: 110px
+
+  h2
+    +fontsize(smaller)
+
+  .overview
+    text-align: center
+    margin-bottom: 20px
+    padding-bottom: 20px
+    border-bottom: 1px dotted #cfcfcf
+
+  h3
+    margin: 0 auto
+
+  .listing
+    margin: 0
+    margin-bottom: 10px
+    list-style-type: none
+    +fontsize(smallest)
+
+    li
+      &:before
+        float: left
+        content: "\00BB"
+        padding-right: 10px
+      padding-left: 10px
+
+
+
+.cv-wrapper .cv
+  border-left: 1px dotted #cfcfcf
+  width: 529px
+  padding-left: 30px
+  // reset from main site styles
 
     h1
     h2
       +fontsize(smaller)
+      margin-bottom: 0
     vertical-align: top
     border-bottom: $seperator_line
-    img
-      display: none
-      border: 5px solid black
-    .overview
+  
 
-  .date
+  span.date
+    border-left: 1px dotted #cfcfcf
+    padding-left: 10px
+    margin-left: 10px
     +fontsize(smallest)
-    margin-left: -105px
-    width: 120px
-    position: absolute
+    color: #000000
+
 
   h3
     color: $link_color
 
+  h2
+    margin-bottom: spacing(medium)
+
+
   p
     +fontsize(smaller)
 
+  hr
+    +hr
     
+  .split
+    .half
+      width: 49%
+      display: inline-block
+
+
