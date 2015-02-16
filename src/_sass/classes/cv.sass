@@ -63,8 +63,8 @@ $block_bottom: spacing(medium, 1)
 
   .overview
     text-align: left
-    margin-bottom: 20px
     padding-bottom: 20px
+    margin-bottom: $block_bottom
     border-bottom: $seperator_line
 
   h3
@@ -110,7 +110,7 @@ $block_bottom: spacing(medium, 1)
     //+fontsize(smaller)
     display: inline-block
     margin-bottom: 0
-    padding-bottom: spacing(smallest, 0.5)
+    padding-bottom: spacing(smallest, 0.9)
     vertical-align: top
     border-bottom: $seperator_line
     margin-bottom: $block_bottom
@@ -130,3 +130,21 @@ $block_bottom: spacing(medium, 1)
       margin-left: 10px
       +fontsize(smallest)
       color: $date_color
+
+
+@media screen and (max-width: 600px)
+  .cv .col
+    &.left, &.right
+      float: none
+      margin: 0
+      display: block
+      padding: 0
+      width: 100%
+      border: none
+
+    &.right
+      padding-bottom: spacing(biggest)
+      border-bottom: $seperator_line
+
+      h2
+        margin-top: spacing(biggest)
