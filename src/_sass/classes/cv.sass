@@ -1,16 +1,17 @@
 $sidebar_width: 210px
+$print_mode: false
+
+$date_color: #404040
+$heading_color: $link_color
+$block_bottom: spacing(medium, 1)
+
 @mixin reset_styles
   h1, h2, h3, header
     margin: 0
     padding: 0
 
 
-html#page-cv
-  background: #f8f8f6
-
-
 .cv
-  background: white
   width: 100%
   max-width: 800px 
   padding: 60px 30px
@@ -21,6 +22,8 @@ html#page-cv
   clear: both
 
   +reset_styles
+  h3
+    color: $heading_color
 
   .col
     &.left
@@ -53,7 +56,7 @@ html#page-cv
     display: none
 
   h1
-    +fontsize(bigger)
+    +fontsize(biggest)
 
   h2
     +fontsize(smallest)
@@ -62,22 +65,25 @@ html#page-cv
     text-align: left
     margin-bottom: 20px
     padding-bottom: 20px
-    border-bottom: 1px dotted #cfcfcf
+    border-bottom: $seperator_line
 
   h3
     margin: 0 auto
 
-  .listing
-    margin: 10px 0
+  ul.listing
+    margin: 0
     list-style-type: none
     +fontsize(smallest)
+    line-height: 1.3335rem
+    margin-bottom: $block_bottom
+    margin-top: 5px
 
     li
+      margin-bottom: 3px
       &:before
         float: left
         content: "\00BB"
         padding-right: 10px
-      padding-left: 10px
 
 
 
@@ -95,9 +101,10 @@ html#page-cv
 
 
 .cv .col.right
-  border-left: 1px dotted #cfcfcf
+  border-left: $seperator_line
   padding-left: 30px
-  // reset from main site styles
+  padding-top: 29px
+
 
   h2
     //+fontsize(smaller)
@@ -106,36 +113,20 @@ html#page-cv
     padding-bottom: spacing(smallest, 0.5)
     vertical-align: top
     border-bottom: $seperator_line
+    margin-bottom: $block_bottom
 
 
   section
     margin-bottom: spacing(biggest)
 
 
-  span.date
-    border-left: 1px dotted #cfcfcf
-    padding-left: 10px
-    margin-left: 10px
-    +fontsize(smallest)
-    color: #000000
+    p
+      +fontsize(smaller)
+      margin-bottom: $block_bottom
 
-
-  h3
-    color: $link_color
-
-  h2
-    margin-bottom: spacing(medium)
-
-
-  p
-    +fontsize(smaller)
-
-  hr
-    +hr
-    
-  .split
-    .half
-      width: 49%
-      display: inline-block
-
-
+    span.date
+      border-left: $seperator_line
+      padding-left: 10px
+      margin-left: 10px
+      +fontsize(smallest)
+      color: $date_color
