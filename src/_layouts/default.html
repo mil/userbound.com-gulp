@@ -5,9 +5,7 @@
     <div class='wrapper'>
       {% include "_partials/nav.html" %}
       <main>
-
-        {{ yield|raw }}
-
+        {% block main %}{{ yield|raw }}{% endblock %}
         {% include "_partials/footer.html" %}
       </main>
     </div>

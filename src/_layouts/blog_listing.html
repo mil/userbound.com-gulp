@@ -1,16 +1,6 @@
-<!doctype html>
-<html>
-  <head>{% include "_partials/head.html" %}</head>
-  <body>
-    <div class='wrapper'>
-      {% include "_partials/nav.html" %}
-      <main>
-        <header><h1>{{ title }}</h1></header>
+{% extends '_layouts/default.html' %}
 
-        <section class='content'>{% include "_partials/entries_listing.html" %}</section>
-
-        {% include "_partials/footer.html" %}
-      </main>
-    </div>
-  </body>
-</html>
+{% block main %}
+<header><h1>{{ title }}</h1></header>
+<section class='content'>{% include "_partials/entries_listing.html" %}</section>
+{% endblock %}
