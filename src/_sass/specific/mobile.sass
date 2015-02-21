@@ -1,5 +1,5 @@
 @media screen and (max-height: 500px)
-  html#home
+  html.home
     height: 100%
     body
       display: table
@@ -14,14 +14,14 @@
         vertical-align: middle
 
 @media screen and (max-width: 690px)
-  html:not(#home) body .wrapper
+  html:not(.home) body .wrapper
     overflow: hidden
     padding-top: 0
 
     main
       margin-top: 7rem
   
-  html:not(#home) body .wrapper > nav
+  html:not(.home) body .wrapper > nav
     z-index: 10000
     display: block
     float: none
@@ -89,12 +89,12 @@
   body .wrapper
     padding: 0 spacing(medium)
 
-  html:not(#home) body .wrapper > nav  .links
+  html:not(.home) body .wrapper > nav  .links
     margin-right: 18px
 
     a
       width: 24px
 
  
-  html:not(#home) body .wrapper > nav a.guy
+  html:not(.home) body .wrapper > nav a.guy
     margin-left: -17px
