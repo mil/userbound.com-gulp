@@ -5,11 +5,12 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
   pattern: '*',
   rename: {
-    'underscore': '_',
-    'yaml-front-matter': 'yaml_extractor',
+    'fs-readdir-recursive': 'recursive_readdir',
     'gulp-front-matter': 'fem',
     'gulp-ruby-sass': 'sass',
-    'swig': 'swig_vendor'
+    'swig': 'swig_vendor',
+    'underscore': '_',
+    'yaml-front-matter': 'yaml_extractor'
   }
 });
 
@@ -19,6 +20,6 @@ var util = require('./lib/util')($, globals);
 var mutators = require('./lib/mutators')($, globals);
 
 // Require Tasks 
-$._.each($.fs.readdirSync('./lib/tasks'), function(module) { 
+$._.each($.recursive_readdir('./lib/tasks'), function(module) { 
   require('./lib/tasks/' + module)(gulp, $, util, mutators, globals); 
 });
