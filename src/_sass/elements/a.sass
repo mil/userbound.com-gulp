@@ -1,6 +1,13 @@
+$link_hover_timing: 0.8s
+
 body a 
   color: $link_color
   text-decoration: none
+  transition: $link_hover_timing all ease-in
+  &:hover
+    transition: $link_hover_timing all ease-out
+    color: $link_hover
+    
 
 section.content 
   a
