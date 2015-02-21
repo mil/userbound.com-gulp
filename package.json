@@ -5,6 +5,7 @@
   "dependencies" : {
     "colors": "1.0.3",
     "fs": "0.0.2",
+    "fs-readdir-recursive": "0.1.0",
     "globby": "latest",
     "gulp": "3.8.10",
     "gulp-concat": "2.4.3",
