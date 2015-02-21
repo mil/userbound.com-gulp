@@ -74,7 +74,10 @@ var UserboundInterface = (function(my) {
     if ($(target_link).attr("href") === "#") { return; }
 
     e.preventDefault();
+
+    var current_section = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/')[1];
     var href = $(target_link).attr('href');
+    if (!href.match(current_section)) { $("nav a.active").removeClass("active"); }
     fade_up_out(href);
   } 
  
