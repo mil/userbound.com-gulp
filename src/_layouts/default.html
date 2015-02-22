@@ -2,13 +2,15 @@
 <html {% if page_layout %}class='{{ page_layout }}'{% endif %}>
   <head>{% include "_partials/head.html" %}</head>
   <body>
-    <div class='wrapper'>
-      {% include "_partials/nav.html" %}
-      <main>
-        {% block main %}{{ yield|raw }}{% endblock %}
-        {% include "_partials/footer.html" %}
-      </main>
-    </div>
+    {% block body %}
+      <div class='wrapper'>
+        {% include "_partials/nav.html" %}
+        <main>
+          {% block main %}{{ yield|raw }}{% endblock %}
+          {% include "_partials/footer.html" %}
+        </main>
+      </div>
+    {% endblock %}
     {% include "_partials/analytics.html" %}
   </body>
 </html>
