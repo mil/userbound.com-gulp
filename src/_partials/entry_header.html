@@ -10,10 +10,10 @@
       {% endif %}
     {% endif %}
   </h1>
-  {% if description.length %}
+  {% if description %}
     <span class='description'>{{ description|raw }}</span>
   {% endif %}
-  {% if links.length %}
+  {% if links %}
     <div class='links'>
       {% for title,url in links %}
       <div class="link">
