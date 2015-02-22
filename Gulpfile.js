@@ -6,6 +6,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
   pattern: '*',
   rename: {
+    'autoprefixer-core': 'autoprefixer',
     'fs-readdir-recursive': 'recursive_readdir',
     'gulp-front-matter': 'fem',
     'gulp-ruby-sass': 'sass',
