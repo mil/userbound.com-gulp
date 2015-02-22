@@ -25,6 +25,9 @@ $block_bottom: spacing(medium, 1)
   +reset_styles
   h3
     color: $heading_color
+  a:hover h3
+    color: $link_hover
+    
 
   .col
     &.left
@@ -48,13 +51,13 @@ $block_bottom: spacing(medium, 1)
   img
     //border-radius: 110px
     border: 4px solid white
-    box-shadow: 3px 4px 0 #cfcfcf
+    //box-shadow: 3px 4px 0 #cfcfcf
     border-radius: 110px
     display: inherit
     margin: 0 auto
     margin-bottom: 18px
-
     display: none
+
 
   h1
     +fontsize(biggest)
@@ -108,6 +111,8 @@ $block_bottom: spacing(medium, 1)
   padding-left: 30px
   padding-top: 29px
 
+  a p
+    color: #57534a
 
   h2
     //+fontsize(smaller)

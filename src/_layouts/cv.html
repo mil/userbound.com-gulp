@@ -60,22 +60,22 @@
         <h2>Experience</h2>
         <section>
         {% for employer in employment %}
-          <div>
+          <a href="{{ employer.url }}">
 
             <h3>{{ employer.company }}<span class='date'>{{ employer.time }}</span></h3>
             <p>{{ employer.description|raw }}</p>
-          </div>
+          </a>
         {% endfor %}
         </section>
 
         <h2>Education</h2>
         <section>
         {% for educator in education %}
-          <div>
+          <a href="{{ educator.url }}">
 
             <h3>{{ educator.company }}<span class='date'>{{ educator.time }}</span></h3>
             <p>{{ educator.description|raw }}</p>
-          </div>
+          </a>
         {% endfor %}
         </section>
 
