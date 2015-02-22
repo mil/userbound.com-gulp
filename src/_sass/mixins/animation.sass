@@ -1,8 +1,4 @@
 @mixin keyframes($animation_handle)
-  @-webkit-keyframes #{$animation_handle}
-    @content 
-  @-moz-keyframes #{$animation_handle}
-    @content
   @keyframes #{$animation_handle}
     @content
 
@@ -67,12 +63,6 @@
   to
     color: $link_hover
 
-
-
-
 @mixin animate($animation_type, $delay: 0s)
-  -webkit-animation-delay: $delay
-  -webkit-animation: #{$animation_type}
-
   animation-delay: $delay
   animation: #{$animation_type}
