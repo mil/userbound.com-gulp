@@ -8,3 +8,7 @@
 @mixin circle($size)
   +square($size)
   border-radius: $size
+
+@mixin sizeup-first-letter
+  &:first-child::first-letter
+    +fontsize(bigger)
