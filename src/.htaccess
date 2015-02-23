@@ -5,7 +5,9 @@ AddType text/plain .scad
 RewriteEngine on
 RewriteBase /
 
-# Max cache for a day, while in dev..
+# Max cache for half a day, while in dev..
+ExpiresActive On
+ExpiresDefault "active plus 12 hours" 
 Header set Cache-Control "max-age=86400, public, must-revalidate"
 
 # 404
