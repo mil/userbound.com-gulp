@@ -2,7 +2,8 @@
 <h1>About</h1>
 <div class='filter-by'>
 <button class='active'>General</button>
-<button>Tech</button>
+<button>Web</button>
+<button>Linux</button>
 <button>Music</button>
 <button>Quotes</button>
 </div>
@@ -11,14 +12,55 @@
 <section class='content'>
 
 <div class='filter-el visible' data-category-general>
-<p class='sizeup-first-letter'>Hi there -- I'm Miles <sub>(or [m](http://www.freep.com/article/20130921/news05/309210021)[i](http://www.apps4va.org/blog/hac4edu-ends-with-a-bang)[l](http://www.wuvt.vt.edu/playlists_dj?action=showPlaylist&s_ShowID=13930&showAll=true))</sub>. There's a sketch of me in the upper left. I'm into philosophy, minimalist software, and good music among other things.</p>
+<p class='sizeup-first-letter'>Hi there -- I'm Miles <sub>(or [m](http://www.freep.com/article/20130921/news05/309210021)[i](http://www.apps4va.org/blog/hac4edu-ends-with-a-bang)[l](http://www.wuvt.vt.edu/playlists_dj?action=showPlaylist&s_ShowID=13930&showAll=true))</sub>. There's a sketch of me in the upper left. I'm into minimalist software, design, philosphy, and music among other things.</p>
 
-<p>I'm currently located in Austin, Texas, employed as a design developer for [IBM Design](http://ibm.com/design).  A link to my resume and professional work samples are available [upon request](mailto:miles%20at%20userbound%20dot%20com). I can be found on [Github](http://github.com/mil), [LinkedIn](http://linkedin.com/in/sandlar), and [Irc](http://freenode.net).</p>
+<p>I'm currently located in Austin, Texas, employed as a front-end developer for [IBM Design](http://ibm.com/design).  A link to my resume and professional work samples are available [upon request](mailto:miles%20at%20userbound%20dot%20com). I can be found on [Github](http://github.com/mil), [LinkedIn](http://linkedin.com/in/sandlar), and [Irc](http://freenode.net).</p>
 </div>
 
-<div class='filter-el' data-category-tech>
-<h2>Software</h2>
-<p>I've been into computers since I got my first laptop around 7 or 8. Here's my favorite software these days:</p>
+
+<div class='filter-el' data-category-web>
+
+<h2>Libraries</h2>
+<p>This is a non-exhaustive list of web libraries I enjoy working with:</p>
+<ul>
+  <li>Build Tools: [Gulp](http://gulpjs.com/), [Make](http://www.gnu.org/software/make/), [S](https://www.ruby-lang.org/en/)[c](http://en.wikipedia.org/wiki/Lisp_%28programming_language%29)[r](https://www.python.org/)[i](http://iolanguage.org/)[p](http://www.smalltalk.org/)[t](http://www.ecmascript.org/)[s](http://nodejs.org/), [Grunt](http://gruntjs.com/)</li>
+  <li>Baseline Styling: [Reset.css](http://meyerweb.com/eric/tools/css/reset/)</li>
+  <li>CSS Processors: [Sass](http://sass-lang.com/), [Autoprefixer](https://github.com/postcss/autoprefixer) </li>
+  <li>Grids: [Foundation Grid](http://foundation.zurb.com/), [Ingrid](http://piira.se/projects/ingrid/) </li>
+  <li>Markup: [Haml](http://haml.info/), [YAML](http://yaml.org/), [Markdown](http://daringfireball.net/projects/markdown/syntax), [Html](http://www.w3.org/TR/html5/), [Xml](http://www.w3.org/TR/REC-xml/)</li>
+  <li>Templating: [Swig](http://paularmstrong.github.io/swig/), [Mustache](https://mustache.github.io/), [Handlebars](http://handlebarsjs.com/)</li>
+  <li>Javascript: [_.js](http://underscorejs.org/), [Lodash](https://lodash.com/)</li>
+  <li>Routing: [Grapnel.js](https://github.com/EngineeringMode/Grapnel.js)</li>
+  <li>Storage: [simpleStorage](https://github.com/andris9/simpleStorage), [Cookies](https://github.com/ScottHamper/Cookies)</li>
+  <li>MV*: [Mmvp.js](http://userbound.com/interfaces/Mmvp.js/), [Angular.js](https://angularjs.org/)</li>
+  <li>SVG: [Raphael.js](http://raphaeljs.com/)</li>
+  <li>Prototyping: [Pencil and Paper](http://localhost:4000/things/Cube/semi-finalized.jpg), [Framer.js](http://framerjs.com/)</li>
+  <li>Version Control: [Git](http://git-scm.com), [Svn](https://subversion.apache.org/), [Hg](http://mercurial.selenic.com/)</li>
+</ul>
+
+
+
+<hr>
+
+<h2>Views on Development</h2>
+
+<p>Favor small de-coupled orthogonal libraries over frameworks. There's not a plugin for everything.</p>
+
+<p>Please don't trust anyone to do developement who doesn't have a solid handle on at least one scripting language.</p>
+
+<p>Usually, 'complexity' is a coverup for one's inability to understand.</p>
+
+
+</div>
+
+
+
+
+<div class='filter-el' data-category-linux>
+<h2>Linux and Software</h2>
+<p>I got started with [Gentoo Linux](https://www.gentoo.org/) when I was about 11. Consequently, I'm a bit of a nerd as I've continued to use linux, script, and hack all my life aside my front-end and creative career.</p>
+
+<p>I have aspirations that one day I will create and distribute my own DE. Until then, here's my computing environment of choice:</p>
 
 <ul>
   <li>Window Mangers: [i3](https://i3wm.org/), [foo wm](http://userbound.com/interfaces/Foo-Wm)</li>
@@ -28,21 +70,12 @@
   <li>Editor: [vim](http://www.vim.org/)</li>
   <li>Terminal Multiplexing: [dtach](http://dtach.sourceforge.net/) + [dvtm](http://www.brain-dump.org/projects/dvtm/)</li>
   <li>Graphics: [sxiv](https://bbs.archlinux.org/viewtopic.php?id=112643), [gimp](http://www.gimp.org/), [photoshop](http://www.photoshop.com/) (vm'd)</li>
-  <li>Media: [mplayer](http://www.mplayerhq.hu/), [pianobar](http://6xq.net/projects/pianobar/), [youtube-viewer](https://code.google.com/p/trizen/)</li>
+  <li>Media: [mplayer](http://www.mplayerhq.hu/), [pianobar](http://6xq.net/projects/pianobar/), [youtube-viewer](https://code.google.com/p/trizen/), [piply](http://userbound.com/things/Piply)</li>
   <li>Misc: [sselp](http://tools.suckless.org/sselp), [compton](https://github.com/chjj/compton)</li>
   <li>Scripting: [ruby](https://www.ruby-lang.org), [javascript](http://www.ecma-international.org/publications/standards/Ecma-262.htm), [io](http://iolanguage.org/)</li>
   <li>Programming: [c](http://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html)</li>
   <li>Shell: [fish](http://fishshell.com/)</li>
   <li>Os Stack: [arch linux](https://www.archlinux.org/), [syslinux](http://www.syslinux.org/), [systemd](http://www.freedesktop.org/wiki/Software/systemd/)</li>
-</ul>
-
-<hr>
-
-<h2>Hardware</h2>
-<ul>
-  <li>Thinkpad X200s 12"</li>
-  <li>Raspberry pi with [Piply](http://userbound.com/things/Piply) for media</li>
-  <li>Fuck smartphones</li>
 </ul>
 
 </div>
