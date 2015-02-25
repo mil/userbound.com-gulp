@@ -7,20 +7,14 @@
   text-align: right
   opacity: 0
 
-
   &.fade-in
     opacity: 1
     +animate(fadeIn 1s)
   &.fade-out
     opacity: 0
     +animate(fadeOut 1s)
-     
-
+    
   a
-
-    span.title
-      display: none
-     
     //+animate(fadeIn 2s)
     border: none
     position: relative
@@ -32,19 +26,35 @@
     border-left: 3px solid white
     transition: 0.3s all ease-in
 
-    span.symbol
-      display: inline-block
-      width: 30px
-      height: 20px
-      line-height: 20px
-      border-left: 1px dotted white
-
-      [class^="icon-"], [class*=" icon-"] 
-        $size: 16px
-        height: $size
-        width: $size
+    span.group
+      span.title
+        display: none
+       
+      span.symbol
         display: inline-block
-        fill: currentColor
+        width: 30px
+        height: 20px
+        line-height: 20px
+        border-left: 1px dotted white
+
+        [class^="icon-"], [class*=" icon-"] 
+          $size: 16px
+          height: $size
+          width: $size
+          display: inline-block
+          fill: currentColor
+    span.description
+      opacity: 0
+      display: inline-block
+      position: absolute
+      padding-left: 5px
+      padding-top: 3px
+    &:hover
+      span.description
+        opacity: 1
+        color: #888888
+        +fontsize(smallest)
+
 
 
     &.active 
@@ -60,8 +70,11 @@
 
 html:not(.home) .wrapper > nav
   a:hover:not(.active)
-    color: $link_hover
-    transition: 0.2s all ease-out
+    .title
+      color: #888888
+    .symbol
+      color: $link_hover
+      transition: 0.2s all ease-out
 
     [class^="icon-"], [class*=" icon-"] 
       width: 20px

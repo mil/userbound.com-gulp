@@ -1,33 +1,37 @@
-<nav>
-  <div class='inner'>
-    <a class='guy' href="/">
-      <span class='head'></span>
-      <span class='body'></span>
-      {% if title == "Unoshowfcornow" %}
-      <span class='feet'></span>
+<nav><div class='inner'>
+  <a class='guy' href="/">
+    <span class='head'></span>
+    <span class='body'></span>
+    {% if title == "Unoshowfcornow" %}
+    <span class='feet'></span>
+    {% endif %}
+  </a>
+  <div class='links'><div class='equal-span'>
+    {% for link in nav_links %}
+      {% set t = link.title %}
+      {% if title == "Userbound" %}
+      {% set t = "" %}
       {% endif %}
-    </a>
-    <div class='links'>
-      <div class='equal-span'>
-        {% for link in nav_links %}
-        {% set t = link.title %}
-        {% if title == "Userbound" %}
-        {% set t = "" %}
-        {% endif %}
 
-        {% if link.active_section %}
-        <a class='active {{ page_type}}' href="{{ link.url }}" title="{{ t|capitalize }}"><span class='symbol'>
-            <svg class="icon-{{ link.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use></svg>
-          </span></a>
-          {% else %}
-          <a href="{{ link.url }}" title="{{ t|capitalize }}">
-            <span class='symbol'>
-              <svg class="icon-{{ link.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use></svg>
-            </span>
-            <span class='title'>{{link.title|capitalize}}</span></a>
-          {% endif %}
-          {% endfor %}
-      </div>
-    </div>
-  </div>
-</nav>
+      {% if link.active_section %}
+        {% set c = 'active' %}
+      {% else %}
+        {% set c = '' %}
+      {% endif %}
+
+
+      <a class='{{ c }} {{ page_type}}' href="{{ link.url }}" title="{{ t|capitalize }}">
+        <span class='group'>
+          <span class='symbol'>
+            <svg class="icon-{{ link.symbol||raw }}">
+              <use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use>
+            </svg>
+          </span>
+          <span class='title'>{{link.title|capitalize}}</span>
+        </span>
+        <span class='description'>{{link.description}}</span>
+      </a>
+
+    {% endfor %}
+  </div></div>
+</div></nav>

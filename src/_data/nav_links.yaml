@@ -1,23 +1,27 @@
 ---
 nav_links:
-  - 
-    symbol : "database"
-    title    : interfaces
-    url    : "/interfaces"
-  -
-    symbol : "paintcan"
-    title    : models
-    url    : "/models"
-  -
-    symbol : "three-bars"
-    title    : blog
-    url    : "/blog" 
-  - 
-    symbol : 'crop'
-    title    : things
-    url    : "/things"
-  -
-    symbol : "person"
-    title    : about
-    url    : "/about"
+  - symbol: "database"
+    title: interfaces
+    description: to connect abstractions.
+    url: "/interfaces"
+
+  - symbol: "paintcan"
+    title: models
+    description: of coded artwork.
+    url: "/models"
+
+  - symbol: "three-bars"
+    title: blog
+    description: postings various.
+    url: "/blog" 
+
+  - symbol: 'crop'
+    title: things
+    description: i've made in real world.
+    url: "/things"
+
+  - symbol: "person"
+    title: about
+    description: who's miles alan.
+    url: "/about"
 ---
