@@ -131,7 +131,6 @@ var UserboundInterface = (function(my) {
 
     // Only allow showing clients if on 
     router.get("/clients/:subsection?", function(request) {
-      console.log(simpleStorage.get('consulting-mode'));
       if (!simpleStorage.get('consulting-mode')) {
         load_href('/');
       }
