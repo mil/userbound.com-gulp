@@ -10,7 +10,7 @@ So, I modded some [cream alps switches](http://deskthority.net/wiki/Alps_SKCM_Cr
 
 <div class='captioned-image'>
 ![Alps switches dissambled](/things/Cream-Minitouch/switches-dissembled-2.jpg)
-<div class='caption'>A stock dissembled Cream Alps switch on the left, and my un-dampened low-resistance cream switch on the right</div>
+<div class='caption'>A stock dissembled Cream Alps switch on the left, and my un-dampened low-resistance cream switch on the right.</div>
 </div>
 
 After preparing my modded each switch, I de-soldered all the switches from my Minitouch and soldered in my new modded cream switches.  Re-assmbled and swapped on the AEII PBT keycaps. 
