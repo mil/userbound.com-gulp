@@ -7,36 +7,35 @@ sort_index: 2
 links:
     'Source' : http://github.com/mil/markdown-tree
     'Example Site': http://markdown-tree.bladdo.net
-    'My Notes': http://notes.bladdo.net
+    'My College Notes': http://notes.bladdo.net
 footnotes:
-    - 'Ask me to show you my failed start-up inspired by <a href="/interfaces/Markdown-Tree">markdown tree</a>, built around <a href="/interfaces/Mil-Edit">mil edit</a> and <a href="/interfaces/Mmvp.js">Mmvp.js</a>'
+    - Feel free to install a <code>Procfile</code> and deploy to <a href="http://heroku.com">Heroku</a> or any Passanger-enabled web host.
+    - 'Ask me to show you my failed start-up which I developed in college, evolving out of Markdown Tree, <a href="/interfaces/Mil-Edit">Mil Edit</a>, and <a href="/interfaces/Mmvp.js">Mmvp.js</a>.'
 ---
 
-Markdown Tree is a small ruby script that serves a hierarchy of markdown files as a live styled site. This is good for browsing a folder of markdown files you maintain in the browser.
+Markdown Tree is a small [Sinatra](http://www.sinatrarb.com)-based Ruby [script](https://github.com/mil/markdown-tree/blob/master/markdown-tree.rb) which serves a [folder of markdown files](https://github.com/mil/markdown-tree/tree/master/content) as a minimalistic [live styled site](http://markdown-tree.bladdo.net).  E.g. given the folder structure:
 
-I created Markdown Tree as a college freshman shortly after I started taking my notes in [plain text markdown](http://github.com/mil/School). At the time, I decided I needed a way to review my notes in a prettier format than within the terminal where I took down the notes. 
+<pre class='sh_ruby'>
+My Notes/
+    Schedule.md
+    History/
+    Science/
+        Some-Note.md
+</pre>
 
-
-<div class='captioned-image'>
-<img src="/interfaces/Markdown-Tree/rep.jpg" alt="Representation of Markdown Tree">
-<span class='caption'>A representation of what markdown tree does for you. Converts a (nested) folder of markdown files into a live styled site.</span>
-</div>
-
-
-And [Markdown Tree](https://github.com/mil/markdown-tree) was born.  Feeding it a [folder of markdown files](https://github.com/mil/markdown-tree/tree/master/content), yields a [minimal live styled site](http://markdown-tree.bladdo.net) with a navigation header allowing you to traverse the tree. 
-
-Here's what the default theme navigation header looks like:
+You'll get a dynamic site on `localhost:3000`<sup>1</sup> with a navigation header for browsing looking like:
 
 <div id="markdown-tree" class='interface-demo'>
     <div id="path">
-        <a href="#">Top Level</a>
+        <a href="#">My Notes</a>
     </div>
     <div id="menu">
         <ul>
-            <li class='folder'><a href="#">One</a></li> <li class='page'><a href="#">Two</a></li>
-            <li class='current'><a href="#">Three</a></li>
+            <li class='current'><a href="#">Schedule</a></li>
+            <li class='folder'><a href="#">History</a></li> 
+            <li class='folder'><a href="#">Science</a></li> 
         </ul>
     </div>
 </div>
 
-Markdown Tree is implemented as a [simple under 100 line ruby script](https://github.com/mil/markdown-tree/blob/master/markdown-tree.rb). It's a little bit amateurish, but completely functional. The evolution of Markdown Tree eventually inspired my [mil edit](/interfaces/Mil-Edit) and further developments<sup>1</sup>.
+For a live example, visit [my notes from college](http://notes.bladdo.net) and compare against the [raw folder structure](http://github.com/mil/School) of my notes<sup>2</sup>.
