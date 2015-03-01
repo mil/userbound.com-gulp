@@ -5,11 +5,9 @@ main
   opacity: 0
 
   &.fade-down
-    &:not(.cv)
-      opacity: 1
-      +animate(fadeDown 1s)
+    opacity: 1
+    +animate(fadeDown 1s)
     &.cv
-      opacity: 1
       +animate(scaleIn 0.5s) 
     
 
