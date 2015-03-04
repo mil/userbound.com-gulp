@@ -22,3 +22,6 @@ RewriteRule ^ %1 [L,R=301]
 Redirect /projects /interfaces
 Redirect /ui /interfaces
 Redirect /interfaces/userbound /
+Redirect /interfaces/mil-edit /interfaces/Mil-Edit
+Redirect /interfaces/markdown-tree /interfaces/Markdown-Tree
+Redirect /interfaces/foo-wm /interfaces/Foo-Wm
