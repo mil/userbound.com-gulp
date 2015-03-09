@@ -4,12 +4,8 @@
 {% include "_partials/entry_header.html" %}
 <section class='content'>
   {{ yield|raw }}
-  {% if footnotes %}
-  <ol class='footnotes'>
-    {% for footnote in footnotes %}
-    <li><span name='footnote-{{loop.index}}'>{{ footnote|raw }}</span></li>
-    {% endfor %}
-  </ol>   
-  {% endif %}
+  {% include "_partials/footnotes.html" %}
+  
+
 </section>
 {% endblock %}

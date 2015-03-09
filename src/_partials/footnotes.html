@@ -1,0 +1,7 @@
+{% if footnotes %}
+<ol class='footnotes'>
+  {% for footnote in footnotes %}
+  <li><span name='footnote-{{loop.index}}'>{{ footnote|raw }}</span></li>
+  {% endfor %}
+</ol>   
+{% endif %}
