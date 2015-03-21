@@ -4,19 +4,20 @@ categories: blog
 date: 2015-03-20
 time: 9:38Pm
 footnotes:
-    - This is great, because previously if you wanted to style the output of `i3status` or your `status_command` in i3, you were limited to setting only foreground colors. Now you have all of Pango markup at your disposal.
-    - While nothing close to the styling available in browser or with [otherbar](), this is a monumental improvement from i3bar's previous styling support.
-    - Pango markup supports a number of [text attribute styling options]()<sup>1</sup>, including background, forgroung color, and underlining.
+    - This is great, because previously if you wanted to style the output of <code>i3status</code> or your <code>status_command</code> in i3, you were limited to setting only foreground colors. Now you have all of Pango markup at your disposal.
+    - While nothing close to the styling available in browser or with <a href="https://github.com/Lokaltog/candybar">candybar</a>, this is a monumental improvement from i3bar's previous styling support.
+    - Pango markup supports a number of <a href="https://developer.gnome.org/pango/stable/PangoMarkupFormat.html">text attribute styling options</a>, including background, forgroung color, and underlining.
     
 ---
 
-Since of about a month ago, [i3bar]() supports inline [pango markup](https://github.com/i3/i3/issues/1468) for styling your statusline and workspaces<sup>1</sup>.  So after figuring this out, this past weekend I took some time to redo my statusline. 
+Since a little over a month ago, [i3bar](http://i3wm.org/i3bar/manpage.html) supports inline [pango markup](https://github.com/i3/i3/issues/1468) for styling your statusline and workspaces<sup>1</sup>.  So after figuring this out, this past weekend I took some time to redo my statusline. 
 
-I wrote a small [ruby script]() to serve as my i3 statusline commmand which generates little aesthetic blocks (styled with Pango markup) for time, weather, network, audio level, and power... looking like: 
+I wrote a small [ruby script](https://github.com/mil/home/blob/master/Scripts/Utilities/json-bar) to serve my i3 statusline command which generates little aesthetic blocks (styled with Pango markup) for time, weather, network, audio level, and power... looking like: 
 
 ![Pango Markup in i3Bar screenshot](/blog/Pango-Markup-in-i3bar/bar.png)
 
 Each block I define as a hash, specifying symbol, color, and the function which returns the data to display:
+
 <pre class='sh_ruby'>
 blocks = [
     {
@@ -39,7 +40,8 @@ end
 fetchers = Info_Fetchers.new
 </pre>
 
-Each block get's passed through a `map` function to stylize with Pango. This way I get a consistent feel for each block and I keep my code DRY. The final output is assembled as `JSON` and passed onto `i3bar`<sup>3</sup>:
+Each block gets passed through a `map` function to stylize with Pango <sup>3</sup>. This way I get a consistent feel for each block and I keep my code DRY. The final output is assembled as `JSON` and passed onto `i3bar`:
+
 <pre class='sh_javascript'>
 blocks.map do |f|
     text = [
@@ -61,6 +63,6 @@ blocks.map do |f|
 end.to_json
 </pre>
 
-So yeah -- Pango + i3bar is nice. Feel free to [steal my status bar generating script]() featuring the block aesthetic. It took me a while to get Pango to cooperate, so I hope I'll save some folks some effort! 
+So yeah -- Pango + i3bar is nice. Feel free to [steal my status bar generating script](https://github.com/mil/home/blob/master/Scripts/Utilities/json-bar) featuring the block aesthetic. It took me a while to get Pango to cooperate, so I hope I'll save some folks some effort! 
 
-Thanks to [acrisci]() who was the one who dropped Pango into [i3]() upstream.
+Thanks to [acrisci](https://github.com/acrisci) who was the one who dropped Pango into [i3](https://i3wm.org/) upstream.
