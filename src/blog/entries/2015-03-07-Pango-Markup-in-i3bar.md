@@ -1,7 +1,7 @@
 ---
 title: Pango Markup in i3bar
 categories: blog
-date: 2015-03-07
+date: 2015-03-20
 time: 9:38Pm
 footnotes:
     - This is great, because previously if you wanted to style the output of `i3status` or your `status_command` in i3, you were limited to setting only foreground colors. Now you have all of Pango markup at your disposal.
