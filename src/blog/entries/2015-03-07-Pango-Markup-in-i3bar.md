@@ -45,11 +45,11 @@ Each block gets passed through a `map` function to stylize with Pango <sup>3</su
 <pre class='sh_javascript'>
 blocks.map do |f|
    text = [
-       "&lt;span rise='-110000' size='large' underline_color='#ffffff' underline='double'&gt;",
+       "&lt;span rise='10000' size='large' underline_color='#ffffff' underline='double'&gt;",
       "&lt;span bgcolor='#{f[:color]}' fgcolor='#ffffff'> #{f[:symbol]} &lt;/span&gt;",
       "&lt;/span&gt;",
 
-      "&lt;span rise='-109900' size='8900' underline='double' underline_color='#ececec'&gt;",
+      "&lt;span rise='10000' size='8900' underline='double' underline_color='#ececec'&gt;",
       "&lt;span fgcolor='#2b2b2b' bgcolor='#f9f9f9'> #{f[:text]} &lt;/span&gt;",
       "&lt;/span&gt;"
     ].join
