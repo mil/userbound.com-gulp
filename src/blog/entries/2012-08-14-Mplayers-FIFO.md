@@ -32,4 +32,4 @@ And finally if you don't want to have to use the -input file= syntax every time 
 input=file=/home/mil/fifos/mplayer
 </pre>
 
-And that's all. Use mplayer's FIFO.
+And that's all. Use mplayer's FIFO. Here's a link to [all the commands](http://www.mplayerhq.hu/DOCS/tech/slave.txt) the FIFO accepts.
