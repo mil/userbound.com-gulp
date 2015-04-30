@@ -25,7 +25,7 @@
 
 section.content .links-listing
   list-style: none
-  
+
   &, h2, a, a:hover
     margin: 0
     border: none
@@ -52,15 +52,15 @@ section.content .links-listing
       h2
         color: $link_color
 
-      &:hover:before, &:focus:before
-        
+      //&:hover:before, &:focus:before
+
       &:hover, &:focus
         h2
           color: $link_hover
         .subline
           color: $grey_saturated
           transition: $transition_in
-          
+
         &:before
           opacity: 1
           transition: $transition_in
@@ -76,4 +76,3 @@ section.content .links-listing
     color: $grey
     transition: $transition_in
     +fontsize(smallest)
-     

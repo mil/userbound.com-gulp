@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')({
     'autoprefixer-core': 'autoprefixer',
     'fs-readdir-recursive': 'recursive_readdir',
     'gulp-front-matter': 'fem',
-    'gulp-ruby-sass': 'sass',
+    'gulp-sass': 'sass',
     'swig': 'swig_vendor',
     'underscore': '_',
     'yaml-front-matter': 'yaml_extractor'
