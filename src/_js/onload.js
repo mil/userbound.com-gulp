@@ -125,7 +125,7 @@ var UserboundInterface = (function(my) {
         toggling_consulting = true;
         simpleStorage.flush();
         simpleStorage.set('consulting-mode', state.consulting_mode_enabled);
-        load_href('/');
+        load_href('/clients');
       });
     });
 
@@ -161,8 +161,20 @@ var UserboundInterface = (function(my) {
     $(clients_link).insertBefore($("nav a")[1]);
   }
 
-  
-  
+  var random_pages = [
+    'interfaces/Mmvp.js',
+    'interfaces/Markdown-Tree',
+    'interfaces/Foo-Wm',
+    'interfaces/Mil-Edit',
+    'interfaces/Asciiw',
+    'models/Blockhead',
+    'models/Mountains',
+    'models/World',
+    'blog/Gulp-for-Sitebuilds',
+    'things/Cream-Minitouch',
+    'things/Piply'
+  ];
+
 
   return { 
     init: function() {
@@ -174,7 +186,17 @@ var UserboundInterface = (function(my) {
         install_clients_navlink();
       }
 
-      if (!toggling_consulting) {
+      if (toggling_consulting) { return; }
+
+
+      var is_homepage = $("html head title").text().match(/^Userbound/);
+
+      if (is_homepage) {
+        var random_page = random_pages[
+          Math.floor(Math.random() * random_pages.length)
+        ];
+        load_href('/' + random_page);
+      } else {
         install_dom_event_bindings();
         $("nav").addClass("fade-in");
         $("main").addClass("fade-down");
