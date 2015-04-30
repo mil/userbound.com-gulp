@@ -1,33 +1,38 @@
-html.home body .wrapper
-  //padding-top: 2.5rem
-
-  main
-    display: none
-  nav
-    width: 200px
-    display: inline-block
-    position: static
+html.home
+  &, body, body .wrapper
+    height: 100%
     padding: 0
-    margin: 0 auto
-    text-align: left
-    float: none
-    a.guy
+
+  body .wrapper
+    transform-style: preserve-3d
+
+    main
+      display: none
+    nav
+      +vertical-align
+      padding: 0
+      padding-bottom: 70px
+
+      width: 200px
+      margin: 0 auto
+      text-align: left
       float: none
+      a.guy
+        float: none
 
-    a
-      .symbol
-        border-right: 1px dotted #cfcfcf
-
-      .title
-        padding-left: 15px
-        display: inline-block
-      //&:before
-
-      &:hover
+      a
         .symbol
-          color: $link_hover
-          +animate(toBlue 1s, 0s)
-        .title
-          color: $link_hover
-          +animate(toBlack 2s, 1s)
+          border-right: 1px dotted #cfcfcf
 
+        .title
+          padding-left: 15px
+          display: inline-block
+        //&:before
+
+        &:hover
+          .symbol
+            color: $link_hover
+            +animate(toBlue 1s, 0s)
+          .title
+            color: $link_hover
+            +animate(toBlack 2s, 1s)
