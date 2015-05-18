@@ -20,7 +20,7 @@ var UserboundInterface = (function(my) {
 
 
     active_subsection_el.animate({ opacity: 0 }, function() {
-      var new_subsection_el = 
+      var new_subsection_el =
         $(".filter-el[data-category-" + subsection.replace(" ", "-") + "]");
       active_subsection_el.removeClass("visible");
       new_subsection_el.css("opacity", 0).addClass("visible");
@@ -41,7 +41,7 @@ var UserboundInterface = (function(my) {
     setInterval(function() {
       var frame = slides[condition]['frames'][window.slide_count].join("\n");
 
-      window.slide_count = 
+      window.slide_count =
         (window.slide_count == slides[condition]['frames'].length - 1) ?
         0 : window.slide_count + 1;
 
@@ -157,11 +157,12 @@ var UserboundInterface = (function(my) {
         "</span>\n",
         "<span class='title'>Clients</span>"
       ].join(""));
-     
+
     $(clients_link).insertBefore($("nav a")[1]);
   }
 
   var random_pages = [
+    'interfaces/Asciiw',
     'interfaces/Mmvp.js',
     'interfaces/Markdown-Tree',
     'interfaces/Foo-Wm',
@@ -175,8 +176,30 @@ var UserboundInterface = (function(my) {
     'things/Piply'
   ];
 
+  function strip_leading_and_trailing_slashes(str) {
+    return str.replace(/^\/|\/$/g, '');
+  }
 
-  return { 
+
+  function get_random_page() {
+    return random_pages[
+      Math.floor(Math.random() * random_pages.length)
+    ];
+  }
+
+  function set_guy_link_to_random_page() {
+    var current_page = strip_leading_and_trailing_slashes(
+      window.location.pathname
+    );
+    var page = current_page;
+    while (page === current_page) {
+      page = get_random_page();
+    }
+    $("a.guy").attr('href', '/' + page);
+  }
+
+
+  return {
     init: function() {
       sh_highlightDocument();
       asciiw_demo();
@@ -185,19 +208,15 @@ var UserboundInterface = (function(my) {
       if (simpleStorage.get('consulting-mode')) { 
         install_clients_navlink();
       }
-
       if (toggling_consulting) { return; }
 
 
       var is_homepage = $("html head title").text().match(/^Userbound/);
-
       if (is_homepage) {
-        var random_page = random_pages[
-          Math.floor(Math.random() * random_pages.length)
-        ];
-        load_href('/' + random_page);
+        load_href(get_random_page());
       } else {
         install_dom_event_bindings();
+        set_guy_link_to_random_page();
         $("nav").addClass("fade-in");
         $("main").addClass("fade-down");
       }
