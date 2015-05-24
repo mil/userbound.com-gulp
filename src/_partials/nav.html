@@ -1,6 +1,6 @@
 <nav>
   <div class='inner'>
-    <a class='guy' href="/">
+    <a class='guy' href="/" title='Roulette'>
       <span class='head'></span>
       <span class='body'></span>
       {% if title == "Unoshowfcornow" %}
@@ -10,23 +10,28 @@
     <div class='links'>
       <div class='equal-span'>
         {% for link in nav_links %}
-        {% set t = link.title %}
-        {% if title == "Userbound" %}
-        {% set t = "" %}
-        {% endif %}
-
-        {% if link.active_section %}
-        <a class='active {{ page_type}}' href="{{ link.url }}" title="{{ t|capitalize }}"><span class='symbol'>
-            <svg class="icon-{{ link.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use></svg>
-          </span></a>
-          {% else %}
-          <a href="{{ link.url }}" title="{{ t|capitalize }}">
-            <span class='symbol'>
-              <svg class="icon-{{ link.symbol||raw }}"><use xlink:href="/assets/images/icons.svg#icon-{{ link.symbol||raw }}"></use></svg>
-            </span>
-            <span class='title'>{{link.title|capitalize}}</span></a>
+          {% set t = link.title %}
+          {% if title == "Userbound" %}
+          {% set t = "Roulette wheel" %}
           {% endif %}
-          {% endfor %}
+
+          {# Sets classes #}
+          {% set class_list = "" %}
+          {% if link.active_section %}
+            {% set class_list = "active " + page_type %}
+          {% endif %}
+
+          {%
+            set icon_attrs = {
+              icon: link.symbol,
+              title: t,
+              href: link.url,
+              class_list: class_list
+            }
+          %}
+          {% include "_partials/svg-icon-link.html" with icon_attrs only %}
+
+        {% endfor %}
       </div>
     </div>
   </div>

@@ -1,0 +1,13 @@
+<a
+  class='{{ class_list }}'
+  href="{{ href }}"
+  title="{{ title|capitalize }}"
+>
+  <span class='symbol'>
+    <svg class="icon-{{ icon||raw }}" >
+      <use
+        xlink:href="/assets/images/icons.svg#icon-{{ icon||raw }}"
+      ></use>
+    </svg>
+  </span>
+</a>
