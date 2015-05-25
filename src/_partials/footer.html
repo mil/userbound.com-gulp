@@ -32,21 +32,9 @@
     </div>
   {% endif %}
 
-
-
-  {% set icon_attrs = {
-    icon: 'cc-by',
-    title: 'CC Attribution 3.0 Unported',
-    href: 'http://creativecommons.org/licenses/by/3.0/',
-    class_list: 'copyright'
-  } %}
-  {% include "_partials/svg-icon-link.html" with icon_attrs only %}
-
-
-
   {% set validation_link = 'http://validator.w3.org/check?uri=http://userbound.com/' + path %}
   {% set icon_attrs = {
-    icon: 'check',
+    icon: 'check-1',
     title: 'Validate Against HTML5 DTD',
     href: validation_link,
     class_list: 'validate'

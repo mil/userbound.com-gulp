@@ -46,7 +46,7 @@
         fill: currentColor
 
 
-    &.active 
+    &.active
       color: black
       border-left: 3px solid #d3ffc2
       color: #232323
@@ -57,15 +57,15 @@
       &.entry span.symbol
         border-left: 1px dotted #9c9c9c
 
-html:not(.home) .wrapper > nav
-  a:hover:not(.active)
-    color: $link_hover
-    transition: 0.2s all ease-out
 
-    [class^="icon-"], [class*=" icon-"] 
-      width: 20px
-      height: 20px
-      +animate(sizeUp 0.3s)
+    &:hover:not(.active)
+      color: $link_hover
+      transition: 0.2s all ease-out
+
+      //[class^="icon-"], [class*=" icon-"] 
+      //  width: 20px
+      //  height: 20px
+      //  +animate(sizeUp 0.3s)
 
 
 
