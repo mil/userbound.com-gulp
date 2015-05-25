@@ -1,5 +1,5 @@
 ---
-title: Implementing a Map Function in Sass
+title: A Map Function for Sass
 categories: blog
 date: 2015-05-09
 time: 3:27PM
