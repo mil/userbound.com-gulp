@@ -37,6 +37,9 @@
     "type": "git",
     "url": "https://github.com/mil/userbound.com-gulp"
   },
+  "scripts" : {
+    "start": "gulp"
+  },
   "license": "CC BY 2.0",
   "homepage": "http://userbound.com"
 }
