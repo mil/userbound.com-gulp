@@ -1,6 +1,6 @@
 <a
   class='{{ class_list }} svg-icon'
-  target='{{ target }}'
+  {%if target %}target='{{ target }}'{% endif %}
   href="{{ href }}"
   title="{{ title|capitalize }}"
 >
