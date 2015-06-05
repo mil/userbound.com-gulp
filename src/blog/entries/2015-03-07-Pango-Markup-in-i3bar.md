@@ -7,7 +7,6 @@ footnotes:
     - This is great, because previously if you wanted to style the output of <code>i3status</code> or your <code>status_command</code> in i3, you were limited to setting only foreground colors. Now you have all of Pango markup at your disposal.
     - While nothing close to the styling available in browser or with <a href="https://github.com/Lokaltog/candybar">candybar</a>, this is a monumental improvement from i3bar's previous styling support.
     - Pango markup supports a number of <a href="https://developer.gnome.org/pango/stable/PangoMarkupFormat.html">text attribute styling options</a>, including background, forgroung color, and underlining.
-    
 ---
 
 Since a little over a month ago, [i3bar](http://i3wm.org/i3bar/manpage.html) supports inline [pango markup](https://github.com/i3/i3/issues/1468) for styling your statusline and workspaces<sup>1</sup>.  So after figuring this out, this past weekend I took some time to redo my statusline. 
@@ -59,7 +58,8 @@ blocks.map do |f|
       :separator_block_width => 10,
       :align => 'left',
       :min_width => 0,
-      :full_text => text
+      :full_text => text,
+      :markup => 'pango'
     }
 end.to_json
 </pre>
