@@ -1,7 +1,7 @@
 ---
 nav_links:
-  - 
-    symbol : "database"
+  -
+    symbol : 'crop'
     title    : interfaces
     url    : "/interfaces"
   -
@@ -11,11 +11,7 @@ nav_links:
   -
     symbol : "three-bars"
     title    : blog
-    url    : "/blog" 
-  - 
-    symbol : 'crop'
-    title    : things
-    url    : "/things"
+    url    : "/blog"
   -
     symbol : "person"
     title    : about
