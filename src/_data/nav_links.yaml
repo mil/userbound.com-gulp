@@ -1,19 +1,19 @@
 ---
 nav_links:
   -
-    symbol : 'crop'
-    title    : interfaces
-    url    : "/interfaces"
+    symbol: 'crop'
+    title: interfaces
+    url: "/interfaces"
   -
-    symbol : "paintcan"
-    title    : models
-    url    : "/models"
+    symbol: "paintcan"
+    title: works
+    url: "/works"
   -
-    symbol : "three-bars"
-    title    : blog
-    url    : "/blog"
+    symbol: "three-bars"
+    title: blog
+    url: "/blog"
   -
-    symbol : "person"
-    title    : about
-    url    : "/about"
+    symbol: "person"
+    title: about
+    url: "/about"
 ---
