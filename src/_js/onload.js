@@ -85,8 +85,9 @@ var UserboundInterface = (function(my) {
     var subsection = e.target.innerHTML.toLowerCase();
 
     // Models follows a different schema since its only subpage with stubs
-    router.navigate(window.location.href.match("/models") ?
-      "/models/" + $("h1").text().replace(/^\s+|\s+$/g,'') + "/" + subsection.replace(" ", "-") :
+    router.navigate(
+      //window.location.href.match("/models") ?
+      //"/models/" + $("h1").text().replace(/^\s+|\s+$/g,'') + "/" + subsection.replace(" ", "-") :
       "/" + $("h1").text().toLowerCase() + "/" + subsection.replace(" ", "-")
     );
   }
@@ -102,18 +103,18 @@ var UserboundInterface = (function(my) {
 
   // Initialize routing with Grapnel
   function install_routing() {
-    ['clients', 'about', 'interfaces', 'models/:section'].forEach(function(section) { 
+    ['clients', 'about', 'interfaces', 'works'].forEach(function(section) { 
       try {
         router.get('/' + section, function(request) {
           activate_subsection(
             $($(".filter-by button")[0]).text().toLowerCase().replace(" ", "-")
-          );   
+          );
         });
         router.get('/' + section + '/:subsection', function(request) {
           var subsection = request.params.subsection;
-          activate_subsection(subsection);   
+          activate_subsection(subsection);
         });
-      } catch(e) { /* not a page with subsection routing */ } 
+      } catch(e) { /* not a page with subsection routing */ }
     });
 
     // Only show clients section if consulting mode enabled
@@ -168,13 +169,13 @@ var UserboundInterface = (function(my) {
     'interfaces/Foo-Wm',
     'interfaces/Mil-Edit',
     'interfaces/Asciiw',
-    'models/Blockhead',
-    'models/Mountains',
-    'models/World',
+    'works/Blockhead',
+    'works/Mountains',
+    'works/World',
+    'interfaces/Cream-Minitouch',
+    'interfaces/Piply',
     'blog/Gulp-for-Sitebuilds',
-    'blog/A-Map-Function-for-Sass',
-    'things/Cream-Minitouch',
-    'things/Piply'
+    'blog/A-Map-Function-for-Sass'
   ];
 
   function strip_leading_and_trailing_slashes(str) {

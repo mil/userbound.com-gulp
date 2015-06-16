@@ -3,9 +3,13 @@
 {% block main %}
 {% include "_partials/entry_header.html" %}
 <section class='content'>
+  {% if poster %}
+    <div class='poster'>
+      <img src='/interfaces/{{ poster }}' alt="{{title}}">
+    </div>
+  {% endif %}
+
   {{ yield|raw }}
   {% include "_partials/footnotes.html" %}
-  
-
 </section>
 {% endblock %}

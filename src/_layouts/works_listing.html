@@ -2,15 +2,13 @@
 
 {% block main %}
 <header>
-  <h1>{{ title }}</h1>
+  <h1>{{title }}</h1>
   <div class='filter-by'>
-    <button class='active'>Physical</button>
-    <button>Web</button>
-    <button>Linux</button>
+    <button class='active'>Models</button>
+    <button>Music</button>
   </div>
 </header>
-
-<section class='content'>
+<section class='models content'>
   <div class='interfaces-list'>
     {% include "_partials/entries_listing.html" %}
   </div>
