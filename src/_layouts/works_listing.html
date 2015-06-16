@@ -1,12 +1,16 @@
 {% extends '_layouts/default.html' %}
 
 {% block main %}
-<header><h1>{{title }}</h1></header>
+<header>
+  <h1>{{title }}</h1>
+  <div class='filter-by'>
+    <button class='active'>Models</button>
+    <button>Music</button>
+  </div>
+</header>
 <section class='models content'>
-  {% for entry in entries %}
-  <a class='model-preview' href="{{ entry.url }}">
-    <img src="{{ entry.url }}.png" alt="{{ entry.title }}">
-  </a>
-  {% endfor %}
+  <div class='interfaces-list'>
+    {% include "_partials/entries_listing.html" %}
+  </div>
 </section>
 {% endblock %}

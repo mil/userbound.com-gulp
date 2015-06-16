@@ -1,6 +1,6 @@
 ---
 title: Mountains
-image: 05.png
 time: 12/14
-category: model
+category: models
+sort_index: 0
 ---

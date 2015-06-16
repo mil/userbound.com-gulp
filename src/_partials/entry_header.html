@@ -21,12 +21,12 @@
 
         {% for sublink, suburl in url %}
 
-        {% if sublink == "1" %}
-        <a href="{{ suburl }}">{{ title }}</a>
-        <a class='sub' href="{{ suburl }}">{{ sublink }}</a>
-        {% else %}
-        <a class='sub' href="{{ suburl }}">{{ sublink }}</a>
-        {% endif %}
+          {% if sublink == "1" %}
+          <a href="{{ suburl }}">{{ title }}</a>
+          <a class='sub' href="{{ suburl }}">{{ sublink }}</a>
+          {% else %}
+          <a class='sub' href="{{ suburl }}">{{ sublink }}</a>
+          {% endif %}
 
         {% endfor %}
 
