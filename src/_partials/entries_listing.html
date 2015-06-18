@@ -9,10 +9,11 @@
     {% for entry in entries %}
 
       {% if entry.category == "models" %}
-
-        <a class='model-preview' href="{{ entry.url }}">
-          <img src="/works/{{entry.title}}/render.png" alt="{{ entry.title }}">
-        </a>
+        <li>
+          <a class='model-preview' href="{{ entry.url }}">
+            <img src="/works/{{entry.title}}/render.png" alt="{{ entry.title }}">
+          </a>
+        </li>
       {% elseif entry.category == "music" %}
 
         {{ entry.__content | raw }}
