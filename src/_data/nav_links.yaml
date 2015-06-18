@@ -1,13 +1,13 @@
 ---
 nav_links:
   -
-    symbol: 'crop'
-    title: interfaces
-    url: "/interfaces"
-  -
     symbol: "paintcan"
     title: works
     url: "/works"
+  -
+    symbol: 'crop'
+    title: interfaces
+    url: "/interfaces"
   -
     symbol: "three-bars"
     title: blog
