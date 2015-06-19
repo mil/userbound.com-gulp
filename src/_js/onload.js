@@ -162,66 +162,45 @@ var UserboundInterface = (function(my) {
     $(clients_link).insertBefore($("nav a")[1]);
   }
 
-  var random_pages = [
-    'interfaces/Asciiw',
-    'interfaces/Mmvp.js',
-    'interfaces/Markdown-Tree',
-    'interfaces/Foo-Wm',
-    'interfaces/Mil-Edit',
-    'interfaces/Asciiw',
-    'works/Blockhead',
-    'works/Mountains',
-    'works/World',
-    'interfaces/Cream-Minitouch',
-    'interfaces/Piply',
-    'blog/Gulp-for-Sitebuilds',
-    'blog/A-Map-Function-for-Sass'
-  ];
 
   function strip_leading_and_trailing_slashes(str) {
     return str.replace(/^\/|\/$/g, '');
   }
 
-
-  function get_random_page() {
-    return random_pages[
-      Math.floor(Math.random() * random_pages.length)
-    ];
-  }
-
-  function set_guy_link_to_random_page() {
+  function set_guy_link_to_next_section() {
     var current_page = strip_leading_and_trailing_slashes(
       window.location.pathname
     );
     var page = current_page;
-    while (page === current_page) {
-      page = get_random_page();
-    }
     $("a.guy").attr('href', '/' + page);
   }
 
 
   return {
     init: function() {
+      var is_homepage = $("html head title").text().match(/^Userbound/);
+
       sh_highlightDocument();
       asciiw_demo();
       install_routing();
 
-      if (simpleStorage.get('consulting-mode')) { 
+      if (simpleStorage.get('consulting-mode')) {
         install_clients_navlink();
       }
-      if (toggling_consulting) { return; }
 
-
-      var is_homepage = $("html head title").text().match(/^Userbound/);
-      if (is_homepage) {
-        load_href(get_random_page());
-      } else {
-        install_dom_event_bindings();
-        set_guy_link_to_random_page();
-        $("nav").addClass("fade-in");
-        $("main").addClass("fade-down");
+      if (toggling_consulting) {
+        return;
       }
+
+      if (is_homepage) {
+        load_href('/works');
+        return;
+      }
+
+      install_dom_event_bindings();
+      set_guy_link_to_next_section();
+      $("nav").addClass("fade-in");
+      $("main").addClass("fade-down");
     }
   };
 })(UserboundInterface || {});
