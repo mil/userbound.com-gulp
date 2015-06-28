@@ -72,6 +72,7 @@ var UserboundInterface = (function(my) {
     if ($(target_link).attr("target") === "_blank") { return; }
     if ($(target_link).attr("href").match(/^mailto\:/)) { return; }
     if ($(target_link).attr("href") === "#") { return; }
+    if ($(target_link).parent().is(".controls")) { return; }
 
     e.preventDefault();
 
@@ -176,6 +177,42 @@ var UserboundInterface = (function(my) {
   }
 
 
+  var tracks = {
+    '6/17/15': 'db048.wav',
+    '6/18/15': 'db049.wav'
+  };
+
+
+  function setup_music() {
+    window.wavesurfer = Object.create(WaveSurfer);
+
+    $('.play-pause', '.controls').on('click', function(event) {
+      if (wavesurfer.isPlaying()) {
+        $(this).removeClass("playing");
+        wavesurfer.pause();
+      } else {
+        $(this).addClass("playing");
+        wavesurfer.play();
+      }
+    });
+
+    $.each($(".music-entry"), function(i, el) {
+      wavesurfer.init({
+        container: $(".music-entry")[0],
+        waveColor: '#e8e8e8',
+        progressColor: '#423f37',
+        cursorColor: '#e8e8e8'
+        //cursorWidth: 1
+      });
+
+      wavesurfer.on('ready', function () {
+      });
+
+      wavesurfer.load('/works/' + $(el).attr("data-filename"));
+    });
+  }
+
+
   return {
     init: function() {
       var is_homepage = $("html head title").text().match(/^Userbound/);
@@ -183,6 +220,7 @@ var UserboundInterface = (function(my) {
       sh_highlightDocument();
       asciiw_demo();
       install_routing();
+      setup_music();
 
       if (simpleStorage.get('consulting-mode')) {
         install_clients_navlink();

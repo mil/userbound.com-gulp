@@ -64,4 +64,20 @@
       <path d="m212 435c-11 0-21-5-28-14c0 0-92-121-92-121c-6-8-8-17-6-27c1-9 5-17 13-23c7-6 16-9 26-7c10 1 18 6 24 14c0 0 60 79 60 79c0 0 152-243 152-243c5-8 13-13 22-15c9-2 18-1 27 4c8 5 13 13 15 22c3 9 1 18-4 27c0 0-179 287-179 287c-7 11-16 16-28 16c0 0-2 1-2 1"/>
     </symbol>
   
+    <symbol id="icon-playback-play" viewBox="0 0 512 512">
+      <path d="m128 96l256 160-256 160z"/>
+    </symbol>
+  
+    <symbol id="icon-playback-pause" viewBox="0 0 512 512">
+      <path d="m128 416l96 0 0-320-96 0z m160-320l0 320 96 0 0-320z"/>
+    </symbol>
+  
+    <symbol id="icon-playback-fast-forward" viewBox="0 0 512 512">
+      <path d="m64 384l192-128-192-128z m384-128l-192-128 0 256z"/>
+    </symbol>
+  
+    <symbol id="icon-playback-rewind" viewBox="0 0 512 512">
+      <path d="m256 256l192 128 0-256z m-192 0l192 128 0-256z"/>
+    </symbol>
+  
 </svg>

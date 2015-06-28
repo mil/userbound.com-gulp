@@ -1,6 +1,6 @@
 ---
 title: Mountains
 time: 12/14
-category: models
+category: print
 sort_index: 0
 ---
