@@ -1,0 +1,28 @@
+.audio-player
+
+  .controls
+    text-align: center
+
+    .date-caption
+      +fontsize(smallest, 0.9)
+      text-align: center
+      border-right: 1px dotted #cfcfcf
+      padding-right: 20px
+
+    svg
+      cursor: pointer
+      width: 16px
+      height: 16px
+      color: #888
+
+
+
+    svg.play-pause
+      .pause
+        opacity: 0
+
+      &.playing
+        .pause
+          opacity: 1
+        .play
+          opacity: 0
