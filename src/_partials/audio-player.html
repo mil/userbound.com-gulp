@@ -1,0 +1,23 @@
+<div class='audio-player'>
+  <div class='music-entry' data-filename='{{entry.wav}}'></div>
+
+  <div class='controls'> 
+
+    <svg class='play-pause'>
+      <use class='play' xlink:href="/assets/images/icons.svg#icon-playback-play"></use>
+      <use class='pause' xlink:href="/assets/images/icons.svg#icon-playback-pause"></use>
+    </svg>
+
+    <span class='date-caption'>
+      {{ entry.datestamp | date('n/d/y') }}
+    </span>
+
+    <svg class='previous'>
+      <use class='play' xlink:href="/assets/images/icons.svg#icon-playback-rewind"></use>
+    </svg>
+    <svg class='next'>
+      <use class='play' xlink:href="/assets/images/icons.svg#icon-playback-fast-forward"></use>
+    </svg>
+
+  </div>
+</div>
