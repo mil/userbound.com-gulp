@@ -183,6 +183,11 @@ var UserboundInterface = (function(my) {
   };
 
 
+  function set_music_track_delta(delta) {
+    console.log(delta);
+    $(".controls .date-caption").addClass("fade-down");
+  }
+
   function setup_music() {
     window.wavesurfer = Object.create(WaveSurfer);
 
@@ -201,7 +206,8 @@ var UserboundInterface = (function(my) {
         container: $(".music-entry")[0],
         waveColor: '#e8e8e8',
         progressColor: '#423f37',
-        cursorColor: '#e8e8e8'
+        cursorColor: '#e8e8e8',
+        hideScrollbar: true
         //cursorWidth: 1
       });
 
@@ -239,7 +245,8 @@ var UserboundInterface = (function(my) {
       set_guy_link_to_next_section();
       $("nav").addClass("fade-in");
       $("main").addClass("fade-down");
-    }
+    },
+    set_music_track_delta: set_music_track_delta
   };
 })(UserboundInterface || {});
 

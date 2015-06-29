@@ -1,4 +1,6 @@
 .audio-player
+  .music-entry
+    cursor: pointer
 
   .controls
     text-align: center
@@ -8,12 +10,28 @@
 
 
     .date-caption
-      +fontsize(smallest, 0.9)
-      text-align: center
+      display: inline-block
+      position: relative
       border-right: 1px dotted #cfcfcf
       padding-left: 3px
       padding-right: 15px
       margin-right: 20px
+      width: 45px
+      height: 18px
+      text-align: left
+      +fontsize(smallest, 0.9)
+
+      .inner
+        position: absolute
+        top: 0
+        opacity: 1
+        transition: 0.6s all ease-in-out
+
+      &.fade-down
+        .inner
+          top: 20px
+          opacity: 0
+          transition: 0.6s all ease-in-out
 
     svg
       cursor: pointer
