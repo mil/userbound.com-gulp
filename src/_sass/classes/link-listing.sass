@@ -70,6 +70,13 @@ section.content .links-listing
           transition: $transition_in
 
 
+  &[data-category-print]
+    li
+      padding-bottom: 0
+      border-bottom: 1px dashed #cfcfcf
+      &:last-child
+        border-bottom: none
+
   .subline
     padding-bottom: spacing(bigger, 0.75)
     border-bottom: $seperator_line
