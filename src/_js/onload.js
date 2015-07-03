@@ -1,5 +1,7 @@
+
 'use strict';
-var UserboundInterface = (function(my) {
+console.log(UserboundInterface);
+var UserboundInterface = (function(self) {
   var router = new Grapnel({ pushState: true });
   var toggling_consulting = false;
 
@@ -177,48 +179,6 @@ var UserboundInterface = (function(my) {
   }
 
 
-  var tracks = {
-    '6/17/15': 'db048.wav',
-    '6/18/15': 'db049.wav'
-  };
-
-
-  function set_music_track_delta(delta) {
-    console.log(delta);
-    $(".controls .date-caption").addClass("fade-down");
-  }
-
-  function setup_music() {
-    window.wavesurfer = Object.create(WaveSurfer);
-
-    $('.play-pause', '.controls').on('click', function(event) {
-      if (wavesurfer.isPlaying()) {
-        $(this).removeClass("playing");
-        wavesurfer.pause();
-      } else {
-        $(this).addClass("playing");
-        wavesurfer.play();
-      }
-    });
-
-    $.each($(".music-entry"), function(i, el) {
-      wavesurfer.init({
-        container: $(".music-entry")[0],
-        waveColor: '#e8e8e8',
-        progressColor: '#423f37',
-        cursorColor: '#e8e8e8',
-        hideScrollbar: true
-        //cursorWidth: 1
-      });
-
-      wavesurfer.on('ready', function () {
-      });
-
-      wavesurfer.load('/works/' + $(el).attr("data-filename"));
-    });
-  }
-
-
   return {
     init: function() {
       var is_homepage = $("html head title").text().match(/^Userbound/);
@@ -226,7 +186,6 @@ var UserboundInterface = (function(my) {
       sh_highlightDocument();
       asciiw_demo();
       install_routing();
-      setup_music();
 
       if (simpleStorage.get('consulting-mode')) {
         install_clients_navlink();
@@ -241,12 +200,14 @@ var UserboundInterface = (function(my) {
         return;
       }
 
+      console.log(self);
+      self.setup_audio_player();
       install_dom_event_bindings();
       set_guy_link_to_next_section();
       $("nav").addClass("fade-in");
       $("main").addClass("fade-down");
     },
-    set_music_track_delta: set_music_track_delta
+    set_music_track_delta: self.set_music_track_delta
   };
 })(UserboundInterface || {});
 
