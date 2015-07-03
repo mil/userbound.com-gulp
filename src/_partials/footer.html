@@ -1,6 +1,26 @@
 <footer>
+  <div class='audio-track-seekers'>
+    {% set icon_attrs = {
+        icon: 'arrow-left',
+        title: 'Previous Track',
+        href: false,
+        class_list: 'previous hidden'
+    } %}
+    {% include "_partials/svg-icon-link.html" with icon_attrs only %}
+    {% set icon_attrs = {
+        icon: 'arrow-right',
+        title: 'Next Track',
+        href: false,
+        class_list: 'next hidden'
+      } %}
+    {% include "_partials/svg-icon-link.html" with icon_attrs only %}
+  </div>
+
+
   {% if next_entry || previous_entry %}
     <div class='pagination-links'>
+
+
       {% if next_entry %}
         {% set icon_attrs = {
             icon: 'arrow-left',
@@ -29,6 +49,7 @@
           } %}
         {% include "_partials/svg-icon-link.html" with icon_attrs only %}
       {% endif %}
+
     </div>
   {% endif %}
 
@@ -41,5 +62,9 @@
     target: '_blank'
   } %}
   {% include "_partials/svg-icon-link.html" with icon_attrs only %}
+
+
+
+
 
 </footer>

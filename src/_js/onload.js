@@ -1,6 +1,4 @@
-
 'use strict';
-console.log(UserboundInterface);
 var UserboundInterface = (function(self) {
   var router = new Grapnel({ pushState: true });
   var toggling_consulting = false;
@@ -73,6 +71,7 @@ var UserboundInterface = (function(self) {
     var target_link = $(e.target).is("a") ? e.target : $(e.target).closest("a");
     if ($(target_link).attr("target") === "_blank") { return; }
     if ($(target_link).attr("href").match(/^mailto\:/)) { return; }
+    if ($(target_link).attr("href") === 'false') { return; }
     if ($(target_link).attr("href") === "#") { return; }
     if ($(target_link).parent().is(".controls")) { return; }
 
@@ -200,14 +199,13 @@ var UserboundInterface = (function(self) {
         return;
       }
 
-      console.log(self);
       self.setup_audio_player();
       install_dom_event_bindings();
       set_guy_link_to_next_section();
       $("nav").addClass("fade-in");
       $("main").addClass("fade-down");
     },
-    set_music_track_delta: self.set_music_track_delta
+    wavesurfer: self.wavesurfer
   };
 })(UserboundInterface || {});
 
