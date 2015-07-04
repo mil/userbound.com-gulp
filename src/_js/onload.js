@@ -3,6 +3,12 @@ var UserboundInterface = (function(self) {
   var router = new Grapnel({ pushState: true });
   var toggling_consulting = false;
 
+
+  function sync_audio_track_buttons_visibility() {
+    $(".audio-track-seekers")[
+        current_active_section() === 'music' ?  "addClass" : "removeClass"
+    ]("active");
+  }
   function activate_subsection(subsection) {
     if (current_active_section() == subsection) { return; }
 
@@ -20,6 +26,7 @@ var UserboundInterface = (function(self) {
 
 
     active_subsection_el.animate({ opacity: 0 }, function() {
+      sync_audio_track_buttons_visibility();
       var new_subsection_el =
         $(".filter-el[data-category-" + subsection.replace(" ", "-") + "]");
       active_subsection_el.removeClass("visible");
@@ -199,7 +206,10 @@ var UserboundInterface = (function(self) {
         return;
       }
 
+
       self.setup_audio_player();
+      sync_audio_track_buttons_visibility();
+
       install_dom_event_bindings();
       set_guy_link_to_next_section();
       $("nav").addClass("fade-in");

@@ -58,10 +58,13 @@ var UserboundInterface = (function(self) {
 
     wavesurfer.on('loading', function(pct) {
       $(".loading-pct").html(pct + '%');
-      $('.play-pause')[pct === 100 ? 'removeClass' : 'addClass']('hide');
-      $('.loading-pct')[pct === 100 ? 'addClass' : 'removeClass']('hide');
+      $('.play-pause').addClass('hide');
+      $('.loading-pct').removeClass('hide');
     });
-    wavesurfer.on('ready', function () {});
+    wavesurfer.on('ready', function() {
+      $('.play-pause').removeClass('hide');
+      $('.loading-pct').addClass('hide');
+    });
 
     $('.audio-track-seekers').addClass('active');
     load_track(0);
