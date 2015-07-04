@@ -15,7 +15,11 @@ window.UserboundInterface = (function(self) {
 
     $('.play-pause', '.controls').on('click', function(e) {
       var is_playing = wavesurfer.isPlaying();
-      $(e.target)[is_playing ? 'removeClass' : 'addClass']('playing');
+      var target = e.target;
+      while (!($(target).is(".play-pause"))) {
+        target = $(target).parent();
+      }
+      $(target)[is_playing ? 'removeClass' : 'addClass']('playing');
       wavesurfer[is_playing ? 'pause' : 'play']();
     });
     $('a', '.audio-track-seekers').on('click', function(e) {
