@@ -1,11 +1,13 @@
 'use strict';
-var UserboundInterface = (function(self) {
+window.UserboundInterface = (function(self) {
   var wavesurfer;
   var track_index = 0;
 
-  function set_music_track_delta(delta) {
-    console.log(delta);
-    $(".controls .date-caption").addClass("fade-down");
+
+  function sync_audio_track_buttons_visibility() {
+    $(".audio-track-seekers")[
+      self.util.current_active_section() === 'music' ?  "addClass" : "removeClass"
+    ]("active");
   }
 
   function bind_audo_player_controls() {
@@ -69,11 +71,12 @@ var UserboundInterface = (function(self) {
     $('.audio-track-seekers').addClass('active');
     load_track(0);
     bind_audo_player_controls();
+    sync_audio_track_buttons_visibility();
   }
 
-  return {
+  return $.extend(self, {
     wavesurfer: wavesurfer,
     setup_audio_player: setup_audio_player,
-    set_music_track_delta: set_music_track_delta
-  };
-})(UserboundInterface || {});
+    sync_audio_track_buttons_visibility: sync_audio_track_buttons_visibility
+  });
+})(window.UserboundInterface || {});
