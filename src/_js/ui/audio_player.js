@@ -58,7 +58,8 @@ window.UserboundInterface = (function(self) {
       waveColor: '#e8e8e8',
       progressColor: '#423f37',
       cursorColor: '#e8e8e8',
-      hideScrollbar: true
+      hideScrollbar: true,
+      normalize: true
       //cursorWidth: 1
     });
 
