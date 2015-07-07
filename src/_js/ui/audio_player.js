@@ -72,6 +72,10 @@ window.UserboundInterface = (function(self) {
       $('.play-pause').removeClass('hide');
       $('.loading-pct').addClass('hide');
     });
+    wavesurfer.on('finish', function() {
+      wavesurfer.stop();
+      $('.play-pause', '.controls').removeClass('playing');
+    });
 
     $('.audio-track-seekers').addClass('active');
     load_track(0);
