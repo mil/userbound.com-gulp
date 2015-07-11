@@ -1,9 +1,7 @@
 'use strict';
-module.exports = function($) {
-  var cb = function() {
-    console.log("calling original cb");
 
-  };
+module.exports = function($, globals) {
+  var cb = function() {};
 
   function set_sync_callback(call) {
     cb = call;
@@ -47,9 +45,6 @@ module.exports = function($) {
 
 
   function activate_subsection(subsection) {
-    console.log('activating');
-    console.log(cb);
-    cb();
     if (
       // Already activated on that button
       current_active_section() === subsection ||

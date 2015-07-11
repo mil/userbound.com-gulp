@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($, util, router) {
+module.exports = function($, globals, util, router) {
   function link_click(e) {
     var target_link = $.z(e.target).is("a") ? e.target : $.z(e.target).closest("a");
     if ($.z(target_link).attr("target") === "_blank") { return; }

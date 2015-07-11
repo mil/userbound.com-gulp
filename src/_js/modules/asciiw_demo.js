@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($) {
+module.exports = function($, globals) {
   return function() {
     if ($.z("pre.ascii-frames").length == 0 || typeof slides == "undefined") {
       return;

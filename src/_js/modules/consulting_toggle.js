@@ -1,5 +1,6 @@
 'use strict';
-module.exports = function($, util, router) { 
+
+module.exports = function($, globals, util, router) {
   var toggling_consulting = false;
 
   function install_consulting_routing() {

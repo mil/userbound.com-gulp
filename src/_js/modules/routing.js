@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($, util, router) {
+module.exports = function($, globals, util, router) {
   return {
     install_routing: function() {
       ['clients', 'about', 'interfaces', 'works'].forEach(function(section) { 

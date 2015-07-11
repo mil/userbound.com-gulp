@@ -1,5 +1,6 @@
 'use strict';
-module.exports = function($, util, router, audio_tracks) {
+
+module.exports = function($, globals, util, router) {
   var wavesurfer;
   var track_index = 0;
 
@@ -37,7 +38,7 @@ module.exports = function($, util, router, audio_tracks) {
   }
 
   function load_track(index) {
-    var keys = Object.keys(audio_tracks);
+    var keys = Object.keys(globals.tracks);
     $.z('.audio-track-seekers .next')[
       index + 1 > keys.length - 1 ? 'addClass' : 'removeClass'
     ]('hidden');
@@ -46,7 +47,7 @@ module.exports = function($, util, router, audio_tracks) {
     ]('hidden');
     $.z('.play-pause').removeClass('playing');
     $.z('.date-caption .inner').html(keys[index]);
-    wavesurfer.load('/works/' + audio_tracks[keys[index]]);
+    wavesurfer.load('/works/' + globals.tracks[keys[index]]);
   }
 
   function setup_audio_player() {
