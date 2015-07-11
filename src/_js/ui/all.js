@@ -4,8 +4,13 @@ window.UserboundInterface = (function() {
     grapnel: require('grapnel'),
     simpleStorage: require('../libs/simpleStorage.js'),
     WaveSurfer: require('../libs/wavesurfer.min.js'),
-    Rainbow: require('../libs/rainbow.js')
+    highlighter: require('../libs/highlight.js')
   };
+
+  $.highlighter.registerLanguage('scss', require('../libs/lang/scss.js'));
+  $.highlighter.registerLanguage('c++', require('../libs/lang/cpp.js'));
+  $.highlighter.registerLanguage('ruby', require('../libs/lang/ruby.js'));
+  $.highlighter.registerLanguage('openscad', require('../libs/lang/openscad.js'));
 
   var sync_btns_cb = function() {};
 
@@ -29,7 +34,10 @@ window.UserboundInterface = (function() {
 
 
       // Syntax highlighting asciiw demo, audo player, event handlers 
-      $.Rainbow.color();
+      $.z("[data-language]").each(function(i, el) {
+        $.highlighter.highlightBlock(el);
+      });
+
       setup_asciiw_demo();
       audio_player.setup_audio_player();
       event_handlers.install_dom_event_bindings();
