@@ -13,7 +13,7 @@ Luckily Ruby provides an excellent [Socket Class](http://www.ruby-doc.org/stdlib
 
 [markview.rb](https://github.com/mil/configs-and-bins/blob/master/bins/markview.rb) *(/home/mil/bin/markview.rb)*
 
-<pre class="sh_ruby">
+<pre data-language="ruby">
 #!/usr/bin/ruby
 require "socket"
 require "redcarpet"

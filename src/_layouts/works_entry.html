@@ -4,6 +4,6 @@
 {% include "_partials/entry_header.html" %}
 <section class='content'>
   <img src="/works/{{ title }}/render.png" alt="{{ title }}" class='filter-el visible' data-category-model>
-  <pre class='sh_javascript filter-el' data-category-code>{{ scad_source|raw }}</pre>
+  <pre data-language="ruby" class='sh_javascript filter-el' data-category-code>{{ scad_source|raw }}</pre>
 </section>
 {% endblock %}

@@ -17,7 +17,7 @@ I wrote a small [ruby script](https://github.com/mil/home/blob/master/Scripts/Ut
 
 Each block I define as a hash, specifying symbol, color, and the function which returns the data to display:
 
-<pre class='sh_ruby'>
+<pre data-language='ruby'>
 blocks = [
     {
         :symbol => "↬",
@@ -28,7 +28,7 @@ blocks = [
 </pre>
 
 Where `fetchers` holds some functions for retrieving system data:
-<pre class='sh_ruby'>
+<pre data-language='ruby'>
 class InfoFetchers
   def network
     %x[netctl list].split("\n").select { |n| 
@@ -41,7 +41,7 @@ fetchers = Info_Fetchers.new
 
 Each block gets passed through a `map` function to stylize with Pango <sup>3</sup>. This way I get a consistent feel for each block and I keep my code DRY. The final output is assembled as `JSON` and passed onto `i3bar`:
 
-<pre class='sh_javascript'>
+<pre data-language='ruby'>
 blocks.map do |f|
    text = [
        "&lt;span rise='10000' size='large' underline_color='#ffffff' underline='double'&gt;",

@@ -8,7 +8,7 @@ Recently, I've been working in a little language called [Io](http://iolanguage.c
 
 In Io, when you create a string, it is of type **Sequence** which is a more broad object providing a sequence of data elements to manipulate. The fact that a string is really just a **Sequence** is good, but can be troubling. For example, how does one determine the character at a certain location of a **Sequence**? The **Sequence**'s handy **at** message will just give you the integer of the entry at a specific location in the sequence:
 
-<pre class="sh_c">
+<pre data-language="c">
 Io> myString := "abcdefgh"
 ==> abcdefgh
 Io> myString at(4)
@@ -17,7 +17,7 @@ Io> myString at(4)
 
 Well I don't think 100 was what I was looking for. However, 100 being a **Number** object, can use the **asCharacter** message to find out what character 100 represents in ASCII.
 
-<pre class="sh_c">
+<pre data-language="c">
 Io> 100 asCharacter
 ==> d
 </pre>

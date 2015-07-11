@@ -1,28 +1,28 @@
 'use strict';
-window.UserboundInterface = (function(self) {
-  // Initialize routing with Grapnel
-  return $.extend(self, {
+
+module.exports = function($, util, router) {
+  return {
     install_routing: function() {
       ['clients', 'about', 'interfaces', 'works'].forEach(function(section) { 
 
-        if ($(".filter-by button").length > 0) {
-          self.globals.router.get('/' + section, function(request) {
-            self.util.activate_subsection(
-              $($(".filter-by button")[0]).text().toLowerCase().replace(" ", "-")
+        if ($.z(".filter-by button").length > 0) {
+          router.get('/' + section, function(request) {
+            util.activate_subsection(
+              $.z($.z(".filter-by button")[0]).text().toLowerCase().replace(" ", "-")
             );
           });
         }
 
-        self.globals.router.get('/' + section + '/:subsection', function(request) {
+        router.get('/' + section + '/:subsection', function(request) {
           var subsection = request.params.subsection;
-          self.util.activate_subsection(subsection);
+          util.activate_subsection(subsection);
         });
 
         // nested subsection
-        self.globals.router.get('/' + section + '/:page/:nested', function(request) {
-          self.util.activate_subsection(request.params.nested);
+        router.get('/' + section + '/:page/:nested', function(request) {
+          util.activate_subsection(request.params.nested);
         });
       });
     }
-  });
-})(window.UserboundInterface || {});
+  };
+};

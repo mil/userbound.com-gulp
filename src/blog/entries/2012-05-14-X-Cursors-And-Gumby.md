@@ -11,7 +11,7 @@ I've been playing around with Xlib lately and I found out that X11 comes with a 
 
 Yep Gumby is included in Xlib. Check out cursor number 56 in [Xlib Appendix B: X Font Cursors](http://tronche.com/gui/x/xlib/appendix/b) which defines XC_gumby. Gumby can be used in an Xlib program like this:
 
-<pre class="sh_c">
+<pre data-language="c">
 //Assumes you have previously defined display and window
 Cursor cursor;
 cursor = XCreateFontCursor(display, 56);

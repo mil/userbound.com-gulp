@@ -10,14 +10,14 @@ Sometimes I can't get myself out of bed and to a conscious state before a certai
 
 Before I go to sleep, I kill my display with goodnight:
 
-<pre class="sh_c">
+<pre data-language="c">
 alias goodnight='xset dpms force off'
 </pre>
 
 
 And then I have a script that I call wakeup:
 
-<pre class="sh_ruby">
+<pre data-language="c">
 #!/usr/bin/env ruby
 ENV['DISPLAY'] = ':0'
 %x[xset dpms force on]
@@ -42,7 +42,7 @@ end
 
 I'll see you at 9 AM in the morning cron. In crontab -e:
 
-<pre class="sh_c">
+<pre data-language="c">
 0 9 * * * /home/mil/bin/x/wakeup
 </pre>
 

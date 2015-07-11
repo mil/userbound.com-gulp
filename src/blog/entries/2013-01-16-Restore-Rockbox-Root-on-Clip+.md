@@ -8,7 +8,7 @@ Recently my Sansa Clip+ died on me randomly. I had Rockbox installed for about t
 
 Plug in your Clip+ and wipe the partition table, make a new partition, format it vfat, and mount it:
 
-<pre class="sh_c">
+<pre data-language="c">
 fdisk /dev/sdb (your device)
   --> proceed to delete (d) any existing partitions, 
     (in my case there were none)
@@ -21,7 +21,7 @@ mount /dev/sdb1 /mnt/clip
 
 Now you've got a partition to work with, so proceed with normal Rockbox setup procedure. Download the Rockbox firmware and copy it over to your clip:
 
-<pre class="sh_c">
+<pre data-language="c">
 wget http://build.rockbox.org/data/rockbox-sansaclipplus.zip
 unzip rockbox-sansaclipplus.zip
 mv .rockbox /mnt/clip
@@ -29,7 +29,7 @@ mv .rockbox /mnt/clip
 
 Then, patch and copy over the bootloader the manual way (GUI didn't work for me):
 
-<pre class="sh_c">
+<pre data-language="c">
 wget http://mp3support.sandisk.com/firmware/clipplus/clipplus01.02.16.zip
 wget http://download.rockbox.org/bootloader/sandisk-sansa/clipplus/bootloader-clipplus.sansa
 wget http://download.rockbox.org/bootloader/sandisk-sansa/mkamsboot/linux-x86-32/mkamsboot

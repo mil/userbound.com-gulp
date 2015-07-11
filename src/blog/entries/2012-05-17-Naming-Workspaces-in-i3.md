@@ -8,7 +8,7 @@ I'm not sure how many other WMs have this feature... but naming workspaces is aw
 
 [workspace.rb ](https://github.com/mil/configs-and-bins/blob/master/bins/workspace.rb) *(/home/mil/bin/workspace.rb)*
 
-<pre class="sh_c">
+<pre data-language="c">
 #!/usr/bin/ruby
 require 'json'
 JSON.parse(%x[i3-msg -t get_workspaces]).each do |workspace|
@@ -23,7 +23,7 @@ end
 
 This just sets whatever was passed in as the new workspace name.Then rebinds the sym. This script can be run by simply opening up Dmenu with a hotkey and typing the command as:
 
-<pre class="sh_c">workspace.rb workspacename</pre>
+<pre data-language="c">workspace.rb workspacename</pre>
 
 And as simple as that the workspace has a name. 
 

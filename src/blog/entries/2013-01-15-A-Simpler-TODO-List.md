@@ -8,7 +8,7 @@ There are likely thousands of TODO list "applications" and "systems" out there, 
 
 In your **.bashrc** or **.zshrc**:
 
-<pre class="sh_c">
+<pre data-language="c">
 cat &tilde;/.TODO
 </pre>
 

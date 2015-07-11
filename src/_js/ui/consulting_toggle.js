@@ -1,5 +1,5 @@
 'use strict';
-window.UserboundInterface = (function(self) {
+module.exports = function($, util, router) { 
   var toggling_consulting = false;
 
   function install_consulting_routing() {
@@ -8,18 +8,18 @@ window.UserboundInterface = (function(self) {
       { url: "/consulting", consulting_mode_enabled: true },
       { url: "/noncommercial", consulting_mode_enabled: false  }
     ].forEach(function(state) {
-      self.globals.router.get(state.url, function(request) {
+      router.get(state.url, function(request) {
         toggling_consulting = true;
-        simpleStorage.flush();
-        simpleStorage.set('consulting-mode', state.consulting_mode_enabled);
-        self.util.load_href('/clients');
+        $.simpleStorage.flush();
+        $.simpleStorage.set('consulting-mode', state.consulting_mode_enabled);
+        util.load_href('/clients');
       });
     });
 
     // Only allow showing clients if on
-    self.globals.router.get("/clients/:subsection?", function(request) {
-      if (!simpleStorage.get('consulting-mode')) {
-        self.util.load_href('/');
+    router.get("/clients/:subsection?", function(request) {
+      if (!$.simpleStorage.get('consulting-mode')) {
+        util.load_href('/');
       }
     });
   }
@@ -27,10 +27,10 @@ window.UserboundInterface = (function(self) {
   function install_clients_navigation_link() {
     // only installs if in consulting mode
     var clients_section_active = window.location.pathname.match(/^\/clients/);
-    var is_homepage = $("html head title").text().match(/^Userbound/);
+    var is_homepage = $.z("html head title").text().match(/^Userbound/);
 
     // makes it active, if on /clients*
-    var clients_link = $("<a href='/clients' title='Clients'></a>")
+    var clients_link = $.z("<a href='/clients' title='Clients'></a>")
       .addClass(clients_section_active ? "active" : "")
       .attr("title", is_homepage ? "" : "Clients")
       .append([
@@ -42,12 +42,12 @@ window.UserboundInterface = (function(self) {
         "<span class='title'>Clients</span>"
       ].join(""));
 
-    $(clients_link).insertBefore($("nav a")[1]);
+    $.z(clients_link).insertBefore($.z("nav a")[1]);
   }
 
   function install_consulting_toggle() {
     install_consulting_routing();
-    if (simpleStorage.get('consulting-mode')) { 
+    if ($.simpleStorage.get('consulting-mode')) { 
       install_clients_navigation_link(); 
     }
     if (toggling_consulting) { 
@@ -55,7 +55,7 @@ window.UserboundInterface = (function(self) {
     }
   }
 
-  return $.extend(self, {
+  return {
     install_consulting_toggle: install_consulting_toggle
-  });
-})(UserboundInterface || {});
+  };
+};
