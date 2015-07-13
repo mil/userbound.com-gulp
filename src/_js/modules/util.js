@@ -1,11 +1,6 @@
 'use strict';
 
 module.exports = function($, globals) {
-  var cb = function() {};
-
-  function set_sync_callback(call) {
-    cb = call;
-  }
 
   function strip_leading_and_trailing_slashes(str) {
     return str.replace(/^\/|\/$/g, '');
@@ -73,7 +68,7 @@ module.exports = function($, globals) {
       new_subsection_el.animate({ opacity: 1 }, function() {});
     });
 
-    cb();
+    globals.sync_callback();
   }
 
   return {
@@ -83,9 +78,7 @@ module.exports = function($, globals) {
     load_href: load_href,
     activate_subsection: activate_subsection,
     fade_up_out: fade_up_out,
-    redirect_homepage_to: redirect_homepage_to,
-    set_sync_callback: set_sync_callback,
-    sync_callback: cb
+    redirect_homepage_to: redirect_homepage_to
   };
 
 };

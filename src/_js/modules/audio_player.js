@@ -39,6 +39,12 @@ module.exports = function($, globals, util, router) {
 
   function load_track(index) {
     var keys = Object.keys(globals.tracks);
+
+    //router.navigate([
+    //  '/works/music',
+    //  keys[index].replace(/\//g, '-')
+    //].join("/"));
+
     $.z('.audio-track-seekers .next')[
       index + 1 > keys.length - 1 ? 'addClass' : 'removeClass'
     ]('hidden');
@@ -52,6 +58,7 @@ module.exports = function($, globals, util, router) {
 
   function setup_audio_player() {
     if ($.z(".music-entry").length === 0) { return; }
+    console.log("G");
 
     wavesurfer = Object.create($.WaveSurfer);
     wavesurfer.init({
@@ -82,12 +89,13 @@ module.exports = function($, globals, util, router) {
     load_track(0);
     bind_audo_player_controls();
     sync_audio_track_buttons_visibility();
-    util.set_sync_callback(sync_audio_track_buttons_visibility);
+    globals.sync_callback = sync_audio_track_buttons_visibility;
   }
 
   return {
     wavesurfer: wavesurfer,
     setup_audio_player: setup_audio_player,
+    load_track: load_track,
     sync_audio_track_buttons_visibility: sync_audio_track_buttons_visibility
   };
 };

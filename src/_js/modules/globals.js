@@ -26,5 +26,6 @@ module.exports = {
     '6/19/15': 'db050.WAV',
     '6/18/15': 'db049.WAV',
     '6/17/15': 'db048.WAV'
-  }
+  },
+  sync_callback: function() {}
 };

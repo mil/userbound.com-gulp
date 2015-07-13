@@ -14,25 +14,22 @@ window.UserboundInterface = (function() {
   $.highlighter.registerLanguage('js', require('./libs/lang/javascript.js'));
   $.highlighter.registerLanguage('smalltalk', require('./libs/lang/smalltalk.js'));
 
-  var sync_btns_cb = function() {};
 
   var globals = require('./modules/globals.js');
   var util = require('./modules/util.js')($, globals);
   var router = new $.grapnel({ pushState: true });
-  var routing = require('./modules/routing.js')($, globals, util, router);
-  var event_handlers = require('./modules/event_handlers.js')($, globals, util, router, sync_btns_cb);
+  var event_handlers = require('./modules/event_handlers.js')($, globals, util, router);
   var setup_asciiw_demo = require('./modules/asciiw_demo.js')($, globals, util, router);
   var consulting_toggle = require('./modules/consulting_toggle.js')($, globals, util, router);
-  var audio_player = require('./modules/audio_player.js')($, globals, util, router, sync_btns_cb);
+  var audio_player = require('./modules/audio_player.js')($, globals, util, router);
 
   return {
     init: function() {
       if (util.redirect_homepage_to('/works')) { return; }
       if (consulting_toggle.install_consulting_toggle() === 'toggling consulting') { return; }
 
-      // Install Page routing
-      routing.install_routing();
-
+      // Seting up routes
+      require('./modules/setup_routes.js')($, globals, util, audio_player, router);
 
       // Syntax highlighting asciiw demo, audo player, event handlers 
       $.z("[data-language]").each(function(i, el) {
