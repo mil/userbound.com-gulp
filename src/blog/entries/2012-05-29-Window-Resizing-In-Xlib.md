@@ -9,7 +9,7 @@ In many minimal X window managers, the model for resizing windows follows the fo
 Below is a snippet of the window manager I'm working on. In my window manager, instead of just hitting the border / threshold when resizing, the window actually flips. So if you start to drag over the border to left or the top, the window will actually invert (not the content but the layout). 
 
 
-<pre class="sh_c">
+<pre data-language="c">
 //This struct's values are set in the ButtonPress Event
 typedef struct {
 	XButtonEvent       buttonEvent;
@@ -17,7 +17,7 @@ typedef struct {
 } PointerMotion;
 PointerMotion origin;
 </pre>
-<pre class="sh_c">
+<pre data-language="c">
 //Within the MotionNotify Event
 /* Calculate Difference between current position original click */
 int xDifference = event -&gt; xbutton.x_root - origin.button.x_root;

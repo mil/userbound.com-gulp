@@ -4,6 +4,7 @@
   "main": "Gulpfile.js",
   "dependencies" : {
     "autoprefixer-core": "5.1.7",
+    "browserify": "9.0.3",
     "colors": "1.0.3",
     "fs": "0.0.2",
     "fs-readdir-recursive": "0.1.0",
@@ -31,6 +32,7 @@
     "rimraf": "2.2.8",
     "w3cjs": "0.2.0",
     "underscore": "1.7.0",
+    "vinyl-transform": "1.0.0",
     "yaml-front-matter": "3.2.3"
   },
   "repository": {

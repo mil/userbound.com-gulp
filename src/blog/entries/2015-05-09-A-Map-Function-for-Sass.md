@@ -12,7 +12,7 @@ footnotes:
 
 So here a basic implementation<sup>2</sup> I worked out for a simple map function in Sass<sup>3</sup>:
 
-<pre class='sh_c'>
+<pre data-language='c'>
 @function map_function($list, $function_name)
   $return_list: ()
 
@@ -25,7 +25,7 @@ So here a basic implementation<sup>2</sup> I worked out for a simple map functio
 
 And for those of you who like all those extra curly brackets, the SCSS equivalent is:
 
-<pre class='sh_c'>
+<pre data-language='c'>
 @function map_function($list, $function_name) {
   $return_list: ();
   @for $index from 1 through length($list) {

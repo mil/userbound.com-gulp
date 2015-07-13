@@ -10,11 +10,11 @@ So how does one use the `ii` in practicality? The first step is to grab yourself
 
 Once you've done that, run `ii` for the first time with:
 
-<pre class="sh_c">ii -s irc.freenode.net -n yournick</pre>
+<pre data-language="c">ii -s irc.freenode.net -n yournick</pre>
 
 The folder `~/irc` will be created containing all of your IRC data as such: 
 
-<pre class="sh_c">
+<pre data-language="c">
 irc/irc.freenode.net
 |-- chanserv
 |   `-- out
@@ -29,14 +29,14 @@ While `ii` is running that means you are connected to the server. If you look in
 
 If you have a registered nickname you'd like to identify with, simply go into the `nickserv` folder, echo to the `in` FIFO, and verify the results with tail like so:
 
-<pre class="sh_c">cd ~/irc/irc.freenode.net/nickserv
+<pre data-language="c">cd ~/irc/irc.freenode.net/nickserv
 echo "identify mysupersecretpassword" > in
 tail -n 2 out
 </pre>
 
 Assuming you entered the correct password, the nickserv should have identified you. Now your free to enter any channels you might like. The method for joining channels is just like how you talked to the **nickserv**. Here is an example of joining **#testchannel** within **irc.freenode.net**:
 
-<pre class="sh_c">cd ~/irc/irc.freenode.net/
+<pre data-language="c">cd ~/irc/irc.freenode.net/
 echo "/j #testchannel" > in
 </pre>
 
@@ -48,6 +48,6 @@ So what about viewing the `out` file? cat? No. I don't think you want to be `cat
 
 The colors can be changed easily via my script. Feel free to grab and modify [my regexColorize script from my github]( http://github.com/mil/configs-and-bins/blob/master/bins/regexColorize). I use my `regexColorize` to view my out files like this:
 
-<pre class="sh_c">tail -f -n 500 out | regexColorize</pre>
+<pre data-language="c">tail -f -n 500 out | regexColorize</pre>
 
 And that's about it... A simple setup for using the `ii` irc client. I usually throw my tails piped to `regexColorize` in `tmux`, but you can read about using tmux or screen in many other places.  Finally - if you don't like my methods for using `ii`, other options include: [PCW - Popup Chat Windows](http://bitbucket.org/emg/pcw) or a [Multitail Solution](http://nion.modprobe.de/blog/archives/440-Using-the-ii-irc-client.html). Regardless, I hope I will have made a few irssi, xchat, etc fans convert to `ii`.

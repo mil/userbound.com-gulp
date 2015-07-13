@@ -13,7 +13,7 @@ My solution involves using a browser that can offload the hashing task to anothe
 
 [hash](https://github.com/mil/configs-and-bins/blob/master/configs/.config/dwb/userscripts/hash) (*~/.config/userscripts/hash*)
 
-<pre class="sh_ruby">
+<pre data-language="ruby">
 #!/usr/bin/ruby
 require 'uri'
 site = (URI).parse(ENV['DWB_URI']).host
