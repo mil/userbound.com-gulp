@@ -33,7 +33,7 @@ module.exports = function($, globals) {
   function redirect_homepage_to(path) {
     var is_homepage = $.z("html head title").text().match(/^Userbound/);
     if (is_homepage) {
-      load_href(path);
+      //load_href(path);
       return;
     }
   }
