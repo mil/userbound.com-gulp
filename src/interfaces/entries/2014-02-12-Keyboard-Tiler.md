@@ -29,14 +29,14 @@ So in the above example, hitting **1 and B** would place and resize a window to 
 
 I scripted around `xdotool` so I could focus on the logic of processing the two points and positioning the window on the screen rather than building out a full window manager. The [entire script](http://github.com/mil/keyboard-tiler/blob/master/keyboard-tiler.rb) works to calculate the variables used, ultimatly pushing to xdotool as:
 
-<pre class="sh_ruby">
+<pre data-language class='ruby'>
 %x[xdotool getactivewindow windowmove --sync #{startX} #{decorationsHeight + startY}]
 %x[xdotool getactivewindow windowsize --sync #{newWidth} #{newHeight - (decorationsHeight * 2)}]
 </pre>
 
 Providing keybindings is another task separate from the logic of my key processing script. For the keybindings my first thought was to use [xchainkeys](http://code.google.com/p/xchainkeys). This way I could have emacs style key chording for pressing two keys in positioning.  To generate the keybindings for xchainkeys, I created the [logic to generate all permutations](https://github.com/mil/keyboard-tiler/blob/master/utils/generate-xchains.rb) for any two keys on the grid being pressed:
 
-<pre class="sh_ruby">
+<pre data-language class='ruby'>
 $tiles = [
 	[ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' ],
 	[ 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p' ],

@@ -15,7 +15,7 @@ footnotes:
 
 Markdown Tree is a small [Sinatra](http://www.sinatrarb.com)-based Ruby [script](https://github.com/mil/markdown-tree/blob/master/markdown-tree.rb) which serves a [folder of markdown files](https://github.com/mil/markdown-tree/tree/master/content) as a minimalistic [live styled site](http://markdown-tree.bladdo.net).  E.g. given the folder structure:
 
-<pre class='sh_ruby'>
+<pre data-language>
 My Notes/
     Schedule.md
     History/
