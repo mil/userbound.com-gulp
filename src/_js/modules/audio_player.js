@@ -58,7 +58,6 @@ module.exports = function($, globals, util, router) {
 
   function setup_audio_player() {
     if ($.z(".music-entry").length === 0) { return; }
-    console.log("G");
 
     wavesurfer = Object.create($.WaveSurfer);
     wavesurfer.init({
