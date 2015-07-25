@@ -1,0 +1,28 @@
+h1, h2 {
+  color: #423f37;
+}
+
+h1 {
+  @include fontsize(biggest);
+  margin: 1rem 0;
+  display: inline-block;
+  &:before, &:after {
+    clear: both;
+    content: "";
+    height: 0;
+    display: block;
+  }
+}
+
+h2, .hidden-title-stub {
+  @include fontsize(bigger);
+  color: #080d3b;
+  line-height: spacing(bigger, 1);
+}
+
+.hidden-title-stub {
+  margin-top: 0;
+  height: 0;
+  overflow: hidden;
+  display: inline;
+}

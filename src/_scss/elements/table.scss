@@ -1,0 +1,27 @@
+body table {
+  width: 100%;
+  @include fontsize(smallest);
+  tr {
+    margin: 10px;
+    background: #e8e8e8;
+    border: 1px solid #ccc;
+    td, th {
+      border: 1px solid #ccc;
+      padding: 8px;
+      margin: 5px;
+      width: 140px;
+      //&:nth-child(2)
+      &:last-child {
+        max-width: 100%;
+      }
+    }
+  }
+  thead th {
+    font-weight: bold;
+    background: #e8e8e8;
+  }
+  tbody td {
+    width: auto;
+    background: #fff;
+  }
+}

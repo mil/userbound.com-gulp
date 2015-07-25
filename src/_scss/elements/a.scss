@@ -1,0 +1,28 @@
+$link_hover_timing: 0.8s;
+
+body a {
+  color: $link_color;
+  text-decoration: none;
+  transition: $link_hover_timing all ease-in;
+  &:hover {
+    transition: $link_hover_timing all ease-out;
+    color: $link_hover;
+  }
+}
+
+section.content {
+  a {
+    border-bottom: 1px dotted $grey;
+    transition: $transition_in;
+    h2 {
+      color: $link_color;
+      transition: $transition_out;
+    }
+    &:hover {
+      color: $link_hover;
+      transition: $transition_in;
+      border-bottom: 1px dashed $link_hover;
+      text-decoration: none;
+    }
+  }
+}

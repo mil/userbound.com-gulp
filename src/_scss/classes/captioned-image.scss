@@ -1,0 +1,21 @@
+.captioned-image {
+  text-align: center;
+  img, .caption, .window-chrome {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+  .window-chrome img {
+    width: 100%;
+  }
+  img, .caption {
+    margin-bottom: 0;
+  }
+  img {
+    margin-top: spacing(medium, 2);
+  }
+  .caption {
+    margin-top: spacing(smallest);
+    @include fontsize(smallest);
+  }
+}

@@ -1,0 +1,6 @@
+html body main hr {
+  display: block;
+  border: none;
+  height: 0;
+  @include hr;
+}

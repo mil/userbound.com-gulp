@@ -1,0 +1,10 @@
+$size_map: (biggest: 1.602, bigger: 1.266, medium: 1, smaller: 0.889, smallest: 0.79);
+
+@function spacing($size, $multiplier: 1) {
+  @return #{map-get($size_map, $size) * 1.5 * $multiplier}rem;
+}
+
+@mixin fontsize($size, $multiplier: 1) {
+  font-size: #{map-get($size_map, $size) * $multiplier}rem;
+  line-height: #{map-get($size_map, $size) * $line_height_multiplier}rem;
+}

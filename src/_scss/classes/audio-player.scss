@@ -1,0 +1,75 @@
+.audio-player {
+  .music-entry {
+    cursor: pointer;
+  }
+  .controls {
+    text-align: center;
+    margin-top: 1rem;
+    .date-caption, svg {
+      vertical-align: middle;
+    }
+    .date-caption {
+      display: inline-block;
+      position: relative;
+      border-right: 1px dotted #cfcfcf;
+      padding-left: 3px;
+      padding-right: 15px;
+      margin-right: 15px;
+      width: 45px;
+      height: 18px;
+      text-align: left;
+      @include fontsize(smallest, 0.9);
+      .inner {
+        position: absolute;
+        top: 0;
+        opacity: 1;
+        transition: 0.6s all ease-in-out;
+      }
+      &.fade-down {
+        .inner {
+          top: 20px;
+          opacity: 0;
+          transition: 0.6s all ease-in-out;
+        }
+      }
+    }
+    .play-pause {
+      cursor: pointer;
+      width: 14px;
+      height: 14px;
+      &.hide {
+        display: none;
+      }
+      .pause {
+        opacity: 0;
+      }
+    }
+    .playing {
+      .pause {
+        opacity: 1;
+      }
+      .play {
+        opacity: 0;
+      }
+    }
+    .loading-pct {
+      @include fontsize(smallest, 0.9);
+      &.hide {
+        display: none;
+      }
+    }
+  }
+}
+
+footer {
+  .audio-track-seekers {
+    float: right;
+    display: none;
+    &.active {
+      display: block;
+    }
+    .hidden {
+      display: none;
+    }
+  }
+}

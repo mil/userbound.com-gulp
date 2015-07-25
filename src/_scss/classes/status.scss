@@ -1,0 +1,54 @@
+.status {
+  color: black;
+  cursor: initial;
+  display: inline-block;
+  position: relative;
+  content: "";
+  &:hover {
+    &:after {
+      display: block;
+    }
+  }
+  &:after {
+    display: none;
+    font-style: italic;
+    position: absolute;
+    @include fontsize(smallest);
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 5px;
+    margin-left: 2px;
+    margin-top: -26px;
+    margin-bottom: 400px;
+    max-width: 400px;
+    width: auto;
+  }
+  &.production {
+    $c: #9CFF97;
+    background: $c;
+    &:after {
+      content: "Production-ready";
+      width: 124px;
+      border: 1px solid $c;
+    }
+  }
+  &.experimental {
+    $c: #FFC98D;
+    background: $c;
+    &:after {
+      width: 93px;
+      content: "Experimental";
+      border: 1px solid $c;
+    }
+  }
+}
+
+h1 .status {
+  @include circle(6px);
+}
+
+// Interface individual pages styling
+h2 .status {
+  @include circle(3px);
+}

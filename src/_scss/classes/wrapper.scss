@@ -1,0 +1,11 @@
+.wrapper {
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 spacing(biggest);
+  padding-top: 5rem;
+  @include box-sizing(border-box);
+  nav, main {
+    display: block;
+  }
+}

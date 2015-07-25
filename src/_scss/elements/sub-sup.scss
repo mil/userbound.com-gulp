@@ -1,0 +1,9 @@
+body {
+  sub, sup {
+    @include fontsize(smallest);
+  }
+  sup {
+    vertical-align: top;
+    padding-right: 2px;
+  }
+}

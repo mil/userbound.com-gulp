@@ -1,0 +1,30 @@
+main {
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  margin-top: -8px;
+  opacity: 0;
+  &.fade-down {
+    // for reflow
+    p {
+      display: block;
+      overflow: hidden;
+    }
+    opacity: 1;
+    @include animate(fadeDown 1s);
+    &.cv {
+      opacity: 1;
+      @include animate(scaleIn 2s);
+    }
+  }
+  &.fade-up {
+    opacity: 0;
+    @include animate(fadeUp 1s);
+  }
+  footer {
+    border-top: $seperator_line;
+    .pagination-links {
+      float: right;
+      text-align: right;
+    }
+  }
+}
