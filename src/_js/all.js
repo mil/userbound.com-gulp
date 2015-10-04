@@ -25,7 +25,7 @@ window.UserboundInterface = (function() {
 
   return {
     init: function() {
-      if (util.redirect_homepage_to('/works')) { return; }
+      if (util.redirect_homepage_to('/interfaces')) { return; }
       if (consulting_toggle.install_consulting_toggle() === 'toggling consulting') { return; }
 
       // Seting up routes
