@@ -7,6 +7,7 @@ window.UserboundInterface = (function() {
     highlighter: require('./libs/highlight.js')
   };
 
+  $.highlighter.registerLanguage('clojure', require('./libs/lang/clojure.js'));
   $.highlighter.registerLanguage('scss', require('./libs/lang/scss.js'));
   $.highlighter.registerLanguage('c++', require('./libs/lang/cpp.js'));
   $.highlighter.registerLanguage('ruby', require('./libs/lang/ruby.js'));
