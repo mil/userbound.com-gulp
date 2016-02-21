@@ -1,7 +1,7 @@
 ---
 title: Garden with Clojurescript
 categories: blog
-date: 2015-02-21
+date: 2016-02-21
 time: 2:46PM
 footnotes:
   - The real power here is that you get access to Clojure's full battery of rich data transformation capabilities directly available to you while writing styles! This beats out Sass loops and logic 10-to-1 from my perspective -- assuming your stack is already Clojure(script)-based.
