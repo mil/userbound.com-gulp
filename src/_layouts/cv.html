@@ -15,9 +15,7 @@
 
 
         </h1>
-        <h2>
-          Front-End Dev Consultant
-        </h2>
+        <h2>{{ tagline }}</h2>
 
       </div>
     </div>
@@ -44,6 +42,14 @@
       <li>{{skill}}</li>
       {% endfor %}
     </ul>
+
+    <h3>Certifications</h3>
+    <ul class='listing'>
+      {% for cert in certifications %}
+      <li>{{cert}}</li>
+      {% endfor %}
+    </ul>
+
 
   </div>
 
