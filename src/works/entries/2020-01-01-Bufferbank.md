@@ -1,7 +1,7 @@
 ---
 title: Bufferbank
 time: 12/14
-category: mixtapes
+category: music
 sort_index: 100000000
 ---
 <li>

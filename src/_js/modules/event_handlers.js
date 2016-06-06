@@ -21,7 +21,7 @@ module.exports = function($, globals, util, router) {
 
     // Models follows a different schema since its only subpage with stubs
     router.navigate(
-      window.location.href.match(/\/works\/(?!music|print|mixtapes).+/) ?
+      window.location.href.match(/\/works\/(?!cad|music).+/) ?
         "/works/" + util.trim($.z("h1").text()) + "/" + subsection.replace(" ", "-") :
         "/" + $.z("h1").text().toLowerCase() + "/" + subsection.replace(" ", "-")
       );

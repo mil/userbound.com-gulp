@@ -68,7 +68,7 @@ section.content .links-listing {
       }
     }
   }
-  &[data-category-print] {
+  &[data-category-cad] {
     li {
       padding-bottom: 0;
       border-bottom: 1px dashed #cfcfcf;
@@ -80,7 +80,7 @@ section.content .links-listing {
       }
     }
   }
-  &[data-category-mixtapes] {
+  &[data-category-music] {
     li {
       padding-bottom: 0;
       a {

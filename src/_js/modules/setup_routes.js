@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($, globals, util, audio_player, router) {
+module.exports = function($, globals, util, router) {
 
   ['clients', 'about', 'interfaces', 'works'].forEach(function(section) { 
 
@@ -21,23 +21,6 @@ module.exports = function($, globals, util, audio_player, router) {
     router.get('/' + section + '/:page/:nested', function(request) {
       util.activate_subsection(request.params.nested);
     });
-  });
-
-
-  router.get('/works/music/:track_date', function(request) {
-    console.log(request.params.track_date);
-
-    console.log(Object.keys(globals.tracks));
-    var idx = Object.keys(globals.tracks).indexOf(
-      request.params.track_date.replace(/-/g, '/')
-    );
-  audio_player.load_track(idx);
-
-    //router.navigate([
-    //  '/works/music',
-    //  keys[index].replace(/\//g, '-')
-    //].join("/"));
-
   });
 
 
